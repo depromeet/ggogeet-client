@@ -32,6 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:11.10.4"],\
             ["@tanstack/react-query", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.10.3"],\
             ["@types/node", "npm:18.8.4"],\
+            ["@types/qs", "npm:6.9.7"],\
             ["@types/react", "npm:18.0.25"],\
             ["@types/react-dom", "npm:18.0.8"],\
             ["axios", "npm:1.1.3"],\
@@ -39,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:13.0.2"],\
             ["framer-motion", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.6.4"],\
             ["next", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:13.0.2"],\
+            ["qs", "npm:6.11.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"],\
             ["react-hook-form", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.37.0"],\
@@ -57,6 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:11.10.4"],\
             ["@tanstack/react-query", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.10.3"],\
             ["@types/node", "npm:18.8.4"],\
+            ["@types/qs", "npm:6.9.7"],\
             ["@types/react", "npm:18.0.25"],\
             ["@types/react-dom", "npm:18.0.8"],\
             ["axios", "npm:1.1.3"],\
@@ -64,6 +67,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:13.0.2"],\
             ["framer-motion", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.6.4"],\
             ["next", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:13.0.2"],\
+            ["qs", "npm:6.11.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"],\
             ["react-hook-form", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.37.0"],\
@@ -800,6 +804,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-prop-types-npm-15.7.5-2aa48aa177-5b43b8b154.zip/node_modules/@types/prop-types/",\
           "packageDependencies": [\
             ["@types/prop-types", "npm:15.7.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/qs", [\
+        ["npm:6.9.7", {\
+          "packageLocation": "./.yarn/cache/@types-qs-npm-6.9.7-4a3e6ca0d0-7fd6f9c250.zip/node_modules/@types/qs/",\
+          "packageDependencies": [\
+            ["@types/qs", "npm:6.9.7"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3184,6 +3197,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/punycode-npm-2.1.1-26eb3e15cf-823bf443c6.zip/node_modules/punycode/",\
           "packageDependencies": [\
             ["punycode", "npm:2.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["qs", [\
+        ["npm:6.11.0", {\
+          "packageLocation": "./.yarn/cache/qs-npm-6.11.0-caf1bc9dea-6e1f29dd53.zip/node_modules/qs/",\
+          "packageDependencies": [\
+            ["qs", "npm:6.11.0"],\
+            ["side-channel", "npm:1.0.4"]\
           ],\
           "linkType": "HARD"\
         }]\
