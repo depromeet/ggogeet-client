@@ -12,6 +12,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     "@tanstack/react-query": ^4.10.3
+    "@tanstack/react-query-devtools": ^4.14.3
     "@types/node": 18.8.4
     "@types/react": ^18.0.25
     "@types/react-dom": ^18.0.8
@@ -547,10 +548,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/match-sorter-utils@npm:^8.1.1":
+  version: 8.5.14
+  resolution: "@tanstack/match-sorter-utils@npm:8.5.14"
+  dependencies:
+    remove-accents: 0.4.2
+  checksum: 9db789bc70db6e04c2759c32d497bd3cfdf6fe2ed5afff52046a8c739d00e8df40c74b21ffaeaf70c7e2ede02578ee748c950117190fe4e7a7bd72ce1134d8d9
+  languageName: node
+  linkType: hard
+
 "@tanstack/query-core@npm:4.10.3":
   version: 4.10.3
   resolution: "@tanstack/query-core@npm:4.10.3"
   checksum: 64f3d296b5b2a77f4fb90630a1769ac01b4db827a0b61523db982bfc16719bbdae1118d9fef73e17ed35b513884ccf4e35d669e9df89bb34982946b33a59c9d4
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^4.14.3":
+  version: 4.14.3
+  resolution: "@tanstack/react-query-devtools@npm:4.14.3"
+  dependencies:
+    "@tanstack/match-sorter-utils": ^8.1.1
+    superjson: ^1.10.0
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    "@tanstack/react-query": 4.14.3
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 7bf2daca41ac598bb93050354db1d0971989801d0f945b7c1cf223acfb3c590e3ae36db0bcb450265688aa8429d42a802fc911313fc9b4b9f844056156b0111e
   languageName: node
   linkType: hard
 
@@ -997,6 +1022,15 @@ __metadata:
   version: 1.9.0
   resolution: "convert-source-map@npm:1.9.0"
   checksum: dc55a1f28ddd0e9485ef13565f8f756b342f9a46c4ae18b843fe3c30c675d058d6a4823eff86d472f187b176f0adf51ea7b69ea38be34be4a63cbbf91b0593c8
+  languageName: node
+  linkType: hard
+
+"copy-anything@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "copy-anything@npm:3.0.2"
+  dependencies:
+    is-what: ^4.1.6
+  checksum: 394491d62ab0c77c81616668bce51b91cf4e7b539bd530bb5b22c226151b0bc6122c01de21ffe46d5ec273f504fb34f6569f349ffb823fa814dddb8b27a4750c
   languageName: node
   linkType: hard
 
@@ -2016,6 +2050,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-what@npm:^4.1.6":
+  version: 4.1.7
+  resolution: "is-what@npm:4.1.7"
+  checksum: aade39dcc45a209d6cb2f2d5dbcf0e63ed894aadbae37bd5693c64e9876a27632431b43fc9d9332ebf0795eddd2abc11a2d0f3c6fa41c36330616a645660530e
+  languageName: node
+  linkType: hard
+
 "isexe@npm:^2.0.0":
   version: 2.0.0
   resolution: "isexe@npm:2.0.0"
@@ -2641,6 +2682,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"remove-accents@npm:0.4.2":
+  version: 0.4.2
+  resolution: "remove-accents@npm:0.4.2"
+  checksum: 84a6988555dea24115e2d1954db99509588d43fe55a1590f0b5894802776f7b488b3151c37ceb9e4f4b646f26b80b7325dcea2fae58bc3865df146e1fa606711
+  languageName: node
+  linkType: hard
+
 "resolve-from@npm:^4.0.0":
   version: 4.0.0
   resolution: "resolve-from@npm:4.0.0"
@@ -2906,6 +2954,15 @@ __metadata:
   version: 4.0.13
   resolution: "stylis@npm:4.0.13"
   checksum: 8ea7a87028b6383c6a982231c4b5b6150031ce028e0fdaf7b2ace82253d28a8af50cc5a9da8a421d3c7c4441592f393086e332795add672aa4a825f0fe3713a3
+  languageName: node
+  linkType: hard
+
+"superjson@npm:^1.10.0":
+  version: 1.11.0
+  resolution: "superjson@npm:1.11.0"
+  dependencies:
+    copy-anything: ^3.0.2
+  checksum: 943c2ffd67422a601fae0b2b9df176f421cebcee710cc2c379b0c01bca6aca98d0941bb0e91856dc785ede1c3353c524f8215a67916a48e3a59a45539a2c2bc4
   languageName: node
   linkType: hard
 
