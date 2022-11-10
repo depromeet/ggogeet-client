@@ -1,15 +1,22 @@
-export const GET = 'GET';
-export const PUT = 'PUT';
-export const DELETE = 'DELETE';
-export const POST = 'POST';
+export const HTTP_METHOD = {
+  GET: 'GET',
+  PUT: 'PUT',
+  POST: 'POST',
+  DELETE: 'DELETE',
+} as const;
 
-export const RESPONSE_SUCCESS_OK = 200;
-export const RESPONSE_SUCCESS_CREATED = 201;
+export const RESPONSE_SUCCESS = {
+  OK: 200,
+  CREATED: 201,
+} as const;
 
-export const RESPONSE_ERROR_BAD_REQUEST = 400;
-export const RESPONSE_ERROR_UNAUTHORIZED = 401;
+export const RESPONSE_ERROR = {
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  INTERNAL_SERVER: 500,
+} as const;
 
-export const RESPONSE_ERROR_INTERNAL_SERVER = 500;
-
-export const ACCESS_TOKEN_KEY = 'access_token';
-export const REFRESH_TOKEN_KEY = 'refresh_token';
+export const TOKEN_KEY = {
+  ACCESS: 'access_token',
+  REFRESH: 'refresh_token',
+} as const;
