@@ -1,0 +1,10 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  line-height: 1;
+  image-rendering: -webkit-optimize-contrast;
+  background-color: #fff;
+  font-family: 'Pretendard', 'Sans-serif';
+}
