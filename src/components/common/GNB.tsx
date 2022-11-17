@@ -1,29 +1,24 @@
-import { Fragment, ReactElement, ReactNode } from 'react';
+import { CSSProperties, Fragment, ReactElement } from 'react';
 import { NavContainer, NavItemContainer } from './GNB.style';
-import { v4 } from 'uuid';
 
-type NavPositionType = 'left' | 'center' | 'right';
+type NavPositionKey = 'left' | 'center' | 'right';
 
-type NavStylesOptions = {
-  multiItemsGap: number;
-};
+type NavPositionValue = JSX.Element[] | JSX.Element;
 
-type GNBType = {
-  [position in NavPositionType]?: ReactNode[] | ReactNode;
-} & {
-  stylesOptions?: NavStylesOptions;
+type GNBType = Partial<{ [key in NavPositionKey]: NavPositionValue }> & {
+  stylesOptions?: CSSProperties;
 };
 
 type NavItemType = {
-  position: NavPositionType;
-  stylesOptions?: NavStylesOptions;
+  position: NavPositionValue;
+  stylesOptions?: CSSProperties;
 };
 
-const NavItem = ({ position, stylesOptions }: NavItemType): ReactElement => {
+const NavItem = ({ position }: NavItemType): ReactElement => {
   return Array.isArray(position) ? (
-    <NavItemContainer gap={stylesOptions?.multiItemsGap}>
-      {position.map((p) => (
-        <Fragment key={v4()}>{p}</Fragment>
+    <NavItemContainer>
+      {position.map((p, i) => (
+        <Fragment key={`${p.toString()}--${i}`}>{p}</Fragment>
       ))}
     </NavItemContainer>
   ) : (
@@ -33,11 +28,11 @@ const NavItem = ({ position, stylesOptions }: NavItemType): ReactElement => {
 
 const GNB = ({ left, center, right, stylesOptions }: GNBType): ReactElement => {
   return (
-    <NavContainer>
-      {[left, center, right].map((position) => (
+    <NavContainer style={stylesOptions}>
+      {[left, center, right].map((position = <div></div>, idx) => (
         <NavItem
-          key={v4()}
-          position={position as NavPositionType}
+          key={`${position.toString()}--${idx}`}
+          position={position as NavPositionValue}
           stylesOptions={stylesOptions}
         />
       ))}

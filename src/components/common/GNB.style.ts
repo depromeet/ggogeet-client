@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 
 const NavContainer = styled.nav`
   position: sticky;
+  background-color: #fff;
   top: 0;
-  width: 100vw;
+  width: 100%;
   max-width: 470px;
   height: 44px;
   display: flex;
@@ -12,7 +13,7 @@ const NavContainer = styled.nav`
   padding: 8px 20px;
 `;
 
-const NavItemContainer = styled.div<{ gap?: number }>`
+const NavItemContainer = styled.div`
   display: flex;
   align-items: center;
   width: 33%;
@@ -25,11 +26,6 @@ const NavItemContainer = styled.div<{ gap?: number }>`
   &:last-of-type {
     justify-content: flex-end;
   }
-  ${({ gap }) =>
-    gap &&
-    `
-    gap: ${gap};
-  `};
 `;
 
 export { NavContainer, NavItemContainer };

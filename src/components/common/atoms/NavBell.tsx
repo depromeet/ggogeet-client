@@ -1,28 +1,25 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { ReactElement } from 'react';
 
 const NavBell = (): ReactElement => {
-  const router = useRouter();
   return (
-    <NavBellContainer
-      onClick={() => {
-        router.push('/notification');
-      }}
-    >
-      <Image
-        src={'/icons/nav-bell.svg'}
-        alt={'알림'}
-        width={19}
-        height={23.5}
-      />
-      <BellActive />
-    </NavBellContainer>
+    <Link href={'/notification'}>
+      <NavBellContainer>
+        <Image
+          src={'/icons/nav-bell.svg'}
+          alt={'알림'}
+          width={19}
+          height={23.5}
+        />
+        <BellActive />
+      </NavBellContainer>
+    </Link>
   );
 };
 
-const NavBellContainer = styled.button`
+const NavBellContainer = styled.div`
   position: relative;
   cursor: pointer;
   width: 19px;

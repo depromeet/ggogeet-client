@@ -1,18 +1,20 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { ReactElement } from 'react';
 
 const NavLogo = (): ReactElement => {
-  const router = useRouter();
   return (
-    <NavLogoContainer
-      onClick={() => {
-        router.push('/');
-      }}
-    >
-      <Image src={'/icons/nav-logo.svg'} alt={'로고'} width={58} height={32} />
-    </NavLogoContainer>
+    <Link href={'/'}>
+      <NavLogoContainer>
+        <Image
+          src={'/icons/nav-logo.svg'}
+          alt={'로고'}
+          width={58}
+          height={32}
+        />
+      </NavLogoContainer>
+    </Link>
   );
 };
 
