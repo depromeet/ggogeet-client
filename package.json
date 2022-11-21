@@ -18,6 +18,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.37.0",
+    "react-spring-bottom-sheet": "^3.4.1",
     "recoil": "^0.7.5"
   },
   "devDependencies": {
