@@ -10,7 +10,7 @@ const LetterWritePage: NextPage = () => {
     <>
       <ToolbarContainer>
         <ToolbarInnerContainer>
-          <ToolbarContainer.ToolbarItem type='TextEditor' />
+          <ToolbarContainer.ToolbarItem type='Text' />
           <ToolbarContainer.ToolbarItem type='Remind' />
         </ToolbarInnerContainer>
         <ToolbarContainer.ToolbarItem type='Guideline' />
