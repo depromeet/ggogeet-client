@@ -11,4 +11,8 @@ const CustomTextEditorToolbarWrapper = styled.div`
   gap: 18px;
 `;
 
-export { CustomTextEditorToolbarWrapper };
+const CustomTextEditorToolbarButton = styled.button`
+  cursor: pointer;
+`;
+
+export { CustomTextEditorToolbarWrapper, CustomTextEditorToolbarButton };

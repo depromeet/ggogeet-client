@@ -17,7 +17,9 @@ const CustomTextEditorToolbar = (): ReactElement => {
   return (
     <S.CustomTextEditorToolbarWrapper>
       {Object.entries(customTextEditorToolbarMap).map(([key, value]) => (
-        <Image key={key} alt={key} src={value} width={18} height={18} />
+        <S.CustomTextEditorToolbarButton key={key}>
+          <Image alt={key} src={value} width={18} height={18} />
+        </S.CustomTextEditorToolbarButton>
       ))}
     </S.CustomTextEditorToolbarWrapper>
   );
