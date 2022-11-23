@@ -4,6 +4,7 @@ import * as S from './styled';
 
 type Props = {
   type: 'Text' | 'Remind' | 'Guideline';
+  onClick?: () => void;
 };
 
 const toolbarItemMap = {
@@ -24,9 +25,9 @@ const toolbarItemMap = {
   },
 } as const;
 
-const ToolbarItem = ({ type }: Props): ReactElement => {
+const ToolbarItem = ({ type, onClick }: Props): ReactElement => {
   return (
-    <S.ToolbarItemWrapper>
+    <S.ToolbarItemWrapper onClick={onClick}>
       <Image alt={type} {...toolbarItemMap[type]} />
     </S.ToolbarItemWrapper>
   );
