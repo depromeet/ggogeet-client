@@ -3,11 +3,11 @@ import Image from 'next/image';
 import * as S from './styled';
 
 type Props = {
-  type: 'TextEditor' | 'Remind' | 'Guideline';
+  type: 'Text' | 'Remind' | 'Guideline';
 };
 
 const toolbarItemMap = {
-  TextEditor: {
+  Text: {
     src: '/icons/icon__text.svg',
     width: 24,
     height: 24,
