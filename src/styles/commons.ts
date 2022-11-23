@@ -59,3 +59,9 @@ export const Caption2 = css`
   font-size: 12px;
   font-family: 'pretendard_medium';
 `;
+
+export const IconImage = css`
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+`;
