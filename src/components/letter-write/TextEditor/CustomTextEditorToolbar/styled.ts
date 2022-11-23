@@ -6,6 +6,9 @@ const CustomTextEditorToolbarWrapper = styled.div`
   background: rgba(240, 242, 247, 0.5);
   padding: 8px 16px;
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
 `;
 
 export { CustomTextEditorToolbarWrapper };
