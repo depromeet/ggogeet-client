@@ -42,7 +42,7 @@ const TextEditor = (): ReactElement => {
     <S.ReactQuillWrapper>
       <ReactQuill
         id='ggogeet-text-editor'
-        placeholder='편지를 작성해주세요.'
+        placeholder='이곳에 마음을 적어보세요.'
         theme='snow'
         modules={modules}
         formats={formats}
