@@ -1,5 +1,6 @@
 import TextEditor from '@/src/components/letter-write/TextEditor';
 import CustomTextEditorToolbar from '@/src/components/letter-write/TextEditor/CustomTextEditorToolbar/CustomTextEditorToolbar';
+import TextTip from '@/src/components/letter-write/TextTip';
 import {
   ToolbarContainer,
   ToolbarInnerContainer,
@@ -26,6 +27,7 @@ const LetterWritePage: NextPage = () => {
         <ToolbarContainer.ToolbarItem type='Guideline' />
       </ToolbarContainer>
       {openCustomTextEditorToolbar && <CustomTextEditorToolbar />}
+      <TextTip text='Tip : 친구에게 고마웠던 일을 적어보세요' />
       <LetterWriteMain>
         <TextEditor />
       </LetterWriteMain>
