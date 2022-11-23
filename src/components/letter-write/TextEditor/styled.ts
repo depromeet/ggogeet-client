@@ -16,6 +16,24 @@ const ReactQuillWrapper = styled.section`
     border: 1px solid #e4e7ef;
     border-radius: 12px;
   }
+
+  .ql-editor {
+    padding: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.5px;
+    color: #767c8d;
+  }
+
+  .ql-editor.ql-blank::before {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.5px;
+    color: #d8d8d8;
+  }
 `;
 
 export { ReactQuillWrapper };
