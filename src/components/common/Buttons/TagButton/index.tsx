@@ -17,6 +17,7 @@ export default function TagButton({
 }: Props) {
   return (
     <S.TagButtonWrapper
+      type="button"
       disabled={disabled}
       isDark={isDark}
       isSelected={isSelected}
