@@ -25,12 +25,12 @@ const toolbarItemMap = {
   },
 } as const;
 
-const ToolbarItem = ({ type, onClick }: Props): ReactElement => {
+const Toolbar = ({ type, onClick }: Props): ReactElement => {
   return (
-    <S.ToolbarItemWrapper onClick={onClick}>
+    <S.ToolbarWrapper onClick={onClick}>
       <Image alt={type} {...toolbarItemMap[type]} />
-    </S.ToolbarItemWrapper>
+    </S.ToolbarWrapper>
   );
 };
 
-export default ToolbarItem;
+export default Toolbar;
