@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const ReactQuillWrapper = styled.section`
+const ReactQuillWrapper = styled.div`
   .ql-toolbar {
     display: none;
   }
