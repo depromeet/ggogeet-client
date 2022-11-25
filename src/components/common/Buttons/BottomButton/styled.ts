@@ -8,8 +8,8 @@ export const BottomButtonWrapper = styled.button<{
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: ${({ isRound }) => (isRound ? '14px' : '16px')} 0;
-  border-radius: ${({ isRound }) => (isRound ? '12px' : '30px')};
+  padding: ${({ isRound }) => (isRound ? '16px' : '14px')} 0;
+  border-radius: ${({ isRound }) => (isRound ? '30px' : '12px')};
   text-align: center;
   line-height: 21px;
   background-color: ${({ isDark, theme: { colors } }) =>
