@@ -21,6 +21,7 @@ export default function Button({
 }: Props) {
   return (
     <S.ButtonWrapper
+      type="button"
       isDark={isDark}
       fontStyle={fontStyle}
       isRound={isRound}
