@@ -3,20 +3,25 @@ import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 import CustomTextEditorToolbar from './CustomTextEditorToolbar/CustomTextEditorToolbar';
 import * as S from './styled';
+import { RefAny } from '@/src/types';
 
-const ReactQuill = dynamic(() => import('react-quill'), {
-  ssr: false,
-  loading: () => <p>Loading ...</p>,
-});
+const ReactQuill = dynamic(
+  async () => {
+    const { default: RQ } = await import('react-quill');
+    return function comp({ forwardedRef, ...props }: any) {
+      return <RQ ref={forwardedRef} {...props} />;
+    };
+  },
+  { ssr: false }
+);
 
 const modules = {
-  // 사이즈(마크다운), 컬러, 텍스트 하이라이터, 정렬, 취소선/볼드/밑줄/이탤릭
   toolbar: [
     [
       { size: ['small', false, 'large', 'huge'] },
       { color: [] },
       { background: [] },
-      { align: ['', 'center', 'right'] },
+      { align: ['justify', '', 'center', 'right'] },
       'bold',
       'italic',
       'underline',
@@ -36,11 +41,12 @@ const formats = [
   'strike',
 ];
 
-const TextEditor = (): ReactElement => {
+const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
   const [content, setContent] = useState<string>('');
   return (
     <S.ReactQuillWrapper>
       <ReactQuill
+        forwardedRef={quillRef}
         id='ggogeet-text-editor'
         placeholder='이곳에 마음을 적어보세요.'
         theme='snow'

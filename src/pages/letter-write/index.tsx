@@ -3,11 +3,13 @@ import CustomTextEditorToolbar from '@/src/components/letter-write/TextEditor/Cu
 import TextTip from '@/src/components/letter-write/TextTip';
 import styled from '@emotion/styled';
 import { NextPage } from 'next';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import * as S from '@/src/components/letter-write/Toolbar/styled';
 import Toolbar from '@/src/components/letter-write/Toolbar';
+import { RefAny } from '@/src/types';
 
 const LetterWritePage: NextPage = () => {
+  const quillRef = useRef<RefAny>();
   const [openCustomTextEditorToolbar, setOpenCustomTextEditorToolbar] =
     useState<boolean>(false);
   return (
@@ -24,10 +26,12 @@ const LetterWritePage: NextPage = () => {
         </S.ToolbarInnerContainerWrapper>
         <Toolbar type='Guideline' />
       </S.ToolbarContainerWrapper>
-      {openCustomTextEditorToolbar && <CustomTextEditorToolbar />}
+      {openCustomTextEditorToolbar && (
+        <CustomTextEditorToolbar quillRef={quillRef} />
+      )}
       <TextTip text='Tip : 친구에게 고마웠던 일을 적어보세요' />
       <LetterWriteMain>
-        <TextEditor />
+        <TextEditor quillRef={quillRef} />
       </LetterWriteMain>
     </>
   );
