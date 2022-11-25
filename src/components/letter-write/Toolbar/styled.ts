@@ -1,3 +1,4 @@
+import { IconImage } from '@/src/styles/commons';
 import styled from '@emotion/styled';
 
 const ToolbarContainerWrapper = styled.div`
@@ -15,4 +16,12 @@ const ToolbarInnerContainerWrapper = styled.div`
   gap: 12px;
 `;
 
-export { ToolbarContainerWrapper, ToolbarInnerContainerWrapper };
+const ToolbarWrapper = styled.div`
+  ${IconImage}
+`;
+
+export {
+  ToolbarContainerWrapper,
+  ToolbarInnerContainerWrapper,
+  ToolbarWrapper,
+};
