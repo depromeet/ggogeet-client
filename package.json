@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.37.0",
+    "react-quill": "^2.0.0",
     "react-spring-bottom-sheet": "3.5.0-alpha.0",
     "recoil": "^0.7.5"
   },
