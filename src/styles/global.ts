@@ -64,6 +64,22 @@ export const global = (theme: Theme) => css`
     white-space: nowrap;
   }
 
+  /* react-spring-bottom-sheet */
+
+  [data-rsbs-overlay] {
+    border-radius: 30px 30px 0px 0px;
+    background-color: #f6f6f6;
+  }
+
+  [data-rsbs-header] {
+    padding-bottom: 20px;
+  }
+
+  [data-rsbs-header]:before {
+    height: 5px;
+    border-radius: 6px;
+  }
+
   @font-face {
     font-family: 'pretendard_regular';
     src: url('/assets/fonts/Pretendard-Regular.woff2') format('woff2'),
