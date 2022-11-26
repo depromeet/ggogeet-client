@@ -14,7 +14,7 @@ export const CircleButtonWrapper = styled.button<{ isSelected: boolean }>`
     isSelected ? '2px solid #767C8D' : '1px solid #E4E7EF'};
   color: ${({ isSelected }) => (isSelected ? '#767C8D' : '#E4E7EF')};
   line-height: 24px;
-  white-space: pre;
+  white-space: pre-line;
 
   ${Body2}
 `;
