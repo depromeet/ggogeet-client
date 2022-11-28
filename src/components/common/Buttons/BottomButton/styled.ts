@@ -1,4 +1,4 @@
-import { Body3 } from '@/src/styles/commons';
+import { Body3, Header5 } from '@/src/styles/commons';
 import styled from '@emotion/styled';
 
 export const BottomButtonWrapper = styled.button<{
@@ -6,8 +6,12 @@ export const BottomButtonWrapper = styled.button<{
   isDark: boolean;
 }>`
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  cursor: pointer;
+  width: calc(100% - 32px);
   padding: ${({ isRound }) => (isRound ? '16px' : '14px')} 0;
   border-radius: ${({ isRound }) => (isRound ? '30px' : '12px')};
   text-align: center;
@@ -22,5 +26,8 @@ export const BottomButtonWrapper = styled.button<{
   &:disabled {
     background-color: #e4e7ef;
     color: ${({ theme: { colors } }) => colors.white};
+    line-height: 24px;
+    letter-spacing: -0.005em;
+    ${Header5}
   }
 `;
