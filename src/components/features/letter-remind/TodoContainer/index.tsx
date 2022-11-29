@@ -1,6 +1,7 @@
 import * as S from "./styled";
 import { useState } from "react";
 import Image from "next/image";
+<<<<<<< HEAD
 import ToggleArrowButton from "@/src/components/common/Buttons/ToggleArrowButton";
 
 interface Props {
@@ -58,5 +59,42 @@ export default function TodoContainer({ todo }: Props) {
         )}
       </S.TodoContainerWrapper>
     </>
+=======
+
+interface Props {
+  title: string;
+  date: string;
+  isAlarm?: boolean;
+}
+
+export default function TodoContainer({ title, date, isAlarm = false }: Props) {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const onClickArrow = () => setOpen((prev) => !prev);
+
+  return (
+    <S.TodoContainerWrapper>
+      <S.TodoContainerInnerWrapper>
+        <S.CheckboxWrapper></S.CheckboxWrapper>
+        {isAlarm && (
+          <S.BellIconWrapper>
+            <Image src="/bell.svg" alt="BellImg" width={10} height={12} />
+          </S.BellIconWrapper>
+        )}
+        {title}
+      </S.TodoContainerInnerWrapper>
+
+      <S.TodoContainerInnerWrapper>
+        <S.DateWrapper> {date}</S.DateWrapper>
+        <Image
+          src="/smallArrow.svg"
+          alt="ArrowImg"
+          width={11}
+          height={5}
+          onClick={onClickArrow}
+        />
+      </S.TodoContainerInnerWrapper>
+    </S.TodoContainerWrapper>
+>>>>>>> c287e9b (💄 리마인드 페이지 투두 컴포넌트 생성)
   );
 }
