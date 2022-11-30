@@ -1,17 +1,19 @@
 import Input from '@/src/components/common/Input';
-import { ChangeEventHandler } from 'react';
-import { RecipientInputObjectType } from '..';
+import { letterWriteInputState } from '@/src/store/LetterWrite';
+import { ChangeEventHandler, ReactElement } from 'react';
+import { useRecoilState } from 'recoil';
 import * as S from '../styled';
 
-type ReceiverNameFormType = {
-  inputObject: RecipientInputObjectType;
-  onChangeInputObject: ChangeEventHandler<HTMLInputElement>;
-};
-
-const ReceiverNameForm = ({
-  inputObject,
-  onChangeInputObject,
-}: ReceiverNameFormType) => {
+const ReceiverNameForm = (): ReactElement => {
+  const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
+    useRecoilState(letterWriteInputState);
+  const onChangeInputObject: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const { name, value } = event.target;
+    setLetterWriteInputObjectState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   return (
     <>
       <S.LetterWriteH1>누구에게 보낼건가요?</S.LetterWriteH1>
@@ -19,7 +21,7 @@ const ReceiverNameForm = ({
         <Input
           name='receiverName'
           placeholder='이름을 입력해주세요'
-          value={inputObject.receiverName}
+          value={letterWriteInputObjectState.receiverName}
           onChange={onChangeInputObject}
         />
       </S.LetterWriteInputContainer>
