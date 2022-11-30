@@ -27,16 +27,27 @@ const LetterWriteInputRecipientLayout = ({
   useEffect(() => {
     if (letterWriteInputObjectState.receiverName.length >= 3) {
       setIsBottomButtonNextDisabled(false);
+    } else {
+      setIsBottomButtonNextDisabled(true);
     }
   }, [letterWriteInputObjectState]);
   const onClickNext = (type?: string | string[]) => {
-    if (type === 'recipient-01') {
-      router.push('/letter-write?type=recipient-02');
+    setIsBottomButtonNextDisabled(true);
+    if (type && typeof type === 'string') {
+      const [front, end] = type.split('-');
+      router.push(`/letter-write?type=${front}-0${Number(end) + 1}`);
     }
+  };
+  const onClickBack = () => {
+    setIsBottomButtonNextDisabled(false);
+    router.back();
   };
   return (
     <S.LetterWriteInputRecipientLayoutWrapper>
-      <TopNavigation leftElem={<NavBack />} rightElem={<NavCancel />} />
+      <TopNavigation
+        leftElem={<NavBack action={onClickBack} />}
+        rightElem={<NavCancel />}
+      />
       {children}
       <S.BottomButtonContainer type={type}>
         {type === 'recipient-01' && (

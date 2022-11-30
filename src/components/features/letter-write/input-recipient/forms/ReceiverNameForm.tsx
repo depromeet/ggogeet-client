@@ -21,6 +21,7 @@ const ReceiverNameForm = (): ReactElement => {
         <Input
           name='receiverName'
           placeholder='이름을 입력해주세요'
+          defaultValue={letterWriteInputObjectState.receiverName}
           value={letterWriteInputObjectState.receiverName}
           onChange={onChangeInputObject}
         />

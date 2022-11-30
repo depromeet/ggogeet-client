@@ -3,14 +3,18 @@ import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 import * as S from './styled';
 
-const NavBack = (): ReactElement => {
+const NavBack = ({ action }: { action?: () => void }): ReactElement => {
   const router = useRouter();
   return (
     <S.NavItemContainer
       width={24}
       height={24}
       onClick={() => {
-        router.back();
+        if (action) {
+          action();
+        } else {
+          router.back();
+        }
       }}
     >
       <Image
