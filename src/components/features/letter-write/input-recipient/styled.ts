@@ -1,4 +1,5 @@
 import { Body1, Caption1, Header1 } from '@/src/styles/commons';
+import { QueryString } from '@/src/types';
 import styled from '@emotion/styled';
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
@@ -6,7 +7,7 @@ const LetterWriteInputRecipientLayoutWrapper = styled.div`
   height: 100vh;
 `;
 
-const BottomButtonContainer = styled.div<{ type?: string | string[] }>`
+const BottomButtonContainer = styled.div<{ type: QueryString }>`
   width: calc(100% - 32px);
   position: fixed;
   bottom: 8px;

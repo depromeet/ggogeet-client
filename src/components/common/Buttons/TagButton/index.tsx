@@ -17,13 +17,18 @@ export default function TagButton({
 }: Props) {
   return (
     <S.TagButtonWrapper
-      type="button"
+      type='button'
       disabled={disabled}
       isDark={isDark}
       isSelected={isSelected}
       onClick={onClick}
     >
       {content}
+      <S.SelectedTagBorder
+        disabled={disabled}
+        isDark={isDark}
+        isSelected={isSelected}
+      />
     </S.TagButtonWrapper>
   );
 }

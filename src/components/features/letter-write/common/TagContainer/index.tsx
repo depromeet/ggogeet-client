@@ -50,7 +50,7 @@ const LetterWriteTagContainer = (): ReactElement => {
   };
   return (
     <S.LetterWriteTagContainerWrapper>
-      {tags.map((tag, id) => (
+      {tags.map((tag) => (
         <TagButton
           key={tag.id}
           content={tag.value}

@@ -5,6 +5,7 @@ import {
   NavCancel,
 } from '@/src/components/common/TopNavigation/atoms';
 import { letterWriteInputState } from '@/src/store/LetterWrite';
+import { QueryString } from '@/src/types';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -12,7 +13,7 @@ import * as S from '../styled';
 
 interface ILetterWriteInputRecipientLayout {
   children: ReactNode;
-  type?: string | string[];
+  type: QueryString;
 }
 
 const LetterWriteInputRecipientLayout = ({
@@ -31,7 +32,7 @@ const LetterWriteInputRecipientLayout = ({
       setIsBottomButtonNextDisabled(true);
     }
   }, [letterWriteInputObjectState]);
-  const onClickNext = (type?: string | string[]) => {
+  const onClickNext = () => {
     setIsBottomButtonNextDisabled(true);
     if (type && typeof type === 'string') {
       const [front, end] = type.split('-');
@@ -63,7 +64,7 @@ const LetterWriteInputRecipientLayout = ({
           isRound={true}
           isDark={true}
           disabled={isBottomButtonNextDisabled}
-          onClick={() => onClickNext(type)}
+          onClick={onClickNext}
         />
       </S.BottomButtonContainer>
     </S.LetterWriteInputRecipientLayoutWrapper>

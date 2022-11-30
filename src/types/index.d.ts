@@ -1,3 +1,5 @@
 type RefAny = MutableRefObject<any>;
 
-export { RefAny };
+type QueryString = string | string[] | undefined;
+
+export { RefAny, QueryString };
