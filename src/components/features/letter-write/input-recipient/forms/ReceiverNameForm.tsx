@@ -24,6 +24,8 @@ const ReceiverNameForm = (): ReactElement => {
       if (type && typeof type === 'string') {
         const [front, end] = type.split('-');
         router.push(`/letter-write?type=${front}-0${Number(end) + 1}`);
+      } else {
+        router.push(`/letter-write?type=recipient-01`);
       }
     }
   };

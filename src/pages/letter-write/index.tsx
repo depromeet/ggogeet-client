@@ -14,8 +14,8 @@ const LetterWritePage: NextPage = () => {
   return (
     <LetterWriteInputRecipientLayout>
       <S.LetterWriteInputRecipientMain>
-        {type === 'recipient-01' && <ReceiverNameForm />}
-        {type === 'recipient-02' && <RelationshipForm />}
+        {!type && <ReceiverNameForm />}
+        {type === 'recipient-01' && <RelationshipForm />}
       </S.LetterWriteInputRecipientMain>
     </LetterWriteInputRecipientLayout>
   );

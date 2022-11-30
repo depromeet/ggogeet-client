@@ -25,7 +25,7 @@ const BottomButtonContainer = styled.div<{ type: QueryString }>`
   }
 
   button:first-of-type {
-    ${({ type }) => type === 'recipient-01' && `border: 1px solid #767c8d`};
+    ${({ type }) => !type && `border: 1px solid #767c8d`};
   }
 `;
 
