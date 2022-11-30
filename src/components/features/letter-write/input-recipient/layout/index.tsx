@@ -32,7 +32,6 @@ const LetterWriteInputRecipientLayout = ({
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  padding: 0 16px 8px 16px;
 `;
 
 export default LetterWriteInputRecipientLayout;

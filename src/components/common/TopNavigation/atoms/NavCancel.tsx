@@ -4,13 +4,13 @@ import * as S from './styled';
 const NavCancel = () => {
   const router = useRouter();
   return (
-    <S.NavButton
+    <S.NavItemContainer
       onClick={() => {
-        router.push('/');
+        router.back();
       }}
     >
       <S.NavCancelText>취소</S.NavCancelText>
-    </S.NavButton>
+    </S.NavItemContainer>
   );
 };
 
