@@ -1,6 +1,7 @@
 import * as S from "./styled";
 import { useState } from "react";
 import Image from "next/image";
+import ToggleArrowButton from "@/src/components/common/Buttons/ToggleArrowButton";
 
 interface Props {
   title: string;
@@ -27,13 +28,7 @@ export default function TodoContainer({ title, date, isAlarm = false }: Props) {
 
       <S.TodoContainerInnerWrapper>
         <S.DateWrapper> {date}</S.DateWrapper>
-        <Image
-          src="/smallArrow.svg"
-          alt="ArrowImg"
-          width={11}
-          height={5}
-          onClick={onClickArrow}
-        />
+        <ToggleArrowButton />
       </S.TodoContainerInnerWrapper>
     </S.TodoContainerWrapper>
   );
