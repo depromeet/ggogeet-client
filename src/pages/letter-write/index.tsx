@@ -2,11 +2,7 @@ import LetterWriteInputRecipient from '@/src/components/features/letter-write/in
 import { NextPage } from 'next';
 
 const LetterWritePage: NextPage = () => {
-  return (
-    <>
-      <LetterWriteInputRecipient />
-    </>
-  );
+  return <LetterWriteInputRecipient />;
 };
 
 export default LetterWritePage;

@@ -1,9 +1,13 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import LetterWriteInputRecipientLayout from './layout';
 
 const LetterWriteInputRecipient = (): ReactElement => {
+  const [isBottomButtonNextDisabled, setIsBottomButtonNextDisabled] =
+    useState<boolean>(false);
   return (
-    <LetterWriteInputRecipientLayout bottomButtonStatus='Disabled'>
+    <LetterWriteInputRecipientLayout
+      isBottomBottomNextDisabled={isBottomButtonNextDisabled}
+    >
       <></>
     </LetterWriteInputRecipientLayout>
   );

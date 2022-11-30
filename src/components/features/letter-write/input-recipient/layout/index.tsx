@@ -9,12 +9,12 @@ import React, { ReactNode } from 'react';
 
 interface ILetterWriteInputRecipientLayout {
   children: ReactNode;
-  bottomButtonStatus: 'Enabled' | 'Disabled';
+  isBottomBottomNextDisabled: boolean;
 }
 
 const LetterWriteInputRecipientLayout = ({
   children,
-  bottomButtonStatus = 'Enabled',
+  isBottomBottomNextDisabled = true,
 }: ILetterWriteInputRecipientLayout) => {
   return (
     <LetterWriteInputRecipientLayoutWrapper>
@@ -23,7 +23,8 @@ const LetterWriteInputRecipientLayout = ({
       <BottomButton
         name='다음'
         isRound={true}
-        disabled={bottomButtonStatus === 'Disabled'}
+        isDark={!isBottomBottomNextDisabled}
+        disabled={isBottomBottomNextDisabled}
       />
     </LetterWriteInputRecipientLayoutWrapper>
   );
