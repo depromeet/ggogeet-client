@@ -12,10 +12,10 @@ interface Props {
 export default function TodoContainer({ title, date, isAlarm = false }: Props) {
   const [open, setOpen] = useState<boolean>(false);
 
-  const onClickArrow = () => setOpen((prev) => !prev);
+  const onClickContainer = () => setOpen((prev) => !prev);
 
   return (
-    <S.TodoContainerWrapper>
+    <S.TodoContainerWrapper onClick={onClickContainer}>
       <S.TodoContainerInnerWrapper>
         <S.CheckboxWrapper></S.CheckboxWrapper>
         {isAlarm && (
@@ -28,7 +28,7 @@ export default function TodoContainer({ title, date, isAlarm = false }: Props) {
 
       <S.TodoContainerInnerWrapper>
         <S.DateWrapper> {date}</S.DateWrapper>
-        <ToggleArrowButton />
+        <ToggleArrowButton isClicked={open} />
       </S.TodoContainerInnerWrapper>
     </S.TodoContainerWrapper>
   );

@@ -6,6 +6,7 @@ export const TodoContainerWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 export const TodoContainerInnerWrapper = styled.div`
