@@ -1,4 +1,3 @@
-import BottomButton from '@/src/components/common/Buttons/BottomButton';
 import Button from '@/src/components/common/Buttons/Button';
 import TopNavigation from '@/src/components/common/TopNavigation';
 import {
@@ -6,17 +5,39 @@ import {
   NavCancel,
 } from '@/src/components/common/TopNavigation/atoms';
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
+import { RecipientCompletedObjectType, RecipientInputObjectType } from '..';
 
 interface ILetterWriteInputRecipientLayout {
   children: ReactNode;
-  isBottomBottomNextDisabled: boolean;
+  inputObject: RecipientInputObjectType;
+  setCompletedObject: Dispatch<SetStateAction<RecipientCompletedObjectType>>;
 }
 
 const LetterWriteInputRecipientLayout = ({
   children,
-  isBottomBottomNextDisabled = true,
+  inputObject,
+  setCompletedObject,
 }: ILetterWriteInputRecipientLayout) => {
+  const [isBottomButtonNextDisabled, setIsBottomButtonNextDisabled] =
+    useState<boolean>(true);
+  useEffect(() => {
+    // TODO: 최소 길이/최대 길이 지정
+    if (inputObject.receiverName.length >= 3) {
+      setIsBottomButtonNextDisabled(false);
+    }
+  }, [inputObject]);
+  const onClickNextButton = () => {
+    if (inputObject.receiverName.length >= 3) {
+      setCompletedObject((prev) => ({ ...prev, receiverName: true }));
+    }
+  };
   return (
     <LetterWriteInputRecipientLayoutWrapper>
       <TopNavigation leftElem={<NavBack />} rightElem={<NavCancel />} />
@@ -32,7 +53,8 @@ const LetterWriteInputRecipientLayout = ({
           fontStyle='bold'
           isRound={true}
           isDark={true}
-          disabled={isBottomBottomNextDisabled}
+          disabled={isBottomButtonNextDisabled}
+          onClick={onClickNextButton}
         />
       </BottomButtonContainer>
     </LetterWriteInputRecipientLayoutWrapper>
