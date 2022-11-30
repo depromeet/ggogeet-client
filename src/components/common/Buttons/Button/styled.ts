@@ -16,7 +16,9 @@ export const ButtonWrapper = styled.button<{
   isDark: boolean;
   isRound: boolean;
 }>`
+  cursor: pointer;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 4px;
   padding: 8px 16px;
@@ -26,6 +28,15 @@ export const ButtonWrapper = styled.button<{
     isDark ? colors.white : '#767C8D'};
   border-radius: ${({ isRound }) => (isRound ? '24px' : '8px')};
   line-height: 21px;
+  letter-spacing: -0.005em;
 
   ${({ fontStyle }) => fontStyleMap[fontStyle]}
+
+  &:disabled {
+    background-color: #e4e7ef;
+    color: ${({ theme: { colors } }) => colors.white};
+    line-height: 24px;
+    letter-spacing: -0.005em;
+    ${Header5}
+  }
 `;

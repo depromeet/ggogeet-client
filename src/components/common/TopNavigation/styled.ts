@@ -4,6 +4,7 @@ import { Header2, Header4 } from '@/src/styles/commons';
 
 export const TopNavigationWrapper = styled.header`
   padding: 10px 16px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
