@@ -2,7 +2,6 @@ import Button from "@/src/components/common/Buttons/Button";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import TodoContainer from "@/src/components/features/letter-remind/TodoContainer";
 import styled from "@emotion/styled";
-import { title } from "process";
 
 const Layout = styled.div`
   padding: 12px 16px 0 16px;
@@ -20,16 +19,96 @@ const TodoContainerWrapper = styled.div`
 `;
 
 const DummyData = [
-  { title: "제목", date: "11월 29일", id: "1" },
-  { title: "제목", date: "11월 29일", id: "2" },
-  { title: "제목", date: "11월 29일", id: "3" },
-  { title: "제목", date: "11월 29일", id: "4" },
-  { title: "제목", date: "11월 29일", id: "5" },
-  { title: "제목", date: "11월 29일", id: "6" },
-  { title: "제목", date: "11월 29일", id: "7" },
-  { title: "제목", date: "11월 29일", id: "8" },
-  { title: "제목", date: "11월 29일", id: "9" },
-  { title: "제목", date: "11월 29일", id: "10" },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "1",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: true,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "2",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: true,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "3",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: false,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "4",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: true,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "5",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: false,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "6",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: true,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "7",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: false,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "8",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: true,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "9",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: true,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
+  {
+    title: "제목",
+    date: "11월 29일",
+    id: "10",
+    situation: "축하해요",
+    alarm: "2일 전 알림",
+    isAlarm: false,
+    content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+  },
 ];
 
 const LetterRemindPage = () => {
@@ -47,7 +126,7 @@ const LetterRemindPage = () => {
         {DummyData.map((item) => {
           return (
             <TodoContainerWrapper key={item.id}>
-              <TodoContainer title={item.title} date={item.date} />
+              <TodoContainer todoObject={item} />
             </TodoContainerWrapper>
           );
         })}

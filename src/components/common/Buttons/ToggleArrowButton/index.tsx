@@ -1,6 +1,5 @@
 import * as S from "./styled";
 import Image from "next/image";
-import { useState } from "react";
 
 interface Props {
   isClicked: boolean;
