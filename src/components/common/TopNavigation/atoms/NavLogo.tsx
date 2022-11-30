@@ -7,7 +7,12 @@ const NavLogo = (): ReactElement => {
   return (
     <Link href='/'>
       <S.NavItemContainer width={58} height={32}>
-        <Image src='/icons/nav-logo.svg' alt='로고' width={58} height={32} />
+        <Image
+          src='/icons/icon__nav-logo.svg'
+          alt='로고'
+          width={58}
+          height={32}
+        />
       </S.NavItemContainer>
     </Link>
   );

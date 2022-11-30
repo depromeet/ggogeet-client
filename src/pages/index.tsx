@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 import TopNavigation from '../components/common/TopNavigation';
-import { NavBell, NavLogo } from '../components/common/TopNavigation/atoms';
+import { NavLogo, NavMenu } from '../components/common/TopNavigation/atoms';
 
 const MainPage: NextPage = () => {
   return (
     <>
-      <TopNavigation leftElem={<NavLogo />} rightElem={<NavBell />} />
+      <TopNavigation leftElem={<NavLogo />} rightElem={<NavMenu />} />
     </>
   );
 };

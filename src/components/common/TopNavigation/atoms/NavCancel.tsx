@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
+import { ReactElement } from 'react';
 import * as S from './styled';
 
-const NavCancel = () => {
+const NavCancel = (): ReactElement => {
   const router = useRouter();
   return (
     <S.NavItemContainer

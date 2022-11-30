@@ -7,7 +7,12 @@ const NavBell = (): ReactElement => {
   return (
     <Link href='/notification'>
       <S.NavItemContainer width={19} height={23.5}>
-        <Image src='/icons/nav-bell.svg' alt='알림' width={19} height={23.5} />
+        <Image
+          src='/icons/icon__nav-bell.svg'
+          alt='알림'
+          width={19}
+          height={23.5}
+        />
         <S.NavBellActive />
       </S.NavItemContainer>
     </Link>
