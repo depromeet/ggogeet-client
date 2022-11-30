@@ -12,9 +12,9 @@ const LetterWritePage: NextPage = () => {
     query: { type },
   } = useRouter();
   return (
-    <LetterWriteInputRecipientLayout type={type}>
+    <LetterWriteInputRecipientLayout>
       <S.LetterWriteInputRecipientMain>
-        {type === 'recipient-01' && <ReceiverNameForm type={type} />}
+        {type === 'recipient-01' && <ReceiverNameForm />}
         {type === 'recipient-02' && <RelationshipForm />}
       </S.LetterWriteInputRecipientMain>
     </LetterWriteInputRecipientLayout>

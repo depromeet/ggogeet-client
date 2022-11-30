@@ -1,12 +1,11 @@
 import { letterWriteInputState } from '@/src/store/LetterWrite';
 import { ReactElement } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { LetterWriteTagContainer } from '../../common';
 import * as S from '../styled';
 
 const RelationshipForm = (): ReactElement => {
-  const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
-    useRecoilState(letterWriteInputState);
+  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
   return (
     <>
       <S.LetterWriteH1>어떤 관계인가요?</S.LetterWriteH1>

@@ -4,45 +4,32 @@ import {
   NavBack,
   NavCancel,
 } from '@/src/components/common/TopNavigation/atoms';
-import { letterWriteInputState } from '@/src/store/LetterWrite';
-import { QueryString } from '@/src/types';
 import { useRouter } from 'next/router';
-import { ReactNode, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { ReactNode, useState } from 'react';
 import * as S from '../styled';
 
 interface ILetterWriteInputRecipientLayout {
   children: ReactNode;
-  type: QueryString;
 }
 
 const LetterWriteInputRecipientLayout = ({
   children,
-  type,
 }: ILetterWriteInputRecipientLayout) => {
-  const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
-    useRecoilState(letterWriteInputState);
-  const [isBottomButtonNextDisabled, setIsBottomButtonNextDisabled] =
-    useState<boolean>(true);
   const router = useRouter();
-  useEffect(() => {
-    if (letterWriteInputObjectState.receiverName.length >= 3) {
-      setIsBottomButtonNextDisabled(false);
-    } else {
-      setIsBottomButtonNextDisabled(true);
-    }
-  }, [letterWriteInputObjectState]);
+  const { type } = router.query;
+  // TODO: Bottom Button disabled 로직
+  const [isBottomButtonNextDisabled, setIsBottomButtonNextDisabled] =
+    useState<boolean>(false);
   const onClickNext = () => {
-    setIsBottomButtonNextDisabled(true);
     if (type && typeof type === 'string') {
       const [front, end] = type.split('-');
       router.push(`/letter-write?type=${front}-0${Number(end) + 1}`);
     }
   };
   const onClickBack = () => {
-    setIsBottomButtonNextDisabled(false);
     router.back();
   };
+
   return (
     <S.LetterWriteInputRecipientLayoutWrapper>
       <TopNavigation

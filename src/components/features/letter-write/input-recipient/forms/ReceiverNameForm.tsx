@@ -1,12 +1,14 @@
 import Input from '@/src/components/common/Input';
 import { letterWriteInputState } from '@/src/store/LetterWrite';
-import { QueryString } from '@/src/types';
 import { useRouter } from 'next/router';
 import { ChangeEventHandler, KeyboardEvent, ReactElement } from 'react';
 import { useRecoilState } from 'recoil';
 import * as S from '../styled';
 
-const ReceiverNameForm = ({ type }: { type: QueryString }): ReactElement => {
+const ReceiverNameForm = (): ReactElement => {
+  const {
+    query: { type },
+  } = useRouter();
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
   const router = useRouter();
