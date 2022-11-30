@@ -34,7 +34,11 @@ const LetterRemindPage = () => {
         {RemindData.map((item) => {
           return (
             <TodoContainerWrapper key={item.id}>
+<<<<<<< HEAD
               <TodoContainer todo={item} />
+=======
+              <TodoContainer todoObject={item} />
+>>>>>>> 1bcacce (💄 토글 컨텐츠 부분 UI 추가)
             </TodoContainerWrapper>
           );
         })}

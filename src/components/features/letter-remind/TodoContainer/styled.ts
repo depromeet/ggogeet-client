@@ -5,7 +5,7 @@ export const TodoContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 8px;
+  border-radius: ${(props) => (props.isClicked ? "8px 8px 0 0" : "8px")};
   cursor: pointer;
   background-color: antiquewhite; // 임시
 `;
@@ -47,4 +47,10 @@ export const CheckboxWrapper = styled.div`
 
 export const BellIconWrapper = styled.div`
   padding: 0 4px 0 0;
+`;
+
+export const line = styled.div`
+  height: 1px;
+  margin: 0 0 12px 0;
+  background-color: #a4a9b8;
 `;
