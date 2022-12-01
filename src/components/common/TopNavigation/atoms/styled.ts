@@ -1,5 +1,5 @@
-import { Header5 } from '@/src/styles/commons';
-import styled from '@emotion/styled';
+import { Header5 } from "@/src/styles/commons";
+import styled from "@emotion/styled";
 
 const NavItemContainer = styled.div<{ width?: number; height?: number }>`
   cursor: pointer;

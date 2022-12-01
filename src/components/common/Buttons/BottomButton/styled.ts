@@ -1,5 +1,5 @@
-import { Body3, Header5 } from '@/src/styles/commons';
-import styled from '@emotion/styled';
+import { Body3, Header5 } from "@/src/styles/commons";
+import styled from "@emotion/styled";
 
 export const BottomButtonWrapper = styled.button<{
   isRound: boolean;
@@ -12,14 +12,14 @@ export const BottomButtonWrapper = styled.button<{
   bottom: 8px;
   cursor: pointer;
   width: calc(100% - 32px);
-  padding: ${({ isRound }) => (isRound ? '16px' : '14px')} 0;
-  border-radius: ${({ isRound }) => (isRound ? '30px' : '12px')};
+  padding: ${({ isRound }) => (isRound ? "16px" : "14px")} 0;
+  border-radius: ${({ isRound }) => (isRound ? "30px" : "12px")};
   text-align: center;
   line-height: 21px;
   background-color: ${({ isDark, theme: { colors } }) =>
-    isDark ? '#767C8D' : colors.white};
+    isDark ? "#767C8D" : colors.white};
   color: ${({ isDark, theme: { colors } }) =>
-    isDark ? colors.white : '#767C8D'};
+    isDark ? colors.white : "#767C8D"};
 
   ${Body3}
 

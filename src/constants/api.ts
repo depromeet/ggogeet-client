@@ -1,8 +1,8 @@
 export const HTTP_METHOD = {
-  GET: 'GET',
-  PUT: 'PUT',
-  POST: 'POST',
-  DELETE: 'DELETE',
+  GET: "GET",
+  PUT: "PUT",
+  POST: "POST",
+  DELETE: "DELETE",
 } as const;
 
 export const RESPONSE_SUCCESS = {
@@ -17,6 +17,6 @@ export const RESPONSE_ERROR = {
 } as const;
 
 export const TOKEN_KEY = {
-  ACCESS: 'access_token',
-  REFRESH: 'refresh_token',
+  ACCESS: "access_token",
+  REFRESH: "refresh_token",
 } as const;

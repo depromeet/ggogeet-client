@@ -1,7 +1,7 @@
-import { SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
-import { Body3, Body4, Header5 } from '@/src/styles/commons';
-import { FontStyle } from './types';
+import { SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
+import { Body3, Body4, Header5 } from "@/src/styles/commons";
+import { FontStyle } from "./types";
 
 const fontStyleMap: {
   [key in FontStyle]: SerializedStyles;
@@ -23,10 +23,10 @@ export const ButtonWrapper = styled.button<{
   gap: 4px;
   padding: 8px 16px;
   background-color: ${({ isDark, theme: { colors } }) =>
-    isDark ? '#767C8D' : colors.white};
+    isDark ? "#767C8D" : colors.white};
   color: ${({ isDark, theme: { colors } }) =>
-    isDark ? colors.white : '#767C8D'};
-  border-radius: ${({ isRound }) => (isRound ? '24px' : '8px')};
+    isDark ? colors.white : "#767C8D"};
+  border-radius: ${({ isRound }) => (isRound ? "24px" : "8px")};
   line-height: 21px;
   letter-spacing: -0.005em;
 

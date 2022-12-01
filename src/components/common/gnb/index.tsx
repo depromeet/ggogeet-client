@@ -1,7 +1,7 @@
-import { CSSProperties, Fragment, ReactElement } from 'react';
-import { NavContainer, NavItemContainer } from './GNB.style';
+import { CSSProperties, Fragment, ReactElement } from "react";
+import { NavContainer, NavItemContainer } from "./styled";
 
-type NavPositionKey = 'left' | 'center' | 'right';
+type NavPositionKey = "left" | "center" | "right";
 
 type NavPositionValue = JSX.Element[] | JSX.Element;
 

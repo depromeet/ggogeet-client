@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 const ReactQuillWrapper = styled.div`
   .ql-toolbar {

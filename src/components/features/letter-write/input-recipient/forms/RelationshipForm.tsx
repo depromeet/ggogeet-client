@@ -1,8 +1,8 @@
-import { letterWriteInputState } from '@/src/store/LetterWrite';
-import { ReactElement } from 'react';
-import { useRecoilValue } from 'recoil';
-import { LetterWriteTagContainer } from '../../common';
-import * as S from '../styled';
+import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { ReactElement } from "react";
+import { useRecoilValue } from "recoil";
+import { LetterWriteTagContainer } from "../../common";
+import * as S from "../styled";
 
 const RelationshipForm = (): ReactElement => {
   const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);

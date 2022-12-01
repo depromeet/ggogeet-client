@@ -1,5 +1,5 @@
-import { IconImage } from '@/src/styles/commons';
-import styled from '@emotion/styled';
+import { IconImage } from "@/src/styles/commons";
+import styled from "@emotion/styled";
 
 const ToolbarContainerWrapper = styled.div`
   width: 100%;

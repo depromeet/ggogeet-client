@@ -1,8 +1,8 @@
-import { Theme } from '@emotion/react';
+import { Theme } from "@emotion/react";
 
 const theme: Theme = {
   colors: {
-    white: '#ffffff',
+    white: "#ffffff",
   },
 };
 

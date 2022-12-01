@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 const LetterWriteTagContainerWrapper = styled.div`
   display: flex;

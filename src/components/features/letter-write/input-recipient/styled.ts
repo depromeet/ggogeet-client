@@ -1,6 +1,6 @@
-import { Body1, Caption1, Header1 } from '@/src/styles/commons';
-import { QueryString } from '@/src/types';
-import styled from '@emotion/styled';
+import { Body1, Caption1, Header1 } from "@/src/styles/commons";
+import { QueryString } from "@/src/types";
+import styled from "@emotion/styled";
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
   width: 100%;

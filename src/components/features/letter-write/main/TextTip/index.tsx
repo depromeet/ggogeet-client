@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import * as S from './styled';
+import { ReactElement } from "react";
+import * as S from "./styled";
 
 type Props = {
   text: string;

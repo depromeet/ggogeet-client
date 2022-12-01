@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
-import { FontStyle } from './types';
-import * as S from './styled';
+import { ButtonHTMLAttributes, ReactNode } from "react";
+import { FontStyle } from "./types";
+import * as S from "./styled";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   name: string;
@@ -22,7 +22,7 @@ export default function Button({
 }: Props) {
   return (
     <S.ButtonWrapper
-      type='button'
+      type="button"
       isDark={isDark}
       fontStyle={fontStyle}
       isRound={isRound}

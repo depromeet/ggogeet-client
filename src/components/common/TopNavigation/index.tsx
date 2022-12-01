@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import * as S from './styled';
+import { ReactNode } from "react";
+import * as S from "./styled";
 
 type Props = {
   leftElem?: ReactNode;

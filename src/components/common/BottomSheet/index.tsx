@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { BottomSheet as ReactBottomSheet } from 'react-spring-bottom-sheet';
-import 'react-spring-bottom-sheet/dist/style.css';
+import { ReactNode } from "react";
+import { BottomSheet as ReactBottomSheet } from "react-spring-bottom-sheet";
+import "react-spring-bottom-sheet/dist/style.css";
 
 type Props = {
   isOpened: boolean;

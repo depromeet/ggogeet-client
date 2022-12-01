@@ -1,10 +1,10 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { TOKEN_KEY, RESPONSE_ERROR } from '@/src/constants/api';
-import { getCookie } from '@/src/utils/cookies';
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { TOKEN_KEY, RESPONSE_ERROR } from "@/src/constants/api";
+import { getCookie } from "@/src/utils/cookies";
 
 const createAxiosInstance = () => {
   const base = axios.create({
-    baseURL: '',
+    baseURL: "",
   });
 
   base.interceptors.response.use(
@@ -37,7 +37,7 @@ export async function requester<Payload>(config: AxiosRequestConfig) {
 
   const response: AxiosResponse<Response<Payload>> = await axiosInstance({
     headers: {
-      Authorization: accessToken ? `Bearer ${accessToken}` : '',
+      Authorization: accessToken ? `Bearer ${accessToken}` : "",
     },
     ...config,
   });

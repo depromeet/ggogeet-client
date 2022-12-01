@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
-export type InputStatus = 'inactive' | 'active'; // Input 활성화 여부
+export type InputStatus = "inactive" | "active"; // Input 활성화 여부
 
 interface InputStyleProps {
   status: InputStatus;
