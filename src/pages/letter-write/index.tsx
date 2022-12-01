@@ -1,11 +1,11 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import * as S from "@/src/components/features/letter-write/input-recipient/styled";
+import LetterWriteInputRecipientLayout from "@/src/components/features/letter-write/input-recipient/layout";
 import {
-  LetterWriteInputRecipientLayout,
   ReceiverNameForm,
   RelationshipForm,
-} from "@/src/components/features/letter-write/input-recipient";
-import * as S from "@/src/components/features/letter-write/input-recipient/styled";
+} from "@/src/components/features/letter-write/input-recipient/forms";
 
 const LetterWritePage: NextPage = () => {
   const {
