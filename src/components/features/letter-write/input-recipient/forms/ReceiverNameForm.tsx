@@ -1,17 +1,27 @@
+import Button from "@/src/components/common/Buttons/Button";
 import Input from "@/src/components/common/Input";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { getNavigateNextLink } from "@/src/utils/helper/LetterWrite";
 import { useRouter } from "next/router";
-import { ChangeEventHandler, KeyboardEvent, ReactElement } from "react";
+import {
+  ChangeEventHandler,
+  KeyboardEvent,
+  ReactElement,
+  useEffect,
+  useState,
+} from "react";
 import { useRecoilState } from "recoil";
 import * as S from "../styled";
 
 const ReceiverNameForm = (): ReactElement => {
-  const {
-    query: { type },
-  } = useRouter();
+  const router = useRouter();
+  const { type } = router.query;
+  const nextLink = getNavigateNextLink(type);
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const router = useRouter();
+  const [isBottomButtonNextDisabled, setIsBottomButtonNextDisabled] =
+    useState<boolean>(true);
+
   const onChangeInputObject: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
     setLetterWriteInputObjectState((prev) => ({
@@ -21,14 +31,24 @@ const ReceiverNameForm = (): ReactElement => {
   };
   const onKeyUpReceiverName = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      if (type && typeof type === "string") {
-        const [front, end] = type.split("-");
-        router.push(`/letter-write?type=${front}-0${Number(end) + 1}`);
-      } else {
-        router.push(`/letter-write?type=recipient-01`);
-      }
+      router.push(nextLink);
+    } else {
+      return;
     }
   };
+  const onClickNext = () => {
+    router.push(nextLink);
+  };
+
+  useEffect(() => {
+    const receiverNameLength = letterWriteInputObjectState.receiverName.length;
+    if (receiverNameLength >= 1 && receiverNameLength <= 10) {
+      setIsBottomButtonNextDisabled(false);
+    } else {
+      setIsBottomButtonNextDisabled(true);
+    }
+  }, [letterWriteInputObjectState]);
+
   return (
     <>
       <S.LetterWriteH1>누구에게 보낼건가요?</S.LetterWriteH1>
@@ -42,6 +62,21 @@ const ReceiverNameForm = (): ReactElement => {
           onKeyUp={onKeyUpReceiverName}
         />
       </S.LetterWriteInputContainer>
+      <S.BottomButtonContainer>
+        <Button
+          name="꼬깃 친구 목록에서 찾기"
+          fontStyle="bold"
+          isRound={true}
+        />
+        <Button
+          name="다음"
+          fontStyle="bold"
+          isRound={true}
+          isDark={true}
+          disabled={isBottomButtonNextDisabled}
+          onClick={onClickNext}
+        />
+      </S.BottomButtonContainer>
     </>
   );
 };
