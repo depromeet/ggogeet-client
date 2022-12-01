@@ -60,6 +60,8 @@ const ReceiverNameForm = (): ReactElement => {
           value={letterWriteInputObjectState.receiverName}
           onChange={onChangeInputObject}
           onKeyUp={onKeyUpReceiverName}
+          minLength={1}
+          maxLength={10}
         />
       </S.LetterWriteInputContainer>
       <S.BottomButtonContainer>
