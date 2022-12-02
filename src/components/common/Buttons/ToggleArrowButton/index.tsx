@@ -7,11 +7,9 @@ interface Props {
 
 export default function ToggleArrowButton({ isClicked }: Props) {
   return (
-    <S.ToggleArrowButtonContainer>
+    <S.ToggleArrowButtonContainer isClicked={isClicked}>
       <Image
-        src={
-          isClicked ? "/icons/smallUpArrow.svg" : "/icons/smallDownArrow.svg"
-        }
+        src={"/icons/smallDownArrow.svg"}
         alt="ArrowImg"
         width={11}
         height={5}

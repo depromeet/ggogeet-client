@@ -1,8 +1,13 @@
 import styled from "@emotion/styled";
 
-export const ToggleArrowButtonContainer = styled.div`
+interface ToggleArrowButtonContainerProps {
+  isClicked: boolean;
+}
+
+export const ToggleArrowButtonContainer = styled.div<ToggleArrowButtonContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transform: ${(props) => (props.isClicked ? "rotate(180deg)" : "rotate(0)")};
 `;
