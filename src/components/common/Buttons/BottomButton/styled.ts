@@ -9,7 +9,7 @@ export const BottomButtonWrapper = styled.button<{
   margin: 0 auto;
   left: 0;
   right: 0;
-  bottom: 8px;
+  bottom: 16px;
   cursor: pointer;
   width: calc(100% - 32px);
   padding: ${({ isRound }) => (isRound ? "16px" : "14px")} 0;
