@@ -2,6 +2,7 @@ import TagButton from "@/src/components/common/Buttons/TagButton";
 import Input from "@/src/components/common/Input";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 const Layout = styled.div`
   padding: 16px;
@@ -30,14 +31,18 @@ const TagsContainer = styled.div`
   }
 `;
 
-const TagWrapper = styled.div`
-  margin: 0 8px 0 0;
-`;
-
 const QuestionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px 0;
+`;
+
+const TagWrapper = styled.div`
+  margin: 0 8px 0 0;
+`;
+
+const OkButton = styled.button`
+  cursor: pointer;
 `;
 
 const LetterRemindWritePage = () => {
@@ -71,8 +76,15 @@ const LetterRemindWritePage = () => {
     <>
       <TopNavigation
         title="꼬깃기억 추가"
-        leftElem="화살표이모지"
-        rightElem="확인버튼"
+        leftElem={
+          <Image
+            alt="뒤로가기화살표"
+            src="/icons/backArrow.svg"
+            width={19}
+            height={17}
+          />
+        }
+        rightElem={<OkButton>확인</OkButton>}
       />
 
       <Layout>
@@ -108,6 +120,7 @@ const LetterRemindWritePage = () => {
             <p>잊지 않게 한번 더 알려줄까요?</p>
             <p>스위치</p>
           </QuestionContainer>
+
           <TagsContainer>
             {alarmTagList.map((tag, index) => {
               return (
