@@ -7,7 +7,7 @@ import * as S from "../styled";
 
 const RelationshipForm = (): ReactElement => {
   const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
-  const bottomButton = useBottomButton;
+  const bottomButton = useBottomButton();
 
   return (
     <>
