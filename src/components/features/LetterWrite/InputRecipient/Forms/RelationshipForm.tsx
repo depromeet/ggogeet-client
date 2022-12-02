@@ -10,7 +10,6 @@ const RelationshipForm = (): ReactElement => {
   const bottomButton = useBottomButton({
     isDisabled: !letterWriteInputObjectState.relationship,
   });
-
   return (
     <>
       <S.LetterWriteH1>어떤 관계인가요?</S.LetterWriteH1>
