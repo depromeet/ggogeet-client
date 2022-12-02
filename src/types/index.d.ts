@@ -1,5 +1,9 @@
+import { ReactNode } from "react";
+
 type RefAny = MutableRefObject<any>;
 
 type QueryString = string | string[] | undefined;
 
-export { RefAny, QueryString };
+type WrapperChildren = { children: ReactNode };
+
+export { RefAny, QueryString, WrapperChildren };
