@@ -8,6 +8,7 @@ import {
   SituationForm,
 } from "@/src/components/features/LetterWrite/InputRecipient/Forms";
 import LetterWriteMainLayout from "@/src/components/features/LetterWrite/main/Layout";
+import LetterWriteMain from "@/src/components/features/LetterWrite/main";
 
 type LetterWriteTypeKey = keyof typeof letterWriteTypeMap;
 
@@ -32,7 +33,7 @@ const LetterWritePage: NextPage = () => {
     </LetterWriteInputRecipientLayout>
   ) : (
     <LetterWriteMainLayout>
-      <></>
+      <LetterWriteMain />
     </LetterWriteMainLayout>
   );
 };

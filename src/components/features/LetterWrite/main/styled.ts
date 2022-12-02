@@ -52,6 +52,10 @@ const TextTipWrapper = styled.div`
   }
 `;
 
+const TextEditorContainer = styled.div`
+  padding: 0 16px;
+`;
+
 const ReactQuillWrapper = styled.div`
   .ql-toolbar {
     display: none;
@@ -63,7 +67,7 @@ const ReactQuillWrapper = styled.div`
 
   .ql-container {
     width: 100%;
-    height: 88vh;
+    height: 77vh;
     background: #fcfcfc;
     border: 1px solid #e4e7ef;
     border-radius: 12px;
@@ -110,6 +114,7 @@ export {
   ToolbarInnerContainerWrapper,
   ToolbarWrapper,
   TextTipWrapper,
+  TextEditorContainer,
   ReactQuillWrapper,
   CustomTextEditorToolbarWrapper,
   CustomTextEditorToolbarButton,

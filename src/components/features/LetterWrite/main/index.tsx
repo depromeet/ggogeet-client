@@ -3,9 +3,9 @@ import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/main/
 import TextTip from "@/src/components/features/LetterWrite/main/TextTip";
 import styled from "@emotion/styled";
 import { ReactElement, useRef, useState } from "react";
-import * as S from "@/src/components/features/LetterWrite/main/Toolbar/styled";
 import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";
+import * as S from "./styled";
 
 const LetterWriteMain = (): ReactElement => {
   const quillRef = useRef<RefAny>();
@@ -29,15 +29,11 @@ const LetterWriteMain = (): ReactElement => {
         <CustomTextEditorToolbar quillRef={quillRef} />
       )}
       <TextTip text="Tip : 친구에게 고마웠던 일을 적어보세요" />
-      <Main>
+      <S.TextEditorContainer>
         <TextEditor quillRef={quillRef} />
-      </Main>
+      </S.TextEditorContainer>
     </>
   );
 };
-
-const Main = styled.main`
-  padding: 0 16px 54px;
-`;
 
 export default LetterWriteMain;
