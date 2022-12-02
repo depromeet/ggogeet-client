@@ -1,4 +1,4 @@
-import { CSSProperties, Fragment, ReactElement } from "react";
+import React, { CSSProperties, Fragment, ReactElement } from "react";
 import { NavContainer, NavItemContainer } from "./styled";
 
 type NavPositionKey = "left" | "center" | "right";
