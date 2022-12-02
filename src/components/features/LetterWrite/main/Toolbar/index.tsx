@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Image from "next/image";
-import * as S from "./styled";
+import * as S from "../styled";
 
 type Props = {
   type: "Text" | "Remind" | "Guideline";

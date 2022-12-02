@@ -2,7 +2,7 @@ import TagButton from "@/src/components/common/Buttons/TagButton";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { ReactElement } from "react";
 import { useRecoilState } from "recoil";
-import * as S from "./styled";
+import * as S from "../styled";
 
 const tags = [
   "가족",

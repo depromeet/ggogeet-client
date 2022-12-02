@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import CustomTextEditorToolbar from "./CustomTextEditorToolbar";
-import * as S from "./styled";
+import * as S from "../styled";
 import { RefAny } from "@/src/types";
 
 const ReactQuill = dynamic(

@@ -1,7 +1,7 @@
 import { RefAny } from "@/src/types";
 import Image from "next/image";
 import { ReactElement } from "react";
-import * as S from "./styled";
+import * as S from "../../styled";
 
 const customTextEditorToolbarMap = {
   "align-justify": "/Icons/icon__align-justify.svg",
