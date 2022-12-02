@@ -3,23 +3,33 @@ import Image from "next/image";
 import * as S from "../styled";
 
 type Props = {
-  type: "Text" | "Remind" | "Guideline";
+  type: "Text" | "Color" | "Align" | "Guideline" | "Remind";
   onClick?: () => void;
 };
 
 const toolbarItemMap = {
   Text: {
-    src: "/Icons/icon__text.svg",
+    src: "/Icons/icon__text-editor--text.svg",
+    width: 24,
+    height: 24,
+  },
+  Color: {
+    src: "/Icons/icon__text-editor--color.svg",
+    width: 24,
+    height: 24,
+  },
+  Align: {
+    src: "/Icons/icon__text-editor--align.svg",
+    width: 24,
+    height: 24,
+  },
+  Guideline: {
+    src: "/Icons/icon__text-editor--guideline.svg",
     width: 24,
     height: 24,
   },
   Remind: {
-    src: "/Icons/icon__remind.svg",
-    width: 22,
-    height: 22,
-  },
-  Guideline: {
-    src: "/Icons/icon__guideline.svg",
+    src: "/Icons/icon__text-editor--remind.svg",
     width: 24,
     height: 24,
   },

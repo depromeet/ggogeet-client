@@ -21,9 +21,11 @@ const LetterWriteMain = (): ReactElement => {
               setOpenCustomTextEditorToolbar((prev) => !prev);
             }}
           />
-          <Toolbar type="Remind" />
+          <Toolbar type="Color" />
+          <Toolbar type="Align" />
+          <Toolbar type="Guideline" />
         </S.ToolbarInnerContainerWrapper>
-        <Toolbar type="Guideline" />
+        <Toolbar type="Remind" />
       </S.ToolbarContainerWrapper>
       {openCustomTextEditorToolbar && (
         <CustomTextEditorToolbar quillRef={quillRef} />
