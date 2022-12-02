@@ -35,10 +35,14 @@ const LetterRemindPage = () => {
           return (
             <TodoContainerWrapper key={item.id}>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <TodoContainer todo={item} />
 =======
               <TodoContainer todoObject={item} />
 >>>>>>> 1bcacce (💄 토글 컨텐츠 부분 UI 추가)
+=======
+              <TodoContainer todo={item} />
+>>>>>>> 863660b (💄 TodoContainer 컴포넌트 UI 구조 변경)
             </TodoContainerWrapper>
           );
         })}

@@ -48,9 +48,3 @@ export const CheckboxWrapper = styled.div`
 export const BellIconWrapper = styled.div`
   padding: 0 4px 0 0;
 `;
-
-export const line = styled.div`
-  height: 1px;
-  margin: 0 0 12px 0;
-  background-color: #a4a9b8;
-`;
