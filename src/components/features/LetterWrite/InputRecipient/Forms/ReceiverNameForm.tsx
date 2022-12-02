@@ -64,7 +64,7 @@ const ReceiverNameForm = (): ReactElement => {
           maxLength={10}
         />
       </S.LetterWriteInputContainer>
-      <S.BottomButtonContainer>
+      <S.BottomButtonContainer type="Initial Page">
         <Button
           name="꼬깃 친구 목록에서 찾기"
           fontStyle="bold"

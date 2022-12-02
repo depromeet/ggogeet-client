@@ -7,7 +7,7 @@ const LetterWriteInputRecipientLayoutWrapper = styled.div`
   height: 100vh;
 `;
 
-const BottomButtonContainer = styled.div`
+const BottomButtonContainer = styled.div<{ type?: string }>`
   width: calc(100% - 32px);
   position: fixed;
   bottom: 8px;
@@ -19,11 +19,22 @@ const BottomButtonContainer = styled.div`
   gap: 8px;
 
   button {
-    width: 100%;
     height: 56px;
     border-radius: 30px;
+  }
+
+  button {
+    ${({ type }) =>
+      type === "Initial Page" &&
+      `
+      width: 100%;
+    `}
     &:first-of-type {
-      border: 1px solid #767c8d;
+      ${({ type }) =>
+        type === "Initial Page" &&
+        `
+        border: 1px solid #767c8d;
+    `}
     }
   }
 `;
