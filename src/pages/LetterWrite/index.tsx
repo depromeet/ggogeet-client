@@ -7,6 +7,7 @@ import {
   ReceiverNameForm,
   SituationForm,
 } from "@/src/components/features/LetterWrite/InputRecipient/Forms";
+import LetterWriteMainLayout from "@/src/components/features/LetterWrite/main/Layout";
 
 type LetterWriteTypeKey = keyof typeof letterWriteTypeMap;
 
@@ -19,7 +20,7 @@ const LetterWritePage: NextPage = () => {
   const {
     query: { type },
   } = useRouter();
-  return (
+  return !type || type === "recipient-01" || type === "recipient-02" ? (
     <LetterWriteInputRecipientLayout>
       <S.LetterWriteInputRecipientMain>
         {type ? (
@@ -29,6 +30,10 @@ const LetterWritePage: NextPage = () => {
         )}
       </S.LetterWriteInputRecipientMain>
     </LetterWriteInputRecipientLayout>
+  ) : (
+    <LetterWriteMainLayout>
+      <></>
+    </LetterWriteMainLayout>
   );
 };
 
