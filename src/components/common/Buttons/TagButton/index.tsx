@@ -1,4 +1,4 @@
-import * as S from './styled';
+import * as S from "./styled";
 
 type Props = {
   content: string;
@@ -24,6 +24,11 @@ export default function TagButton({
       onClick={onClick}
     >
       {content}
+      <S.SelectedTagBorder
+        disabled={disabled}
+        isDark={isDark}
+        isSelected={isSelected}
+      />
     </S.TagButtonWrapper>
   );
 }

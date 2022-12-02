@@ -16,11 +16,14 @@ const statusStyle = {
   `,
 } as const;
 
-export const Wrap = styled.div``;
+export const Wrap = styled.div`
+  height: inherit;
+`;
 export const Input = styled.input<InputStyleProps>`
   color: #767c8d;
 
   width: 100%;
+  height: inherit;
   padding-bottom: 8px;
   padding-left: 2px;
 

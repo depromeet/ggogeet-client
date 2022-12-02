@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from 'react';
-import * as S from './styled';
+import { ButtonHTMLAttributes } from "react";
+import * as S from "./styled";
 
 type Props = {
   name: string;
