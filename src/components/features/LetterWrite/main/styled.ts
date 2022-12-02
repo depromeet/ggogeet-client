@@ -1,9 +1,26 @@
-import { IconImage } from "@/src/styles/commons";
+import { Header5, IconImage } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 const LetterWriteMainLayoutWrapper = styled.div`
   width: 100%;
   height: 100vh;
+`;
+
+const LetterWriteMainNavRightWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  button {
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    ${Header5}
+  }
+  button:first-child {
+    color: #989fb3;
+  }
+  button:last-child {
+    color: #c5cad8;
+  }
 `;
 
 const ToolbarContainerWrapper = styled.div`
@@ -88,6 +105,7 @@ const CustomTextEditorToolbarButton = styled.button`
 
 export {
   LetterWriteMainLayoutWrapper,
+  LetterWriteMainNavRightWrapper,
   ToolbarContainerWrapper,
   ToolbarInnerContainerWrapper,
   ToolbarWrapper,
