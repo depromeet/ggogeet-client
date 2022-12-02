@@ -5,6 +5,7 @@ import LetterWriteInputRecipientLayout from "@/src/components/features/LetterWri
 import {
   ReceiverNameForm,
   RelationshipForm,
+  SituationForm,
 } from "@/src/components/features/LetterWrite/InputRecipient/Forms";
 
 const LetterWritePage: NextPage = () => {
@@ -16,6 +17,7 @@ const LetterWritePage: NextPage = () => {
       <S.LetterWriteInputRecipientMain>
         {!type && <ReceiverNameForm />}
         {type === "recipient-01" && <RelationshipForm />}
+        {type === "recipient-02" && <SituationForm />}
       </S.LetterWriteInputRecipientMain>
     </LetterWriteInputRecipientLayout>
   );
