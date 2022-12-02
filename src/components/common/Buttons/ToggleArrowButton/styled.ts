@@ -4,7 +4,7 @@ interface ToggleArrowButtonContainerProps {
   isClicked: boolean;
 }
 
-export const ToggleArrowButtonContainer = styled.div<ToggleArrowButtonContainerProps>`
+export const ToggleArrowButtonContainer = styled.button<ToggleArrowButtonContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;

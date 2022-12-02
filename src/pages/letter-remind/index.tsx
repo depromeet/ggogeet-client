@@ -126,7 +126,7 @@ const LetterRemindPage = () => {
         {DummyData.map((item) => {
           return (
             <TodoContainerWrapper key={item.id}>
-              <TodoContainer todoObject={item} />
+              <TodoContainer todo={item} />
             </TodoContainerWrapper>
           );
         })}

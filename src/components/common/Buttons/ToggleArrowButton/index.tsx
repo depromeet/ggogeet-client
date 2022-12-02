@@ -10,7 +10,7 @@ export default function ToggleArrowButton({ isClicked }: Props) {
     <S.ToggleArrowButtonContainer isClicked={isClicked}>
       <Image
         src={"/icons/smallDownArrow.svg"}
-        alt="ArrowImg"
+        alt="토글아래화살표"
         width={11}
         height={5}
       />

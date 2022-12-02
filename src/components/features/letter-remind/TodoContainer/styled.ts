@@ -1,17 +1,29 @@
 import styled from "@emotion/styled";
 
-interface TodoContainerWrapperProps {
+export const TodoContainerWrapper = styled.div`
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: antiquewhite; // 임시
+`;
+
+export const TodoContainerTitleWrapper = styled.div`
+  display: flex;
+  padding: 12px 0;
+  justify-content: space-between;
+`;
+
+interface TodoContainerContentWrapperProps {
   isClicked: boolean;
 }
 
-export const TodoContainerWrapper = styled.div<TodoContainerWrapperProps>`
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: ${(props) => (props.isClicked ? "8px 8px 0 0" : "8px")};
-  cursor: pointer;
-  background-color: antiquewhite;
+export const TodoContainerContentWrapper = styled.div<TodoContainerContentWrapperProps>`
+  padding: 12px 10px 12px 30px;
+  border-top: ${(props) => (props.isClicked ? "1px solid #a4a9b8" : "none")};
+  background-color: antiquewhite; // 임시
 `;
 
 export const TodoContainerInnerWrapper = styled.div`
@@ -19,21 +31,11 @@ export const TodoContainerInnerWrapper = styled.div`
   align-items: center;
 `;
 
-export const TodoContainerContentWrapper = styled.div`
-  padding: 0 16px 12px 16px;
-  border-radius: 0 0 8px 8px;
-  background-color: antiquewhite;
-`;
-
 export const ContentUpperWrapper = styled.div`
   margin: 0 0 10px 0;
 `;
 
 export const ContentLowerWrapper = styled.div``;
-
-export const TodoContainerContentInnerWrapper = styled.div`
-  margin: 0 0 0 29px;
-`;
 
 export const DateWrapper = styled.div`
   padding: 0 8px 0 0;
@@ -45,10 +47,4 @@ export const CheckboxWrapper = styled.div`
 
 export const BellIconWrapper = styled.div`
   padding: 0 4px 0 0;
-`;
-
-export const line = styled.div`
-  height: 1px;
-  margin: 0 0 12px 0;
-  background-color: #a4a9b8;
 `;
