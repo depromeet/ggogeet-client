@@ -9,17 +9,17 @@ type Props = {
 
 const toolbarItemMap = {
   Text: {
-    src: "/icons/icon__text.svg",
+    src: "/Icons/icon__text.svg",
     width: 24,
     height: 24,
   },
   Remind: {
-    src: "/icons/icon__remind.svg",
+    src: "/Icons/icon__remind.svg",
     width: 22,
     height: 22,
   },
   Guideline: {
-    src: "/icons/icon__guideline.svg",
+    src: "/Icons/icon__guideline.svg",
     width: 24,
     height: 24,
   },

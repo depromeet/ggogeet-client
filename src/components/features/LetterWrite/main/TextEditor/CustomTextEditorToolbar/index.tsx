@@ -4,14 +4,14 @@ import { ReactElement } from "react";
 import * as S from "./styled";
 
 const customTextEditorToolbarMap = {
-  "align-justify": "/icons/icon__align-justify.svg",
-  "align-left": "/icons/icon__align-left.svg",
-  "align-center": "/icons/icon__align-center.svg",
-  "align-right": "/icons/icon__align-right.svg",
-  bold: "/icons/icon__text-bold.svg",
-  italic: "/icons/icon__text-italic.svg",
-  underline: "/icons/icon__text-underline.svg",
-  strike: "/icons/icon__text-strike.svg",
+  "align-justify": "/Icons/icon__align-justify.svg",
+  "align-left": "/Icons/icon__align-left.svg",
+  "align-center": "/Icons/icon__align-center.svg",
+  "align-right": "/Icons/icon__align-right.svg",
+  bold: "/Icons/icon__text-bold.svg",
+  italic: "/Icons/icon__text-italic.svg",
+  underline: "/Icons/icon__text-underline.svg",
+  strike: "/Icons/icon__text-strike.svg",
 } as const;
 
 const CustomTextEditorToolbar = ({

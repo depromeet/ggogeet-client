@@ -14,7 +14,7 @@ const NavBack = (): ReactElement => {
       }}
     >
       <Image
-        src="/icons/icon__nav-back.svg"
+        src="/Icons/icon__nav-back.svg"
         alt="뒤로 가기"
         width={24}
         height={24}

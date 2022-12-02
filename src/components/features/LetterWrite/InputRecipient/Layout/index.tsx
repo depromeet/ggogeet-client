@@ -2,7 +2,7 @@ import TopNavigation from "@/src/components/common/TopNavigation";
 import {
   NavBack,
   NavCancel,
-} from "@/src/components/common/TopNavigation/atoms";
+} from "@/src/components/common/TopNavigation/Atoms";
 import { ReactNode } from "react";
 import * as S from "../styled";
 

@@ -5,7 +5,7 @@ type NavPositionKey = "left" | "center" | "right";
 
 type NavPositionValue = JSX.Element[] | JSX.Element;
 
-type GNBType = Partial<{ [key in NavPositionKey]: NavPositionValue }> & {
+type GnbType = Partial<{ [key in NavPositionKey]: NavPositionValue }> & {
   stylesOptions?: CSSProperties;
 };
 
@@ -26,7 +26,7 @@ const NavItem = ({ position }: NavItemType): ReactElement => {
   );
 };
 
-const GNB = ({ left, center, right, stylesOptions }: GNBType): ReactElement => {
+const Gnb = ({ left, center, right, stylesOptions }: GnbType): ReactElement => {
   return (
     <NavContainer style={stylesOptions}>
       {[left, center, right].map((position = <div></div>, idx) => (
@@ -40,4 +40,4 @@ const GNB = ({ left, center, right, stylesOptions }: GNBType): ReactElement => {
   );
 };
 
-export default GNB;
+export default Gnb;

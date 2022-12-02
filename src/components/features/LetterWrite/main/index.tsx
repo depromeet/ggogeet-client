@@ -1,10 +1,10 @@
-import TextEditor from "@/src/components/features/letter-write/main/TextEditor";
-import CustomTextEditorToolbar from "@/src/components/features/letter-write/main/TextEditor/CustomTextEditorToolbar";
-import TextTip from "@/src/components/features/letter-write/main/TextTip";
+import TextEditor from "@/src/components/features/LetterWrite/main/TextEditor";
+import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/main/TextEditor/CustomTextEditorToolbar";
+import TextTip from "@/src/components/features/LetterWrite/main/TextTip";
 import styled from "@emotion/styled";
 import { ReactElement, useRef, useState } from "react";
-import * as S from "@/src/components/features/letter-write/main/Toolbar/styled";
-import Toolbar from "@/src/components/features/letter-write/main/Toolbar";
+import * as S from "@/src/components/features/LetterWrite/main/Toolbar/styled";
+import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";
 
 const LetterWriteMain = (): ReactElement => {
