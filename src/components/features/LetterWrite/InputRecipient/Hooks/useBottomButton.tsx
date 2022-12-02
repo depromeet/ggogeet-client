@@ -1,13 +1,14 @@
 import BottomButton from "@/src/components/common/Buttons/BottomButton";
-import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { getNavigateNextLink } from "@/src/utils/helper/LetterWrite";
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
-import { useRecoilValue } from "recoil";
 import * as S from "../styled";
 
-const useBottomButton = (): ReactElement => {
-  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
+const useBottomButton = ({
+  isDisabled,
+}: {
+  isDisabled: boolean;
+}): ReactElement => {
   const router = useRouter();
   const { type } = router.query;
   const nextLink = getNavigateNextLink(type);
@@ -20,7 +21,7 @@ const useBottomButton = (): ReactElement => {
         name="다음"
         isDark={true}
         isRound={true}
-        disabled={!letterWriteInputObjectState.relationship}
+        disabled={isDisabled}
         onClick={onClickNext}
       />
     </S.BottomButtonContainer>
