@@ -76,7 +76,7 @@ const LetterWriteBody1 = styled.span`
 
 const SituationTemplateContainer = styled.div`
   margin-top: 20px;
-  width: 326px;
+  width: 100%;
   height: 341px;
   background: #e4e7ef;
   border-radius: 12px;
