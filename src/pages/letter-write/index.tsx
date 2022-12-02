@@ -22,11 +22,17 @@ const LetterWritePage: NextPage = () => {
   return (
     <LetterWriteInputRecipientLayout>
       <S.LetterWriteInputRecipientMain>
+<<<<<<< HEAD:src/pages/letter-write/index.tsx
         {type ? (
           letterWriteTypeMap[type as LetterWriteTypeKey]
         ) : (
           <ReceiverNameForm />
         )}
+=======
+        {!type && <ReceiverNameForm />}
+        {type === "recipient-01" && <RelationshipForm />}
+        {type === "recipient-02" && <SituationForm />}
+>>>>>>> 496b6d0 (💄 편지 작성 - 상황 설정 기본 UI setup):src/pages/LetterWrite/index.tsx
       </S.LetterWriteInputRecipientMain>
     </LetterWriteInputRecipientLayout>
   );
