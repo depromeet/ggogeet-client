@@ -11,6 +11,10 @@ export const global = (theme: Theme) => css`
 
   body {
     margin: auto;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+      Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", sans-serif;
   }
 
   ul {
@@ -78,42 +82,5 @@ export const global = (theme: Theme) => css`
   [data-rsbs-header]:before {
     height: 5px;
     border-radius: 6px;
-  }
-
-  @font-face {
-    font-family: "pretendard_regular";
-    src: url("/assets/fonts/Pretendard-Regular.woff2") format("woff2"),
-      url("/assets/fonts/Pretendard-Regular.woff") format("woff"),
-      url("/assets/fonts/Pretendard-Regular.ttf") format("ttf");
-    font-display: swap;
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "pretendard_medium";
-    src: url("/assets/fonts/Pretendard-Medium.woff2") format("woff2"),
-      url("/assets/fonts/Pretendard-Medium.woff") format("woff"),
-      url("/assets/fonts/Pretendard-Medium.ttf") format("ttf");
-    font-display: swap;
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "pretendard_semiBold";
-    src: url("/assets/fonts/Pretendard-SemiBold.woff2") format("woff2"),
-      url("/assets/fonts/Pretendard-SemiBold.woff") format("woff"),
-      url("/assets/fonts/Pretendard-SemiBold.ttf") format("ttf");
-    font-display: swap;
-    font-weight: 600;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "pretendard_bold";
-    src: url("/assets/fonts/Pretendard-Bold.woff2") format("woff2"),
-      url("/assets/fonts/Pretendard-Bold.woff") format("woff"),
-      url("/assets/fonts/Pretendard-Bold.ttf") format("ttf");
-    font-display: swap;
-    font-weight: 700;
-    font-style: normal;
   }
 `;
