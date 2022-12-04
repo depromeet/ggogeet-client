@@ -65,16 +65,12 @@ const ReceiverNameForm = (): ReactElement => {
         />
       </S.LetterWriteInputContainer>
       <S.BottomButtonContainer type="Initial Page">
-        <Button
-          name="꼬깃 친구 목록에서 찾기"
-          fontStyle="bold"
-          isRound={true}
-        />
+        <Button name="꼬깃 친구 목록에서 찾기" fontStyle="bold" isRound />
         <Button
           name="다음"
           fontStyle="bold"
-          isRound={true}
-          isDark={true}
+          isRound
+          isDark
           disabled={isBottomButtonNextDisabled}
           onClick={onClickNext}
         />

@@ -19,8 +19,8 @@ const useBottomButton = ({
     <S.BottomButtonContainer>
       <BottomButton
         name="다음"
-        isDark={true}
-        isRound={true}
+        isDark
+        isRound
         disabled={isDisabled}
         onClick={onClickNext}
       />
