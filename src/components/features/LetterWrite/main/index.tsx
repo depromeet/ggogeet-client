@@ -6,12 +6,17 @@ import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";
 import * as S from "./styled";
 
-type ToolbarClickedStatusType =
+export type ToolbarClickedStatusType =
   | "Text"
   | "Color"
   | "Align"
   | "Guideline"
   | "Remind";
+
+type ToolbarClickedStatusObject = {
+  type: ToolbarClickedStatusType;
+  status: boolean;
+};
 
 const leftToolbarMenus: ToolbarClickedStatusType[] = [
   "Text",
@@ -22,10 +27,14 @@ const leftToolbarMenus: ToolbarClickedStatusType[] = [
 
 const LetterWriteMain = (): ReactElement => {
   const quillRef = useRef<RefAny>();
-  const [currentClickedToolbar, setCurrentClickedToolbar] =
-    useState<ToolbarClickedStatusType>();
+  const [currentClickedToolbarStatus, setCurrentClickedToolbarStatus] =
+    useState<ToolbarClickedStatusObject>();
   const onToggleToolbar = (type: ToolbarClickedStatusType) => {
-    setCurrentClickedToolbar(type);
+    setCurrentClickedToolbarStatus((prev) => ({
+      ...prev,
+      type,
+      status: !prev?.status ?? true,
+    }));
   };
   return (
     <>
@@ -36,13 +45,22 @@ const LetterWriteMain = (): ReactElement => {
               key={type}
               type={type}
               onClick={() => onToggleToolbar(type)}
-              isClicked={type === currentClickedToolbar}
+              isClicked={
+                type === currentClickedToolbarStatus?.type &&
+                currentClickedToolbarStatus.status
+              }
             />
           ))}
         </S.ToolbarInnerContainerWrapper>
         <Toolbar type="Remind" onClick={() => onToggleToolbar("Remind")} />
       </S.ToolbarContainerWrapper>
-      <CustomTextEditorToolbar quillRef={quillRef} />
+      {currentClickedToolbarStatus?.type &&
+        currentClickedToolbarStatus.status && (
+          <CustomTextEditorToolbar
+            quillRef={quillRef}
+            type={currentClickedToolbarStatus.type}
+          />
+        )}
       <TextTip text="Tip : 친구에게 고마웠던 일을 적어보세요" />
       <S.TextEditorContainer>
         <TextEditor quillRef={quillRef} />
