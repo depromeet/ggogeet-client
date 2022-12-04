@@ -17,6 +17,13 @@ type ToolbarClickedStatusObjectType = {
   [key in ToolbarClickedStatusType]: boolean;
 };
 
+const leftToolbarMenus: ToolbarClickedStatusType[] = [
+  "Text",
+  "Color",
+  "Align",
+  "Guideline",
+];
+
 const LetterWriteMain = (): ReactElement => {
   const quillRef = useRef<RefAny>();
   const [openToolbarStatusObject, setOpenToolbarStatusObject] =
@@ -34,25 +41,14 @@ const LetterWriteMain = (): ReactElement => {
     <>
       <S.ToolbarContainerWrapper>
         <S.ToolbarInnerContainerWrapper>
-          <Toolbar
-            type="Text"
-            onClick={() => onToggleToolbar("Text")}
-            isClicked={openToolbarStatusObject.Text}
-          />
-          <Toolbar
-            type="Color"
-            onClick={() => onToggleToolbar("Color")}
-            isClicked={openToolbarStatusObject.Color}
-          />
-          <Toolbar
-            type="Align"
-            onClick={() => onToggleToolbar("Align")}
-            isClicked={openToolbarStatusObject.Align}
-          />
-          <Toolbar
-            type="Guideline"
-            onClick={() => onToggleToolbar("Guideline")}
-          />
+          {leftToolbarMenus.map((type) => (
+            <Toolbar
+              key={type}
+              type={type}
+              onClick={() => onToggleToolbar(type)}
+              isClicked={openToolbarStatusObject[type]}
+            />
+          ))}
         </S.ToolbarInnerContainerWrapper>
         <Toolbar type="Remind" onClick={() => onToggleToolbar("Remind")} />
       </S.ToolbarContainerWrapper>
