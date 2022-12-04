@@ -25,10 +25,6 @@ const TagsContainer = styled.div`
   display: flex;
   overflow: auto;
   white-space: nowrap;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const QuestionContainer = styled.div`
