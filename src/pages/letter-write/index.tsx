@@ -8,6 +8,13 @@ import {
   SituationForm,
 } from "@/src/components/features/LetterWrite/InputRecipient/Forms";
 
+type LetterWriteTypeKey = keyof typeof letterWriteTypeMap;
+
+const letterWriteTypeMap = {
+  "recipient-01": <RelationshipForm />,
+  "recipient-02": <SituationForm />,
+};
+
 const LetterWritePage: NextPage = () => {
   const {
     query: { type },
@@ -15,9 +22,11 @@ const LetterWritePage: NextPage = () => {
   return (
     <LetterWriteInputRecipientLayout>
       <S.LetterWriteInputRecipientMain>
-        {!type && <ReceiverNameForm />}
-        {type === "recipient-01" && <RelationshipForm />}
-        {type === "recipient-02" && <SituationForm />}
+        {type ? (
+          letterWriteTypeMap[type as LetterWriteTypeKey]
+        ) : (
+          <ReceiverNameForm />
+        )}
       </S.LetterWriteInputRecipientMain>
     </LetterWriteInputRecipientLayout>
   );
