@@ -1,5 +1,5 @@
 import BottomButton from "@/src/components/common/Buttons/BottomButton";
-import { getNavigateNextLink } from "@/src/utils/helper/LetterWrite";
+import { getNavigateNextLink } from "@/src/utils/LetterWrite";
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
 import * as S from "../styled";
