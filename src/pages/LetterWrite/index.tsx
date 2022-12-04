@@ -21,7 +21,7 @@ const LetterWritePage: NextPage = () => {
   const {
     query: { type },
   } = useRouter();
-  return !type || type === "recipient-01" || type === "recipient-02" ? (
+  return !type || letterWriteTypeMap[type as LetterWriteTypeKey] ? (
     <LetterWriteInputRecipientLayout>
       <S.LetterWriteInputRecipientMain>
         {type ? (
