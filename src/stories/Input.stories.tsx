@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Input from "@/src/components/common/Input";
+import Input, { InputClear } from "@/src/components/common/Input";
 
 export default {
   title: "Components/Input",
@@ -9,8 +9,15 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const TemplateClear: ComponentStory<typeof Input> = (args) => (
+  <InputClear {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
+  placeholder: "TextField",
+};
+export const Clear = TemplateClear.bind({});
+Clear.args = {
   placeholder: "TextField",
 };
