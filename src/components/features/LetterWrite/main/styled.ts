@@ -15,10 +15,10 @@ const LetterWriteMainNavRightWrapper = styled.div`
     letter-spacing: -0.005em;
     ${Header5}
   }
-  button:first-child {
+  button:first-of-type {
     color: #989fb3;
   }
-  button:last-child {
+  button:last-of-type {
     color: #c5cad8;
   }
 `;
