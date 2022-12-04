@@ -7,6 +7,7 @@ export const LetterLayout = styled.div`
   padding: 16px 20px;
   height: 120px;
   background-color: #e4e7ef;
+  border-radius: 4px;
 `;
 
 export const LetterLeftContainer = styled.div`

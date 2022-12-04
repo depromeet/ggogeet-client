@@ -1,7 +1,18 @@
+import TopNavigation from "@/src/components/common/TopNavigation";
 import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
+import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
 import styled from "@emotion/styled";
 
-const Layout = styled.div``;
+const Layout = styled.div`
+  padding: 0 16px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+`;
 
 const LetterContainerWrapper = styled.div`
   padding: 0 0 8px 0;
@@ -58,16 +69,33 @@ const dummyData = [
   },
 ];
 
+const TopNavigationRightElem = () => {
+  return <>헤더오른쪽</>;
+};
+
 const LetterStoragePage = () => {
+  const TopNavigations = ["받은 꼬깃", "보낸 꼬깃"];
+
   return (
     <>
-      {dummyData.map((letter) => {
-        return (
-          <LetterContainerWrapper key={letter.id}>
-            <LetterContainer letter={letter} />
-          </LetterContainerWrapper>
-        );
-      })}
+      <TopNavigation title="보관함" rightElem={<TopNavigationRightElem />} />
+
+      <Layout>
+        <LetterStorageTopNavigation navigations={TopNavigations} />
+
+        <Header>
+          <div>최근 받은 순</div>
+          <div>상세 필터</div>
+        </Header>
+
+        {dummyData.map((letter) => {
+          return (
+            <LetterContainerWrapper key={letter.id}>
+              <LetterContainer letter={letter} />
+            </LetterContainerWrapper>
+          );
+        })}
+      </Layout>
     </>
   );
 };
