@@ -82,8 +82,10 @@ const CustomTextEditorToolbar = ({
     justify: "",
   });
   const onClickToolbar = (toolbarDetailType: ToolbarFormatType) => {
+    // TODO: color 적용
     const quill = quillRef.current.getEditor();
     if (["bold", "italic", "underline", "strike"].includes(toolbarDetailType)) {
+      // 중복 적용 원활히 가능 [테스트 완료 ✅]
       const status = !formats[toolbarDetailType];
       quill.format(toolbarDetailType, status);
       setFormats((prev) => ({
@@ -91,6 +93,7 @@ const CustomTextEditorToolbar = ({
         [toolbarDetailType]: status,
       }));
     } else if (toolbarDetailType.startsWith("header")) {
+      // 폰트 크기 - 현재 하나만 선택해서 일괄 적용 가능한 상태
       let value = parseInt(toolbarDetailType.slice(-1));
       if (formats[toolbarDetailType] === value) {
         value = 0;
@@ -101,6 +104,7 @@ const CustomTextEditorToolbar = ({
         [toolbarDetailType]: value,
       }));
     } else {
+      // 정렬 - 현재 하나만 선택해서 일괄 적용 가능한 상태
       let value: ToolbarFormatType | boolean = toolbarDetailType;
       if (toolbarDetailType === "left") value = false;
       quill.format("align", value);
