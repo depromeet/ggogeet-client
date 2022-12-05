@@ -32,6 +32,7 @@ const modules = {
 
 const formats = [
   "size",
+  "header",
   "color",
   "background",
   "align",

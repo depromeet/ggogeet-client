@@ -16,9 +16,9 @@ const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
     italic: "/Icons/icon__text-italic.svg",
     underline: "/Icons/icon__text-underline.svg",
     strike: "/Icons/icon__text-strike.svg",
-    title01: "/Icons/icon__text-title01.svg",
-    title02: "/Icons/icon__text-title02.svg",
-    body: "/Icons/icon__text-body.svg",
+    header1: "/Icons/icon__text-header1.svg",
+    header2: "/Icons/icon__text-header2.svg",
+    header4: "/Icons/icon__text-header4.svg",
   },
   Color: {
     color01: "/Icons/icon__text-color01.svg",
@@ -51,14 +51,17 @@ const CustomTextEditorToolbar = ({
   type,
   quillRef,
 }: CustomTextEditorToolbarType): ReactElement => {
-  const onClickToolbar = (type: keyof typeof customTextEditorToolbarMap) => {
+  const onClickToolbar = (toolbarDetailType: string) => {
     const quill = quillRef.current.getEditor();
-    if (["bold", "italic", "underline", "strike"].includes(type)) {
-      quill.format(type, true);
+    if (["bold", "italic", "underline", "strike"].includes(toolbarDetailType)) {
+      quill.format(toolbarDetailType, true);
+    } else if (toolbarDetailType.startsWith("header")) {
+      const value = parseInt(toolbarDetailType.slice(-1));
+      quill.format("header", value);
     } else {
       let key: string;
       let value: string | boolean;
-      [key, value] = type.split("-");
+      [key, value] = toolbarDetailType.split("-");
       if (value === "left") value = false;
       quill.format(key, value);
     }
@@ -71,9 +74,7 @@ const CustomTextEditorToolbar = ({
             ([key, value]) => (
               <S.CustomTextEditorToolbarButton
                 key={key}
-                onClick={() =>
-                  onClickToolbar(key as keyof typeof customTextEditorToolbarMap)
-                }
+                onClick={() => onClickToolbar(key)}
               >
                 <Image
                   src={value}
