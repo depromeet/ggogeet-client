@@ -20,6 +20,7 @@ export const InputDefault = React.forwardRef<
   return (
     <S.Wrap status={status} styleOption={inputStyle}>
       <S.Input
+        value={value}
         ref={ref}
         onFocus={() => setStatus("active")}
         onBlur={(e) => !e.target.value && setStatus("inactive")}

@@ -39,6 +39,8 @@ export const Input = styled.input`
   }
 `;
 
-export const Clear = styled.img`
+export const ClearButton = styled.button`
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 `;
