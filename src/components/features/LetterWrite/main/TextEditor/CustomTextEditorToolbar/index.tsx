@@ -1,8 +1,25 @@
 import { RefAny } from "@/src/types";
 import Image from "next/image";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { ToolbarClickedStatusType } from "../..";
 import * as S from "../../styled";
+
+type ToolbarFormatType =
+  | "bold"
+  | "italic"
+  | "underline"
+  | "strike"
+  | "header1"
+  | "header2"
+  | "header4"
+  | "left"
+  | "center"
+  | "right"
+  | "justify";
+
+type ToolbarFormatsStatus = {
+  [key in ToolbarFormatType]: boolean | number | string;
+};
 
 type CustomTextEditorToolbarMapType = {
   [key in ToolbarClickedStatusType]?: {
@@ -33,10 +50,10 @@ const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
     bgColor05: "/Icons/icon__text-bgColor05.svg",
   },
   Align: {
-    "align-left": "/Icons/icon__align-left.svg",
-    "align-center": "/Icons/icon__align-center.svg",
-    "align-right": "/Icons/icon__align-right.svg",
-    "align-justify": "/Icons/icon__align-justify.svg",
+    left: "/Icons/icon__align-left.svg",
+    center: "/Icons/icon__align-center.svg",
+    right: "/Icons/icon__align-right.svg",
+    justify: "/Icons/icon__align-justify.svg",
   },
 };
 
@@ -45,25 +62,57 @@ interface CustomTextEditorToolbarType {
   quillRef: RefAny;
 }
 
-const differentWidth = ["title01", "title02", "body"];
+const differentImageWidth = ["header1", "header2", "header4"];
 
 const CustomTextEditorToolbar = ({
   type,
   quillRef,
 }: CustomTextEditorToolbarType): ReactElement => {
-  const onClickToolbar = (toolbarDetailType: string) => {
+  const [formats, setFormats] = useState<ToolbarFormatsStatus>({
+    bold: false,
+    italic: false,
+    underline: false,
+    strike: false,
+    header1: 0,
+    header2: 0,
+    header4: 0,
+    left: false,
+    center: "",
+    right: "",
+    justify: "",
+  });
+  const onClickToolbar = (toolbarDetailType: ToolbarFormatType) => {
     const quill = quillRef.current.getEditor();
     if (["bold", "italic", "underline", "strike"].includes(toolbarDetailType)) {
-      quill.format(toolbarDetailType, true);
+      const status = !formats[toolbarDetailType];
+      quill.format(toolbarDetailType, status);
+      setFormats((prev) => ({
+        ...prev,
+        [toolbarDetailType]: status,
+      }));
     } else if (toolbarDetailType.startsWith("header")) {
-      const value = parseInt(toolbarDetailType.slice(-1));
+      let value = parseInt(toolbarDetailType.slice(-1));
+      if (formats[toolbarDetailType] === value) {
+        value = 0;
+      }
       quill.format("header", value);
+      setFormats((prev) => ({
+        ...prev,
+        [toolbarDetailType]: value,
+      }));
     } else {
-      let key: string;
-      let value: string | boolean;
-      [key, value] = toolbarDetailType.split("-");
-      if (value === "left") value = false;
-      quill.format(key, value);
+      let value: string | boolean = toolbarDetailType;
+      if (toolbarDetailType === "left") {
+        value = false;
+      }
+      if (formats[toolbarDetailType]) {
+        value = false;
+      }
+      quill.format("align", value);
+      setFormats((prev) => ({
+        ...prev,
+        [toolbarDetailType]: value,
+      }));
     }
   };
   return (
@@ -74,12 +123,12 @@ const CustomTextEditorToolbar = ({
             ([key, value]) => (
               <S.CustomTextEditorToolbarButton
                 key={key}
-                onClick={() => onClickToolbar(key)}
+                onClick={() => onClickToolbar(key as ToolbarFormatType)}
               >
                 <Image
                   src={value}
                   alt={key}
-                  width={differentWidth.includes(key) ? 36 : 24}
+                  width={differentImageWidth.includes(key) ? 36 : 24}
                   height={24}
                 />
               </S.CustomTextEditorToolbarButton>
