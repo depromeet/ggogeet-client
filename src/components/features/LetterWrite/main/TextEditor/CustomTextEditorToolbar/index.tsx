@@ -101,13 +101,8 @@ const CustomTextEditorToolbar = ({
         [toolbarDetailType]: value,
       }));
     } else {
-      let value: string | boolean = toolbarDetailType;
-      if (toolbarDetailType === "left") {
-        value = false;
-      }
-      if (formats[toolbarDetailType]) {
-        value = false;
-      }
+      let value: ToolbarFormatType | boolean = toolbarDetailType;
+      if (toolbarDetailType === "left") value = false;
       quill.format("align", value);
       setFormats((prev) => ({
         ...prev,
