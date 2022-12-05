@@ -33,7 +33,7 @@ const LetterWriteMain = (): ReactElement => {
     setCurrentClickedToolbarStatus((prev) => ({
       ...prev,
       type,
-      status: !prev?.status ?? true,
+      status: prev?.type !== type ? true : !prev?.status ?? true,
     }));
   };
   return (
