@@ -9,9 +9,9 @@ type ToolbarFormatType =
   | "italic"
   | "underline"
   | "strike"
-  | "header1"
-  | "header2"
-  | "header4"
+  | "huge"
+  | "large"
+  | "normal"
   | "left"
   | "center"
   | "right"
@@ -33,9 +33,9 @@ const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
     italic: "/Icons/icon__text-italic.svg",
     underline: "/Icons/icon__text-underline.svg",
     strike: "/Icons/icon__text-strike.svg",
-    header1: "/Icons/icon__text-header1.svg",
-    header2: "/Icons/icon__text-header2.svg",
-    header4: "/Icons/icon__text-header4.svg",
+    huge: "/Icons/icon__text-huge.svg",
+    large: "/Icons/icon__text-large.svg",
+    normal: "/Icons/icon__text-normal.svg",
   },
   Color: {
     color01: "/Icons/icon__text-color01.svg",
@@ -62,7 +62,8 @@ interface CustomTextEditorToolbarType {
   quillRef: RefAny;
 }
 
-const differentImageWidth = ["header1", "header2", "header4"];
+const fontStyleFormatArray = ["bold", "italic", "underline", "strike"];
+const fontSizeFormatArray = ["huge", "large", "normal"];
 
 const CustomTextEditorToolbar = ({
   type,
@@ -73,38 +74,33 @@ const CustomTextEditorToolbar = ({
     italic: false,
     underline: false,
     strike: false,
-    header1: 0,
-    header2: 0,
-    header4: 0,
+    huge: "",
+    large: "",
+    normal: false,
     left: false,
     center: "",
     right: "",
     justify: "",
   });
   const onClickToolbar = (toolbarDetailType: ToolbarFormatType) => {
-    // TODO: color 적용
+    // TODO: Color 적용
     const quill = quillRef.current.getEditor();
-    if (["bold", "italic", "underline", "strike"].includes(toolbarDetailType)) {
-      // 중복 적용 원활히 가능 [테스트 완료 ✅]
+    if (fontStyleFormatArray.includes(toolbarDetailType)) {
       const status = !formats[toolbarDetailType];
       quill.format(toolbarDetailType, status);
       setFormats((prev) => ({
         ...prev,
         [toolbarDetailType]: status,
       }));
-    } else if (toolbarDetailType.startsWith("header")) {
-      // 폰트 크기 - 현재 하나만 선택해서 일괄 적용 가능한 상태
-      let value = parseInt(toolbarDetailType.slice(-1));
-      if (formats[toolbarDetailType] === value) {
-        value = 0;
-      }
-      quill.format("header", value);
+    } else if (fontSizeFormatArray.includes(toolbarDetailType)) {
+      let value: ToolbarFormatType | boolean = toolbarDetailType;
+      if (value === "normal") value = false;
+      quill.format("size", value);
       setFormats((prev) => ({
         ...prev,
         [toolbarDetailType]: value,
       }));
     } else {
-      // 정렬 - 현재 하나만 선택해서 일괄 적용 가능한 상태
       let value: ToolbarFormatType | boolean = toolbarDetailType;
       if (toolbarDetailType === "left") value = false;
       quill.format("align", value);
@@ -127,7 +123,7 @@ const CustomTextEditorToolbar = ({
                 <Image
                   src={value}
                   alt={key}
-                  width={differentImageWidth.includes(key) ? 36 : 24}
+                  width={fontSizeFormatArray.includes(key) ? 36 : 24}
                   height={24}
                 />
               </S.CustomTextEditorToolbarButton>

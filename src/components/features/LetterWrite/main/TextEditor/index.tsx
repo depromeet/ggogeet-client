@@ -18,7 +18,7 @@ const ReactQuill = dynamic(
 const modules = {
   toolbar: [
     [
-      { size: ["small", false, "large", "huge"] },
+      { size: [false, "large", "huge"] },
       { color: [] },
       { background: [] },
       { align: ["justify", "", "center", "right"] },
