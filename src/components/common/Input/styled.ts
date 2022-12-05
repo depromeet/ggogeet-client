@@ -20,7 +20,7 @@ const inputFill = css`
   background-color: #f0f2f6;
 `;
 
-export const Wrap = styled.label<InputStyleProps>`
+export const Wrap = styled.div<InputStyleProps>`
   display: flex;
   align-items: center;
   ${({ status, styleOption }) =>
