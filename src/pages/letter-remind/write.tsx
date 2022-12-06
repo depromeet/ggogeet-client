@@ -1,6 +1,10 @@
 import TagButton from "@/src/components/common/Buttons/TagButton";
 import Input from "@/src/components/common/Input";
 import TopNavigation from "@/src/components/common/TopNavigation";
+import {
+  RemindWriteAlarmData,
+  RemindWriteEmotionData,
+} from "@/src/data/LetterRemind";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -42,32 +46,6 @@ const OkButton = styled.button`
 `;
 
 const LetterRemindWritePage = () => {
-  const emotionTagList = [
-    "축하해요",
-    "사랑해요",
-    "고마워요",
-    "미안해요",
-    "축하해요",
-    "사랑해요",
-    "고마워요",
-    "미안해요",
-    "축하해요",
-    "사랑해요",
-    "고마워요",
-    "미안해요",
-  ];
-
-  const alarmTagList = [
-    "하루 뒤",
-    "3일 뒤",
-    "5일 뒤",
-    "일주일 뒤",
-    "2주일 뒤",
-    "3주일 뒤",
-    "1달 뒤",
-    "2달 뒤",
-  ];
-
   return (
     <>
       <TopNavigation
@@ -101,7 +79,7 @@ const LetterRemindWritePage = () => {
           </InputContainer>
 
           <TagsContainer>
-            {emotionTagList.map((tag, index) => {
+            {RemindWriteEmotionData.map((tag, index) => {
               return (
                 <TagWrapper key={index}>
                   <TagButton content={tag} />
@@ -118,7 +96,7 @@ const LetterRemindWritePage = () => {
           </QuestionContainer>
 
           <TagsContainer>
-            {alarmTagList.map((tag, index) => {
+            {RemindWriteAlarmData.map((tag, index) => {
               return (
                 <TagWrapper key={index}>
                   <TagButton content={tag} />
