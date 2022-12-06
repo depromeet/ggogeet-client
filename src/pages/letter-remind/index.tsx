@@ -7,6 +7,7 @@ import Image from "next/image";
 
 const PageLayout = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
+  height: 100vh;
 `;
 
 const Layout = styled.div`
