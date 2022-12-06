@@ -3,20 +3,16 @@ import * as S from "./styled";
 
 type Props = {
   leftElem?: ReactNode;
-  title?: string;
+  title?: ReactNode;
   rightElem?: ReactNode;
 };
 
 export default function TopNavigation({ leftElem, title, rightElem }: Props) {
   return (
     <S.TopNavigationWrapper>
-      {leftElem}
-      {title && (
-        <S.TopNavigationTitle isCenter={!!leftElem}>
-          {title}
-        </S.TopNavigationTitle>
-      )}
-      {rightElem}
+      <S.TopNavigationLeftElem>{leftElem}</S.TopNavigationLeftElem>
+      <S.TopNavigationTitle isCenter={!!leftElem}>{title}</S.TopNavigationTitle>
+      <S.TopNavigationRightElem>{rightElem}</S.TopNavigationRightElem>
     </S.TopNavigationWrapper>
   );
 }
