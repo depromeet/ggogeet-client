@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const TodoContainerWrapper = styled.div`
+export const TodoLayout = styled.div`
   padding: 0 16px;
   display: flex;
   flex-direction: column;
@@ -10,32 +10,31 @@ export const TodoContainerWrapper = styled.div`
   background-color: antiquewhite; // 임시
 `;
 
-export const TodoContainerTitleWrapper = styled.div`
+export const TodoTitleContainer = styled.div`
   display: flex;
   padding: 12px 0;
   justify-content: space-between;
 `;
-
-interface TodoContainerContentWrapperProps {
+interface TodoContentContainerProps {
   isClicked: boolean;
 }
 
-export const TodoContainerContentWrapper = styled.div<TodoContainerContentWrapperProps>`
+export const TodoContentContainer = styled.div<TodoContentContainerProps>`
   padding: 12px 10px 12px 30px;
-  border-top: ${(props) => (props.isClicked ? "1px solid #a4a9b8" : "none")};
+  border-top: ${({ isClicked }) => (isClicked ? "1px solid #a4a9b8" : "none")};
   background-color: antiquewhite; // 임시
 `;
 
-export const TodoContainerInnerWrapper = styled.div`
+export const TodoInnerContainer = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const ContentUpperWrapper = styled.div`
+export const ContentUpperContainer = styled.div`
   margin: 0 0 10px 0;
 `;
 
-export const ContentLowerWrapper = styled.div``;
+export const ContentLowerContainer = styled.div``;
 
 export const DateWrapper = styled.div`
   padding: 0 8px 0 0;

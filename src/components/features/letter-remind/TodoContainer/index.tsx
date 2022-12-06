@@ -22,41 +22,39 @@ export default function TodoContainer({ todo }: Props) {
   const onClickContainer = () => setIsClicked((prev) => !prev);
 
   return (
-    <>
-      <S.TodoContainerWrapper onClick={onClickContainer}>
-        <S.TodoContainerTitleWrapper>
-          <S.TodoContainerInnerWrapper>
-            <S.CheckboxWrapper></S.CheckboxWrapper>
-            {isAlarm && (
-              <S.BellIconWrapper>
-                <Image
-                  src="/icons/bell.svg"
-                  alt="BellImg"
-                  width={10}
-                  height={12}
-                />
-              </S.BellIconWrapper>
-            )}
-            {title}
-          </S.TodoContainerInnerWrapper>
+    <S.TodoLayout onClick={onClickContainer}>
+      <S.TodoTitleContainer>
+        <S.TodoInnerContainer>
+          <S.CheckboxWrapper></S.CheckboxWrapper>
+          {isAlarm && (
+            <S.BellIconWrapper>
+              <Image
+                src="/icons/bell.svg"
+                alt="BellImg"
+                width={10}
+                height={12}
+              />
+            </S.BellIconWrapper>
+          )}
+          {title}
+        </S.TodoInnerContainer>
 
-          <S.TodoContainerInnerWrapper>
-            <S.DateWrapper> {date}</S.DateWrapper>
-            <ToggleArrowButton isClicked={isClicked} />
-          </S.TodoContainerInnerWrapper>
-        </S.TodoContainerTitleWrapper>
+        <S.TodoInnerContainer>
+          <S.DateWrapper> {date}</S.DateWrapper>
+          <ToggleArrowButton isClicked={isClicked} />
+        </S.TodoInnerContainer>
+      </S.TodoTitleContainer>
 
-        {isClicked && (
-          <S.TodoContainerContentWrapper isClicked={isClicked}>
-            <S.ContentUpperWrapper>
-              <div>{situation}</div>
-              <div> {alarm}</div>
-            </S.ContentUpperWrapper>
+      {isClicked && (
+        <S.TodoContentContainer isClicked={isClicked}>
+          <S.ContentUpperContainer>
+            <div>{situation}</div>
+            <div> {alarm}</div>
+          </S.ContentUpperContainer>
 
-            <S.ContentLowerWrapper>{content}</S.ContentLowerWrapper>
-          </S.TodoContainerContentWrapper>
-        )}
-      </S.TodoContainerWrapper>
-    </>
+          <S.ContentLowerContainer>{content}</S.ContentLowerContainer>
+        </S.TodoContentContainer>
+      )}
+    </S.TodoLayout>
   );
 }
