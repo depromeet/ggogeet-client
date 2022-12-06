@@ -11,18 +11,19 @@ interface Props {
     alarm: string;
     content: string;
     isAlarm: boolean;
+    isComplete: boolean;
   };
 }
 
 export default function TodoContainer({ todo }: Props) {
-  const { title, date, situation, alarm, content, isAlarm } = todo;
+  const { title, date, situation, alarm, content, isAlarm, isComplete } = todo;
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const onClickContainer = () => setIsClicked((prev) => !prev);
 
   return (
-    <S.TodoLayout onClick={onClickContainer}>
+    <S.TodoLayout onClick={onClickContainer} isComplete={isComplete}>
       <S.TodoTitleContainer>
         <S.TodoInnerContainer>
           <S.CheckboxWrapper></S.CheckboxWrapper>

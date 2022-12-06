@@ -1,13 +1,18 @@
 import { Body2, Body4 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
-export const TodoLayout = styled.div`
+interface TodoLayoutProps {
+  isComplete: boolean;
+}
+
+export const TodoLayout = styled.div<TodoLayoutProps>`
   padding: 0 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
+  opacity: ${({ isComplete }) => (isComplete ? "50%" : "100%")};
   cursor: pointer;
 `;
 

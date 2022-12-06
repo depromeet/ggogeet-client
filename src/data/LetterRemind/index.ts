@@ -7,6 +7,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: true,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -16,6 +17,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: true,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -25,6 +27,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: false,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -34,6 +37,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: true,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -43,6 +47,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: false,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -52,6 +57,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: true,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -61,6 +67,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: false,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: false,
   },
   {
     title: "제목",
@@ -70,6 +77,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: true,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: true,
   },
   {
     title: "제목",
@@ -79,6 +87,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: true,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: true,
   },
   {
     title: "제목",
@@ -88,6 +97,7 @@ export const RemindData = [
     alarm: "2일 전 알림",
     isAlarm: false,
     content: "라면..버블티..불닭볶음면..치킨마요..참치캔..닭가슴살..등등..... ",
+    isComplete: true,
   },
 ];
 
