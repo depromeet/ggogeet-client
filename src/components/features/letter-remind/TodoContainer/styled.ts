@@ -5,7 +5,7 @@ export const TodoLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: ${(props) => (props.isClicked ? "8px 8px 0 0" : "8px")};
+  border-radius: 8px;
   cursor: pointer;
   background-color: antiquewhite; // 임시
 `;
@@ -15,14 +15,13 @@ export const TodoTitleContainer = styled.div`
   padding: 12px 0;
   justify-content: space-between;
 `;
-
 interface TodoContentContainerProps {
   isClicked: boolean;
 }
 
 export const TodoContentContainer = styled.div<TodoContentContainerProps>`
   padding: 12px 10px 12px 30px;
-  border-top: ${(props) => (props.isClicked ? "1px solid #a4a9b8" : "none")};
+  border-top: ${({ isClicked }) => (isClicked ? "1px solid #a4a9b8" : "none")};
   background-color: antiquewhite; // 임시
 `;
 
