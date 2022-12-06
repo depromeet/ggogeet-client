@@ -27,7 +27,17 @@ const TodoContainerWrapper = styled.div`
 const LetterRemindPage = () => {
   return (
     <PageLayout>
-      <TopNavigation title="꼬깃기억" />
+      <TopNavigation
+        title="꼬깃기억"
+        rightElem={
+          <Image
+            src="/icons/hamburger.svg"
+            alt="햄버거아이콘"
+            width={18}
+            height={16}
+          />
+        }
+      />
 
       <Layout>
         <ButtonsContainer>
