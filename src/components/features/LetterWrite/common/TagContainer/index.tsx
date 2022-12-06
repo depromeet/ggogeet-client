@@ -30,7 +30,7 @@ const LetterWriteTagContainer = (): ReactElement => {
         <TagButton
           key={tag}
           content={tag}
-          isDark={true}
+          isDark
           isSelected={letterWriteInputObjectState.relationship === tag}
           onClick={() => onSelectTag(tag)}
         />
