@@ -1,39 +1,46 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export type InputStatus = "inactive" | "active"; // Input 활성화 여부
+export type Status = "inactive" | "active"; // Input 활성화 여부
+export type StyleOption = "underline" | "fill"; // Input 스타일 옵션
 
 interface InputStyleProps {
-  status: InputStatus;
+  status: Status;
+  styleOption: StyleOption;
 }
 
-const statusStyle = {
-  inactive: css`
-    border-color: #e4e7ef;
-  `,
-  active: css`
-    border-color: #a4a9b8;
-  `,
-} as const;
-
-export const Wrap = styled.div`
-  height: inherit;
-`;
-export const Input = styled.input<InputStyleProps>`
-  color: #767c8d;
-
-  width: 100%;
-  height: inherit;
-  padding-bottom: 8px;
-  padding-left: 2px;
-
-  border: none;
+const inputUnderline = (status: Status) => css`
   border-bottom: 1px solid;
+  border-color: ${status === "active" ? "#a4a9b8" : "#e4e7ef"};
+  padding: 8px 2px;
+`;
+const inputFill = css`
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f2f6;
+`;
+
+export const Wrap = styled.div<InputStyleProps>`
+  display: flex;
+  align-items: center;
+  ${({ status, styleOption }) =>
+    styleOption === "underline" ? inputUnderline(status) : inputFill}
+`;
+export const Input = styled.input`
+  color: #767c8d;
+  border: none;
   outline: none;
+  width: 100%;
+  background-color: inherit;
+  border-radius: inherit;
 
   &::placeholder {
     color: #bcc1d0;
   }
+`;
 
-  ${({ status }) => statusStyle[status]}
+export const ClearButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 `;
