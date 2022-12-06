@@ -3,6 +3,11 @@ import TopNavigation from "@/src/components/common/TopNavigation";
 import TodoContainer from "@/src/components/features/letter-remind/TodoContainer";
 import { RemindData } from "@/src/data/LetterRemind";
 import styled from "@emotion/styled";
+import Image from "next/image";
+
+const PageLayout = styled.div`
+  background-color: ${({ theme }) => theme.colors.light};
+`;
 
 const Layout = styled.div`
   padding: 12px 16px 0 16px;
@@ -21,7 +26,7 @@ const TodoContainerWrapper = styled.div`
 
 const LetterRemindPage = () => {
   return (
-    <>
+    <PageLayout>
       <TopNavigation title="꼬깃기억" />
 
       <Layout>
@@ -39,7 +44,7 @@ const LetterRemindPage = () => {
           );
         })}
       </Layout>
-    </>
+    </PageLayout>
   );
 };
 
