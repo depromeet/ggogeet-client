@@ -22,4 +22,5 @@ const Template: ComponentStory<typeof Textarea> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   placeholder: "Textarea Component PlaceHolder",
+  maxLength: 50,
 };
