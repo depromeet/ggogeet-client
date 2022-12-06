@@ -5,13 +5,8 @@ export const BottomButtonWrapper = styled.button<{
   isRound: boolean;
   isDark: boolean;
 }>`
-  position: fixed;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  bottom: 8px;
   cursor: pointer;
-  width: calc(100% - 32px);
+  width: 100%;
   padding: ${({ isRound }) => (isRound ? "16px" : "14px")} 0;
   border-radius: ${({ isRound }) => (isRound ? "30px" : "12px")};
   text-align: center;
