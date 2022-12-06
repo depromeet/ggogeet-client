@@ -9,5 +9,5 @@ export const ToggleArrowButtonContainer = styled.button<ToggleArrowButtonContain
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transform: ${(props) => (props.isClicked ? "rotate(180deg)" : "rotate(0)")};
+  transform: ${({ isClicked }) => (isClicked ? "rotate(180deg)" : "rotate(0)")};
 `;
