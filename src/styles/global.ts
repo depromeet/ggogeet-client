@@ -18,6 +18,8 @@ export const global = (theme: Theme) => css`
       Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
       "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   ul {
@@ -80,7 +82,7 @@ export const global = (theme: Theme) => css`
 
   [data-rsbs-overlay] {
     border-radius: 30px 30px 0px 0px;
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
   }
 
   [data-rsbs-header] {
