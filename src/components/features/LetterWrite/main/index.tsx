@@ -5,6 +5,8 @@ import { ReactElement, useRef, useState } from "react";
 import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";
 import * as S from "./styled";
+import BottomSheet from "@/src/components/common/BottomSheet";
+import Guideline from "./Guideline";
 
 export type ToolbarClickedStatusType =
   | "Text"
@@ -29,12 +31,18 @@ const LetterWriteMain = (): ReactElement => {
   const quillRef = useRef<RefAny>();
   const [currentClickedToolbarStatus, setCurrentClickedToolbarStatus] =
     useState<ToolbarClickedStatusObject>();
+  const [isBottomSheetOpened, setIsBottomSheetOpened] =
+    useState<boolean>(false);
   const onToggleToolbar = (type: ToolbarClickedStatusType) => {
-    setCurrentClickedToolbarStatus((prev) => ({
-      ...prev,
-      type,
-      status: prev?.type !== type ? true : !prev?.status ?? true,
-    }));
+    if (type === "Guideline") {
+      setIsBottomSheetOpened(true);
+    } else {
+      setCurrentClickedToolbarStatus((prev) => ({
+        ...prev,
+        type,
+        status: prev?.type !== type ? true : !prev?.status ?? true,
+      }));
+    }
   };
   return (
     <>
@@ -65,6 +73,14 @@ const LetterWriteMain = (): ReactElement => {
       <S.TextEditorContainer>
         <TextEditor quillRef={quillRef} />
       </S.TextEditorContainer>
+      <BottomSheet
+        isOpened={isBottomSheetOpened}
+        onClose={() => {
+          setIsBottomSheetOpened(false);
+        }}
+      >
+        <Guideline />
+      </BottomSheet>
     </>
   );
 };
