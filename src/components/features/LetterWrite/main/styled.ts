@@ -193,16 +193,26 @@ const GuidelineContentsWrapper = styled.div`
   gap: 8px;
   overflow-y: auto;
   height: 245px;
-  button {
+  & > button {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 12px;
+    min-height: 44px;
     width: 100%;
     background: #f8f8fb;
     border-radius: 8px;
 
-    line-height: 17px;
-    color: #767c8d;
-    ${Body4}
+    span {
+      line-height: 17px;
+      color: #767c8d;
+      ${Body4}
+    }
+
+    button {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
