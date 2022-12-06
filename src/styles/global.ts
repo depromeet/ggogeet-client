@@ -51,9 +51,14 @@ export const global = (theme: Theme) => css`
     appearance: none;
     outline: none;
   }
+  input::placeholder,
+  textarea::placeholder {
+    color: #bcc1d0;
+  }
 
   textarea {
     resize: none;
+    font-family: inherit;
   }
 
   .a11y-hidden {

@@ -33,10 +33,6 @@ export const Input = styled.input`
   width: 100%;
   background-color: inherit;
   border-radius: inherit;
-
-  &::placeholder {
-    color: #bcc1d0;
-  }
 `;
 
 export const ClearButton = styled.button`
