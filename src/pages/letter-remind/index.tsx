@@ -3,8 +3,14 @@ import TopNavigation from "@/src/components/common/TopNavigation";
 import TodoContainer from "@/src/components/features/letter-remind/TodoContainer";
 import { RemindData } from "@/src/data/LetterRemind";
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 const Layout = styled.div`
+  background-color: ${({ theme }) => theme.colors.light};
+  height: 100vh;
+`;
+
+const MainLayout = styled.div`
   padding: 12px 16px 0 16px;
 `;
 
@@ -21,10 +27,20 @@ const TodoContainerWrapper = styled.div`
 
 const LetterRemindPage = () => {
   return (
-    <>
-      <TopNavigation title="꼬깃기억" />
+    <Layout>
+      <TopNavigation
+        title="꼬깃기억"
+        rightElem={
+          <Image
+            src="/icons/hamburger.svg"
+            alt="햄버거아이콘"
+            width={18}
+            height={16}
+          />
+        }
+      />
 
-      <Layout>
+      <MainLayout>
         <ButtonsContainer>
           <Button name="모든 꼬깃기억" fontStyle="bold" isDark={true} />
           <Button name="미완료" fontStyle="bold" isDark={true} />
@@ -38,8 +54,8 @@ const LetterRemindPage = () => {
             </TodoContainerWrapper>
           );
         })}
-      </Layout>
-    </>
+      </MainLayout>
+    </Layout>
   );
 };
 
