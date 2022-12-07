@@ -69,7 +69,7 @@ const LetterRemindWritePage = () => {
             width={19}
             height={17}
           />
-        } // 뒤로가기화살표 임시
+        } // NOTE: 뒤로가기화살표 임시
         rightElem={<OkButton>확인</OkButton>}
       />
 
