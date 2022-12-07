@@ -5,12 +5,12 @@ import { RemindData } from "@/src/data/LetterRemind";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-const PageLayout = styled.div`
+const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
   height: 100vh;
 `;
 
-const Layout = styled.div`
+const MainLayout = styled.div`
   padding: 12px 16px 0 16px;
 `;
 
@@ -27,7 +27,7 @@ const TodoContainerWrapper = styled.div`
 
 const LetterRemindPage = () => {
   return (
-    <PageLayout>
+    <Layout>
       <TopNavigation
         title="꼬깃기억"
         rightElem={
@@ -40,7 +40,7 @@ const LetterRemindPage = () => {
         }
       />
 
-      <Layout>
+      <MainLayout>
         <ButtonsContainer>
           <Button name="모든 꼬깃기억" fontStyle="bold" isDark={true} />
           <Button name="미완료" fontStyle="bold" isDark={true} />
@@ -54,8 +54,8 @@ const LetterRemindPage = () => {
             </TodoContainerWrapper>
           );
         })}
-      </Layout>
-    </PageLayout>
+      </MainLayout>
+    </Layout>
   );
 };
 
