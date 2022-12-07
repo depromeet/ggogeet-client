@@ -7,7 +7,7 @@ import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
 } from "@/src/data/LetterRemind";
-import { Body2, Body4, Header5 } from "@/src/styles/commons";
+import { Body2, Body4, Header4, Header5 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -32,6 +32,11 @@ const QuestionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px 0;
+`;
+
+const TopNavigationTitle = styled.p`
+  color: ${({ theme }) => theme.colors.gray5};
+  ${Header4}
 `;
 
 const OkButton = styled.button`
@@ -61,7 +66,7 @@ const LetterRemindWritePage = () => {
   return (
     <>
       <TopNavigation
-        title="꼬깃기억 추가"
+        title={<TopNavigationTitle>꼬깃기억 추가</TopNavigationTitle>}
         leftElem={
           <Image
             alt="뒤로가기화살표"
