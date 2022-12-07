@@ -1,27 +1,30 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Header2, Header4 } from "@/src/styles/commons";
 
 export const TopNavigationWrapper = styled.header`
   padding: 10px 16px;
   height: 44px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  position: relative;
 `;
 
-export const TopNavigationTitle = styled.span<{
-  isCenter: boolean;
-}>`
-  color: #767c8d;
+export const TopNavigationLeftElem = styled.span`
+  position: absolute;
+  left: 16px;
+`;
+
+export const TopNavigationTitle = styled.span<{ isCenter: boolean }>`
   ${({ isCenter }) =>
-    isCenter
-      ? css`
-          line-height: 21px;
-          ${Header4}
-        `
-      : css`
-          line-height: 24px;
-          ${Header2}
-        `}
+    isCenter &&
+    css`
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    `}
+`;
+
+export const TopNavigationRightElem = styled.span`
+  position: absolute;
+  right: 16px;
 `;
