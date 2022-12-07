@@ -1,5 +1,6 @@
 import TagButton from "@/src/components/common/Buttons/TagButton";
 import InputDefault from "@/src/components/common/Input";
+import TagsContainer from "@/src/components/common/TagsContainer";
 import { Textarea } from "@/src/components/common/Textarea/styled";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import {
@@ -27,23 +28,11 @@ const InputContainer = styled.div`
   margin: 0 0 16px 0;
 `;
 
-const TagsContainer = styled.div`
-  display: flex;
-  overflow: auto;
-  white-space: nowrap;
-`;
-
 const QuestionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px 0;
 `;
-
-const TagWrapper = styled.div`
-  margin: 0 8px 0 0;
-`;
-
-const Tag = styled(TagButton)``;
 
 const OkButton = styled.button`
   color: ${({ theme }) => theme.colors.gray4};
@@ -101,15 +90,7 @@ const LetterRemindWritePage = () => {
             <Textarea maxLength={100} />
           </InputContainer>
 
-          <TagsContainer>
-            {RemindWriteEmotionData.map((tag, index) => {
-              return (
-                <TagWrapper key={index}>
-                  <Tag content={tag} />
-                </TagWrapper>
-              );
-            })}
-          </TagsContainer>
+          <TagsContainer tagArray={RemindWriteEmotionData} />
         </UpperLayout>
 
         <LowerLayout>
@@ -118,15 +99,7 @@ const LetterRemindWritePage = () => {
             <p>스위치</p>
           </QuestionContainer>
 
-          <TagsContainer>
-            {RemindWriteAlarmData.map((tag, index) => {
-              return (
-                <TagWrapper key={index}>
-                  <Tag content={tag} />
-                </TagWrapper>
-              );
-            })}
-          </TagsContainer>
+          <TagsContainer tagArray={RemindWriteAlarmData} />
         </LowerLayout>
       </Layout>
     </>
