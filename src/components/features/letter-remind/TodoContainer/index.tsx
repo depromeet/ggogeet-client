@@ -41,9 +41,7 @@ export default function TodoContainer({ todo }: Props) {
         </S.TodoInnerContainer>
 
         <S.TodoInnerContainer>
-          <S.DateWrapper>
-            <S.Date>{date}</S.Date>
-          </S.DateWrapper>
+          <S.Date>{date}</S.Date>
           <ToggleArrowButton isClicked={isClicked} />
         </S.TodoInnerContainer>
       </S.TodoTitleContainer>

@@ -49,12 +49,8 @@ export const ContentUpperContentsContainer = styled.div`
   padding: 0 0 5px 0;
 `;
 
-export const DateWrapper = styled.div`
-  padding: 0 8px 0 0;
-`;
-
 export const CheckboxWrapper = styled.div`
-  padding: 0 8px 0 0;
+  padding: 0 8px 0 0; // 체크박스 컴포넌트 추가되면 삭제 예정
 `;
 
 export const BellIconWrapper = styled.div`
@@ -68,11 +64,13 @@ export const Title = styled.p`
 
 export const Date = styled.p`
   color: ${({ theme }) => theme.colors.gray4};
+  padding: 0 8px 0 0;
   ${Body4}
 `;
 
 export const Content = styled.p`
   color: ${({ theme }) => theme.colors.gray5};
+  // white-space: pre-line
   ${Body4}
 `;
 
