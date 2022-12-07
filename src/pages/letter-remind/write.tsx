@@ -1,10 +1,12 @@
 import TagButton from "@/src/components/common/Buttons/TagButton";
-import Input from "@/src/components/common/Input";
+import InputDefault from "@/src/components/common/Input";
+import { Textarea } from "@/src/components/common/Textarea/styled";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
 } from "@/src/data/LetterRemind";
+import { Body2, Body4, Header5 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -41,8 +43,29 @@ const TagWrapper = styled.div`
   margin: 0 8px 0 0;
 `;
 
+const Tag = styled(TagButton)``;
+
 const OkButton = styled.button`
+  color: ${({ theme }) => theme.colors.gray4};
+  ${Header5}
   cursor: pointer;
+`;
+
+const InputName = styled.p`
+  color: ${({ theme }) => theme.colors.gray4};
+  padding: 0 0 8px 0;
+  ${Body4};
+`;
+
+const Question = styled.p`
+  color: ${({ theme }) => theme.colors.gray5};
+  ${Body2}
+`;
+
+const RemindWriteInput = styled(InputDefault)`
+  height: 24px;
+  color: ${({ theme }) => theme.colors.gray5};
+  ${Body2}
 `;
 
 const LetterRemindWritePage = () => {
@@ -57,32 +80,32 @@ const LetterRemindWritePage = () => {
             width={19}
             height={17}
           />
-        }
+        } // 뒤로가기화살표 임시
         rightElem={<OkButton>확인</OkButton>}
       />
 
       <Layout>
         <UpperLayout>
           <InputContainer>
-            <p>날짜</p>
-            <Input />
+            <InputName>날짜</InputName>
+            <RemindWriteInput styleOption="fill" />
           </InputContainer>
 
           <InputContainer>
-            <p>제목</p>
-            <Input />
+            <InputName>제목</InputName>
+            <RemindWriteInput styleOption="fill" />
           </InputContainer>
 
           <InputContainer>
-            <p>내용</p>
-            <Input />
+            <InputName>내용</InputName>
+            <Textarea maxLength={100} />
           </InputContainer>
 
           <TagsContainer>
             {RemindWriteEmotionData.map((tag, index) => {
               return (
                 <TagWrapper key={index}>
-                  <TagButton content={tag} />
+                  <Tag content={tag} />
                 </TagWrapper>
               );
             })}
@@ -91,7 +114,7 @@ const LetterRemindWritePage = () => {
 
         <LowerLayout>
           <QuestionContainer>
-            <p>잊지 않게 한번 더 알려줄까요?</p>
+            <Question>잊지 않게 한번 더 알려줄까요?</Question>
             <p>스위치</p>
           </QuestionContainer>
 
@@ -99,7 +122,7 @@ const LetterRemindWritePage = () => {
             {RemindWriteAlarmData.map((tag, index) => {
               return (
                 <TagWrapper key={index}>
-                  <TagButton content={tag} />
+                  <Tag content={tag} />
                 </TagWrapper>
               );
             })}
