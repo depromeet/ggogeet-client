@@ -6,12 +6,14 @@ interface Props {
 }
 
 export default function TagsContainer({ tagArray }: Props) {
+  let clickedButton = 1; // NOTE: 클릭시 적용되는 스타일 테스트를 위한 임시 변수
+
   return (
     <S.TagsContainer>
       {tagArray.map((tag, index) => {
         return (
           <S.TagWrapper key={index}>
-            <S.Tag content={tag} />
+            <S.Tag content={tag} isClicked={clickedButton === index} />
           </S.TagWrapper>
         );
       })}
