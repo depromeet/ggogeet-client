@@ -18,4 +18,6 @@ interface TagProps {
 export const Tag = styled(TagButton)<TagProps>`
   background-color: ${({ isClicked, theme }) =>
     isClicked ? theme.colors.dark : theme.colors.white};
+  /* 임시 스타일 적용 */
+  /* 적용 안되는 중  */
 `;
