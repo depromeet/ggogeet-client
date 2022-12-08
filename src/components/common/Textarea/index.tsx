@@ -13,7 +13,7 @@ export default function Textarea({ ...props }: Props) {
       <S.Textarea ref={textareaRef} {...props} />
       {props.maxLength && (
         <S.LengthCount>
-          <S.Length length={valueLength}>{valueLength}</S.Length>
+          <S.Length length={valueLength}>{valueLength}</S.Length> /{" "}
           {props.maxLength}
         </S.LengthCount>
       )}

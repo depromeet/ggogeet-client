@@ -1,7 +1,6 @@
-import TagButton from "@/src/components/common/Buttons/TagButton";
 import InputDefault from "@/src/components/common/Input";
 import TagsContainer from "@/src/components/common/TagsContainer";
-import { Textarea } from "@/src/components/common/Textarea/styled";
+import Textarea from "@/src/components/common/Textarea";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import {
   RemindWriteAlarmData,
@@ -57,7 +56,14 @@ const Question = styled.p`
 `;
 
 const RemindWriteInput = styled(InputDefault)`
+  // NOTE: 날짜부분 input 따로 만들게 되면 변수명 변경하기
   height: 24px;
+  color: ${({ theme }) => theme.colors.gray5};
+  ${Body2}
+`;
+
+const ContentTextArea = styled(Textarea)`
+  height: 70px;
   color: ${({ theme }) => theme.colors.gray5};
   ${Body2}
 `;
@@ -92,7 +98,7 @@ const LetterRemindWritePage = () => {
 
           <InputContainer>
             <InputName>내용</InputName>
-            <Textarea maxLength={100} />
+            <ContentTextArea maxLength={100} />
           </InputContainer>
 
           <TagsContainer tagArray={RemindWriteEmotionData} />
