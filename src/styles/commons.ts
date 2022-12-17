@@ -1,13 +1,13 @@
 import { css } from "@emotion/react";
 
 export const Header1 = css`
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   font-display: swap;
 `;
 
 export const Header2 = css`
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   font-display: swap;
 `;
