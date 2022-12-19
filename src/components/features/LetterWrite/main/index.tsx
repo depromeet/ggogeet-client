@@ -1,6 +1,6 @@
 import TextEditor from "@/src/components/features/LetterWrite/main/TextEditor";
 import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/main/TextEditor/CustomTextEditorToolbar";
-import TextTip from "@/src/components/features/LetterWrite/main/TextTip";
+// import TextTip from "@/src/components/features/LetterWrite/main/TextTip";
 import { ReactElement, useRef, useState } from "react";
 import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";

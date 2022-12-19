@@ -14,46 +14,107 @@ type ToolbarFormatType =
   | "normal"
   | "left"
   | "center"
-  | "right"
-  | "justify";
+  | "right";
 
 type ToolbarFormatsStatus = {
-  [key in ToolbarFormatType]: boolean | number | string;
+  [key in ToolbarFormatType]: boolean | string;
 };
 
 type CustomTextEditorToolbarMapType = {
   [key in ToolbarClickedStatusType]?: {
-    [index: string]: string;
+    [index: string]: {
+      default: string;
+      active: string;
+    };
   };
 };
 
 const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
   Text: {
-    bold: "/Icons/icon__text-bold.svg",
-    italic: "/Icons/icon__text-italic.svg",
-    underline: "/Icons/icon__text-underline.svg",
-    strike: "/Icons/icon__text-strike.svg",
-    huge: "/Icons/icon__text-huge.svg",
-    large: "/Icons/icon__text-large.svg",
-    normal: "/Icons/icon__text-normal.svg",
+    bold: {
+      default: "/Icons/icon__text-bold.svg",
+      active: "/Icons/icon__text-bold--active.svg",
+    },
+    italic: {
+      default: "/Icons/icon__text-italic.svg",
+      active: "/Icons/icon__text-italic--active.svg",
+    },
+    underline: {
+      default: "/Icons/icon__text-underline.svg",
+      active: "/Icons/icon__text-underline--active.svg",
+    },
+    strike: {
+      default: "/Icons/icon__text-strike.svg",
+      active: "/Icons/icon__text-strike--active.svg",
+    },
+    huge: {
+      default: "/Icons/icon__text-huge.svg",
+      active: "/Icons/icon__text-huge.svg",
+    },
+    large: {
+      default: "/Icons/icon__text-large.svg",
+      active: "/Icons/icon__text-large.svg",
+    },
+    normal: {
+      default: "/Icons/icon__text-normal.svg",
+      active: "/Icons/icon__text-normal.svg",
+    },
   },
   Color: {
-    color01: "/Icons/icon__text-color01.svg",
-    color02: "/Icons/icon__text-color02.svg",
-    color03: "/Icons/icon__text-color03.svg",
-    color04: "/Icons/icon__text-color04.svg",
-    color05: "/Icons/icon__text-color05.svg",
-    bgColor01: "/Icons/icon__text-bgColor01.svg",
-    bgColor02: "/Icons/icon__text-bgColor02.svg",
-    bgColor03: "/Icons/icon__text-bgColor03.svg",
-    bgColor04: "/Icons/icon__text-bgColor04.svg",
-    bgColor05: "/Icons/icon__text-bgColor05.svg",
+    color01: {
+      default: "/Icons/icon__text-color01.svg",
+      active: "/Icons/icon__text-color01--active.svg",
+    },
+    color02: {
+      default: "/Icons/icon__text-color02.svg",
+      active: "/Icons/icon__text-color02--active.svg",
+    },
+    color03: {
+      default: "/Icons/icon__text-color03.svg",
+      active: "/Icons/icon__text-color03--active.svg",
+    },
+    color04: {
+      default: "/Icons/icon__text-color04.svg",
+      active: "/Icons/icon__text-color04--active.svg",
+    },
+    color05: {
+      default: "/Icons/icon__text-color05.svg",
+      active: "/Icons/icon__text-color05--active.svg",
+    },
+    bgColor01: {
+      default: "/Icons/icon__text-bgColor01.svg",
+      active: "/Icons/icon__text-bgColor01--active.svg",
+    },
+    bgColor02: {
+      default: "/Icons/icon__text-bgColor02.svg",
+      active: "/Icons/icon__text-bgColor02--active.svg",
+    },
+    bgColor03: {
+      default: "/Icons/icon__text-bgColor03.svg",
+      active: "/Icons/icon__text-bgColor03--active.svg",
+    },
+    bgColor04: {
+      default: "/Icons/icon__text-bgColor04.svg",
+      active: "/Icons/icon__text-bgColor04--active.svg",
+    },
+    bgColor05: {
+      default: "/Icons/icon__text-bgColor05.svg",
+      active: "/Icons/icon__text-bgColor05--active.svg",
+    },
   },
   Align: {
-    left: "/Icons/icon__align-left.svg",
-    center: "/Icons/icon__align-center.svg",
-    right: "/Icons/icon__align-right.svg",
-    justify: "/Icons/icon__align-justify.svg",
+    left: {
+      default: "/Icons/icon__align-left.svg",
+      active: "/Icons/icon__align-left--active.svg",
+    },
+    center: {
+      default: "/Icons/icon__align-center.svg",
+      active: "/Icons/icon__align-center--active.svg",
+    },
+    right: {
+      default: "/Icons/icon__align-right.svg",
+      active: "/Icons/icon__align-right--active.svg",
+    },
   },
 };
 
@@ -63,7 +124,11 @@ interface CustomTextEditorToolbarType {
 }
 
 const fontStyleFormatArray = ["bold", "italic", "underline", "strike"];
-const fontSizeFormatArray = ["huge", "large", "normal"];
+const fontSizeFormatObject = {
+  huge: 41,
+  large: 39,
+  normal: 25,
+};
 
 const CustomTextEditorToolbar = ({
   type,
@@ -76,11 +141,10 @@ const CustomTextEditorToolbar = ({
     strike: false,
     huge: "",
     large: "",
-    normal: false,
-    left: false,
+    normal: "",
+    left: "",
     center: "",
     right: "",
-    justify: "",
   });
   const onClickToolbar = (toolbarDetailType: ToolbarFormatType) => {
     // TODO: Color 적용
@@ -92,13 +156,14 @@ const CustomTextEditorToolbar = ({
         ...prev,
         [toolbarDetailType]: status,
       }));
-    } else if (fontSizeFormatArray.includes(toolbarDetailType)) {
+    } else if (Object.keys(fontSizeFormatObject).includes(toolbarDetailType)) {
       let value: ToolbarFormatType | boolean = toolbarDetailType;
       if (value === "normal") value = false;
       quill.format("size", value);
       setFormats((prev) => ({
         ...prev,
-        [toolbarDetailType]: value,
+        ...{ huge: "", large: "", normal: "" },
+        [toolbarDetailType]: value || "normal",
       }));
     } else {
       let value: ToolbarFormatType | boolean = toolbarDetailType;
@@ -106,10 +171,12 @@ const CustomTextEditorToolbar = ({
       quill.format("align", value);
       setFormats((prev) => ({
         ...prev,
-        [toolbarDetailType]: value,
+        ...{ left: "", right: "", center: "" },
+        [toolbarDetailType]: value || "left",
       }));
     }
   };
+
   return (
     <>
       {customTextEditorToolbarMap[type] && (
@@ -121,9 +188,17 @@ const CustomTextEditorToolbar = ({
                 onClick={() => onClickToolbar(key as ToolbarFormatType)}
               >
                 <Image
-                  src={value}
+                  src={
+                    formats[key as ToolbarFormatType]
+                      ? value.active
+                      : value.default
+                  }
                   alt={key}
-                  width={fontSizeFormatArray.includes(key) ? 36 : 24}
+                  width={
+                    fontSizeFormatObject[
+                      key as keyof typeof fontSizeFormatObject
+                    ] || 24
+                  }
                   height={24}
                 />
               </S.CustomTextEditorToolbarButton>

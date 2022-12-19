@@ -10,24 +10,24 @@ type Props = {
 
 const toolbarItemMap = {
   Text: {
-    defaultImageUrl: "/Icons/icon__text-editor--text.svg",
-    activeImageUrl: "/Icons/icon__text-editor--text-active.svg",
+    default: "/Icons/icon__text-editor-text.svg",
+    active: "/Icons/icon__text-editor-text--active.svg",
   },
   Color: {
-    defaultImageUrl: "/Icons/icon__text-editor--color.svg",
-    activeImageUrl: "/Icons/icon__text-editor--color-active.svg",
+    default: "/Icons/icon__text-editor-color.svg",
+    active: "/Icons/icon__text-editor-color--active.svg",
   },
   Align: {
-    defaultImageUrl: "/Icons/icon__text-editor--align.svg",
-    activeImageUrl: "/Icons/icon__text-editor--align-active.svg",
+    default: "/Icons/icon__text-editor-align.svg",
+    active: "/Icons/icon__text-editor-align--active.svg",
   },
   Guideline: {
-    defaultImageUrl: "/Icons/icon__text-editor--guideline.svg",
-    activeImageUrl: "/Icons/icon__text-editor--guideline.svg",
+    default: "/Icons/icon__text-editor-guideline.svg",
+    active: "/Icons/icon__text-editor-guideline.svg",
   },
   Remind: {
-    defaultImageUrl: "/Icons/icon__text-editor--remind.svg",
-    activeImageUrl: "/Icons/icon__text-editor--remind.svg",
+    default: "/Icons/icon__text-editor-remind.svg",
+    active: "/Icons/icon__text-editor-remind.svg",
   },
 } as const;
 
@@ -36,9 +36,7 @@ const Toolbar = ({ type, isClicked = false, onClick }: Props): ReactElement => {
     <S.ToolbarWrapper onClick={onClick}>
       <Image
         src={
-          isClicked
-            ? toolbarItemMap[type].activeImageUrl
-            : toolbarItemMap[type].defaultImageUrl
+          isClicked ? toolbarItemMap[type].active : toolbarItemMap[type].default
         }
         alt={type}
         width={24}
