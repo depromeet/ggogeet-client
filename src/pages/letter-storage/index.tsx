@@ -1,6 +1,7 @@
 import BottomSheet from "@/src/components/common/BottomSheet";
 import TopNavigation from "@/src/components/common/TopNavigation";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
 import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
 =======
@@ -8,6 +9,11 @@ import LetterContainer from "@/src/components/features/letter-storage/LetterCont
 import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
 import SenderListBottomSheet from "@/src/components/features/letter-storage/SenderListBottomSheet";
 >>>>>>> d081fda (💄 초기화버튼 생성)
+=======
+import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
+import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
+import SenderListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/SenderListBottomSheet";
+>>>>>>> 9529d38 (🚚  파일 이름 변경 및 이동)
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
