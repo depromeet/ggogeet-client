@@ -14,7 +14,21 @@ type ToolbarFormatType =
   | "normal"
   | "left"
   | "center"
-  | "right";
+  | "right"
+  | "color#1C1D22"
+  | "color#5B5D68"
+  | "color#F6523D"
+  | "color#FFF53E"
+  | "color#37BFA8"
+  | "color#648DF5"
+  | "color#9E8AFF"
+  | "background#1C1D22"
+  | "background#5B5D68"
+  | "background#F6523D"
+  | "background#FFF53E"
+  | "background#37BFA8"
+  | "background#648DF5"
+  | "background#9E8AFF";
 
 type ToolbarFormatsStatus = {
   [key in ToolbarFormatType]: boolean | string;
@@ -61,61 +75,61 @@ const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
     },
   },
   Color: {
-    color01: {
-      default: "/Icons/icon__text-color01.svg",
-      active: "/Icons/icon__text-color01--active.svg",
+    "color#1C1D22": {
+      default: "/Icons/icon__text-color-navy.svg",
+      active: "/Icons/icon__text-color-navy--active.svg",
     },
-    color02: {
-      default: "/Icons/icon__text-color02.svg",
-      active: "/Icons/icon__text-color02--active.svg",
+    "color#5B5D68": {
+      default: "/Icons/icon__text-color-gray.svg",
+      active: "/Icons/icon__text-color-gray--active.svg",
     },
-    color03: {
-      default: "/Icons/icon__text-color03.svg",
-      active: "/Icons/icon__text-color03--active.svg",
+    "color#F6523D": {
+      default: "/Icons/icon__text-color-red.svg",
+      active: "/Icons/icon__text-color-red--active.svg",
     },
-    color04: {
-      default: "/Icons/icon__text-color04.svg",
-      active: "/Icons/icon__text-color04--active.svg",
+    "color#FFF53E": {
+      default: "/Icons/icon__text-color-yellow.svg",
+      active: "/Icons/icon__text-color-yellow--active.svg",
     },
-    color05: {
-      default: "/Icons/icon__text-color05.svg",
-      active: "/Icons/icon__text-color05--active.svg",
+    "color#37BFA8": {
+      default: "/Icons/icon__text-color-green.svg",
+      active: "/Icons/icon__text-color-green--active.svg",
     },
-    color06: {
-      default: "/Icons/icon__text-color06.svg",
-      active: "/Icons/icon__text-color06--active.svg",
+    "color#648DF5": {
+      default: "/Icons/icon__text-color-blue.svg",
+      active: "/Icons/icon__text-color-blue--active.svg",
     },
-    color07: {
-      default: "/Icons/icon__text-color07.svg",
-      active: "/Icons/icon__text-color07--active.svg",
+    "color#9E8AFF": {
+      default: "/Icons/icon__text-color-purple.svg",
+      active: "/Icons/icon__text-color-purple--active.svg",
     },
-    bgColor01: {
-      default: "/Icons/icon__text-bgColor01.svg",
-      active: "/Icons/icon__text-bgColor01--active.svg",
+    "background#1C1D22": {
+      default: "/Icons/icon__text-background-navy.svg",
+      active: "/Icons/icon__text-background-navy--active.svg",
     },
-    bgColor02: {
-      default: "/Icons/icon__text-bgColor02.svg",
-      active: "/Icons/icon__text-bgColor02--active.svg",
+    "background#5B5D68": {
+      default: "/Icons/icon__text-background-gray.svg",
+      active: "/Icons/icon__text-background-gray--active.svg",
     },
-    bgColor03: {
-      default: "/Icons/icon__text-bgColor03.svg",
-      active: "/Icons/icon__text-bgColor03--active.svg",
+    "background#F6523D": {
+      default: "/Icons/icon__text-background-red.svg",
+      active: "/Icons/icon__text-background-red--active.svg",
     },
-    bgColor04: {
-      default: "/Icons/icon__text-bgColor04.svg",
-      active: "/Icons/icon__text-bgColor04--active.svg",
+    "background#FFF53E": {
+      default: "/Icons/icon__text-background-yellow.svg",
+      active: "/Icons/icon__text-background-yellow--active.svg",
     },
-    bgColor05: {
-      default: "/Icons/icon__text-bgColor05.svg",
-      active: "/Icons/icon__text-bgColor05--active.svg",
+    "background#37BFA8": {
+      default: "/Icons/icon__text-background-green.svg",
+      active: "/Icons/icon__text-background-green--active.svg",
     },
-    bgColor06: {
-      default: "/Icons/icon__text-bgColor06.svg",
-      active: "/Icons/icon__text-bgColor06--active.svg",
+    "background#648DF5": {
+      default: "/Icons/icon__text-background-blue.svg",
+      active: "/Icons/icon__text-background-blue--active.svg",
     },
-    bgColor07: {
-      default: "/Icons/icon__text-bgColor07.svg",
-      active: "/Icons/icon__text-bgColor07--active.svg",
+    "background#9E8AFF": {
+      default: "/Icons/icon__text-background-purple.svg",
+      active: "/Icons/icon__text-background-purple--active.svg",
     },
   },
   Align: {
@@ -145,6 +159,7 @@ const fontSizeFormatObject = {
   large: 39,
   normal: 25,
 };
+const alignFormatArray = ["left", "center", "right"];
 
 const CustomTextEditorToolbar = ({
   type,
@@ -161,6 +176,20 @@ const CustomTextEditorToolbar = ({
     left: "",
     center: "",
     right: "",
+    "color#1C1D22": "",
+    "color#5B5D68": "",
+    "color#F6523D": "",
+    "color#FFF53E": "",
+    "color#37BFA8": "",
+    "color#648DF5": "",
+    "color#9E8AFF": "",
+    "background#1C1D22": "",
+    "background#5B5D68": "",
+    "background#F6523D": "",
+    "background#FFF53E": "",
+    "background#37BFA8": "",
+    "background#648DF5": "",
+    "background#9E8AFF": "",
   });
   const onClickToolbar = (toolbarDetailType: ToolbarFormatType) => {
     // TODO: Color 적용
@@ -181,7 +210,7 @@ const CustomTextEditorToolbar = ({
         ...{ huge: "", large: "", normal: "" },
         [toolbarDetailType]: value || "normal",
       }));
-    } else {
+    } else if (alignFormatArray.includes(toolbarDetailType)) {
       let value: ToolbarFormatType | boolean = toolbarDetailType;
       if (toolbarDetailType === "left") value = false;
       quill.format("align", value);
@@ -190,6 +219,10 @@ const CustomTextEditorToolbar = ({
         ...{ left: "", right: "", center: "" },
         [toolbarDetailType]: value || "left",
       }));
+    } else {
+      // TODO: default/active 이미지 로직
+      const [type, hexColor] = toolbarDetailType.split("#");
+      quill.format(type, `#${hexColor}`);
     }
   };
 
