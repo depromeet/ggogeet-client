@@ -1,8 +1,5 @@
 import TopNavigation from "@/src/components/common/TopNavigation";
-import {
-  NavBack,
-  NavCancel,
-} from "@/src/components/common/TopNavigation/Atoms";
+import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import { ReactNode } from "react";
 import * as S from "../styled";
 
@@ -15,7 +12,7 @@ const LetterWriteInputRecipientLayout = ({
 }: ILetterWriteInputRecipientLayout) => {
   return (
     <S.LetterWriteInputRecipientLayoutWrapper>
-      <TopNavigation leftElem={<NavBack />} rightElem={<NavCancel />} />
+      <TopNavigation leftElem={<NavBack />} />
       {children}
     </S.LetterWriteInputRecipientLayoutWrapper>
   );
