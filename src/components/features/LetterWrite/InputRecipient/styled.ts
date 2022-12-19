@@ -8,34 +8,17 @@ const LetterWriteInputRecipientLayoutWrapper = styled.div`
 `;
 
 const BottomButtonContainer = styled.div<{ type?: string }>`
-  width: calc(100% - 32px);
+  width: 100%;
   position: fixed;
-  bottom: 16px;
-  margin: 0 auto;
+  padding: 20px;
+  bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 
   button {
+    /* FIXME: 공통 컴포넌트 BottomButton 참고 */
     height: 56px;
-    border-radius: 30px;
-  }
-
-  button {
-    ${({ type }) =>
-      type === "Initial Page" &&
-      `
-      width: 100%;
-    `}
-    &:first-of-type {
-      ${({ type }) =>
-        type === "Initial Page" &&
-        `
-        border: 1px solid #767c8d;
-    `}
-    }
+    border-radius: 2px;
   }
 `;
 
