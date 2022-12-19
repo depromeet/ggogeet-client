@@ -61,10 +61,8 @@ const LetterWriteMain = (): ReactElement => {
             type={currentClickedToolbarStatus.type}
           />
         )}
-      <TextTip text="Tip : 친구에게 고마웠던 일을 적어보세요" />
-      <S.TextEditorContainer>
-        <TextEditor quillRef={quillRef} />
-      </S.TextEditorContainer>
+      {/* <TextTip text="Tip : 친구에게 고마웠던 일을 적어보세요" /> */}
+      <TextEditor quillRef={quillRef} />
     </>
   );
 };

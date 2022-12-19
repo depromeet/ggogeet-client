@@ -37,17 +37,18 @@ const LetterWriteMainNavTitle = styled.span`
 
 const ToolbarContainerWrapper = styled.div`
   width: 100%;
-  height: 44px;
+  height: 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px 8px 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e3e3e7;
 `;
 
 const ToolbarInnerContainerWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 `;
 
 const ToolbarWrapper = styled.div`
@@ -64,43 +65,42 @@ const TextTipWrapper = styled.div`
   }
 `;
 
-const TextEditorContainer = styled.div`
-  padding: 0 16px;
-`;
-
 const ReactQuillWrapper = styled.div`
   .ql-toolbar {
     display: none;
   }
 
   .ql-toolbar.ql-snow + .ql-container.ql-snow {
-    border-top: 1px solid #e4e7ef;
+    border: none;
   }
 
   .ql-container {
     width: 100%;
-    height: 77vh;
-    background: #fcfcfc;
-    border: 1px solid #e4e7ef;
-    border-radius: 12px;
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+    background: #ffffff;
   }
 
   .ql-editor {
-    padding: 16px;
+    padding: 20px;
+    /* FIXME: 공통 style 이용 */
     font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: -0.5px;
-    color: #767c8d;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: -0.005em;
+    color: #1c1d22;
   }
 
   .ql-editor.ql-blank::before {
+    /* FIXME: 공통 style 이용 */
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: -0.5px;
-    color: #d8d8d8;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: -0.005em;
+    color: #878994;
+    left: unset;
+    right: unset;
   }
 `;
 
@@ -130,7 +130,6 @@ export {
   ToolbarInnerContainerWrapper,
   ToolbarWrapper,
   TextTipWrapper,
-  TextEditorContainer,
   ReactQuillWrapper,
   CustomTextEditorToolbarWrapper,
   CustomTextEditorToolbarButton,
