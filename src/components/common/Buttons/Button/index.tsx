@@ -1,35 +1,21 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
-import { FontStyle } from "./types";
 import * as S from "./styled";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   name: string;
-  fontStyle: FontStyle;
+  leftImg?: ReactNode;
   rightImg?: ReactNode;
+  outline?: boolean;
   isRound?: boolean;
-  isDark?: boolean;
-  onClick?: () => void;
+  isPressed?: boolean;
+  disabled?: boolean;
 }
 
-export default function Button({
-  name,
-  rightImg,
-  fontStyle,
-  isRound = false,
-  isDark = false,
-  onClick,
-  ...args
-}: Props) {
+export default function Button({ name, leftImg, rightImg, ...args }: Props) {
   return (
-    <S.ButtonWrapper
-      type="button"
-      isDark={isDark}
-      fontStyle={fontStyle}
-      isRound={isRound}
-      onClick={onClick}
-      {...args}
-    >
-      {name}
+    <S.ButtonWrapper {...args}>
+      {leftImg}
+      <S.ButtonName>{name}</S.ButtonName>
       {rightImg}
     </S.ButtonWrapper>
   );
