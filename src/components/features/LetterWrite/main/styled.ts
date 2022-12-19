@@ -1,6 +1,5 @@
-import { Header5, IconImage } from "@/src/styles/commons";
+import { IconImage } from "@/src/styles/commons";
 import styled from "@emotion/styled";
-import { ToolbarClickedStatusType } from ".";
 
 const LetterWriteMainLayoutWrapper = styled.div`
   width: 100%;
@@ -104,18 +103,15 @@ const ReactQuillWrapper = styled.div`
   }
 `;
 
-const CustomTextEditorToolbarWrapper = styled.div<{
-  type: ToolbarClickedStatusType;
-}>`
+const CustomTextEditorToolbarWrapper = styled.div`
   width: 100%;
-  height: 34px;
-  background: rgba(240, 242, 247, 0.5);
-  padding: 8px 16px;
-  margin-bottom: 6px;
+  height: 40px;
+  padding: 8px 20px;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  gap: ${({ type }) => (type === "Text" ? "4px" : "10px")};
+  overflow-x: auto;
+  gap: 16px;
+  border-bottom: 1px solid #e3e3e7;
 `;
 
 const CustomTextEditorToolbarButton = styled.button`

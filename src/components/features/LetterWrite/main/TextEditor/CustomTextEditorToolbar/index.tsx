@@ -113,7 +113,7 @@ const CustomTextEditorToolbar = ({
   return (
     <>
       {customTextEditorToolbarMap[type] && (
-        <S.CustomTextEditorToolbarWrapper type={type}>
+        <S.CustomTextEditorToolbarWrapper>
           {Object.entries(customTextEditorToolbarMap[type]!).map(
             ([key, value]) => (
               <S.CustomTextEditorToolbarButton
