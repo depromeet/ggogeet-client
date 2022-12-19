@@ -1,5 +1,5 @@
 import Button from "@/src/components/common/Buttons/Button";
-import Input from "@/src/components/common/Input";
+import { InputClear } from "@/src/components/common/Input";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { getNavigateNextLink } from "@/src/utils/LetterWrite";
 import { useRouter } from "next/router";
@@ -51,17 +51,23 @@ const ReceiverNameForm = (): ReactElement => {
 
   return (
     <>
-      <S.LetterWriteH1>누구에게 보낼건가요?</S.LetterWriteH1>
+      <S.LetterWriteH1>누구에게 보낼 건가요?</S.LetterWriteH1>
       <S.LetterWriteInputContainer>
-        <Input
+        <InputClear
           name="receiverName"
-          placeholder="이름을 입력해주세요"
+          placeholder="받는 사람의 이름을 입력해주세요"
           defaultValue={letterWriteInputObjectState.receiverName}
           value={letterWriteInputObjectState.receiverName}
           onChange={onChangeInputObject}
           onKeyUp={onKeyUpReceiverName}
           minLength={1}
           maxLength={10}
+          onClear={() => {
+            setLetterWriteInputObjectState((prev) => ({
+              ...prev,
+              receiverName: "",
+            }));
+          }}
         />
       </S.LetterWriteInputContainer>
       <S.BottomButtonContainer type="Initial Page">

@@ -40,21 +40,26 @@ const BottomButtonContainer = styled.div<{ type?: string }>`
 `;
 
 const LetterWriteInputRecipientMain = styled.main`
-  padding: 12px 16px;
-  height: calc(100vh - 44px);
+  padding: 20px;
 `;
 
 const LetterWriteInputContainer = styled.div`
-  margin-top: 32px;
-  height: 30px;
+  margin-top: 28px;
+  height: 33px;
   input {
+    /* FIXME: 공통 style 이용 */
     font-weight: 500;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    color: #ffffff;
+
     &::placeholder {
       font-weight: 500;
       font-size: 18px;
       line-height: 22px;
+      letter-spacing: -0.005em;
+      color: #5b5d68;
     }
   }
 `;
@@ -67,9 +72,11 @@ const RelationShipReceiverContainer = styled.div`
 `;
 
 const LetterWriteH1 = styled.h1`
+  /* FIXME: 공통 style 이용 */
+  font-weight: 600;
+  font-size: 24px;
   line-height: 150%;
-  color: #767c8d;
-  ${Header1}
+  color: #ffffff;
 `;
 
 const LetterWriteCaption1 = styled.small`
