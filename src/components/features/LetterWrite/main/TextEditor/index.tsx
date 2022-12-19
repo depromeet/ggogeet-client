@@ -43,6 +43,7 @@ const formats = [
 ];
 
 const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
+  // TODO: maxLength 350자 설정
   const [content, setContent] = useState<string>("");
   return (
     <S.ReactQuillWrapper>
