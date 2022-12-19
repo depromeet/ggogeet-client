@@ -9,7 +9,6 @@ interface Props {
     senderImage: string;
   };
 }
-
 export default function LetterContainer({ letter }: Props) {
   const { sender, content, date, image, senderImage } = letter;
 

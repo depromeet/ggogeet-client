@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 export const HeaderLayout = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const NavigationsContainer = styled.div`

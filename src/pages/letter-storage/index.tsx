@@ -1,8 +1,8 @@
 import BottomSheet from "@/src/components/common/BottomSheet";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
-import SenderListBottomSheet from "@/src/components/features/letter-storage/SenderListBottomSheet";
+import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
+import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
+import SenderListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/SenderListBottomSheet";
 import styled from "@emotion/styled";
 
 const Layout = styled.div`
