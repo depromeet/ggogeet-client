@@ -37,7 +37,6 @@ const ReceiverNameForm = (): ReactElement => {
         <InputClear
           name="receiverName"
           placeholder="받는 사람의 이름을 입력해주세요"
-          defaultValue={letterWriteInputObjectState.receiverName}
           value={letterWriteInputObjectState.receiverName}
           onChange={onChangeInputObject}
           minLength={1}
