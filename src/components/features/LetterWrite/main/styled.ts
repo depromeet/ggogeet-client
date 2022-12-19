@@ -116,6 +116,7 @@ const CustomTextEditorToolbarWrapper = styled.div`
 
 const CustomTextEditorToolbarButton = styled.button`
   cursor: pointer;
+  ${IconImage}
 `;
 
 export {

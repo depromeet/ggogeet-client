@@ -81,6 +81,14 @@ const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
       default: "/Icons/icon__text-color05.svg",
       active: "/Icons/icon__text-color05--active.svg",
     },
+    color06: {
+      default: "/Icons/icon__text-color06.svg",
+      active: "/Icons/icon__text-color06--active.svg",
+    },
+    color07: {
+      default: "/Icons/icon__text-color07.svg",
+      active: "/Icons/icon__text-color07--active.svg",
+    },
     bgColor01: {
       default: "/Icons/icon__text-bgColor01.svg",
       active: "/Icons/icon__text-bgColor01--active.svg",
@@ -100,6 +108,14 @@ const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
     bgColor05: {
       default: "/Icons/icon__text-bgColor05.svg",
       active: "/Icons/icon__text-bgColor05--active.svg",
+    },
+    bgColor06: {
+      default: "/Icons/icon__text-bgColor06.svg",
+      active: "/Icons/icon__text-bgColor06--active.svg",
+    },
+    bgColor07: {
+      default: "/Icons/icon__text-bgColor07.svg",
+      active: "/Icons/icon__text-bgColor07--active.svg",
     },
   },
   Align: {
