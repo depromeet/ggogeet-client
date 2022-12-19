@@ -6,7 +6,7 @@ import * as S from "../styled";
 const LetterWriteInputRecipientLayout = ({ children }: WrapperChildren) => {
   return (
     <S.LetterWriteInputRecipientLayoutWrapper>
-      <TopNavigation leftElem={<NavBack />} />
+      <TopNavigation leftElem={<NavBack color="white" />} />
       {children}
     </S.LetterWriteInputRecipientLayoutWrapper>
   );

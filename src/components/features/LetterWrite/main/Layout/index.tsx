@@ -30,7 +30,7 @@ const LetterWriteMainLayout = ({ children }: WrapperChildren) => {
   return (
     <S.LetterWriteMainLayoutWrapper>
       <TopNavigation
-        leftElem={<NavBack />}
+        leftElem={<NavBack color="black" />}
         title={letterWriteInputObjectState.receiverName}
         rightElem={
           <LetterWriteMainNavRight
