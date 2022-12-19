@@ -18,7 +18,7 @@ const LetterWriteMainNavRight = ({
   return (
     <S.LetterWriteMainNavRightWrapper>
       <button onClick={onClickSave}>저장</button>
-      <button onClick={onClickSend}>전송</button>
+      <button onClick={onClickSend}>완료</button>
     </S.LetterWriteMainNavRightWrapper>
   );
 };
@@ -31,7 +31,7 @@ const LetterWriteMainLayout = ({ children }: WrapperChildren) => {
     <S.LetterWriteMainLayoutWrapper>
       <TopNavigation
         leftElem={<NavBack color="black" />}
-        title={letterWriteInputObjectState.receiverName}
+        title={<S.LetterWriteMainNavTitle>꼬깃 작성</S.LetterWriteMainNavTitle>}
         rightElem={
           <LetterWriteMainNavRight
             onClickSave={onClickSave}

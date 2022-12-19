@@ -10,18 +10,29 @@ const LetterWriteMainLayoutWrapper = styled.div`
 const LetterWriteMainNavRightWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   button {
+    /* FIXME: 공통 style 이용 */
+    font-weight: 500;
+    font-size: 16px;
     line-height: 150%;
-    letter-spacing: -0.005em;
-    ${Header5}
+    letter-spacing: -0.5px;
   }
   button:first-of-type {
-    color: #989fb3;
+    color: #5b5d68;
   }
   button:last-of-type {
-    color: #c5cad8;
+    color: #3e4049;
   }
+`;
+
+const LetterWriteMainNavTitle = styled.span`
+  /* FIXME: 공통 style 이용 */
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: #1c1d22;
 `;
 
 const ToolbarContainerWrapper = styled.div`
@@ -113,6 +124,7 @@ const CustomTextEditorToolbarButton = styled.button`
 
 export {
   LetterWriteMainLayoutWrapper,
+  LetterWriteMainNavTitle,
   LetterWriteMainNavRightWrapper,
   ToolbarContainerWrapper,
   ToolbarInnerContainerWrapper,
