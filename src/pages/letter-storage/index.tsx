@@ -12,8 +12,11 @@ import SenderListBottomSheet from "@/src/components/features/letter-storage/Send
 =======
 import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
 import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
+<<<<<<< HEAD
 import SenderListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/SenderListBottomSheet";
 >>>>>>> 9529d38 (🚚  파일 이름 변경 및 이동)
+=======
+>>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
@@ -122,12 +125,21 @@ const LetterStoragePage = () => {
       </Layout>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
         <ListBottomSheet listArray={SenderData} />
       </BottomSheet>
 =======
       <LetterStorageBottomSheet onClose={onClose} isOpened={true}>
         <SenderListBottomSheet />
+=======
+      <LetterStorageBottomSheet
+        onClose={onClose}
+        isOpened={true}
+        className="BottomSheet"
+      >
+        <ListBottomSheet listArray={SenderData} />
+>>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
       </LetterStorageBottomSheet>
 >>>>>>> d081fda (💄 초기화버튼 생성)
     </>
