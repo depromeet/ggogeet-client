@@ -66,13 +66,13 @@ export const Body1 = css`
   font-display: swap;
 `;
 
-export const Label2 = css`
+export const Caption2 = css`
   font-size: 12px;
   font-weight: 600;
   font-display: swap;
 `;
 
-export const Label1 = css`
+export const Caption1 = css`
   font-size: 12px;
   font-weight: 500;
   font-display: swap;
