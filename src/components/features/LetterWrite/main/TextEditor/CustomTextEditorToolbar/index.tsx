@@ -160,6 +160,26 @@ const fontSizeFormatObject = {
   normal: 25,
 };
 const alignFormatArray = ["left", "center", "right"];
+const INITIAL_FONT_SIZE_FORMAT_OBJECT = { huge: "", large: "", normal: "" };
+const INITIAL_ALIGN_FORMAT_OBJECT = { left: "", right: "", center: "" };
+const INITIAL_FONT_COLOR_OBJECT = {
+  "color#1C1D22": "",
+  "color#5B5D68": "",
+  "color#F6523D": "",
+  "color#FFF53E": "",
+  "color#37BFA8": "",
+  "color#648DF5": "",
+  "color#9E8AFF": "",
+};
+const INITIAL_FONT_BACKGROUND_OBJECT = {
+  "background#1C1D22": "",
+  "background#5B5D68": "",
+  "background#F6523D": "",
+  "background#FFF53E": "",
+  "background#37BFA8": "",
+  "background#648DF5": "",
+  "background#9E8AFF": "",
+};
 
 const CustomTextEditorToolbar = ({
   type,
@@ -192,7 +212,6 @@ const CustomTextEditorToolbar = ({
     "background#9E8AFF": "",
   });
   const onClickToolbar = (toolbarDetailType: ToolbarFormatType) => {
-    // TODO: Color 적용
     const quill = quillRef.current.getEditor();
     if (fontStyleFormatArray.includes(toolbarDetailType)) {
       const status = !formats[toolbarDetailType];
@@ -207,7 +226,7 @@ const CustomTextEditorToolbar = ({
       quill.format("size", value);
       setFormats((prev) => ({
         ...prev,
-        ...{ huge: "", large: "", normal: "" },
+        ...INITIAL_FONT_SIZE_FORMAT_OBJECT,
         [toolbarDetailType]: value || "normal",
       }));
     } else if (alignFormatArray.includes(toolbarDetailType)) {
@@ -216,13 +235,19 @@ const CustomTextEditorToolbar = ({
       quill.format("align", value);
       setFormats((prev) => ({
         ...prev,
-        ...{ left: "", right: "", center: "" },
+        ...INITIAL_ALIGN_FORMAT_OBJECT,
         [toolbarDetailType]: value || "left",
       }));
     } else {
-      // TODO: default/active 이미지 로직
       const [type, hexColor] = toolbarDetailType.split("#");
       quill.format(type, `#${hexColor}`);
+      setFormats((prev) => ({
+        ...prev,
+        ...(type.startsWith("color")
+          ? INITIAL_FONT_COLOR_OBJECT
+          : INITIAL_FONT_BACKGROUND_OBJECT),
+        [toolbarDetailType]: `#${hexColor}`,
+      }));
     }
   };
 
