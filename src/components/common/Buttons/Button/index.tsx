@@ -1,8 +1,10 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonSize } from "./types";
 import * as S from "./styled";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   name: string;
+  size: ButtonSize;
   leftImg?: ReactNode;
   rightImg?: ReactNode;
   outline?: boolean;
@@ -11,11 +13,17 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export default function Button({ name, leftImg, rightImg, ...args }: Props) {
+export default function Button({
+  name,
+  leftImg,
+  rightImg,
+  size,
+  ...args
+}: Props) {
   return (
-    <S.ButtonWrapper {...args}>
+    <S.ButtonWrapper size={size} {...args}>
       {leftImg}
-      <S.ButtonName>{name}</S.ButtonName>
+      <S.ButtonName size={size}>{name}</S.ButtonName>
       {rightImg}
     </S.ButtonWrapper>
   );

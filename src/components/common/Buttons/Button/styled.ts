@@ -1,13 +1,24 @@
-import { Body4 } from "@/src/styles/commons";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { Body4, Caption1 } from "@/src/styles/commons";
+import { css } from "@emotion/react";
+import { ButtonSize } from "./types";
+
+const buttonSizeMap: {
+  [key in ButtonSize]: string;
+} = {
+  sm: "4px 8px",
+  md: "8px",
+  lg: "12px 16px",
+  xl: "16px",
+};
 
 export const ButtonWrapper = styled.button<{
+  size: ButtonSize;
   outline?: boolean;
   isRound?: boolean;
   isPressed?: boolean;
 }>`
-  padding: 16px;
+  padding: ${({ size }) => buttonSizeMap[size]};
   color: ${({ outline, isPressed, theme: { colors } }) =>
     outline ? (isPressed ? colors.gray1 : colors.gray2) : colors.white};
   background-color: ${({ outline, isPressed, theme: { colors } }) =>
@@ -38,9 +49,18 @@ export const ButtonWrapper = styled.button<{
   }
 `;
 
-export const ButtonName = styled.span`
-  line-height: 24px;
+export const ButtonName = styled.span<{
+  size: ButtonSize;
+}>`
+  ${({ size }) =>
+    size === "sm" || size === "md"
+      ? css`
+          line-height: 18px;
+          ${Caption1}
+        `
+      : css`
+          line-height: 24px;
+          ${Body4}
+        `}
   background-color: transparent;
-
-  ${Body4}
 `;
