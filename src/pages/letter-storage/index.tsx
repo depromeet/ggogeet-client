@@ -2,8 +2,9 @@ import BottomSheet from "@/src/components/common/BottomSheet";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
 import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
-import SenderListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/SenderListBottomSheet";
 import styled from "@emotion/styled";
+import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
+import { SenderData } from "@/src/data/LetterStorage";
 
 const Layout = styled.div`
   padding: 0 16px;
@@ -108,8 +109,12 @@ const LetterStoragePage = () => {
         })}
       </Layout>
 
-      <LetterStorageBottomSheet onClose={onClose} isOpened={true}>
-        <SenderListBottomSheet />
+      <LetterStorageBottomSheet
+        onClose={onClose}
+        isOpened={true}
+        className="BottomSheet"
+      >
+        <ListBottomSheet listArray={SenderData} />
       </LetterStorageBottomSheet>
     </>
   );
