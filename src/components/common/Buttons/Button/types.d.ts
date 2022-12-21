@@ -1,1 +1,1 @@
-export type FontStyle = "light" | "medium" | "bold";
+export type ButtonSize = "sm" | "md" | "lg" | "xl";
