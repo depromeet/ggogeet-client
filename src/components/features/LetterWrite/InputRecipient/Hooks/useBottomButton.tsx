@@ -4,11 +4,17 @@ import { useRouter } from "next/router";
 import { ReactElement } from "react";
 import * as S from "../styled";
 
-const useBottomButton = ({
-  isDisabled,
-}: {
-  isDisabled: boolean;
-}): ReactElement => {
+interface UseBottomButtonProps {
+  text?: string;
+  isDisabled?: boolean;
+}
+
+const useBottomButton = (
+  { text, isDisabled }: UseBottomButtonProps = {
+    text: "다음",
+    isDisabled: false,
+  }
+): ReactElement => {
   const router = useRouter();
   const { type } = router.query;
   const nextLink = getNavigateNextLink(type);
@@ -18,7 +24,7 @@ const useBottomButton = ({
   return (
     <S.BottomButtonContainer>
       <BottomButton
-        name="다음"
+        name={text ?? '다음'}
         isDark
         isRound
         disabled={isDisabled}
