@@ -37,6 +37,7 @@ export const global = (theme: Theme) => css`
     border: none;
     background-color: transparent;
     padding: 0;
+    cursor: pointer;
   }
 
   h1,
