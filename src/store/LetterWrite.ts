@@ -14,3 +14,8 @@ export const letterWriteInputState = atom<RecipientInputObjectType>({
   key: "LetterWriteInputState",
   default: { receiverName: "", relationship: "", situation: "", contents: "" },
 });
+
+export const letterWriteGuidelineState = atom<string>({
+  key: "LetterWriteGuidelineState",
+  default: "",
+});
