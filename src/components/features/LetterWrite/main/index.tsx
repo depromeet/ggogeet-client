@@ -1,11 +1,12 @@
 import TextEditor from "@/src/components/features/LetterWrite/main/TextEditor";
 import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/main/TextEditor/CustomTextEditorToolbar";
 // import TextTip from "@/src/components/features/LetterWrite/main/TextTip";
-import { ReactElement, useRef, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";
 import * as S from "./styled";
 import BottomSheet from "@/src/components/common/BottomSheet";
+import Guideline from "./Guideline";
 
 export type ToolbarClickedStatusType =
   | "Text"
@@ -24,7 +25,7 @@ const rightToolbarMenus: ToolbarClickedStatusType[] = ["Guideline", "Remind"];
 
 // TODO: 바텀 시트 열렸을 때 바깥 모든 버튼 이벤트 prevent 하기
 const LetterWriteMain = (): ReactElement => {
-  const quillRef = useRef<RefAny>();
+  const quillRef = useRef<RefAny>(null);
   const [currentClickedToolbarStatus, setCurrentClickedToolbarStatus] =
     useState<ToolbarClickedStatusObject>();
   const onToggleToolbar = (type: ToolbarClickedStatusType) => {
@@ -32,6 +33,12 @@ const LetterWriteMain = (): ReactElement => {
       ...prev,
       type,
       status: prev?.type !== type ? true : !prev?.status ?? true,
+    }));
+  };
+  const onClose = (type: "Guideline" | "Remind") => {
+    setCurrentClickedToolbarStatus((prev) => ({
+      type,
+      status: false,
     }));
   };
   return (
@@ -74,26 +81,16 @@ const LetterWriteMain = (): ReactElement => {
           currentClickedToolbarStatus?.type === "Guideline" &&
           currentClickedToolbarStatus.status
         }
-        onClose={() => {
-          setCurrentClickedToolbarStatus((prev) => ({
-            type: "Guideline",
-            status: false,
-          }));
-        }}
+        onClose={() => onClose("Guideline")}
       >
-        Guideline
+        <Guideline onClose={onClose} />
       </BottomSheet>
       <BottomSheet
         isOpened={
           currentClickedToolbarStatus?.type === "Remind" &&
           currentClickedToolbarStatus.status
         }
-        onClose={() => {
-          setCurrentClickedToolbarStatus((prev) => ({
-            type: "Remind",
-            status: false,
-          }));
-        }}
+        onClose={() => onClose("Remind")}
       >
         Remind
       </BottomSheet>

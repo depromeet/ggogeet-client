@@ -1,9 +1,11 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import CustomTextEditorToolbar from "./CustomTextEditorToolbar";
 import * as S from "../styled";
 import { RefAny } from "@/src/types";
+import { useRecoilValue } from "recoil";
+import { letterWriteGuidelineState } from "@/src/store/LetterWrite";
 
 const ReactQuill = dynamic(
   async () => {
@@ -62,9 +64,16 @@ const formats = [
   "strike",
 ];
 
+// TODO: maxLength 350자 설정, AutoFocus 추가
+// TODO: 앞에서 적용한 스타일을 가이드라인 문장에 그대로 적용?
 const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
-  // TODO: maxLength 350자 설정, AutoFocus 추가
   const [content, setContent] = useState<string>("");
+  const letterWriteGuidelineText = useRecoilValue(letterWriteGuidelineState);
+  useEffect(() => {
+    if (letterWriteGuidelineText) {
+      setContent((prev) => prev + letterWriteGuidelineText);
+    }
+  }, [letterWriteGuidelineText]);
   return (
     <S.ReactQuillWrapper>
       <ReactQuill
