@@ -80,16 +80,19 @@ export const global = (theme: Theme) => css`
 
   [data-rsbs-overlay] {
     border-radius: 30px 30px 0px 0px;
-    background-color: #f6f6f6;
+    background-color: ${theme.colors.gray5};
   }
 
   [data-rsbs-header] {
     padding-bottom: 20px;
   }
 
+  [data-rsbs-content] {
+    padding: 0px 20px;
+  }
+
   [data-rsbs-header]:before {
-    height: 5px;
-    border-radius: 6px;
+    display: none;
   }
 
   @font-face {
