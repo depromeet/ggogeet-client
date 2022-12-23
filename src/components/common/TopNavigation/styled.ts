@@ -2,11 +2,12 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const TopNavigationWrapper = styled.header`
-  padding: 10px 16px;
-  height: 44px;
+  padding: 12px 20px;
+  height: 48px;
   display: flex;
   align-items: center;
   position: relative;
+  background-color: transparent;
 `;
 
 export const TopNavigationLeftElem = styled.span`
