@@ -79,7 +79,7 @@ export const global = (theme: Theme) => css`
   /* react-spring-bottom-sheet */
 
   [data-rsbs-overlay] {
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 28px 28px 0px 0px;
     background-color: ${theme.colors.gray5};
   }
 
