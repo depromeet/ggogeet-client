@@ -50,7 +50,7 @@ const ToolbarInnerContainerWrapper = styled.div`
   gap: 16px;
 `;
 
-const ToolbarWrapper = styled.div`
+const ToolbarWrapper = styled.button`
   ${IconImage}
 `;
 
