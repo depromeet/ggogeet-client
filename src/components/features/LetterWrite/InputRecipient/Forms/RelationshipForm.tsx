@@ -1,7 +1,7 @@
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { ReactElement } from "react";
 import { useRecoilValue } from "recoil";
-import { LetterWriteTagContainer } from "../../common";
+import LetterWriteTagContainer from "../../common/TagContainer";
 import { useBottomButton } from "../Hooks";
 import * as S from "../styled";
 
@@ -10,7 +10,6 @@ const RelationshipForm = (): ReactElement => {
   const bottomButton = useBottomButton({
     isDisabled: !letterWriteInputObjectState.relationship,
   });
-
   return (
     <>
       <S.LetterWriteH1>어떤 관계인가요?</S.LetterWriteH1>

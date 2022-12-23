@@ -81,5 +81,4 @@ export const Caption1 = css`
 export const IconImage = css`
   width: fit-content;
   height: fit-content;
-  cursor: pointer;
 `;

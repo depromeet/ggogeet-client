@@ -8,8 +8,8 @@ const NavItemContainer = styled.div<{ width?: number; height?: number }>`
     width &&
     height &&
     `
-    width: ${width}px,
-    height: ${height}px
+    width: ${width}px;
+    height: ${height}px;
   `};
 `;
 

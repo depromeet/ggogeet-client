@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import CustomTextEditorToolbar from "./CustomTextEditorToolbar";
-import * as S from "./styled";
+import * as S from "../styled";
 import { RefAny } from "@/src/types";
 
 const ReactQuill = dynamic(
@@ -18,9 +18,29 @@ const ReactQuill = dynamic(
 const modules = {
   toolbar: [
     [
-      { size: ["small", false, "large", "huge"] },
-      { color: [] },
-      { background: [] },
+      { size: [false, "large", "huge"] },
+      {
+        color: [
+          "#1C1D22",
+          "#5B5D68",
+          "#F6523D",
+          "#FFF53E",
+          "#37BFA8",
+          "#648DF5",
+          "#9E8AFF",
+        ],
+      },
+      {
+        background: [
+          "#1C1D22",
+          "#5B5D68",
+          "#F6523D",
+          "#FFF53E",
+          "#37BFA8",
+          "#648DF5",
+          "#9E8AFF",
+        ],
+      },
       { align: ["justify", "", "center", "right"] },
       "bold",
       "italic",
@@ -32,6 +52,7 @@ const modules = {
 
 const formats = [
   "size",
+  "header",
   "color",
   "background",
   "align",
@@ -42,6 +63,7 @@ const formats = [
 ];
 
 const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
+  // TODO: maxLength 350자 설정, AutoFocus 추가
   const [content, setContent] = useState<string>("");
   return (
     <S.ReactQuillWrapper>

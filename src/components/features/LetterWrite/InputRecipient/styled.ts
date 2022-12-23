@@ -4,56 +4,45 @@ import styled from "@emotion/styled";
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
   width: 100%;
   height: 100vh;
+  background-color: ${({ theme: { colors } }) => colors.navy};
 `;
 
 const BottomButtonContainer = styled.div<{ type?: string }>`
-  width: calc(100% - 32px);
+  width: 100%;
   position: fixed;
-  bottom: 16px;
-  margin: 0 auto;
+  padding: 20px;
+  bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 
   button {
+    /* FIXME: 공통 컴포넌트 BottomButton 참고 */
     height: 56px;
-    border-radius: 30px;
-  }
-
-  button {
-    ${({ type }) =>
-      type === "Initial Page" &&
-      `
-      width: 100%;
-    `}
-    &:first-of-type {
-      ${({ type }) =>
-        type === "Initial Page" &&
-        `
-        border: 1px solid #767c8d;
-    `}
-    }
+    border-radius: 2px;
   }
 `;
 
 const LetterWriteInputRecipientMain = styled.main`
-  padding: 12px 16px;
-  height: calc(100vh - 44px);
+  padding: 20px;
 `;
 
 const LetterWriteInputContainer = styled.div`
-  margin-top: 32px;
-  height: 30px;
+  margin-top: 28px;
+  height: 33px;
   input {
+    /* FIXME: 공통 style 이용 */
     font-weight: 500;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    color: #ffffff;
+
     &::placeholder {
       font-weight: 500;
       font-size: 18px;
       line-height: 22px;
+      letter-spacing: -0.005em;
+      color: #5b5d68;
     }
   }
 `;
@@ -66,9 +55,11 @@ const RelationShipReceiverContainer = styled.div`
 `;
 
 const LetterWriteH1 = styled.h1`
+  /* FIXME: 공통 style 이용 */
+  font-weight: 600;
+  font-size: 24px;
   line-height: 150%;
-  color: #767c8d;
-  ${Header1}
+  color: #ffffff;
 `;
 
 const LetterWriteCaption1 = styled.small`
@@ -85,7 +76,7 @@ const LetterWriteBody1 = styled.span`
 
 const SituationTemplateContainer = styled.div`
   margin-top: 20px;
-  width: 326px;
+  width: 100%;
   height: 341px;
   background: #e4e7ef;
   border-radius: 12px;

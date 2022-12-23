@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { ReactElement } from "react";
 import * as S from "./styled";
 
-const NavBack = (): ReactElement => {
+const NavBack = ({ color }: { color: "white" | "black" }): ReactElement => {
   const router = useRouter();
   return (
     <S.NavItemContainer
@@ -14,7 +14,7 @@ const NavBack = (): ReactElement => {
       }}
     >
       <Image
-        src="/Icons/icon__nav-back.svg"
+        src={`/Icons/icon__nav-back--${color}.svg`}
         alt="뒤로 가기"
         width={24}
         height={24}
