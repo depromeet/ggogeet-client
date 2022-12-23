@@ -5,3 +5,9 @@ export type SituationTemplateDataType = Array<{
   value: TemplateType;
   imageUrl: string;
 }>;
+
+export type guidelineBasicDataType = Array<{
+  type: TemplateType;
+  value: string;
+  isCustom?: boolean;
+}>;

@@ -1,4 +1,4 @@
-import { SituationTemplateDataType } from "./type";
+import type { guidelineBasicDataType, SituationTemplateDataType } from "./type";
 
 const situationTemplatesData: SituationTemplateDataType = [
   {
@@ -23,4 +23,47 @@ const situationTemplatesData: SituationTemplateDataType = [
   },
 ];
 
-export { situationTemplatesData };
+const guidelineBasicData: guidelineBasicDataType = [
+  {
+    type: "축하",
+    value: "기본 제공 문장 1",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 2",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 3",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 4",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 5",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 6",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 7",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 8",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 9",
+  },
+  {
+    type: "축하",
+    value: "기본 제공 문장 10",
+  },
+];
+
+export { situationTemplatesData, guidelineBasicData };
