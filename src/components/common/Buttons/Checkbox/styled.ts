@@ -33,7 +33,7 @@ export const CheckboxWrapper = styled.label<{
       justify-content: center;
 
       &::after {
-        background: url("/icons/check_ico.svg") no-repeat 0px 0px;
+        background: url("/Icons/check_ico.svg") no-repeat 0px 0px;
         content: "";
         display: inline-block;
         width: 12px;
