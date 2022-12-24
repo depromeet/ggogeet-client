@@ -84,15 +84,11 @@ export const global = (theme: Theme) => css`
   }
 
   [data-rsbs-header] {
-    padding-bottom: 20px;
+    display: none;
   }
 
   [data-rsbs-content] {
     padding: 0px 20px;
-  }
-
-  [data-rsbs-header]:before {
-    display: none;
   }
 
   @font-face {
