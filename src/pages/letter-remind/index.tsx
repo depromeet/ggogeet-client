@@ -1,6 +1,6 @@
 import Button from "@/src/components/common/Buttons/Button";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import TodoContainer from "@/src/components/features/letter-remind/TodoContainer";
+import TodoContainer from "@/src/components/features/letterRemind/TodoContainer";
 import { RemindData } from "@/src/data/LetterRemind";
 import styled from "@emotion/styled";
 import Image from "next/image";

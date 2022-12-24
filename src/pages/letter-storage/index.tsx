@@ -24,6 +24,17 @@ const LetterContainerWrapper = styled.div`
 const LetterStorageBottomSheet = styled(BottomSheet)`
   padding: 28px 20px 20px 20px;
   background-color: red;
+
+  :root {
+    --rsbs-backdrop-bg: red;
+    --rsbs-bg: red;
+    --rsbs-handle-bg: red;
+    --rsbs-max-w: auto;
+    --rsbs-ml: env(safe-area-inset-left);
+    --rsbs-mr: env(safe-area-inset-right);
+    --rsbs-overlay-rounded: 16px;
+    padding: 28px 20px 20px 20px;
+  }
 `;
 
 const dummyData = [

@@ -1,3 +1,4 @@
+import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import Image from "next/image";
 import * as S from "./styled";
 
@@ -15,7 +16,7 @@ export default function ListContainer({ imageURL, name }: Props) {
         <S.Name>{name}</S.Name>
       </S.NameContainer>
 
-      {/* 체크박스 자리 */}
+      <Checkbox isChecked={false} />
     </S.ListLayout>
   );
 }
