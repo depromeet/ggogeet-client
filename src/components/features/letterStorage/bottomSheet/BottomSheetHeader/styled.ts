@@ -22,5 +22,10 @@ export const Navigation = styled.p<NavigationProps>`
     isSelected ? theme.colors.white : theme.colors.gray3};
   padding: 0 16px 0 0;
   cursor: pointer;
+<<<<<<< HEAD
   ${({ isSelected }) => (isSelected ? Display2 : Body5)};
+=======
+
+  ${Body5}// NOTE: 선택된 요소는 Display2로 변경해야 함
+>>>>>>> fe167eb (✨ cursor:pointer 속성 추가)
 `;
