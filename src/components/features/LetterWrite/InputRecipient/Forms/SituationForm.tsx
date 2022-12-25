@@ -1,5 +1,5 @@
 import { situationTemplatesData } from "@/src/data/LetterWrite";
-import { TemplateType } from "@/src/data/LetterWrite/type";
+import { SituationTemplateDataType } from "@/src/data/LetterWrite/type";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { ReactElement } from "react";
 import { useRecoilState } from "recoil";
@@ -12,10 +12,13 @@ const SituationForm = (): ReactElement => {
   const bottomButton = useBottomButton({
     isDisabled: !letterWriteInputObjectState.situation,
   });
-  const onClickTemplate = (templateType: TemplateType) => {
+  const onClickTemplate = (situationId: number, templateUrl: string) => {
     setLetterWriteInputObjectState((prev) => ({
       ...prev,
-      situation: templateType,
+      situation: {
+        situationId,
+        templateUrl,
+      },
     }));
   };
   return (
@@ -25,12 +28,20 @@ const SituationForm = (): ReactElement => {
       <S.SituationSlick>
         {situationTemplatesData.map((st) => (
           <S.SituationSlickItem
-            key={st.type}
-            onClick={() => onClickTemplate(st.type)}
-            isSelected={st.type === letterWriteInputObjectState.situation}
+            key={st.situationId}
+            onClick={() => onClickTemplate(st.situationId, st.templateUrl)}
+            isSelected={
+              st.situationId ===
+              (
+                letterWriteInputObjectState.situation as {
+                  situationId: number;
+                  templateUrl: string;
+                }
+              ).situationId
+            }
           >
-            <div></div>
-            <span>{st.value}</span>
+            <div>{st.title}</div>
+            <span>{st.description}</span>
           </S.SituationSlickItem>
         ))}
       </S.SituationSlick>
