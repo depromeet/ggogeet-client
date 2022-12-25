@@ -1,5 +1,5 @@
 import type { SituationGuidelineSentenceType } from "@/src/types/Letter";
-import type { SituationTemplateDataType } from "./type";
+import type { RemindDataType, SituationTemplateDataType } from "./type";
 
 // TODO: description 수정 필요
 const situationTemplatesData: SituationTemplateDataType = [
@@ -61,7 +61,7 @@ const situationTemplatesData: SituationTemplateDataType = [
   },
 ];
 
-// 임시용 (감동받은 곰에 해당하는 가이드라인 데이터)
+// TODO: 임시용 (감동받은 곰에 해당하는 가이드라인 데이터)
 const tempGuidelineData: SituationGuidelineSentenceType = {
   userSentence: {
     situation_id: 2,
@@ -93,5 +93,45 @@ const tempGuidelineData: SituationGuidelineSentenceType = {
     ],
   },
 };
+
+// TODO: 임시용
+const tempRemindData: RemindDataType = [
+  {
+    id: 1,
+    title: "시크릿 산타 공개하는 날",
+    description:
+      "디프만 시크릿 산타 공개하는 날.. 선물이랑 같이 꼬깃으로 편지 써서 줄 거다!!",
+    created_at: "12월 03일",
+    isAlarm: false,
+  },
+  {
+    id: 2,
+    title: "김현지 생일",
+    description: "생일 축하합니다!",
+    created_at: "12월 08일",
+    isAlarm: false,
+  },
+  {
+    id: 3,
+    title: "크리스마스니까요..",
+    description: "메리 크리스마스~",
+    created_at: "12월 24일",
+    isAlarm: false,
+  },
+  {
+    id: 4,
+    title: "새해 인사",
+    description: "새해 복 많이 받으세요~!",
+    created_at: "12월 24일",
+    isAlarm: true,
+  },
+  {
+    id: 5,
+    title: "12월 31일 마지막 날",
+    description: "제야의 종소리~",
+    created_at: "12월 31일",
+    isAlarm: true,
+  },
+];
 
 export { situationTemplatesData, tempGuidelineData };

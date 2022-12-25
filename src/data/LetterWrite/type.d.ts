@@ -15,4 +15,13 @@ type SituationTemplateDataType = Array<{
   description: string;
 }>;
 
-export { SituationTemplateDataType };
+// TODO: 임시
+type RemindDataType = Array<{
+  id: number;
+  title: string;
+  description: string;
+  created_at: string;
+  isAlarm: boolean;
+}>;
+
+export { SituationTemplateDataType, RemindDataType };
