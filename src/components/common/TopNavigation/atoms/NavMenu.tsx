@@ -7,7 +7,7 @@ const NavMenu = (): ReactElement => {
   return (
     <S.NavItemContainer width={24} height={24} onClick={onClickMenu}>
       <Image
-        src="/Icons/icon__nav-menu.svg"
+        src="/icons/icon__nav-menu.svg"
         alt="햄버거 메뉴 버튼"
         width={24}
         height={24}

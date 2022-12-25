@@ -1,4 +1,4 @@
-import { Header5 } from "@/src/styles/commons";
+import { Display1 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 const NavItemContainer = styled.div<{ width?: number; height?: number }>`
@@ -17,7 +17,7 @@ const NavCancelText = styled.span`
   line-height: 21px;
   letter-spacing: -0.2px;
   color: #989fb3;
-  ${Header5}
+  ${Display1}
 `;
 
 const NavBellActive = styled.div`

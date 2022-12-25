@@ -77,7 +77,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
           <div>
             <strong>나만의 문장 추가</strong>
             <Image
-              src="/Icons/icon__guideline-close--white.svg"
+              src="/icons/icon__guideline-close--white.svg"
               alt="나만의 문장 추가 닫기"
               width={16}
               height={16}
@@ -106,7 +106,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
             />
             <div>
               <Image
-                src="/Icons/icon__guideline-tag.svg"
+                src="/icons/icon__guideline-tag.svg"
                 alt="가이드라인 태그 - 감동받은 곰"
                 width={83}
                 height={22}
@@ -148,7 +148,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
                   size="lg"
                   rightImg={
                     <Image
-                      src="/Icons/icon__guideline-close--gray.svg"
+                      src="/icons/icon__guideline-close--gray.svg"
                       alt="커스텀 가이드라인 문장 삭제"
                       width={16}
                       height={16}
@@ -179,7 +179,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               size="lg"
               leftImg={
                 <Image
-                  src="/Icons/icon__guideline-plus.svg"
+                  src="/icons/icon__guideline-plus.svg"
                   alt="가이드라인 나만의 문장 추가하기"
                   width={16}
                   height={16}

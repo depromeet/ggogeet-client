@@ -20,11 +20,14 @@ const Accordion = ({ data }: AccordionProps) => {
     <S.LetterWriteAccordionWrapper>
       {data.map((memo) => (
         <li key={memo.id}>
-          <S.AccordionHeader onClick={() => onClickMemoId(memo.id)} isClicked={clickedMemoId === memo.id}>
+          <S.AccordionHeader
+            onClick={() => onClickMemoId(memo.id)}
+            isClicked={clickedMemoId === memo.id}
+          >
             <div>
               {memo.isAlarm && (
                 <Image
-                  src="/Icons/icon__accordion-bell.svg"
+                  src="/icons/icon__accordion-bell.svg"
                   alt="아코디언 알림"
                   width={16}
                   height={16}
@@ -35,7 +38,7 @@ const Accordion = ({ data }: AccordionProps) => {
             <div>
               <span>{memo.created_at}</span>
               <Image
-                src="/Icons/icon__accordion-chevron-down.svg"
+                src="/icons/icon__accordion-chevron-down.svg"
                 alt="아코디언 화살표"
                 width={12}
                 height={12}
