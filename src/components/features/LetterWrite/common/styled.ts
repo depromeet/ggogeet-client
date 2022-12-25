@@ -6,4 +6,6 @@ const LetterWriteTagContainerWrapper = styled.div`
   gap: 8px 12px;
 `;
 
-export { LetterWriteTagContainerWrapper };
+const LetterWriteAccordionWrapper = styled.ul``;
+
+export { LetterWriteTagContainerWrapper, LetterWriteAccordionWrapper };

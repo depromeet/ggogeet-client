@@ -6,6 +6,7 @@ import { RefAny } from "@/src/types";
 import * as S from "./styled";
 import BottomSheet from "@/src/components/common/BottomSheet";
 import Guideline from "./Guideline";
+import Remind from "./Remind";
 
 export type ToolbarClickedStatusType =
   | "Text"
@@ -90,7 +91,7 @@ const LetterWriteMain = (): ReactElement => {
         }
         onClose={() => onClose("Remind")}
       >
-        Remind
+        <Remind onClose={onClose} />
       </BottomSheet>
     </>
   );

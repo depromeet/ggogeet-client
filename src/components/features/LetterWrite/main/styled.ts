@@ -110,28 +110,29 @@ const CustomTextEditorToolbarButton = styled.button`
   ${IconImage}
 `;
 
+const BottomSheetHeader = styled.div`
+  width: 100%;
+  padding: 28px 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  strong {
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    color: ${theme.colors.white};
+    ${Body5}
+  }
+  span {
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    color: ${theme.colors.gray3};
+    ${Body1}
+  }
+`;
+
 const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
   position: relative;
-  height: 448px;
-  & > div:first-of-type {
-    width: 100%;
-    padding: 28px 0 16px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    strong {
-      line-height: 150%;
-      letter-spacing: -0.005em;
-      color: ${theme.colors.white};
-      ${Body5}
-    }
-    span {
-      line-height: 150%;
-      letter-spacing: -0.005em;
-      color: ${theme.colors.gray3};
-      ${Body1}
-    }
-  }
+  height: 436px;
   & > ul {
     display: flex;
     flex-direction: column;
@@ -267,6 +268,10 @@ const GuidelineAddInputWrapper = styled.div<{
   }
 `;
 
+const RemindMainWrapper = styled.div`
+  height: 376px;
+`;
+
 export {
   LetterWriteMainLayoutWrapper,
   LetterWriteMainNavTitle,
@@ -277,8 +282,10 @@ export {
   ReactQuillWrapper,
   CustomTextEditorToolbarWrapper,
   CustomTextEditorToolbarButton,
+  BottomSheetHeader,
   GuidelineMainWrapper,
   GuidelineMainBottomButtonWrapper,
   GuidelineAddWrapper,
   GuidelineAddInputWrapper,
+  RemindMainWrapper,
 };

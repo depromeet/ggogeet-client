@@ -130,10 +130,10 @@ const Guideline = ({ onClose }: GuidelineProps) => {
             currentGuidelineData.userSentence.sentence.length >= 5
           }
         >
-          <div>
+          <S.BottomSheetHeader>
             <strong>꼬깃 가이드</strong>
             <span>편지에 쓰고 싶은 가이드 문장을 선택해 보세요.</span>
-          </div>
+          </S.BottomSheetHeader>
           <ul>
             {currentGuidelineData.userSentence.sentence.map((data) => (
               <li key={data.id}>
