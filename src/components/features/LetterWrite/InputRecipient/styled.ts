@@ -1,4 +1,5 @@
-import { Body1, Caption1, Header1 } from "@/src/styles/commons";
+import { Body1, Caption1 } from "@/src/styles/commons";
+import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
@@ -45,6 +46,15 @@ const LetterWriteInputContainer = styled.div`
       color: #5b5d68;
     }
   }
+`;
+
+const LetterWriteInputGuideMessage = styled.span<{ isShow: boolean }>`
+  display: ${({ isShow }) => (isShow ? "block" : "none")};
+  margin-top: 4px;
+  line-height: 150%;
+  letter-spacing: -0.005em;
+  ${Caption1};
+  color: ${theme.colors.red};
 `;
 
 const RelationShipReceiverContainer = styled.div`
@@ -123,6 +133,7 @@ export {
   BottomButtonContainer,
   LetterWriteInputRecipientMain,
   LetterWriteInputContainer,
+  LetterWriteInputGuideMessage,
   RelationShipReceiverContainer,
   LetterWriteH1,
   LetterWriteCaption1,
