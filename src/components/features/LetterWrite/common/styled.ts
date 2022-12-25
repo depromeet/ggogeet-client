@@ -2,12 +2,6 @@ import { Body1, Body2, Body4 } from "@/src/styles/commons";
 import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
-const LetterWriteTagContainerWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-`;
-
 const LetterWriteAccordionWrapper = styled.ul`
   display: flex;
   flex-direction: column;
@@ -71,9 +65,4 @@ const AccordionContents = styled.p`
   ${Body2};
 `;
 
-export {
-  LetterWriteTagContainerWrapper,
-  LetterWriteAccordionWrapper,
-  AccordionHeader,
-  AccordionContents,
-};
+export { LetterWriteAccordionWrapper, AccordionHeader, AccordionContents };
