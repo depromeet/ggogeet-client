@@ -79,17 +79,16 @@ export const global = (theme: Theme) => css`
   /* react-spring-bottom-sheet */
 
   [data-rsbs-overlay] {
-    border-radius: 30px 30px 0px 0px;
-    background-color: #f6f6f6;
+    border-radius: 28px 28px 0px 0px;
+    background-color: ${theme.colors.gray5};
   }
 
   [data-rsbs-header] {
-    padding-bottom: 20px;
+    display: none;
   }
 
-  [data-rsbs-header]:before {
-    height: 5px;
-    border-radius: 6px;
+  [data-rsbs-content] {
+    padding: 0px 20px;
   }
 
   @font-face {
