@@ -1,4 +1,7 @@
-import type { SituationGuidelineSentenceType } from "@/src/types/Letter";
+import type {
+  KakaoFriendsListType,
+  SituationGuidelineSentenceType,
+} from "@/src/types/Letter";
 import type { RemindDataType, SituationTemplateDataType } from "./type";
 
 // TODO: description 수정 필요
@@ -134,4 +137,105 @@ const tempRemindData: RemindDataType = [
   },
 ];
 
-export { situationTemplatesData, tempGuidelineData, tempRemindData };
+// TODO: 임시용
+const tempKakaoFriendsList: KakaoFriendsListType = {
+  data: {
+    friends: [
+      {
+        id: 1,
+        profile_img: "",
+        kakao_friend_name: "김가은",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 2,
+        profile_img: "",
+        kakao_friend_name: "김나영",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 3,
+        profile_img: "",
+        kakao_friend_name: "김동규",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 4,
+        profile_img: "",
+        kakao_friend_name: "김문규",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 5,
+        profile_img: "",
+        kakao_friend_name: "김민수",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 6,
+        profile_img: "",
+        kakao_friend_name: "김혜진",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 7,
+        profile_img: "",
+        kakao_friend_name: "유희수",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 8,
+        profile_img: "",
+        kakao_friend_name: "정성훈",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 9,
+        profile_img: "",
+        kakao_friend_name: "정지원",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 10,
+        profile_img: "",
+        kakao_friend_name: "최영광",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+      {
+        id: 11,
+        profile_img: "",
+        kakao_friend_name: "홍서희",
+        kakao_uuid: "",
+        created_at: new Date().getTime(),
+        updated_at: new Date().getTime(),
+      },
+    ],
+  },
+};
+
+export {
+  situationTemplatesData,
+  tempGuidelineData,
+  tempRemindData,
+  tempKakaoFriendsList,
+};
