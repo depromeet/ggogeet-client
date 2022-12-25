@@ -1,8 +1,9 @@
+import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 export const Wrap = styled.div`
   background-color: ${({ theme }) => theme.colors.gray1};
-  border-radius: 8px;
+  border-radius: ${theme.radius.md};
   padding: 12px;
 
   display: flex;

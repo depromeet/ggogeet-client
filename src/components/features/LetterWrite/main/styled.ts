@@ -1,4 +1,12 @@
-import { Body1, Body2, Body5, Caption1, IconImage } from "@/src/styles/commons";
+import {
+  Body1,
+  Body2,
+  Body4,
+  Body5,
+  Caption1,
+  Display2,
+  IconImage,
+} from "@/src/styles/commons";
 import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
@@ -12,27 +20,22 @@ const LetterWriteMainNavRightWrapper = styled.div`
   align-items: center;
   gap: 8px;
   button {
-    /* FIXME: 공통 style 이용 */
-    font-weight: 500;
-    font-size: 16px;
     line-height: 150%;
     letter-spacing: -0.5px;
+    ${Body4};
   }
   button:first-of-type {
-    color: #5b5d68;
+    color: ${theme.colors.gray4};
   }
   button:last-of-type {
-    color: #3e4049;
+    color: ${theme.colors.gray5};
   }
 `;
 
 const LetterWriteMainNavTitle = styled.span`
-  /* FIXME: 공통 style 이용 */
-  font-weight: 600;
-  font-size: 18px;
   line-height: 150%;
-  text-align: center;
-  color: #1c1d22;
+  color: ${theme.colors.navy};
+  ${Display2};
 `;
 
 const ToolbarContainerWrapper = styled.div`
@@ -42,7 +45,7 @@ const ToolbarContainerWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid #e3e3e7;
+  border-bottom: 1px solid ${theme.colors.gray1};
 `;
 
 const ToolbarInnerContainerWrapper = styled.div`
@@ -68,29 +71,25 @@ const ReactQuillWrapper = styled.div`
     width: 100%;
     max-height: calc(100vh - 104px);
     overflow-y: auto;
-    background: #ffffff;
+    background: ${theme.colors.white};
   }
 
   .ql-editor {
     padding: 20px;
-    /* FIXME: 공통 style 이용 */
-    font-weight: 500;
-    font-size: 14px;
     line-height: 170%;
     letter-spacing: -0.005em;
-    color: #1c1d22;
+    color: ${theme.colors.navy};
+    ${Body2};
   }
 
   .ql-editor.ql-blank::before {
-    /* FIXME: 공통 style 이용 */
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
     line-height: 170%;
     letter-spacing: -0.005em;
-    color: #878994;
     left: unset;
     right: unset;
+    color: ${theme.colors.gray3};
+    ${Body2};
   }
 `;
 
@@ -102,7 +101,7 @@ const CustomTextEditorToolbarWrapper = styled.div`
   align-items: center;
   overflow-x: auto;
   gap: 16px;
-  border-bottom: 1px solid #e3e3e7;
+  border-bottom: 1px solid ${theme.colors.gray1};
 `;
 
 const CustomTextEditorToolbarButton = styled.button`
@@ -208,7 +207,7 @@ const GuidelineAddInputWrapper = styled.div<{
     justify-content: space-between;
     padding: 8px 8px 8px 16px;
     height: 48px;
-    border-radius: 8px;
+    border-radius: ${theme.radius.md};
     background-color: ${theme.colors.navy50};
     input {
       width: 84%;
@@ -237,7 +236,6 @@ const GuidelineAddInputWrapper = styled.div<{
         },
       }) => (currentTextLength ? gray5 : gray6)};
       span {
-        ${Body1}
         line-height: 150%;
         letter-spacing: -0.005em;
         color: ${({
@@ -246,6 +244,7 @@ const GuidelineAddInputWrapper = styled.div<{
             colors: { gray4 },
           },
         }) => !currentTextLength && gray4};
+        ${Body1};
       }
     }
   }

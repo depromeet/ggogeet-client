@@ -18,6 +18,7 @@ export const ButtonWrapper = styled.button<{
   isRound?: boolean;
   isPressed?: boolean;
 }>`
+  width: 100%;
   padding: ${({ size }) => buttonSizeMap[size]};
   color: ${({ outline, isPressed, theme: { colors } }) =>
     outline ? (isPressed ? colors.gray1 : colors.gray2) : colors.white};

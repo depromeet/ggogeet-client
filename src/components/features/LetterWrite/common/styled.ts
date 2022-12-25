@@ -16,10 +16,10 @@ const LetterWriteAccordionWrapper = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: ${theme.colors.navy30};
-    border-radius: ${theme.radius.md};
     padding: 12px 16px;
     gap: 8px;
+    background-color: ${theme.colors.navy30};
+    border-radius: ${theme.radius.md};
     button {
       display: flex;
       justify-content: space-between;
@@ -35,8 +35,8 @@ const LetterWriteAccordionWrapper = styled.ul`
           white-space: nowrap;
           line-height: 150%;
           letter-spacing: -0.5px;
-          ${Body4}
           color: ${theme.colors.white};
+          ${Body4}
         }
       }
       & > div:last-of-type {
@@ -46,8 +46,8 @@ const LetterWriteAccordionWrapper = styled.ul`
         span {
           line-height: 14px;
           letter-spacing: -0.2px;
-          ${Body1}
           color: ${theme.colors.gray3};
+          ${Body1}
         }
       }
     }
