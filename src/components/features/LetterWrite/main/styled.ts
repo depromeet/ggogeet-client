@@ -272,6 +272,11 @@ const RemindMainWrapper = styled.div`
   height: 376px;
 `;
 
+const RemindMemoContainer = styled.div`
+  height: 272px;
+  overflow-y: auto;
+`;
+
 export {
   LetterWriteMainLayoutWrapper,
   LetterWriteMainNavTitle,
@@ -288,4 +293,5 @@ export {
   GuidelineAddWrapper,
   GuidelineAddInputWrapper,
   RemindMainWrapper,
+  RemindMemoContainer,
 };

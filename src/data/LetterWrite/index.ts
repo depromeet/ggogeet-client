@@ -134,4 +134,4 @@ const tempRemindData: RemindDataType = [
   },
 ];
 
-export { situationTemplatesData, tempGuidelineData };
+export { situationTemplatesData, tempGuidelineData, tempRemindData };

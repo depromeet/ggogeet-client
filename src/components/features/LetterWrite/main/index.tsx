@@ -91,7 +91,7 @@ const LetterWriteMain = (): ReactElement => {
         }
         onClose={() => onClose("Remind")}
       >
-        <Remind onClose={onClose} />
+        <Remind />
       </BottomSheet>
     </>
   );
