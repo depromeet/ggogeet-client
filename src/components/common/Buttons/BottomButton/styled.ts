@@ -1,4 +1,4 @@
-import { Body3, Header5 } from "@/src/styles/commons";
+import { Body3, Display1 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 export const BottomButtonWrapper = styled.button<{
@@ -23,6 +23,6 @@ export const BottomButtonWrapper = styled.button<{
     color: ${({ theme: { colors } }) => colors.white};
     line-height: 24px;
     letter-spacing: -0.005em;
-    ${Header5}
+    ${Display1}
   }
 `;
