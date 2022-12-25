@@ -32,12 +32,7 @@ const SituationForm = (): ReactElement => {
             onClick={() => onClickTemplate(st.situationId, st.templateUrl)}
             isSelected={
               st.situationId ===
-              (
-                letterWriteInputObjectState.situation as {
-                  situationId: number;
-                  templateUrl: string;
-                }
-              ).situationId
+              letterWriteInputObjectState.situation.situationId
             }
           >
             <div>{st.title}</div>

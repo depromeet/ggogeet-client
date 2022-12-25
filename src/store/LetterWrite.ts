@@ -1,20 +1,18 @@
 import { atom } from "recoil";
 
-type RecipientInputType =
-  | "receiverName"
-  | "relationship"
-  | "situation"
-  | "contents";
-
 export type RecipientInputObjectType = {
-  [key in RecipientInputType]: string | object;
+  receiverName: string;
+  situation: {
+    situationId: number;
+    templateUrl: string;
+  };
+  contents: string;
 };
 
 export const letterWriteInputState = atom<RecipientInputObjectType>({
   key: "LetterWriteInputState",
   default: {
     receiverName: "",
-    relationship: "",
     situation: {
       situationId: -1,
       templateUrl: "",
