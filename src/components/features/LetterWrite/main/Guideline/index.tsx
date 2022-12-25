@@ -34,23 +34,27 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   const [currentGuidelineData, setCurrentGuidelineData] =
     useState<SituationGuidelineSentenceType>(tempGuidelineData);
   const onAddNewGuideline = () => {
-    setCurrentGuidelineData((prev) => ({
-      ...prev,
-      userSentence: {
-        situation_id: 2,
-        sentence: [
-          {
-            id:
-              Math.max(...prev.userSentence.sentence.map((sen) => sen.id), 0) +
-              1,
-            content: newGuidelineText,
-          },
-          ...prev.userSentence.sentence,
-        ],
-      },
-    }));
-    setIsOpenAddGuideline(false);
-    setNewGuidelineText("");
+    if (newGuidelineText.length >= 1 && newGuidelineText.length <= 20) {
+      setCurrentGuidelineData((prev) => ({
+        ...prev,
+        userSentence: {
+          situation_id: 2,
+          sentence: [
+            {
+              id:
+                Math.max(
+                  ...prev.userSentence.sentence.map((sen) => sen.id),
+                  0
+                ) + 1,
+              content: newGuidelineText,
+            },
+            ...prev.userSentence.sentence,
+          ],
+        },
+      }));
+      setIsOpenAddGuideline(false);
+      setNewGuidelineText("");
+    }
   };
   const onDeleteCustomGuideline = (
     event: MouseEvent<HTMLImageElement> | TouchEvent<HTMLImageElement>,
@@ -92,6 +96,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
                 const { value } = event.currentTarget;
                 setNewGuidelineText(value);
               }}
+              minLength={1}
               maxLength={20}
               placeholder="편지 쓸 때 참고할 문장을 추가해 보세요."
               tail={
