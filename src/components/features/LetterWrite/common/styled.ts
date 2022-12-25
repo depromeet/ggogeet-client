@@ -20,44 +20,60 @@ const LetterWriteAccordionWrapper = styled.ul`
     gap: 8px;
     background-color: ${theme.colors.navy30};
     border-radius: ${theme.radius.md};
-    button {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      & > div:first-of-type {
-        max-width: 70%;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        span {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          line-height: 150%;
-          letter-spacing: -0.5px;
-          color: ${theme.colors.white};
-          ${Body4}
-        }
-      }
-      & > div:last-of-type {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        span {
-          line-height: 14px;
-          letter-spacing: -0.2px;
-          color: ${theme.colors.gray3};
-          ${Body1}
-        }
-      }
-    }
-    p {
+  }
+`;
+
+const AccordionHeader = styled.button<{ isClicked: boolean }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & > div:first-of-type {
+    max-width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       line-height: 150%;
+      letter-spacing: -0.5px;
+      color: ${theme.colors.white};
+      ${Body4}
+    }
+  }
+  & > div:last-of-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+      line-height: 14px;
       letter-spacing: -0.2px;
-      color: ${theme.colors.gray2};
-      ${Body2};
+      color: ${theme.colors.gray3};
+      ${Body1}
+    }
+    img {
+      transition: transform 0.2s ease;
+      ${({ isClicked }) =>
+        isClicked &&
+        `
+          transform: rotate(-180deg);
+          transition: transform 0.2s ease;
+      `}
     }
   }
 `;
 
-export { LetterWriteTagContainerWrapper, LetterWriteAccordionWrapper };
+const AccordionContents = styled.p`
+  line-height: 150%;
+  letter-spacing: -0.2px;
+  color: ${theme.colors.gray2};
+  ${Body2};
+`;
+
+export {
+  LetterWriteTagContainerWrapper,
+  LetterWriteAccordionWrapper,
+  AccordionHeader,
+  AccordionContents,
+};

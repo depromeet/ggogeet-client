@@ -20,7 +20,7 @@ const Accordion = ({ data }: AccordionProps) => {
     <S.LetterWriteAccordionWrapper>
       {data.map((memo) => (
         <li key={memo.id}>
-          <button onClick={() => onClickMemoId(memo.id)}>
+          <S.AccordionHeader onClick={() => onClickMemoId(memo.id)} isClicked={clickedMemoId === memo.id}>
             <div>
               {memo.isAlarm && (
                 <Image
@@ -41,8 +41,10 @@ const Accordion = ({ data }: AccordionProps) => {
                 height={12}
               />
             </div>
-          </button>
-          {clickedMemoId === memo.id && <p>{memo.description}</p>}
+          </S.AccordionHeader>
+          {clickedMemoId === memo.id && (
+            <S.AccordionContents>{memo.description}</S.AccordionContents>
+          )}
         </li>
       ))}
     </S.LetterWriteAccordionWrapper>

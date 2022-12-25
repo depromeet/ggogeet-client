@@ -34,6 +34,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   const [currentGuidelineData, setCurrentGuidelineData] =
     useState<SituationGuidelineSentenceType>(tempGuidelineData);
   const onAddNewGuideline = () => {
+    // TODO: Enter key
     if (newGuidelineText.length >= 1 && newGuidelineText.length <= 20) {
       setCurrentGuidelineData((prev) => ({
         ...prev,
