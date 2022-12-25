@@ -1,5 +1,4 @@
 import { situationTemplatesData } from "@/src/data/LetterWrite";
-import { SituationTemplateDataType } from "@/src/data/LetterWrite/type";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { ReactElement } from "react";
 import { useRecoilState } from "recoil";
@@ -23,23 +22,11 @@ const SituationForm = (): ReactElement => {
   };
   return (
     <>
-      <S.LetterWriteH1>어떤 마음을 전하고 싶나요?</S.LetterWriteH1>
-      <S.SituationTemplateContainer></S.SituationTemplateContainer>
-      <S.SituationSlick>
-        {situationTemplatesData.map((st) => (
-          <S.SituationSlickItem
-            key={st.situationId}
-            onClick={() => onClickTemplate(st.situationId, st.templateUrl)}
-            isSelected={
-              st.situationId ===
-              letterWriteInputObjectState.situation.situationId
-            }
-          >
-            <div>{st.title}</div>
-            <span>{st.description}</span>
-          </S.SituationSlickItem>
-        ))}
-      </S.SituationSlick>
+      <S.LetterWriteH1>
+        전하고 싶은 마음과 어울리는
+        <br />
+        꼬깃 친구를 선택해 보세요!
+      </S.LetterWriteH1>
       {bottomButton}
     </>
   );
