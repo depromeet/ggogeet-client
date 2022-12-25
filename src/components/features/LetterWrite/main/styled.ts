@@ -110,7 +110,7 @@ const CustomTextEditorToolbarButton = styled.button`
   ${IconImage}
 `;
 
-const GuidelineMainWrapper = styled.div`
+const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
   position: relative;
   height: 448px;
   & > div:first-of-type {
@@ -138,7 +138,8 @@ const GuidelineMainWrapper = styled.div`
     align-items: center;
     gap: 8px;
     width: 100%;
-    height: 248px;
+    height: ${({ isListHeightChanged }) =>
+      isListHeightChanged ? "328px" : "252px"};
     background-color: ${theme.colors.gray5};
     overflow-y: auto;
     li {
@@ -151,19 +152,20 @@ const GuidelineMainWrapper = styled.div`
       }
     }
   }
-  & > div:last-of-type {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-    width: 100%;
-    button {
-      width: inherit;
-      border-radius: 4px;
-      gap: 4px;
-    }
+`;
+
+const GuidelineMainBottomButtonWrapper = styled.div<{ isShow: boolean }>`
+  display: ${({ isShow }) => (isShow ? "flex" : "none")};
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  width: 100%;
+  button {
+    width: inherit;
+    border-radius: 4px;
+    gap: 4px;
   }
 `;
 
@@ -276,6 +278,7 @@ export {
   CustomTextEditorToolbarWrapper,
   CustomTextEditorToolbarButton,
   GuidelineMainWrapper,
+  GuidelineMainBottomButtonWrapper,
   GuidelineAddWrapper,
   GuidelineAddInputWrapper,
 };

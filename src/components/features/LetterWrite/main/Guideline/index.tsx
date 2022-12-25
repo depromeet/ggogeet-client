@@ -1,18 +1,16 @@
 import Button from "@/src/components/common/Buttons/Button";
 import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import InputDefault from "@/src/components/common/Input";
-import { guidelineBasicData } from "@/src/data/LetterWrite";
-import type {
-  guidelineBasicDataType,
-  TemplateType,
-} from "@/src/data/LetterWrite/type";
+import { tempGuidelineData } from "@/src/data/LetterWrite";
+
 import {
   letterWriteGuidelineState,
   letterWriteInputState,
 } from "@/src/store/LetterWrite";
+import { SituationGuidelineSentenceType } from "@/src/types/Letter";
 import Image from "next/image";
-import { MouseEvent, TouchEvent, useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { MouseEvent, TouchEvent, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import * as S from "../styled";
 
 interface GuidelineProps {
@@ -34,27 +32,38 @@ const Guideline = ({ onClose }: GuidelineProps) => {
     onClose("Guideline");
   };
   const [currentGuidelineData, setCurrentGuidelineData] =
-    useState<guidelineBasicDataType>(guidelineBasicData);
+    useState<SituationGuidelineSentenceType>(tempGuidelineData);
   const onAddNewGuideline = () => {
-    setCurrentGuidelineData((prev) => [
-      {
-        type: letterWriteInputObjectState.situation as TemplateType,
-        isCustom: true,
-        value: newGuidelineText,
-      },
+    setCurrentGuidelineData((prev) => ({
       ...prev,
-    ]);
+      userSentence: {
+        situation_id: 2,
+        sentence: [
+          {
+            id:
+              Math.max(...prev.userSentence.sentence.map((sen) => sen.id), 0) +
+              1,
+            content: newGuidelineText,
+          },
+          ...prev.userSentence.sentence,
+        ],
+      },
+    }));
     setIsOpenAddGuideline(false);
     setNewGuidelineText("");
   };
   const onDeleteCustomGuideline = (
     event: MouseEvent<HTMLImageElement> | TouchEvent<HTMLImageElement>,
-    customGuidelineText: string
+    id: number
   ) => {
     event.stopPropagation();
-    setCurrentGuidelineData((prev) =>
-      prev.filter((data) => data.value !== customGuidelineText)
-    );
+    setCurrentGuidelineData((prev) => ({
+      ...prev,
+      userSentence: {
+        situation_id: 2,
+        sentence: prev.userSentence.sentence.filter((data) => data.id !== id),
+      },
+    }));
   };
   return (
     <>
@@ -116,36 +125,49 @@ const Guideline = ({ onClose }: GuidelineProps) => {
           </ul>
         </S.GuidelineAddWrapper>
       ) : (
-        <S.GuidelineMainWrapper>
+        <S.GuidelineMainWrapper
+          isListHeightChanged={
+            currentGuidelineData.userSentence.sentence.length >= 5
+          }
+        >
           <div>
             <strong>꼬깃 가이드</strong>
             <span>편지에 쓰고 싶은 가이드 문장을 선택해 보세요.</span>
           </div>
           <ul>
-            {currentGuidelineData.map((data) => (
-              <li key={data.value}>
+            {currentGuidelineData.userSentence.sentence.map((data) => (
+              <li key={data.id}>
                 <Button
-                  name={data.value}
+                  name={data.content}
                   size="lg"
                   rightImg={
-                    data.isCustom && (
-                      <Image
-                        src="/Icons/icon__guideline-close--gray.svg"
-                        alt="커스텀 가이드라인 문장 삭제"
-                        width={16}
-                        height={16}
-                        onClick={(event) =>
-                          onDeleteCustomGuideline(event, data.value)
-                        }
-                      />
-                    )
+                    <Image
+                      src="/Icons/icon__guideline-close--gray.svg"
+                      alt="커스텀 가이드라인 문장 삭제"
+                      width={16}
+                      height={16}
+                      onClick={(event) =>
+                        onDeleteCustomGuideline(event, data.id)
+                      }
+                    />
                   }
-                  onClick={() => onClickGuideline(data.value)}
+                  onClick={() => onClickGuideline(data.content)}
+                />
+              </li>
+            ))}
+            {currentGuidelineData.guideSentence.sentence.map((data) => (
+              <li key={data.id}>
+                <Button
+                  name={data.content}
+                  size="lg"
+                  onClick={() => onClickGuideline(data.content)}
                 />
               </li>
             ))}
           </ul>
-          <div>
+          <S.GuidelineMainBottomButtonWrapper
+            isShow={currentGuidelineData.userSentence.sentence.length < 5}
+          >
             <Button
               name="나만의 문장 추가하기"
               size="lg"
@@ -159,15 +181,12 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               }
               outline={true}
               onClick={() => {
-                if (
-                  currentGuidelineData.filter((data) => data.isCustom).length <
-                  5
-                ) {
+                if (currentGuidelineData.userSentence.sentence.length < 5) {
                   setIsOpenAddGuideline(true);
                 }
               }}
             />
-          </div>
+          </S.GuidelineMainBottomButtonWrapper>
         </S.GuidelineMainWrapper>
       )}
     </>
