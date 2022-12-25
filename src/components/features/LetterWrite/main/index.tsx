@@ -1,6 +1,5 @@
 import TextEditor from "@/src/components/features/LetterWrite/main/TextEditor";
 import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/main/TextEditor/CustomTextEditorToolbar";
-// import TextTip from "@/src/components/features/LetterWrite/main/TextTip";
 import { ReactElement, useEffect, useRef, useState } from "react";
 import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
 import { RefAny } from "@/src/types";
@@ -74,7 +73,6 @@ const LetterWriteMain = (): ReactElement => {
             type={currentClickedToolbarStatus.type}
           />
         )}
-      {/* <TextTip text="Tip : 친구에게 고마웠던 일을 적어보세요" /> */}
       <TextEditor quillRef={quillRef} />
       <BottomSheet
         isOpened={

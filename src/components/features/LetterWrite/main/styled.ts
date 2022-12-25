@@ -55,16 +55,6 @@ const ToolbarWrapper = styled.button`
   ${IconImage}
 `;
 
-const TextTipWrapper = styled.div`
-  padding: 4px 16px 12px;
-  span {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 14px;
-    color: #949494;
-  }
-`;
-
 const ReactQuillWrapper = styled.div`
   .ql-toolbar {
     display: none;
@@ -282,7 +272,6 @@ export {
   ToolbarContainerWrapper,
   ToolbarInnerContainerWrapper,
   ToolbarWrapper,
-  TextTipWrapper,
   ReactQuillWrapper,
   CustomTextEditorToolbarWrapper,
   CustomTextEditorToolbarButton,
