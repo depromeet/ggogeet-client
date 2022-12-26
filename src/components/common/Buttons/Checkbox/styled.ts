@@ -1,47 +1,43 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const CheckboxWrapper = styled.label<{
+export const CheckboxWrapper = styled.div<{
   isRound: boolean;
-  isChecked: boolean;
+  isFocused: boolean;
 }>`
   display: flex;
   align-items: center;
-
-  display: inline-block;
-  ${({ isRound }) =>
-    isRound
-      ? css`
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-        `
-      : css`
-          width: 22px;
-          height: 22px;
-          border-radius: 4px;
-        `}
-  border: 1px solid ${({ theme: { colors } }) => colors.gray2};
-
-  ${({ isChecked, theme: { colors } }) =>
-    isChecked &&
-    css`
-      border: none;
-      background-color: ${colors.gray5};
+  & > input {
+    display: none;
+    & + label {
+      display: inline-block;
+      ${({ isRound }) =>
+        isRound
+          ? css`
+              width: 24px;
+              height: 24px;
+              border-radius: 50%;
+            `
+          : css`
+              width: 18px;
+              height: 18px;
+              border-radius: 2px;
+            `}
+      background-color: ${({ isFocused, theme: { colors } }) =>
+        isFocused ? colors.gray5 : colors.gray4};
+    }
+    &:checked + label {
       display: flex;
       align-items: center;
       justify-content: center;
-
+      background-color: ${({ theme: { colors } }) => colors.yellow};
       &::after {
         background: url("/icons/check_ico.svg") no-repeat 0px 0px;
         content: "";
         display: inline-block;
         width: 12px;
-        height: 10px;
+        height: 8px;
       }
-    `}
-
-  & > input {
-    display: none;
+    }
   }
 `;
