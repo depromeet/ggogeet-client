@@ -1,4 +1,5 @@
 import BottomButton from "@/src/components/common/Buttons/BottomButton";
+import Button from "@/src/components/common/Buttons/Button";
 import { getNavigateNextLink } from "@/src/utils/LetterWrite";
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
@@ -23,10 +24,9 @@ const useBottomButton = (
   };
   return (
     <S.BottomButtonContainer>
-      <BottomButton
-        name={text ?? '다음'}
-        isDark
-        isRound
+      <Button
+        name={text ?? "다음"}
+        size="xl"
         disabled={isDisabled}
         onClick={onClickNext}
       />

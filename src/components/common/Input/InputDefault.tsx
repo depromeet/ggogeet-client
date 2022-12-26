@@ -30,3 +30,5 @@ export const InputDefault = React.forwardRef<
     </S.Wrap>
   );
 });
+
+InputDefault.displayName = "InputDefault";

@@ -1,4 +1,5 @@
-import { Body1, Caption1, Header1 } from "@/src/styles/commons";
+import { Body1, Body5, Caption1, Display6 } from "@/src/styles/commons";
+import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
@@ -16,9 +17,7 @@ const BottomButtonContainer = styled.div<{ type?: string }>`
   right: 0;
 
   button {
-    /* FIXME: 공통 컴포넌트 BottomButton 참고 */
     height: 56px;
-    border-radius: 2px;
   }
 `;
 
@@ -30,21 +29,27 @@ const LetterWriteInputContainer = styled.div`
   margin-top: 28px;
   height: 33px;
   input {
-    /* FIXME: 공통 style 이용 */
-    font-weight: 500;
-    font-size: 18px;
     line-height: 150%;
     letter-spacing: -0.005em;
-    color: #ffffff;
+    color: ${theme.colors.white};
+    ${Body5}
 
     &::placeholder {
-      font-weight: 500;
-      font-size: 18px;
       line-height: 22px;
       letter-spacing: -0.005em;
-      color: #5b5d68;
+      color: ${theme.colors.gray4};
+      ${Body5};
     }
   }
+`;
+
+const LetterWriteInputGuideMessage = styled.span<{ isShow: boolean }>`
+  display: ${({ isShow }) => (isShow ? "block" : "none")};
+  margin-top: 4px;
+  line-height: 150%;
+  letter-spacing: -0.005em;
+  color: ${theme.colors.red};
+  ${Caption1};
 `;
 
 const RelationShipReceiverContainer = styled.div`
@@ -55,11 +60,9 @@ const RelationShipReceiverContainer = styled.div`
 `;
 
 const LetterWriteH1 = styled.h1`
-  /* FIXME: 공통 style 이용 */
-  font-weight: 600;
-  font-size: 24px;
   line-height: 150%;
-  color: #ffffff;
+  color: ${theme.colors.white};
+  ${Display6}
 `;
 
 const LetterWriteCaption1 = styled.small`
@@ -123,6 +126,7 @@ export {
   BottomButtonContainer,
   LetterWriteInputRecipientMain,
   LetterWriteInputContainer,
+  LetterWriteInputGuideMessage,
   RelationShipReceiverContainer,
   LetterWriteH1,
   LetterWriteCaption1,

@@ -10,24 +10,24 @@ type Props = {
 
 const toolbarItemMap = {
   Text: {
-    default: "/Icons/icon__text-editor-text.svg",
-    active: "/Icons/icon__text-editor-text--active.svg",
+    default: "/icons/icon__text-editor-text.svg",
+    active: "/icons/icon__text-editor-text--active.svg",
   },
   Color: {
-    default: "/Icons/icon__text-editor-color.svg",
-    active: "/Icons/icon__text-editor-color--active.svg",
+    default: "/icons/icon__text-editor-color.svg",
+    active: "/icons/icon__text-editor-color--active.svg",
   },
   Align: {
-    default: "/Icons/icon__text-editor-align.svg",
-    active: "/Icons/icon__text-editor-align--active.svg",
+    default: "/icons/icon__text-editor-align.svg",
+    active: "/icons/icon__text-editor-align--active.svg",
   },
   Guideline: {
-    default: "/Icons/icon__text-editor-guideline.svg",
-    active: "/Icons/icon__text-editor-guideline.svg",
+    default: "/icons/icon__text-editor-guideline.svg",
+    active: "/icons/icon__text-editor-guideline.svg",
   },
   Remind: {
-    default: "/Icons/icon__text-editor-remind.svg",
-    active: "/Icons/icon__text-editor-remind.svg",
+    default: "/icons/icon__text-editor-remind.svg",
+    active: "/icons/icon__text-editor-remind.svg",
   },
 } as const;
 

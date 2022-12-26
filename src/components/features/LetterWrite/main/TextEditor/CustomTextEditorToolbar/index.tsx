@@ -46,104 +46,104 @@ type CustomTextEditorToolbarMapType = {
 const customTextEditorToolbarMap: CustomTextEditorToolbarMapType = {
   Text: {
     bold: {
-      default: "/Icons/icon__text-bold.svg",
-      active: "/Icons/icon__text-bold--active.svg",
+      default: "/icons/icon__text-bold.svg",
+      active: "/icons/icon__text-bold--active.svg",
     },
     italic: {
-      default: "/Icons/icon__text-italic.svg",
-      active: "/Icons/icon__text-italic--active.svg",
+      default: "/icons/icon__text-italic.svg",
+      active: "/icons/icon__text-italic--active.svg",
     },
     underline: {
-      default: "/Icons/icon__text-underline.svg",
-      active: "/Icons/icon__text-underline--active.svg",
+      default: "/icons/icon__text-underline.svg",
+      active: "/icons/icon__text-underline--active.svg",
     },
     strike: {
-      default: "/Icons/icon__text-strike.svg",
-      active: "/Icons/icon__text-strike--active.svg",
+      default: "/icons/icon__text-strike.svg",
+      active: "/icons/icon__text-strike--active.svg",
     },
     huge: {
-      default: "/Icons/icon__text-huge.svg",
-      active: "/Icons/icon__text-huge.svg",
+      default: "/icons/icon__text-huge.svg",
+      active: "/icons/icon__text-huge.svg",
     },
     large: {
-      default: "/Icons/icon__text-large.svg",
-      active: "/Icons/icon__text-large.svg",
+      default: "/icons/icon__text-large.svg",
+      active: "/icons/icon__text-large.svg",
     },
     normal: {
-      default: "/Icons/icon__text-normal.svg",
-      active: "/Icons/icon__text-normal.svg",
+      default: "/icons/icon__text-normal.svg",
+      active: "/icons/icon__text-normal.svg",
     },
   },
   Color: {
     "color#1C1D22": {
-      default: "/Icons/icon__text-color-navy.svg",
-      active: "/Icons/icon__text-color-navy--active.svg",
+      default: "/icons/icon__text-color-navy.svg",
+      active: "/icons/icon__text-color-navy--active.svg",
     },
     "color#5B5D68": {
-      default: "/Icons/icon__text-color-gray.svg",
-      active: "/Icons/icon__text-color-gray--active.svg",
+      default: "/icons/icon__text-color-gray.svg",
+      active: "/icons/icon__text-color-gray--active.svg",
     },
     "color#F6523D": {
-      default: "/Icons/icon__text-color-red.svg",
-      active: "/Icons/icon__text-color-red--active.svg",
+      default: "/icons/icon__text-color-red.svg",
+      active: "/icons/icon__text-color-red--active.svg",
     },
     "color#FFF53E": {
-      default: "/Icons/icon__text-color-yellow.svg",
-      active: "/Icons/icon__text-color-yellow--active.svg",
+      default: "/icons/icon__text-color-yellow.svg",
+      active: "/icons/icon__text-color-yellow--active.svg",
     },
     "color#37BFA8": {
-      default: "/Icons/icon__text-color-green.svg",
-      active: "/Icons/icon__text-color-green--active.svg",
+      default: "/icons/icon__text-color-green.svg",
+      active: "/icons/icon__text-color-green--active.svg",
     },
     "color#648DF5": {
-      default: "/Icons/icon__text-color-blue.svg",
-      active: "/Icons/icon__text-color-blue--active.svg",
+      default: "/icons/icon__text-color-blue.svg",
+      active: "/icons/icon__text-color-blue--active.svg",
     },
     "color#9E8AFF": {
-      default: "/Icons/icon__text-color-purple.svg",
-      active: "/Icons/icon__text-color-purple--active.svg",
+      default: "/icons/icon__text-color-purple.svg",
+      active: "/icons/icon__text-color-purple--active.svg",
     },
     "background#1C1D22": {
-      default: "/Icons/icon__text-background-navy.svg",
-      active: "/Icons/icon__text-background-navy--active.svg",
+      default: "/icons/icon__text-background-navy.svg",
+      active: "/icons/icon__text-background-navy--active.svg",
     },
     "background#5B5D68": {
-      default: "/Icons/icon__text-background-gray.svg",
-      active: "/Icons/icon__text-background-gray--active.svg",
+      default: "/icons/icon__text-background-gray.svg",
+      active: "/icons/icon__text-background-gray--active.svg",
     },
     "background#F6523D": {
-      default: "/Icons/icon__text-background-red.svg",
-      active: "/Icons/icon__text-background-red--active.svg",
+      default: "/icons/icon__text-background-red.svg",
+      active: "/icons/icon__text-background-red--active.svg",
     },
     "background#FFF53E": {
-      default: "/Icons/icon__text-background-yellow.svg",
-      active: "/Icons/icon__text-background-yellow--active.svg",
+      default: "/icons/icon__text-background-yellow.svg",
+      active: "/icons/icon__text-background-yellow--active.svg",
     },
     "background#37BFA8": {
-      default: "/Icons/icon__text-background-green.svg",
-      active: "/Icons/icon__text-background-green--active.svg",
+      default: "/icons/icon__text-background-green.svg",
+      active: "/icons/icon__text-background-green--active.svg",
     },
     "background#648DF5": {
-      default: "/Icons/icon__text-background-blue.svg",
-      active: "/Icons/icon__text-background-blue--active.svg",
+      default: "/icons/icon__text-background-blue.svg",
+      active: "/icons/icon__text-background-blue--active.svg",
     },
     "background#9E8AFF": {
-      default: "/Icons/icon__text-background-purple.svg",
-      active: "/Icons/icon__text-background-purple--active.svg",
+      default: "/icons/icon__text-background-purple.svg",
+      active: "/icons/icon__text-background-purple--active.svg",
     },
   },
   Align: {
     left: {
-      default: "/Icons/icon__align-left.svg",
-      active: "/Icons/icon__align-left--active.svg",
+      default: "/icons/icon__align-left.svg",
+      active: "/icons/icon__align-left--active.svg",
     },
     center: {
-      default: "/Icons/icon__align-center.svg",
-      active: "/Icons/icon__align-center--active.svg",
+      default: "/icons/icon__align-center.svg",
+      active: "/icons/icon__align-center--active.svg",
     },
     right: {
-      default: "/Icons/icon__align-right.svg",
-      active: "/Icons/icon__align-right--active.svg",
+      default: "/icons/icon__align-right.svg",
+      active: "/icons/icon__align-right--active.svg",
     },
   },
 };

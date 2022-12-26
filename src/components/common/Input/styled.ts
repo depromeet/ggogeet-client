@@ -1,3 +1,4 @@
+import theme from "@/src/styles/theme";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -16,7 +17,7 @@ const inputUnderline = (status: Status) => css`
 `;
 const inputFill = css`
   padding: 12px;
-  border-radius: 8px;
+  border-radius: ${theme.radius.md};
   background-color: #f0f2f6;
 `;
 
