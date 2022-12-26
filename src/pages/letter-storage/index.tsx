@@ -21,22 +21,6 @@ const LetterContainerWrapper = styled.div`
   padding: 0 0 8px 0;
 `;
 
-const LetterStorageBottomSheet = styled(BottomSheet)`
-  padding: 28px 20px 20px 20px;
-  background-color: red;
-
-  :root {
-    --rsbs-backdrop-bg: red;
-    --rsbs-bg: red;
-    --rsbs-handle-bg: red;
-    --rsbs-max-w: auto;
-    --rsbs-ml: env(safe-area-inset-left);
-    --rsbs-mr: env(safe-area-inset-right);
-    --rsbs-overlay-rounded: 16px;
-    padding: 28px 20px 20px 20px;
-  }
-`;
-
 const dummyData = [
   {
     sender: "김가은",
@@ -120,13 +104,9 @@ const LetterStoragePage = () => {
         })}
       </Layout>
 
-      <LetterStorageBottomSheet
-        onClose={onClose}
-        isOpened={true}
-        className="BottomSheet"
-      >
+      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
         <ListBottomSheet listArray={SenderData} />
-      </LetterStorageBottomSheet>
+      </BottomSheet>
     </>
   );
 };

@@ -5,12 +5,13 @@ export const HeaderLayout = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px 16px 20px;
+  padding: 28px 0 16px 0;
 `;
 
 export const NavigationsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  padding: ;
 `;
 
 interface NavigationProps {

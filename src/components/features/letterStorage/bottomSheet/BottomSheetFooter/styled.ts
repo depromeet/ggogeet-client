@@ -2,7 +2,7 @@ import Button from "@/src/components/common/Buttons/Button";
 import styled from "@emotion/styled";
 
 export const ButtonContainer = styled.div`
-  padding: 20px;
+  padding: 20px 0;
 `;
 
 export const ApplyButton = styled(Button)`
