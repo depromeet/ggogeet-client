@@ -2,9 +2,12 @@ import BottomButton from "@/src/components/common/Buttons/BottomButton";
 import Textarea from "@/src/components/common/Textarea";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import AddImage from "@/src/components/features/letterStorage/add/AddImage";
 import AddNavigationBar from "@/src/components/features/letterStorage/add/AddNavigationBar";
+import AddText from "@/src/components/features/letterStorage/add/AddText";
 import { Body4, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
+import { useState } from "react";
 
 const Layout = styled.div`
   display: flex;
@@ -54,6 +57,8 @@ const NextButton = styled(BottomButton)<NextButtonProps>`
 `;
 
 const LetterStorageAddPage = () => {
+  const [isText, setIsText] = useState<boolean>(true);
+
   return (
     <Layout>
       <TopNavigation
@@ -62,10 +67,8 @@ const LetterStorageAddPage = () => {
       />
 
       <MainLayout>
-        <AddNavigationBar selectedItem="텍스트로 추가" />
-        <LetterAddTextAreaWrapper>
-          <LetterAddTextArea />
-        </LetterAddTextAreaWrapper>
+        <AddNavigationBar isText={isText} setIsText={setIsText} />
+        {isText ? <AddText /> : <AddImage />}
       </MainLayout>
 
       <BottomLayout>

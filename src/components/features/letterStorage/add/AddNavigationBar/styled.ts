@@ -27,6 +27,7 @@ export const Navigation = styled.p<NavigationProps>`
   background-color: ${({ theme, isSelected }) =>
     isSelected ? theme.colors.white : theme.colors.gray5};
   border-radius: 20px;
+  cursor: pointer;
 
   ${Body1};
 `;
