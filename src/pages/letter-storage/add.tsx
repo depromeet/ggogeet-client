@@ -1,5 +1,4 @@
 import BottomButton from "@/src/components/common/Buttons/BottomButton";
-import Textarea from "@/src/components/common/Textarea";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/atoms";
 import AddImage from "@/src/components/features/letterStorage/add/AddImage";
@@ -27,15 +26,6 @@ const MainLayout = styled.div`
   align-items: center;
   padding: 10px 20px 0 20px;
   flex: 1;
-`;
-
-const LetterAddTextAreaWrapper = styled.div`
-  margin: 20px 0 0 0;
-`;
-
-const LetterAddTextArea = styled(Textarea)`
-  height: 320px;
-  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const BottomLayout = styled.div`
