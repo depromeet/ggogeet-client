@@ -11,7 +11,6 @@ export const HeaderLayout = styled.div`
 export const NavigationsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: ;
 `;
 
 interface NavigationProps {
@@ -23,6 +22,5 @@ export const Navigation = styled.p<NavigationProps>`
     isSelected ? theme.colors.white : theme.colors.gray3};
   padding: 0 16px 0 0;
   cursor: pointer;
-
-  ${Body5}// NOTE: 선택된 요소는 Display2로 변경해야 함
+  ${({ isSelected }) => (isSelected ? Display2 : Body5)};
 `;
