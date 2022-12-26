@@ -132,6 +132,17 @@ const LetterWriteSituationSliderItem = styled.div`
   }
 `;
 
+const LetterWriteCompletedLastSentence = styled.div<{ color: string }>`
+  width: 100%;
+  height: 105%;
+  background-color: ${({ color }) => color};
+  border-radius: ${theme.radius.md};
+  .last-sentence-input {
+  }
+  .sender-name-date {
+  }
+`;
+
 export {
   LetterWriteInputRecipientLayoutWrapper,
   BottomButtonContainer,
@@ -145,4 +156,5 @@ export {
   LetterWriteProfileContainer,
   LetterWriteSituationSliderWrapper,
   LetterWriteSituationSliderItem,
+  LetterWriteCompletedLastSentence,
 };
