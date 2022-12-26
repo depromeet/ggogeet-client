@@ -1,13 +1,8 @@
 import { NextPage } from "next";
-import TopNavigation from "../components/common/TopNavigation";
-import { NavLogo, NavMenu } from "../components/common/TopNavigation/Atoms";
+import Home from "../components/features/Home";
 
 const MainPage: NextPage = () => {
-  return (
-    <>
-      <TopNavigation leftElem={<NavLogo />} rightElem={<NavMenu />} />
-    </>
-  );
+  return <Home />;
 };
 
 export default MainPage;
