@@ -1,4 +1,4 @@
-import { Body1, Body5, Caption1, Display6 } from "@/src/styles/commons";
+import { Body1, Body2, Body5, Caption1, Display6 } from "@/src/styles/commons";
 import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
@@ -63,6 +63,35 @@ const LetterWriteH1 = styled.h1`
   line-height: 150%;
   color: ${theme.colors.white};
   ${Display6}
+`;
+
+const LetterWriteProfileContainer = styled.ul`
+  margin-top: 20px;
+  height: calc(100vh - 220px);
+  overflow-y: auto;
+  li {
+    padding: 12px 0px;
+    width: 100%;
+    height: 60px;
+    button {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: fit-content;
+      .profile-image-default {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #c1c2ca;
+      }
+      span {
+        line-height: 150%;
+        letter-spacing: -0.005em;
+        color: ${theme.colors.white};
+        ${Body2};
+      }
+    }
+  }
 `;
 
 const LetterWriteCaption1 = styled.small`
@@ -134,4 +163,5 @@ export {
   SituationTemplateContainer,
   SituationSlick,
   SituationSlickItem,
+  LetterWriteProfileContainer,
 };
