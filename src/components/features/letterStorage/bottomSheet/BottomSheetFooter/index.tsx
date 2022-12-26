@@ -1,4 +1,3 @@
-import Button from "@/src/components/common/Buttons/Button";
 import * as S from "./styled";
 
 export default function BottomSheetFooter() {

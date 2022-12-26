@@ -26,11 +26,15 @@ interface Props {
 export default function ListBottomSheet({ listArray }: Props) {
   return (
     <>
+<<<<<<< HEAD
       <BottomSheetHeader selectedItem="보낸사람" />
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> d33a397 (💄 letter-storage 페이지 바텀시트 스타일 수정)
+=======
+      <BottomSheetHeader selectedItem="보낸 사람" />
+>>>>>>> 3d35b64 (💄 받은편지추가 페이지 AddNavigationBar 컴포넌트 생성)
       <S.ListsContainer>
         {listArray.map((item, index) => {
           // NOTE: key값 임시
