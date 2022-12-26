@@ -1,5 +1,5 @@
 import { tempRemindData } from "@/src/data/LetterWrite";
-import Accordion from "../../common/Accordion";
+import Accordion from "../../Common/Accordion";
 import * as S from "../styled";
 
 const Remind = () => {
