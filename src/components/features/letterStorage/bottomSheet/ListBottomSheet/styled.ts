@@ -11,7 +11,6 @@ const Header = styled.div``;
 >>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
 =======
 export const ListsContainer = styled.div`
-  padding: 0 20px;
   height: 220px;
   overflow: auto;
 `;

@@ -36,22 +36,6 @@ const LetterContainerWrapper = styled.div`
   padding: 0 0 8px 0;
 `;
 
-const LetterStorageBottomSheet = styled(BottomSheet)`
-  padding: 28px 20px 20px 20px;
-  background-color: red;
-
-  :root {
-    --rsbs-backdrop-bg: red;
-    --rsbs-bg: red;
-    --rsbs-handle-bg: red;
-    --rsbs-max-w: auto;
-    --rsbs-ml: env(safe-area-inset-left);
-    --rsbs-mr: env(safe-area-inset-right);
-    --rsbs-overlay-rounded: 16px;
-    padding: 28px 20px 20px 20px;
-  }
-`;
-
 const dummyData = [
   {
     sender: "김가은",
@@ -137,6 +121,7 @@ const LetterStoragePage = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
         <ListBottomSheet listArray={SenderData} />
       </BottomSheet>
@@ -153,6 +138,11 @@ const LetterStoragePage = () => {
 >>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
       </LetterStorageBottomSheet>
 >>>>>>> d081fda (💄 초기화버튼 생성)
+=======
+      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
+        <ListBottomSheet listArray={SenderData} />
+      </BottomSheet>
+>>>>>>> a649632 (💄 BottomSheet 컴포넌트 변경에 따른 스타일 변경)
     </>
   );
 };
