@@ -81,7 +81,7 @@ const LetterRemindWritePage = () => {
             height={17}
           />
         } // NOTE: 뒤로가기화살표 임시
-        rightElem={<OkButton>확인</OkButton>}
+        rightElem={<OkButton type="button">확인</OkButton>}
       />
 
       <Layout>

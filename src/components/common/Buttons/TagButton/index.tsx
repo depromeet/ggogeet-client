@@ -6,6 +6,7 @@ type Props = {
   isDark?: boolean;
   isSelected?: boolean;
   onClick?: () => void;
+  className?: string;
 };
 
 export default function TagButton({
@@ -14,6 +15,7 @@ export default function TagButton({
   isDark = false,
   isSelected = false,
   onClick,
+  className,
 }: Props) {
   return (
     <S.TagButtonWrapper
@@ -22,6 +24,7 @@ export default function TagButton({
       isDark={isDark}
       isSelected={isSelected}
       onClick={onClick}
+      className={className}
     >
       {content}
       <S.SelectedTagBorder
