@@ -1,7 +1,7 @@
-import TextEditor from "@/src/components/features/LetterWrite/main/TextEditor";
-import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/main/TextEditor/CustomTextEditorToolbar";
+import TextEditor from "@/src/components/features/LetterWrite/Main/TextEditor";
+import CustomTextEditorToolbar from "@/src/components/features/LetterWrite/Main/TextEditor/CustomTextEditorToolbar";
 import { ReactElement, useEffect, useRef, useState } from "react";
-import Toolbar from "@/src/components/features/LetterWrite/main/Toolbar";
+import Toolbar from "@/src/components/features/LetterWrite/Main/Toolbar";
 import { RefAny } from "@/src/types";
 import * as S from "./styled";
 import BottomSheet from "@/src/components/common/BottomSheet";

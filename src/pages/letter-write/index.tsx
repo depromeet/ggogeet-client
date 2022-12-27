@@ -7,8 +7,8 @@ import {
   ReceiverNameForm,
   SituationForm,
 } from "@/src/components/features/LetterWrite/InputRecipient/Forms";
-import LetterWriteMainLayout from "@/src/components/features/LetterWrite/main/Layout";
-import LetterWriteMain from "@/src/components/features/LetterWrite/main";
+import LetterWriteMainLayout from "@/src/components/features/LetterWrite/Main/Layout";
+import LetterWriteMain from "@/src/components/features/LetterWrite/Main";
 
 type LetterWriteTypeKey = keyof typeof letterWriteTypeMap;
 

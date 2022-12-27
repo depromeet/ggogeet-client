@@ -1,4 +1,3 @@
-import BottomButton from "@/src/components/common/Buttons/BottomButton";
 import Button from "@/src/components/common/Buttons/Button";
 import { getNavigateNextLink } from "@/src/utils/LetterWrite";
 import { useRouter } from "next/router";
