@@ -7,22 +7,33 @@ export const NavigationBarLayout = styled.div`
 `;
 
 export const Navigation = styled.p`
-  color: ${({ theme }) => theme.colors.white};
-
+  color: ${({ theme }) => theme.colors.gray4};
   ${Display1}
 `;
 
 export const NavigationNumber = styled.p`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.gray4};
   padding: 0 0 0 4px;
-
   ${Display1}
 `;
 
-export const NavigationWrapper = styled.div`
+interface NavigationWrapperProps {
+  isSelected: boolean;
+}
+
+export const NavigationWrapper = styled.div<NavigationWrapperProps>`
   display: flex;
   flex-direction: row;
   padding: 8px 4px;
-  border-bottom: ${({ theme }) => `2px solid ${theme.colors.white}`};
+  border-bottom: ${({ theme, isSelected }) =>
+    isSelected && `2px solid ${theme.colors.white}`};
   margin: 0 16px 0 0;
+
+  & > ${Navigation} {
+    color: ${({ theme, isSelected }) => isSelected && theme.colors.white};
+  }
+
+  & > ${NavigationNumber} {
+    color: ${({ theme, isSelected }) => isSelected && theme.colors.purple};
+  }
 `;
