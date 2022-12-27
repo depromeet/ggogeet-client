@@ -28,6 +28,7 @@ export const NavigationWrapper = styled.div<NavigationWrapperProps>`
   border-bottom: ${({ theme, isSelected }) =>
     isSelected && `2px solid ${theme.colors.white}`};
   margin: 0 16px 0 0;
+  cursor: pointer;
 
   & > ${Navigation} {
     color: ${({ theme, isSelected }) => isSelected && theme.colors.white};
