@@ -1,21 +1,24 @@
-import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import { Body2, Body4, Caption1 } from "@/src/styles/commons";
 import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 interface TodoLayoutProps {
   isComplete: boolean;
+  isAlarm: boolean;
 }
 
 export const TodoLayout = styled.div<TodoLayoutProps>`
+  border-radius: ${theme.radius.md};
+  background-color: ${({ theme }) => theme.colors.gray6};
+  opacity: ${({ isComplete }) => (isComplete ? "20%" : "100%")};
+  cursor: pointer;
+`;
+
+export const TodoContentLayout = styled.div`
   padding: 0 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: ${theme.radius.md};
-  background-color: ${({ theme }) => theme.colors.gray6};
-  opacity: ${({ isComplete }) => (isComplete ? "50%" : "100%")};
-  cursor: pointer;
 `;
 
 export const TodoTitleContainer = styled.div`
@@ -93,4 +96,24 @@ export const Space = styled.div`
   width: 12px;
 `;
 
-export const AlarmContainer = styled.div``;
+export const TodoAlarmLayout = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.navy70};
+  border-radius: ${({ theme }) =>
+    ` 0 0  ${theme.radius.md} ${theme.radius.md}`};
+  padding: 8px;
+`;
+
+export const AlarmTalk = styled.p`
+  color: ${({ theme }) => theme.colors.gray2};
+  ${Caption1}
+`;
+
+export const AlarmDate = styled.p`
+  color: ${({ theme }) => theme.colors.yellow};
+  ${Caption1}
+`;
