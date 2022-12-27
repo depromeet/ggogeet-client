@@ -15,8 +15,7 @@ interface TagProps {
   isClicked: boolean;
 }
 
-export const Tag = styled(TagButton)<TagProps>`
-  background-color: ${({ isClicked, theme }) =>
-    isClicked ? "green" : theme.colors.white};
+export const RoundTag = styled(TagButton)<TagProps>`
+  background-color: ${({ isClicked, theme }) => isClicked && "green"};
   /* 임시 스타일 적용 */
 `;
