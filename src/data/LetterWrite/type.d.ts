@@ -10,9 +10,14 @@ type TemplateType =
 
 type SituationTemplateDataType = Array<{
   situationId: number;
-  templateUrl: string;
   title: TemplateType;
   description: string;
+  color: string;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+  };
 }>;
 
 // TODO: 임시

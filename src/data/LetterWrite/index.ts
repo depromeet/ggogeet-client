@@ -1,3 +1,4 @@
+import theme from "@/src/styles/theme";
 import type {
   KakaoFriendsListType,
   SituationGuidelineSentenceType,
@@ -8,59 +9,99 @@ import type { RemindDataType, SituationTemplateDataType } from "./type";
 const situationTemplatesData: SituationTemplateDataType = [
   {
     situationId: 1,
-    templateUrl: "",
     title: "축하하는 고양이",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.yellow,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 2,
-    templateUrl: "",
     title: "감동받은 곰",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.purple,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 3,
-    templateUrl: "",
     title: "사랑이 넘치는 토끼",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.red,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 4,
-    templateUrl: "",
     title: "사과하는 다람쥐",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.gray3,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 5,
-    templateUrl: "",
     title: "소식 전하는 비둘기",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.green,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 6,
-    templateUrl: "",
     title: "응원하는 물개",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.beige,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 7,
-    templateUrl: "",
     title: "친해지고 싶은 펭귄",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.blue,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
   {
     situationId: 8,
-    templateUrl: "",
     title: "꼬깃",
     description:
       "응원하고 싶을 때는 물개 친구를 건네보세요. 신나는 물개 박수 어쩌 할거예요!",
+    color: theme.colors.gray1,
+    image: {
+      src: "",
+      width: 0,
+      height: 0,
+    },
   },
 ];
 
