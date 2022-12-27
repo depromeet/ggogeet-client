@@ -75,6 +75,7 @@ export default function TodoContainer({ todo }: Props) {
           </S.TodoContentContainer>
         )}
       </S.TodoContentLayout>
+
       {isAlarm && isClicked && (
         <S.TodoAlarmLayout>
           <S.AlarmDate>{alarm}</S.AlarmDate>
