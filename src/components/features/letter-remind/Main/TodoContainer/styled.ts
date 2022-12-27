@@ -82,4 +82,15 @@ export const Content = styled.p`
   ${Body2}
 `;
 
-export const ContentLowerContainer = styled.div``;
+export const ContentLowerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 12px 0 0 0;
+`;
+
+export const Space = styled.div`
+  width: 12px;
+`;
+
+export const AlarmContainer = styled.div``;

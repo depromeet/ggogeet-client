@@ -3,6 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import ToggleArrowButton from "@/src/components/common/Buttons/ToggleArrowButton";
 import Checkbox from "@/src/components/common/Buttons/Checkbox";
+import EditButton from "../EditButton";
+import DeleteButton from "../DeleteButton";
 
 interface Props {
   todo: {
@@ -60,7 +62,11 @@ export default function TodoContainer({ todo }: Props) {
             <S.Content>{content}</S.Content>
           </S.ContentUpperContainer>
 
-          <S.ContentLowerContainer></S.ContentLowerContainer>
+          <S.ContentLowerContainer>
+            <EditButton />
+            <S.Space />
+            <DeleteButton />
+          </S.ContentLowerContainer>
         </S.TodoContentContainer>
       )}
     </S.TodoLayout>
