@@ -106,6 +106,32 @@ const LetterWriteBody1 = styled.span`
   ${Body1}
 `;
 
+const LetterWriteSituationSliderWrapper = styled.div`
+  margin-top: 36px;
+`;
+
+const LetterWriteSituationSliderItem = styled.div`
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 6px;
+  div {
+    /* 임시 */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: rgba(217, 217, 217, 0.7);
+  }
+  p {
+    padding: 0 22px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.005em;
+    color: ${theme.colors.gray2};
+    ${Body1};
+  }
+`;
+
 export {
   LetterWriteInputRecipientLayoutWrapper,
   BottomButtonContainer,
@@ -117,4 +143,6 @@ export {
   LetterWriteCaption1,
   LetterWriteBody1,
   LetterWriteProfileContainer,
+  LetterWriteSituationSliderWrapper,
+  LetterWriteSituationSliderItem,
 };

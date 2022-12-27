@@ -21,8 +21,10 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.37.0",
     "react-quill": "^2.0.0",
+    "react-slick": "^0.29.0",
     "react-spring-bottom-sheet": "3.5.0-alpha.0",
-    "recoil": "^0.7.5"
+    "recoil": "^0.7.5",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -39,6 +41,7 @@
     "@types/node": "18.8.4",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "@types/react-slick": "^0.23.10",
     "babel-loader": "^8.3.0",
     "eslint": "8.25.0",
     "eslint-config-next": "^13.0.2",

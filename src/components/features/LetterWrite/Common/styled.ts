@@ -65,4 +65,35 @@ const AccordionContents = styled.p`
   ${Body2};
 `;
 
-export { LetterWriteAccordionWrapper, AccordionHeader, AccordionContents };
+const CustomSliderWrapper = styled.div`
+  .slick-dots {
+    position: unset;
+    display: flex !important;
+    justify-content: center;
+    margin-top: 22px;
+    li {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50%;
+      background-color: ${theme.colors.gray6};
+      margin: 0 4px;
+      &.slick-active {
+        background-color: ${theme.colors.white};
+      }
+      button {
+        width: inherit;
+        height: inherit;
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+`;
+
+export {
+  LetterWriteAccordionWrapper,
+  AccordionHeader,
+  AccordionContents,
+  CustomSliderWrapper,
+};
