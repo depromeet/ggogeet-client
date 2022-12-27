@@ -1,4 +1,6 @@
-import { Body2, Body4 } from "@/src/styles/commons";
+import Checkbox from "@/src/components/common/Buttons/Checkbox";
+import { Body2, Body4, Caption1 } from "@/src/styles/commons";
+import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 interface TodoLayoutProps {
@@ -10,15 +12,15 @@ export const TodoLayout = styled.div<TodoLayoutProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: ${({ theme }) => theme.radius.md};
-  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${theme.radius.md};
+  background-color: ${({ theme }) => theme.colors.gray6};
   opacity: ${({ isComplete }) => (isComplete ? "50%" : "100%")};
   cursor: pointer;
 `;
 
 export const TodoTitleContainer = styled.div`
   display: flex;
-  padding: 12px 0;
+  padding: 16px 0;
   justify-content: space-between;
 `;
 interface TodoContentContainerProps {
@@ -26,10 +28,10 @@ interface TodoContentContainerProps {
 }
 
 export const TodoContentContainer = styled.div<TodoContentContainerProps>`
-  padding: 12px 10px 12px 30px;
+  padding: 14px 0;
   border-top: ${({ isClicked, theme }) =>
-    isClicked ? `1px solid ${theme.colors.gray2}` : "none"};
-  background-color: ${({ theme }) => theme.colors.white};
+    isClicked ? `1px solid ${theme.colors.gray5}` : "none"};
+  background-color: ${({ theme }) => theme.colors.gray6};
 `;
 
 export const TodoInnerContainer = styled.div`
@@ -37,46 +39,47 @@ export const TodoInnerContainer = styled.div`
   align-items: center;
 `;
 
+export const CheckBoxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 8px 0 0;
+`;
+
+export const BellIconWrapper = styled.div`
+  margin: 0 6px 0 0;
+  display: flex;
+  align-items: center;
+`;
+
+export const Title = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  ${Body4}
+`;
+
+export const Date = styled.p`
+  color: ${({ theme }) => theme.colors.gray3};
+  padding: 0 8px 0 0;
+  ${Caption1}
+`;
+
 export const ContentUpperContainer = styled.div`
   margin: 0 0 10px 0;
 `;
 
-export const ContentLowerContainer = styled.div``;
+interface SenderProps {
+  color: string;
+}
 
-export const ContentUpperContentsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 0 0 5px 0;
-`;
-
-export const CheckboxWrapper = styled.div`
-  padding: 0 8px 0 0; // 체크박스 컴포넌트 추가되면 삭제 예정
-`;
-
-export const BellIconWrapper = styled.div`
-  padding: 0 4px 0 0;
-`;
-
-export const Title = styled.p`
-  color: ${({ theme }) => theme.colors.gray5};
+export const Sender = styled.p<SenderProps>`
+  color: ${({ color }) => color};
+  margin: 0 0 8px 0;
   ${Body2}
 `;
 
-export const Date = styled.p`
-  color: ${({ theme }) => theme.colors.gray4};
-  padding: 0 8px 0 0;
-  ${Body4}
-`;
-
 export const Content = styled.p`
-  color: ${({ theme }) => theme.colors.gray5};
+  color: ${({ theme }) => theme.colors.white};
   // white-space: pre-line
-  ${Body4}
+  ${Body2}
 `;
 
-export const SituationAndAlarm = styled.p`
-  color: ${({ theme }) => theme.colors.gray4};
-  padding: 0 8px 0 0;
-
-  ${Body4}
-`;
+export const ContentLowerContainer = styled.div``;

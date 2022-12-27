@@ -2,21 +2,24 @@ import * as S from "./styled";
 import { useState } from "react";
 import Image from "next/image";
 import ToggleArrowButton from "@/src/components/common/Buttons/ToggleArrowButton";
+import Checkbox from "@/src/components/common/Buttons/Checkbox";
 
 interface Props {
   todo: {
     title: string;
     date: string;
-    situation: string;
     alarm: string;
     content: string;
+    sender: string;
     isAlarm: boolean;
     isComplete: boolean;
+    color: string;
   };
 }
 
 export default function TodoContainer({ todo }: Props) {
-  const { title, date, situation, alarm, content, isAlarm, isComplete } = todo;
+  const { title, date, alarm, content, isAlarm, sender, isComplete, color } =
+    todo;
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
@@ -26,17 +29,21 @@ export default function TodoContainer({ todo }: Props) {
     <S.TodoLayout onClick={onClickContainer} isComplete={isComplete}>
       <S.TodoTitleContainer>
         <S.TodoInnerContainer>
-          <S.CheckboxWrapper></S.CheckboxWrapper>
+          <S.CheckBoxWrapper>
+            <Checkbox isChecked={false} isRound />
+          </S.CheckBoxWrapper>
+
           {isAlarm && (
             <S.BellIconWrapper>
               <Image
-                src="/icons/bell.svg"
-                alt="BellImg"
-                width={10}
-                height={12}
+                src="/icons/yellowBell.svg"
+                alt="알람아이콘"
+                width={16}
+                height={16}
               />
             </S.BellIconWrapper>
           )}
+
           <S.Title>{title}</S.Title>
         </S.TodoInnerContainer>
 
@@ -49,20 +56,11 @@ export default function TodoContainer({ todo }: Props) {
       {isClicked && (
         <S.TodoContentContainer isClicked={isClicked}>
           <S.ContentUpperContainer>
-            <S.ContentUpperContentsContainer>
-              <S.SituationAndAlarm>상황</S.SituationAndAlarm>
-              <S.Content>{situation}</S.Content>
-            </S.ContentUpperContentsContainer>
-
-            <S.ContentUpperContentsContainer>
-              <S.SituationAndAlarm>알림</S.SituationAndAlarm>
-              <S.Content>{alarm}</S.Content>
-            </S.ContentUpperContentsContainer>
+            <S.Sender color={color}>{sender}</S.Sender>
+            <S.Content>{content}</S.Content>
           </S.ContentUpperContainer>
 
-          <S.ContentLowerContainer>
-            <S.Content>{content}</S.Content>
-          </S.ContentLowerContainer>
+          <S.ContentLowerContainer></S.ContentLowerContainer>
         </S.TodoContentContainer>
       )}
     </S.TodoLayout>
