@@ -1,28 +1,23 @@
 import BottomSheet from "@/src/components/common/BottomSheet";
 import TopNavigation from "@/src/components/common/TopNavigation";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
-=======
-import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
-import SenderListBottomSheet from "@/src/components/features/letter-storage/SenderListBottomSheet";
->>>>>>> d081fda (💄 초기화버튼 생성)
-=======
-import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
-<<<<<<< HEAD
-import SenderListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/SenderListBottomSheet";
->>>>>>> 9529d38 (🚚  파일 이름 변경 및 이동)
-=======
->>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
+import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import { Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
 
 const Layout = styled.div`
+  background-color: ${({ theme }) => theme.colors.navy};
+`;
+
+const MainLayout = styled.div`
   padding: 0 16px;
+`;
+
+const TopNavigationTitle = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  ${Display2}
 `;
 
 const Header = styled.div`
@@ -99,11 +94,15 @@ const LetterStoragePage = () => {
   };
 
   return (
-    <>
-      <TopNavigation title="보관함" rightElem={<TopNavigationRightElem />} />
+    <Layout>
+      <TopNavigation
+        title={<TopNavigationTitle>꼬깃 보관함</TopNavigationTitle>}
+        leftElem={<NavBack color="white" />}
+        rightElem={<TopNavigationRightElem />}
+      />
 
-      <Layout>
-        <LetterStorageTopNavigation navigations={TopNavigations} />
+      <MainLayout>
+        {/* <LetterStorageTopNavigation navigations={TopNavigations} /> */}
 
         <Header>
           <div>최근 받은 순</div>
@@ -117,33 +116,16 @@ const LetterStoragePage = () => {
             </LetterContainerWrapper>
           );
         })}
-      </Layout>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-        <ListBottomSheet listArray={SenderData} />
-      </BottomSheet>
-=======
-      <LetterStorageBottomSheet onClose={onClose} isOpened={true}>
-        <SenderListBottomSheet />
-=======
-      <LetterStorageBottomSheet
-        onClose={onClose}
-        isOpened={true}
-        className="BottomSheet"
-      >
-        <ListBottomSheet listArray={SenderData} />
->>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
-      </LetterStorageBottomSheet>
->>>>>>> d081fda (💄 초기화버튼 생성)
-=======
-      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-        <ListBottomSheet listArray={SenderData} />
-      </BottomSheet>
->>>>>>> a649632 (💄 BottomSheet 컴포넌트 변경에 따른 스타일 변경)
-    </>
+        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
+          <ListBottomSheet listArray={SenderData} />
+        </BottomSheet>
+
+        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
+          <ListBottomSheet listArray={SenderData} />
+        </BottomSheet>
+      </MainLayout>
+    </Layout>
   );
 };
 
