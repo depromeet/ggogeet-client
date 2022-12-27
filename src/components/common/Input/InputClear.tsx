@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import * as S from "./styled";
 import { InputDefault } from "./InputDefault";
 
-import type { Dispatch, SetStateAction } from "react";
 import type { InputDefaultProps } from "./InputDefault";
 
 interface Props extends Omit<InputDefaultProps, "tail"> {
