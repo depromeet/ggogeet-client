@@ -2,12 +2,14 @@ import BottomSheet from "@/src/components/common/BottomSheet";
 import Select from "@/src/components/common/Select";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import FilterButton from "@/src/components/features/letter-storage/FilterButton";
+import PlusButton from "@/src/components/features/letter-storage/PlusButton";
 import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
 import { Caption1, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
+import SortButton from "@/src/components/features/letter-storage/SortButton";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -26,6 +28,13 @@ const TopNavigationTitle = styled.p`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 0 0 8px 0;
+  align-items: center;
+`;
+
+const HeaderRight = styled.div`
+  display: flex;
+  flex-direction: row;
   align-items: center;
 `;
 
@@ -33,12 +42,16 @@ const LetterKindSelect = styled(Select)`
   background-color: ${({ theme }) => theme.colors.navy};
   color: ${({ theme }) => theme.colors.white};
   border: none;
-  padding: 7px 0;
+  padding: 7px 28px 7px 12px;
   ${Caption1}
 `;
 
 const LetterContainerWrapper = styled.div`
   padding: 0 0 8px 0;
+`;
+
+const Space = styled.div`
+  width: 10px;
 `;
 
 const dummyData = [
@@ -104,6 +117,7 @@ const LetterStoragePage = () => {
       <TopNavigation
         title={<TopNavigationTitle>꼬깃 보관함</TopNavigationTitle>}
         leftElem={<NavBack color="white" />}
+        rightElem={<PlusButton />}
       />
 
       <MainLayout>
@@ -116,8 +130,12 @@ const LetterStoragePage = () => {
             }}
             placeholder="전체 꼬깃"
           />
-          <div>최근 받은 순</div>
-          <div>상세 필터</div>
+
+          <HeaderRight>
+            <SortButton sortKind="최근 받은 순" />
+            <Space />
+            <FilterButton />
+          </HeaderRight>
         </Header>
 
         {dummyData.map((letter) => {

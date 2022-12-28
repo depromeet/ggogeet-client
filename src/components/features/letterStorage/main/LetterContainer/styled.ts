@@ -1,4 +1,10 @@
-import { Body2, Body4, Caption1, Caption2 } from "@/src/styles/commons";
+import {
+  Body2,
+  Body4,
+  Caption1,
+  Caption2,
+  Display3,
+} from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 export const LetterLayout = styled.div`
@@ -41,12 +47,25 @@ export const Sender = styled.p`
 
 export const ContentContainer = styled.div`
   padding: 0 0 4px 0;
+  display: flex;
+  flex-direction: row;
   margin: 20px 0 10px 0;
+
+  ${Display3}
 `;
 
 export const Content = styled.p`
   color: ${({ theme }) => theme.colors.white};
+  padding: 0 2px;
   ${Body4};
+`;
+
+interface quotationProps {
+  color: string;
+}
+
+export const Quotation = styled.p<quotationProps>`
+  color: ${({ color }) => color};
 `;
 
 export const Date = styled.p`

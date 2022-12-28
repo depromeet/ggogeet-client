@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import * as S from "./styled";
 
 interface Props {
@@ -24,7 +25,10 @@ export default function LetterContainer({ letter }: Props) {
       </S.StatusAndSenderContainer>
 
       <S.ContentContainer>
+        {/* 임시 따옴표  */}
+        <S.Quotation color={color}>"</S.Quotation>
         <S.Content>{content}</S.Content>
+        <S.Quotation color={color}>"</S.Quotation>
       </S.ContentContainer>
 
       <S.Date>{date}</S.Date>
