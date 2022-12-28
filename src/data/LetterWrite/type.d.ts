@@ -1,4 +1,4 @@
-type TemplateType =
+export type TemplateType =
   | "축하하는 고양이"
   | "감동받은 곰"
   | "사랑이 넘치는 토끼"

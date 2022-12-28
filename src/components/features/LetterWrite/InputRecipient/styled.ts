@@ -116,7 +116,7 @@ const LetterWriteSituationSliderItem = styled.div`
   align-items: center;
   gap: 16px;
   padding: 0 6px;
-  div {
+  & > div:first-of-type {
     /* 임시 */
     width: 100%;
     aspect-ratio: 1 / 1;

@@ -91,9 +91,36 @@ const CustomSliderWrapper = styled.div`
   }
 `;
 
+const SituationTagWrapper = styled.div<{
+  height: number;
+  bgColor: string;
+  color: string;
+  stylesOptions?: {
+    fontSize?: number;
+  };
+}>`
+  display: flex;
+  align-items: center;
+  & > div {
+    height: ${({ height }) => `${height}px`};
+    background-color: ${({ bgColor }) => bgColor};
+    padding: 0 8px;
+    span {
+      font-weight: 500;
+      line-height: 150%;
+      text-align: center;
+      letter-spacing: -0.005em;
+      font-size: ${({ stylesOptions }) =>
+        stylesOptions?.fontSize ? `${stylesOptions.fontSize}px` : "12px"};
+      color: ${({ color }) => color};
+    }
+  }
+`;
+
 export {
   LetterWriteAccordionWrapper,
   AccordionHeader,
   AccordionContents,
   CustomSliderWrapper,
+  SituationTagWrapper,
 };
