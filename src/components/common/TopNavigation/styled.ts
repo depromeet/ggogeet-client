@@ -15,14 +15,10 @@ export const TopNavigationLeftElem = styled.span`
   left: 16px;
 `;
 
-export const TopNavigationTitle = styled.span<{ isCenter: boolean }>`
-  ${({ isCenter }) =>
-    isCenter &&
-    css`
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    `}
+export const TopNavigationTitle = styled.span`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const TopNavigationRightElem = styled.span`
