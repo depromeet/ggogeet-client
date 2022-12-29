@@ -2,16 +2,14 @@ import { InputHTMLAttributes, ReactNode, useRef } from "react";
 import * as S from "./styled";
 
 interface Props
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "id" | "type"> {
-  id: string;
-  label?: ReactNode;
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "checked"> {
+  checked: boolean;
   isRound?: boolean;
   isFocused?: boolean;
 }
 
 export default function Checkbox({
-  id,
-  label,
+  checked,
   isRound = false,
   isFocused = false,
   ...args
@@ -23,14 +21,15 @@ export default function Checkbox({
   };
 
   return (
-    <S.CheckboxWrapper isRound={isRound} isFocused={isFocused}>
-      <input id={id} type="checkbox" ref={inputRef} {...args} />
-      <label htmlFor={id} />
-      {label && (
-        <button type="button" onClick={handleClickLabelButton}>
-          {label}
-        </button>
-      )}
+    <S.CheckboxWrapper>
+      <S.CheckboxButton
+        isRound={isRound}
+        isFocused={isFocused}
+        checked={checked}
+        onClick={handleClickLabelButton}
+        role="button"
+      />
+      <input type="checkbox" checked={checked} ref={inputRef} {...args} />
     </S.CheckboxWrapper>
   );
 }
