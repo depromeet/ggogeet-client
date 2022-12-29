@@ -1,7 +1,10 @@
+import BottomSheet from "@/src/components/common/BottomSheet";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
+import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
+import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
 import styled from "@emotion/styled";
+import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
+import { SenderData } from "@/src/data/LetterStorage";
 
 const Layout = styled.div`
   padding: 0 16px;
@@ -76,6 +79,10 @@ const TopNavigationRightElem = () => {
 const LetterStoragePage = () => {
   const TopNavigations = ["받은 꼬깃", "보낸 꼬깃"];
 
+  const onClose = () => {
+    return;
+  };
+
   return (
     <>
       <TopNavigation title="보관함" rightElem={<TopNavigationRightElem />} />
@@ -96,6 +103,10 @@ const LetterStoragePage = () => {
           );
         })}
       </Layout>
+
+      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
+        <ListBottomSheet listArray={SenderData} />
+      </BottomSheet>
     </>
   );
 };
