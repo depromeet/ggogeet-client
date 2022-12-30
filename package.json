@@ -22,7 +22,7 @@
     "react-hook-form": "^7.37.0",
     "react-quill": "^2.0.0",
     "react-spring-bottom-sheet": "3.5.0-alpha.0",
-    "recoil": "^0.7.5"
+    "recoil": "^0.7.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
