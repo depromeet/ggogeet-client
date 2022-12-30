@@ -1,5 +1,5 @@
 import Button from "@/src/components/common/Buttons/Button";
-import Checkbox from "@/src/components/common/Buttons/Checkbox";
+// import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import InputDefault from "@/src/components/common/Input";
 import { tempGuidelineData } from "@/src/data/LetterWrite";
 
@@ -25,8 +25,8 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   );
   const [isOpenAddGuideline, setIsOpenAddGuideline] = useState<boolean>(false);
   const [newGuidelineText, setNewGuidelineText] = useState<string>("");
-  const [isNewGuidelinePublicChecked, setIsNewGuidelinePublicChecked] =
-    useState<boolean>(true);
+  // const [isNewGuidelinePublicChecked, setIsNewGuidelinePublicChecked] =
+  //   useState<boolean>(true);
   const onClickGuideline = (text: string) => {
     setLetterWriteGuidelineState(text);
     onClose("Guideline");
@@ -105,22 +105,23 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               }
             />
             <div>
+              {/* TODO: 상황 선택 find 한 것 태그 표시 */}
               <Image
                 src="/icons/icon__guideline-tag.svg"
                 alt="가이드라인 태그 - 감동받은 곰"
                 width={83}
                 height={22}
               />
-              <div>
+              {/* <div>
                 <Checkbox
                   id="new-guideline-public-check"
-                  isChecked={isNewGuidelinePublicChecked}
+                  checked={isNewGuidelinePublicChecked}
                   onChange={() => {
                     setIsNewGuidelinePublicChecked((prev) => !prev);
                   }}
                 />
                 <label htmlFor="new-guideline-public-check">전체 공개</label>
-              </div>
+              </div> */}
             </div>
           </S.GuidelineAddInputWrapper>
           <ul>
