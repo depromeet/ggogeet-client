@@ -23,9 +23,8 @@ const LetterWriteMainNavRight = ({ onClickSend }: LetterWriteMainNavWright) => {
 const LetterWriteMainLayout = ({ children }: WrapperChildren) => {
   const router = useRouter();
   const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
-  const onClickSave = () => {
-    // TODO: 편지 임시저장 API
-  };
+  // const onClickSave = () => {
+  // };
   const onClickSend = () => {
     router.push("/letter-write?type=completed");
   };
