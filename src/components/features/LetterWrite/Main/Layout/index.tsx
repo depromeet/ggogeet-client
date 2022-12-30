@@ -6,19 +6,15 @@ import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import * as S from "../styled";
 
-type LetterWriteMainNavRightType = "onClickSave" | "onClickSend";
+type LetterWriteMainNavRightType = "onClickSend";
 
 type LetterWriteMainNavWright = {
   [key in LetterWriteMainNavRightType]: () => void;
 };
 
-const LetterWriteMainNavRight = ({
-  onClickSave,
-  onClickSend,
-}: LetterWriteMainNavWright) => {
+const LetterWriteMainNavRight = ({ onClickSend }: LetterWriteMainNavWright) => {
   return (
     <S.LetterWriteMainNavRightWrapper>
-      <button onClick={onClickSave}>저장</button>
       <button onClick={onClickSend}>완료</button>
     </S.LetterWriteMainNavRightWrapper>
   );
@@ -38,12 +34,7 @@ const LetterWriteMainLayout = ({ children }: WrapperChildren) => {
       <TopNavigation
         leftElem={<NavBack color="black" />}
         title={<S.LetterWriteMainNavTitle>꼬깃 작성</S.LetterWriteMainNavTitle>}
-        rightElem={
-          <LetterWriteMainNavRight
-            onClickSave={onClickSave}
-            onClickSend={onClickSend}
-          />
-        }
+        rightElem={<LetterWriteMainNavRight onClickSend={onClickSend} />}
       />
       {children}
     </S.LetterWriteMainLayoutWrapper>
