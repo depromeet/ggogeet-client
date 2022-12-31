@@ -4,7 +4,7 @@ import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { getDateTimeFormat } from "@/src/utils/date";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useBottomButton, useTextLengthPixel } from "../Hooks";
 import * as S from "../styled";
@@ -20,15 +20,26 @@ const CompletedForm = () => {
     text: "꼬깃 작성 완료!",
     customClickHandler,
   });
-  const [inputValue, setInputValue] = useState<string>("");
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const currentTextLengthPixel = useTextLengthPixel(inputValue);
   const {
     situation: { situationId },
+    lastSentence,
   } = letterWriteInputObjectState;
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId
   );
+  const [inputValue, setInputValue] = useState<string>(lastSentence);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const currentTextLengthPixel = useTextLengthPixel(inputValue);
+
+  useEffect(() => {
+    if (inputValue.length > 0) {
+      setLetterWriteInputObjectState((prev) => ({
+        ...prev,
+        lastSentence: inputValue,
+      }));
+    }
+  }, [inputValue]);
+
   return (
     <>
       <S.LetterWriteH1>
@@ -39,16 +50,15 @@ const CompletedForm = () => {
       {currentTemplate && (
         <S.LetterWriteCompletedLastSentence
           color={currentTemplate.color}
+          calculatedInputTextWidth={currentTextLengthPixel}
           isFocused={isFocused}
           inputValueLength={inputValue.length}
-          calculatedInputTextWidth={currentTextLengthPixel}
         >
           <Image alt={currentTemplate.title} {...currentTemplate.image} />
           <div className="completed-bottom-container">
             <div className="last-sentence-input">
               <span>&ldquo;</span>
               <InputDefault
-                id="input-value"
                 value={inputValue}
                 onChange={(event) => {
                   setInputValue(event.target.value);
