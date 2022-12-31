@@ -7,6 +7,7 @@ import { useBottomButton } from "../Hooks";
 import * as S from "../styled";
 import type { Settings } from "react-slick";
 import SituationTag from "../../Common/SituationTag";
+import Image from "next/image";
 
 const SituationForm = (): ReactElement => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
@@ -56,9 +57,9 @@ const SituationForm = (): ReactElement => {
         <CustomSlider settings={sliderSettings}>
           {situationTemplatesData.map((template) => (
             <S.LetterWriteSituationSliderItem key={template.situationId}>
-              {/* <Image alt={template.title} {...template.image} /> */}
-              <div></div>
-              {/* <span>{template.title}</span> */}
+              <div>
+                <Image alt={template.title} {...template.image} />
+              </div>
               <SituationTag templateType={template.title} height={22} />
               <p>{template.description}</p>
             </S.LetterWriteSituationSliderItem>

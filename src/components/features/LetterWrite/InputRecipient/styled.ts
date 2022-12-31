@@ -136,10 +136,10 @@ const LetterWriteSituationSliderItem = styled.div`
   gap: 16px;
   padding: 0 6px;
   & > div:first-of-type {
-    /* 임시 */
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: rgba(217, 217, 217, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 0 12px 0;
   }
   p {
     padding: 0 22px;
@@ -154,7 +154,6 @@ const LetterWriteSituationSliderItem = styled.div`
 const LetterWriteCompletedLastSentenceOuterContainer = styled.div`
   display: flex;
   flex-direction: column;
-
   & > span {
     line-height: 150%;
     text-align: center;
