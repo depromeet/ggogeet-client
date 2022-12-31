@@ -35,7 +35,10 @@ const CompletedForm02 = () => {
               transform: "rotate(-8deg) scale(0.75)",
             }}
           >
-            <Image alt={currentTemplate.title} {...currentTemplate.image} />
+            <Image
+              alt={currentTemplate.title}
+              {...currentTemplate.completedImage}
+            />
             <div className="completed-bottom-container">
               <div className="last-sentence-input">
                 <span>&ldquo;</span>

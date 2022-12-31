@@ -13,7 +13,12 @@ type SituationTemplateDataType = Array<{
   title: TemplateType;
   description: string;
   color: string;
-  image: {
+  situationImage: {
+    src: string;
+    width: number;
+    height: number;
+  };
+  completedImage: {
     src: string;
     width: number;
     height: number;

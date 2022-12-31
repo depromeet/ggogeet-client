@@ -28,7 +28,7 @@ const CompletedForm = () => {
     setIsCompletedProgressShow(true);
     setTimeout(() => {
       router.push("/letter-write?type=completed-02");
-    }, 3000);
+    }, 2000);
   };
   const bottomButton = useBottomButton({
     text: "꼬깃 작성 완료!",
@@ -62,7 +62,10 @@ const CompletedForm = () => {
               isFocused={isFocused}
               inputValueLength={inputValue.length}
             >
-              <Image alt={currentTemplate.title} {...currentTemplate.image} />
+              <Image
+                alt={currentTemplate.title}
+                {...currentTemplate.completedImage}
+              />
               <div className="completed-bottom-container">
                 <div className="last-sentence-input">
                   <span>&ldquo;</span>
