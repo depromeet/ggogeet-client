@@ -11,7 +11,7 @@ export default function TopNavigation({ leftElem, title, rightElem }: Props) {
   return (
     <S.TopNavigationWrapper>
       <S.TopNavigationLeftElem>{leftElem}</S.TopNavigationLeftElem>
-      <S.TopNavigationTitle isCenter={!!leftElem}>{title}</S.TopNavigationTitle>
+      <S.TopNavigationTitle>{title}</S.TopNavigationTitle>
       <S.TopNavigationRightElem>{rightElem}</S.TopNavigationRightElem>
     </S.TopNavigationWrapper>
   );
