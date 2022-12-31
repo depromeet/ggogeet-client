@@ -7,7 +7,6 @@ import {
   Caption2,
   Display6,
 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
@@ -51,13 +50,13 @@ const LetterWriteInputContainer = styled.div`
   input {
     line-height: 150%;
     letter-spacing: -0.005em;
-    color: ${theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     ${Body5}
 
     &::placeholder {
       line-height: 22px;
       letter-spacing: -0.005em;
-      color: ${theme.colors.gray4};
+      color: ${({ theme }) => theme.colors.gray4};
       ${Body5};
     }
   }
@@ -68,7 +67,7 @@ const LetterWriteInputGuideMessage = styled.span<{ isShow: boolean }>`
   margin-top: 4px;
   line-height: 150%;
   letter-spacing: -0.005em;
-  color: ${theme.colors.red};
+  color: ${({ theme }) => theme.colors.red};
   ${Caption1};
 `;
 
@@ -81,7 +80,7 @@ const RelationShipReceiverContainer = styled.div`
 
 const LetterWriteH1 = styled.h1`
   line-height: 150%;
-  color: ${theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   ${Display6}
 `;
 
@@ -107,7 +106,7 @@ const LetterWriteProfileContainer = styled.ul`
       span {
         line-height: 150%;
         letter-spacing: -0.005em;
-        color: ${theme.colors.white};
+        color: ${({ theme }) => theme.colors.white};
         ${Body2};
       }
     }
@@ -147,7 +146,7 @@ const LetterWriteSituationSliderItem = styled.div`
     line-height: 150%;
     text-align: center;
     letter-spacing: -0.005em;
-    color: ${theme.colors.gray2};
+    color: ${({ theme }) => theme.colors.gray2};
     ${Body1};
   }
 `;
@@ -175,7 +174,7 @@ const LetterWriteCompletedLastSentence = styled.div<{
   width: 100%;
   height: 332px;
   background-color: ${({ color }) => color};
-  border-radius: ${theme.radius.md};
+  border-radius: ${({ theme }) => theme.radius.md};
   display: flex;
   flex-direction: column;
   align-items: center;

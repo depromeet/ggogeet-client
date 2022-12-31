@@ -6,9 +6,7 @@ import CustomSlider from "../../Common/CustomSlider";
 import { useBottomButton } from "../Hooks";
 import * as S from "../styled";
 import type { Settings } from "react-slick";
-import Image from "next/image";
 import SituationTag from "../../Common/SituationTag";
-import theme from "@/src/styles/theme";
 
 const SituationForm = (): ReactElement => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =

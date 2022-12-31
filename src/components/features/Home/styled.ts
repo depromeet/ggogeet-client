@@ -1,11 +1,10 @@
 import { Body5 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 const HomeWrapper = styled.div`
   position: relative;
   min-height: 100vh;
-  background-color: ${theme.colors.navy};
+  background-color: ${({ theme }) => theme.colors.navy};
   header {
     padding-top: 52px;
     display: flex;
