@@ -77,8 +77,3 @@ export const Caption1 = css`
   font-weight: 500;
   font-display: swap;
 `;
-
-export const IconImage = css`
-  width: fit-content;
-  height: fit-content;
-`;

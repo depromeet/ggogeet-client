@@ -5,7 +5,6 @@ import {
   Body5,
   Caption1,
   Display2,
-  IconImage,
 } from "@/src/styles/commons";
 import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
@@ -55,7 +54,9 @@ const ToolbarInnerContainerWrapper = styled.div`
 `;
 
 const ToolbarWrapper = styled.button`
-  ${IconImage}
+  img {
+    vertical-align: middle;
+  }
 `;
 
 const ReactQuillWrapper = styled.div`
@@ -105,8 +106,9 @@ const CustomTextEditorToolbarWrapper = styled.div`
 `;
 
 const CustomTextEditorToolbarButton = styled.button`
-  cursor: pointer;
-  ${IconImage}
+  img {
+    vertical-align: middle;
+  }
 `;
 
 const BottomSheetHeader = styled.div`
