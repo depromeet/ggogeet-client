@@ -26,7 +26,7 @@ const LetterWriteMainLayout = ({ children }: WrapperChildren) => {
   // const onClickSave = () => {
   // };
   const onClickSend = () => {
-    router.push("/letter-write?type=completed");
+    router.push("/letter-write?type=completed-01");
   };
   return (
     <S.LetterWriteMainLayoutWrapper>

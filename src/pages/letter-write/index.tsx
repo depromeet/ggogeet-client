@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import * as S from "@/src/components/features/LetterWrite/InputRecipient/styled";
 import LetterWriteInputRecipientLayout from "@/src/components/features/LetterWrite/InputRecipient/Layout";
 import {
-  CompletedForm,
+  CompletedForm01,
+  CompletedForm02,
   ReceiverFriendsForm,
   ReceiverNameForm,
   SituationForm,
@@ -16,7 +17,8 @@ type LetterWriteTypeKey = keyof typeof letterWriteTypeMap;
 const letterWriteTypeMap = {
   "recipient-01": <ReceiverNameForm />,
   "recipient-02": <SituationForm />,
-  completed: <CompletedForm />,
+  "completed-01": <CompletedForm01 />,
+  "completed-02": <CompletedForm02 />,
 };
 
 const LetterWritePage: NextPage = () => {
