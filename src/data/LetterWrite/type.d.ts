@@ -1,4 +1,4 @@
-type TemplateType =
+export type TemplateType =
   | "축하하는 고양이"
   | "감동받은 곰"
   | "사랑이 넘치는 토끼"
@@ -10,9 +10,14 @@ type TemplateType =
 
 type SituationTemplateDataType = Array<{
   situationId: number;
-  templateUrl: string;
   title: TemplateType;
   description: string;
+  color: string;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+  };
 }>;
 
 // TODO: 임시

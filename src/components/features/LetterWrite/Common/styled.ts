@@ -65,4 +65,62 @@ const AccordionContents = styled.p`
   ${Body2};
 `;
 
-export { LetterWriteAccordionWrapper, AccordionHeader, AccordionContents };
+const CustomSliderWrapper = styled.div`
+  .slick-dots {
+    position: unset;
+    display: flex !important;
+    justify-content: center;
+    margin-top: 22px;
+    li {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50%;
+      background-color: ${theme.colors.gray6};
+      margin: 0 4px;
+      &.slick-active {
+        background-color: ${theme.colors.white};
+      }
+      button {
+        width: inherit;
+        height: inherit;
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+`;
+
+const SituationTagWrapper = styled.div<{
+  height: number;
+  bgColor: string;
+  color: string;
+  stylesOptions?: {
+    fontSize?: number;
+  };
+}>`
+  display: flex;
+  align-items: center;
+  & > div {
+    height: ${({ height }) => `${height}px`};
+    background-color: ${({ bgColor }) => bgColor};
+    padding: 0 8px;
+    span {
+      font-weight: 500;
+      line-height: 150%;
+      text-align: center;
+      letter-spacing: -0.005em;
+      font-size: ${({ stylesOptions }) =>
+        stylesOptions?.fontSize ? `${stylesOptions.fontSize}px` : "12px"};
+      color: ${({ color }) => color};
+    }
+  }
+`;
+
+export {
+  LetterWriteAccordionWrapper,
+  AccordionHeader,
+  AccordionContents,
+  CustomSliderWrapper,
+  SituationTagWrapper,
+};

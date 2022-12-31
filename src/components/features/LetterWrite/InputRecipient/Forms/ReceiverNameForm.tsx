@@ -42,6 +42,7 @@ const ReceiverNameForm = (): ReactElement => {
           minLength={1}
           maxLength={10}
           onClear={onClear}
+          autoFocus
         />
         <S.LetterWriteInputGuideMessage isShow={receiverNameLength < 1}>
           이름은 최대 10자까지 입력할 수 있어요
