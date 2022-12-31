@@ -280,6 +280,34 @@ const LetterWriteCompletedLastSentence = styled.div<{
   }
 `;
 
+const LetterCompletedProgress = styled.div`
+  z-index: 1004;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-top: 157px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.navy};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+
+  p {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150%;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
 export {
   LetterWriteInputRecipientLayoutWrapper,
   BottomButtonContainer,
@@ -295,4 +323,5 @@ export {
   LetterWriteSituationSliderItem,
   LetterWriteCompletedLastSentenceOuterContainer,
   LetterWriteCompletedLastSentence,
+  LetterCompletedProgress,
 };

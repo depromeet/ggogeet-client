@@ -7,19 +7,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useBottomButton, useTextLengthPixel } from "../Hooks";
+import { LetterCompletedProgress } from "../Loadings";
 import * as S from "../styled";
 
 const CompletedForm = () => {
+  const router = useRouter();
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const router = useRouter();
-  const customClickHandler = () => {
-    router.push("/letter-write?type=completed-02");
-  };
-  const bottomButton = useBottomButton({
-    text: "꼬깃 작성 완료!",
-    customClickHandler,
-  });
   const {
     situation: { situationId },
     lastSentence,
@@ -29,7 +23,20 @@ const CompletedForm = () => {
   );
   const [inputValue, setInputValue] = useState<string>(lastSentence);
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [isCompletedProgressShow, setIsCompletedProgressShow] =
+    useState<boolean>(false);
   const currentTextLengthPixel = useTextLengthPixel(inputValue);
+
+  const customClickHandler = () => {
+    setIsCompletedProgressShow(true);
+    setTimeout(() => {
+      router.push("/letter-write?type=completed-02");
+    }, 3000);
+  };
+  const bottomButton = useBottomButton({
+    text: "꼬깃 작성 완료!",
+    customClickHandler,
+  });
 
   useEffect(() => {
     if (inputValue.length > 0) {
@@ -42,52 +49,58 @@ const CompletedForm = () => {
 
   return (
     <>
-      <S.LetterWriteH1>
-        커버에 적힐 한 마디를
-        <br />
-        적어주세요!
-      </S.LetterWriteH1>
-      {currentTemplate && (
-        <S.LetterWriteCompletedLastSentence
-          color={currentTemplate.color}
-          calculatedInputTextWidth={currentTextLengthPixel}
-          isFocused={isFocused}
-          inputValueLength={inputValue.length}
-        >
-          <Image alt={currentTemplate.title} {...currentTemplate.image} />
-          <div className="completed-bottom-container">
-            <div className="last-sentence-input">
-              <span>&ldquo;</span>
-              <InputDefault
-                value={inputValue}
-                onChange={(event) => {
-                  setInputValue(event.target.value);
-                }}
-                placeholder="최대 20자까지 작성할 수 있어요"
-                minLength={1}
-                maxLength={20}
-                onFocus={() => {
-                  setIsFocused(true);
-                }}
-                onBlur={() => {
-                  setIsFocused(false);
-                }}
-              />
-              <span>&rdquo;</span>
-            </div>
-            <div className="sender-name-date">
-              <div className="sender-name">
-                <span>FROM</span>
-                <strong>유저 이름</strong>
+      {isCompletedProgressShow ? (
+        <LetterCompletedProgress />
+      ) : (
+        <>
+          <S.LetterWriteH1>
+            커버에 적힐 한 마디를
+            <br />
+            적어주세요!
+          </S.LetterWriteH1>
+          {currentTemplate && (
+            <S.LetterWriteCompletedLastSentence
+              color={currentTemplate.color}
+              calculatedInputTextWidth={currentTextLengthPixel}
+              isFocused={isFocused}
+              inputValueLength={inputValue.length}
+            >
+              <Image alt={currentTemplate.title} {...currentTemplate.image} />
+              <div className="completed-bottom-container">
+                <div className="last-sentence-input">
+                  <span>&ldquo;</span>
+                  <InputDefault
+                    value={inputValue}
+                    onChange={(event) => {
+                      setInputValue(event.target.value);
+                    }}
+                    placeholder="최대 20자까지 작성할 수 있어요"
+                    minLength={1}
+                    maxLength={20}
+                    onFocus={() => {
+                      setIsFocused(true);
+                    }}
+                    onBlur={() => {
+                      setIsFocused(false);
+                    }}
+                  />
+                  <span>&rdquo;</span>
+                </div>
+                <div className="sender-name-date">
+                  <div className="sender-name">
+                    <span>FROM</span>
+                    <strong>유저 이름</strong>
+                  </div>
+                  <time className="sender-date">
+                    {getDateTimeFormat(new Date().getTime())}
+                  </time>
+                </div>
               </div>
-              <time className="sender-date">
-                {getDateTimeFormat(new Date().getTime())}
-              </time>
-            </div>
-          </div>
-        </S.LetterWriteCompletedLastSentence>
+            </S.LetterWriteCompletedLastSentence>
+          )}
+          {bottomButton}
+        </>
       )}
-      {bottomButton}
     </>
   );
 };
