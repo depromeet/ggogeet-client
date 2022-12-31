@@ -13,7 +13,7 @@ const SituationForm = (): ReactElement => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
   const bottomButton = useBottomButton({
-    isDisabled: !letterWriteInputObjectState.situation,
+    isDisabled: !letterWriteInputObjectState.situationId,
   });
   const [currentTemplate, setCurrentTemplate] = useState<
     typeof situationTemplatesData[0]
@@ -33,16 +33,10 @@ const SituationForm = (): ReactElement => {
     },
   };
   useEffect(() => {
-    const {
-      situationId,
-      image: { src },
-    } = currentTemplate;
+    const { situationId } = currentTemplate;
     setLetterWriteInputObjectState((prev) => ({
       ...prev,
-      situation: {
-        situationId,
-        templateUrl: src,
-      },
+      situationId,
     }));
   }, [currentTemplate]);
 

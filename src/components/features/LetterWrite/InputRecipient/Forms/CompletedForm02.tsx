@@ -11,10 +11,7 @@ import * as S from "../styled";
 const CompletedForm02 = () => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const {
-    situation: { situationId },
-    lastSentence,
-  } = letterWriteInputObjectState;
+  const { situationId, lastSentence } = letterWriteInputObjectState;
   const currentTextLengthPixel = useTextLengthPixel(lastSentence);
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId

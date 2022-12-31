@@ -19,7 +19,6 @@ interface GuidelineProps {
 
 // TODO: 앞에서 선택한 situation에 따른 가이드 문장 list API 호출
 const Guideline = ({ onClose }: GuidelineProps) => {
-  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
   const setLetterWriteGuidelineState = useSetRecoilState(
     letterWriteGuidelineState
   );

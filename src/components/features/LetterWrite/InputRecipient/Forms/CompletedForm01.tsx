@@ -14,10 +14,7 @@ const CompletedForm = () => {
   const router = useRouter();
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const {
-    situation: { situationId },
-    lastSentence,
-  } = letterWriteInputObjectState;
+  const { situationId, lastSentence } = letterWriteInputObjectState;
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId
   );

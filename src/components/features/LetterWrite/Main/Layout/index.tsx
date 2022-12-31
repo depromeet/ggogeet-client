@@ -22,7 +22,6 @@ const LetterWriteMainNavRight = ({ onClickSend }: LetterWriteMainNavWright) => {
 
 const LetterWriteMainLayout = ({ children }: WrapperChildren) => {
   const router = useRouter();
-  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
   // const onClickSave = () => {
   // };
   const onClickSend = () => {
