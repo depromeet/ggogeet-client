@@ -7,6 +7,7 @@ export type RecipientInputObjectType = {
     templateUrl: string;
   };
   contents: string;
+  lastSentence: string;
 };
 
 export const letterWriteInputState = atom<RecipientInputObjectType>({
@@ -18,6 +19,7 @@ export const letterWriteInputState = atom<RecipientInputObjectType>({
       templateUrl: "",
     },
     contents: "",
+    lastSentence: "",
   },
 });
 
