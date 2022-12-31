@@ -125,10 +125,10 @@ const Guideline = ({ onClose }: GuidelineProps) => {
             </div>
           </S.GuidelineAddInputWrapper>
           <ul>
-            <li>※ 공백 포함 20자 이내</li>
-            <li>
+            <li>※ 공백 포함 20자 이내로 작성해 주세요.</li>
+            {/* <li>
               ※ 전체 공개 시 작성한 문장이 다른 꼬깃 유저들에게 공개됩니다.
-            </li>
+            </li> */}
           </ul>
         </S.GuidelineAddWrapper>
       ) : (
