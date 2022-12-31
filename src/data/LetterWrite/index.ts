@@ -18,7 +18,7 @@ const situationTemplatesData: SituationTemplateDataType = [
       height: 173,
     },
     completedImage: {
-      src: "/images/image__completed-template02.png",
+      src: "/images/image__completed-template01.png",
       width: 280,
       height: 174,
     },
@@ -34,9 +34,8 @@ const situationTemplatesData: SituationTemplateDataType = [
       width: 154,
       height: 169,
     },
-
     completedImage: {
-      src: "/images/image__completed-template01.png",
+      src: "/images/image__completed-template02.png",
       width: 280,
       height: 188,
     },
