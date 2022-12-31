@@ -11,3 +11,6 @@ export const getNavigateNextLink = (type: QueryString) => {
     return `/letter-write?type=recipient-01`;
   }
 };
+
+export const getDeletedHTMLTagsFromString = (text: string) =>
+  text.replace(/(<([^>]+)>)/gi, "");
