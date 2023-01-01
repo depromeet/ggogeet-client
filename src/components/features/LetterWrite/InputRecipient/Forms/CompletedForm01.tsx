@@ -4,7 +4,7 @@ import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { getDateTimeFormat } from "@/src/utils/date";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useBottomButton, useTextLengthPixel } from "../Hooks";
 import { LetterCompletedProgress } from "../Loadings";
@@ -38,6 +38,10 @@ const CompletedForm = () => {
     text: "꼬깃 작성 완료!",
     customClickHandler,
   });
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    customClickHandler();
+  };
 
   useEffect(() => {
     if (inputValue.length > 0) {
@@ -53,7 +57,7 @@ const CompletedForm = () => {
       {isCompletedProgressShow ? (
         <LetterCompletedProgress />
       ) : (
-        <>
+        <form onSubmit={onSubmit}>
           <S.LetterWriteH1>
             커버에 적힐 한 마디를
             <br />
@@ -77,7 +81,7 @@ const CompletedForm = () => {
                   <span>&ldquo;</span>
                   <InputDefault
                     value={inputValue}
-                    onChange={(event) => {
+                    onInput={(event: ChangeEvent<HTMLInputElement>) => {
                       setInputValue(event.target.value);
                     }}
                     placeholder="최대 20자까지 작성할 수 있어요"
@@ -105,7 +109,7 @@ const CompletedForm = () => {
             </S.LetterWriteCompletedLastSentence>
           )}
           {bottomButton}
-        </>
+        </form>
       )}
     </>
   );
