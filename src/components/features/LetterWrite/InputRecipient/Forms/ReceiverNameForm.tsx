@@ -1,6 +1,11 @@
 import { InputClear } from "@/src/components/common/Input";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
-import { ChangeEventHandler, FormEvent, ReactElement } from "react";
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  FormEvent,
+  ReactElement,
+} from "react";
 import { useRecoilState } from "recoil";
 import { useBottomButton } from "../Hooks";
 import * as S from "../styled";
@@ -9,7 +14,7 @@ const ReceiverNameForm = (): ReactElement => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
 
-  const onChangeInputObject: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const onChangeInputObject = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setLetterWriteInputObjectState((prev) => ({
       ...prev,
@@ -42,7 +47,7 @@ const ReceiverNameForm = (): ReactElement => {
           name="receiverName"
           placeholder="받는 사람의 이름을 입력해주세요"
           value={letterWriteInputObjectState.receiverName}
-          onChange={onChangeInputObject}
+          onInput={onChangeInputObject}
           minLength={1}
           maxLength={10}
           onClear={onClear}

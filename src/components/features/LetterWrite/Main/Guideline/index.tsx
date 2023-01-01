@@ -12,7 +12,13 @@ import {
 } from "@/src/store/LetterWrite";
 import { SituationGuidelineSentenceType } from "@/src/types/Letter";
 import Image from "next/image";
-import { FormEvent, MouseEvent, TouchEvent, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  TouchEvent,
+  useState,
+} from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import SituationTag from "../../Common/SituationTag";
 import * as S from "../styled";
@@ -102,7 +108,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               styleOption="fill"
               autoFocus
               value={newGuidelineText}
-              onChange={(event) => {
+              onInput={(event: ChangeEvent<HTMLInputElement>) => {
                 const { value } = event.currentTarget;
                 setNewGuidelineText(value);
               }}
