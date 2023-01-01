@@ -44,6 +44,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (newGuidelineText.length >= 1 && newGuidelineText.length <= 20) {
+      // TODO: situationId에 따른 기본 가이드 문장/커스텀 문장 가져오기, 커스텀 문장 추가/삭제
       setCurrentGuidelineData((prev) => ({
         ...prev,
         userSentence: {
