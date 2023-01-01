@@ -254,7 +254,7 @@ const GuidelineAddInputWrapper = styled.div<{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    & > div {
+    /* & > div:last-of-type {
       display: flex;
       gap: 4px;
       align-items: center;
@@ -264,7 +264,7 @@ const GuidelineAddInputWrapper = styled.div<{
         color: ${({ theme }) => theme.colors.gray2};
         ${Body2}
       }
-    }
+    } */
   }
 `;
 

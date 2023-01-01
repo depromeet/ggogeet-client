@@ -1,7 +1,10 @@
 import Button from "@/src/components/common/Buttons/Button";
 // import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import InputDefault from "@/src/components/common/Input";
-import { tempGuidelineData } from "@/src/data/LetterWrite";
+import {
+  situationTemplatesData,
+  tempGuidelineData,
+} from "@/src/data/LetterWrite";
 
 import {
   letterWriteGuidelineState,
@@ -11,6 +14,7 @@ import { SituationGuidelineSentenceType } from "@/src/types/Letter";
 import Image from "next/image";
 import { MouseEvent, TouchEvent, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import SituationTag from "../../Common/SituationTag";
 import * as S from "../styled";
 
 interface GuidelineProps {
@@ -26,6 +30,11 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   const [newGuidelineText, setNewGuidelineText] = useState<string>("");
   // const [isNewGuidelinePublicChecked, setIsNewGuidelinePublicChecked] =
   //   useState<boolean>(true);
+  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
+  const { situationId } = letterWriteInputObjectState;
+  const currentTemplate = situationTemplatesData.find(
+    (template) => template.situationId === situationId
+  );
   const onClickGuideline = (text: string) => {
     setLetterWriteGuidelineState(text);
     onClose("Guideline");
@@ -104,13 +113,12 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               }
             />
             <div>
-              {/* TODO: 상황 선택 find 한 것 태그 표시 */}
-              <Image
-                src="/icons/icon__guideline-tag.svg"
-                alt="가이드라인 태그 - 감동받은 곰"
-                width={83}
-                height={22}
-              />
+              {currentTemplate && (
+                <SituationTag
+                  templateType={currentTemplate.title}
+                  height={22}
+                />
+              )}
               {/* <div>
                 <Checkbox
                   id="new-guideline-public-check"
