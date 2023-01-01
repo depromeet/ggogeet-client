@@ -84,6 +84,9 @@ const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
   useEffect(() => {
     setLetterWriteInputObjectState((prev) => ({ ...prev, contents }));
   }, [contents]);
+  setTimeout(() => {
+    quillRef.current?.focus();
+  }, 0);
   return (
     <S.ReactQuillWrapper>
       <ReactQuill
