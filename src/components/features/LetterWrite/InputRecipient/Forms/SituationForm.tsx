@@ -16,7 +16,7 @@ const SituationForm = (): ReactElement => {
     isDisabled: !letterWriteInputObjectState.situationId,
   });
   const [currentTemplate, setCurrentTemplate] = useState<
-    typeof situationTemplatesData[0]
+    typeof situationTemplatesData[number]
   >(situationTemplatesData[0]);
   const sliderSettings: Settings = {
     dots: true,
