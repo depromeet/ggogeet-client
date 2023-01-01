@@ -24,7 +24,13 @@ const CompletedForm = () => {
     useState<boolean>(false);
   const currentTextLengthPixel = useTextLengthPixel(inputValue);
 
-  const customClickHandler = () => {
+  const bottomButton = useBottomButton({
+    text: "꼬깃 작성 완료!",
+    customClickHandler: () => {},
+  });
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("test");
     if (inputValue.length < 1 || inputValue.length > 20) {
       alert("최소 1자 최대 20자 입력해주세요!");
     } else {
@@ -33,14 +39,6 @@ const CompletedForm = () => {
         router.push("/letter-write?type=completed-02");
       }, 2000);
     }
-  };
-  const bottomButton = useBottomButton({
-    text: "꼬깃 작성 완료!",
-    customClickHandler,
-  });
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    customClickHandler();
   };
 
   useEffect(() => {
