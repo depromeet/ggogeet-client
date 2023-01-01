@@ -25,10 +25,14 @@ const CompletedForm = () => {
   const currentTextLengthPixel = useTextLengthPixel(inputValue);
 
   const customClickHandler = () => {
-    setIsCompletedProgressShow(true);
-    setTimeout(() => {
-      router.push("/letter-write?type=completed-02");
-    }, 2000);
+    if (inputValue.length < 1 || inputValue.length > 20) {
+      alert("최소 1자 최대 20자 입력해주세요!");
+    } else {
+      setIsCompletedProgressShow(true);
+      setTimeout(() => {
+        router.push("/letter-write?type=completed-02");
+      }, 2000);
+    }
   };
   const bottomButton = useBottomButton({
     text: "꼬깃 작성 완료!",
@@ -62,10 +66,12 @@ const CompletedForm = () => {
               isFocused={isFocused}
               inputValueLength={inputValue.length}
             >
-              <Image
-                alt={currentTemplate.title}
-                {...currentTemplate.completedImage}
-              />
+              <div className="completed-situation-image">
+                <Image
+                  alt={currentTemplate.title}
+                  {...currentTemplate.completedImage}
+                />
+              </div>
               <div className="completed-bottom-container">
                 <div className="last-sentence-input">
                   <span>&ldquo;</span>

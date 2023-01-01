@@ -179,6 +179,9 @@ const LetterWriteCompletedLastSentence = styled.div<{
   align-items: center;
   gap: 28px;
   padding: 22px 20px 20px 20px;
+  .completed-situation-image {
+    height: 188px;
+  }
   .completed-bottom-container {
     display: flex;
     flex-direction: column;
@@ -199,6 +202,7 @@ const LetterWriteCompletedLastSentence = styled.div<{
         inputValueLength !== undefined &&
         inputValueLength > 0 &&
         `${30 + calculatedInputTextWidth}px`};
+
       span {
         display: inline-block;
         width: 8px;
@@ -215,6 +219,9 @@ const LetterWriteCompletedLastSentence = styled.div<{
         border: unset;
         padding: unset;
         input {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           padding: unset;
           line-height: 150%;
           text-align: center;
