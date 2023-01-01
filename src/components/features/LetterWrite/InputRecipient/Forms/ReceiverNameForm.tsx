@@ -1,6 +1,6 @@
 import { InputClear } from "@/src/components/common/Input";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
-import { ChangeEventHandler, ReactElement } from "react";
+import { ChangeEventHandler, FormEvent, ReactElement } from "react";
 import { useRecoilState } from "recoil";
 import { useBottomButton } from "../Hooks";
 import * as S from "../styled";
@@ -30,8 +30,12 @@ const ReceiverNameForm = (): ReactElement => {
     isDisabled: receiverNameLength < 1 || receiverNameLength > 10,
   });
 
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <S.LetterWriteH1>누구에게 보낼 건가요?</S.LetterWriteH1>
       <S.LetterWriteInputContainer>
         <InputClear
@@ -49,7 +53,7 @@ const ReceiverNameForm = (): ReactElement => {
         </S.LetterWriteInputGuideMessage>
       </S.LetterWriteInputContainer>
       {bottomButton}
-    </>
+    </form>
   );
 };
 
