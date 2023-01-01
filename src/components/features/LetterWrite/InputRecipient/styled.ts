@@ -126,7 +126,7 @@ const LetterWriteBody1 = styled.span`
 `;
 
 const LetterWriteSituationSliderWrapper = styled.div`
-  margin-top: 36px;
+  margin-top: 68px;
 `;
 
 const LetterWriteSituationSliderItem = styled.div`
@@ -136,10 +136,10 @@ const LetterWriteSituationSliderItem = styled.div`
   gap: 16px;
   padding: 0 6px;
   & > div:first-of-type {
+    height: 187px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 32px 0 12px 0;
   }
   p {
     padding: 0 22px;

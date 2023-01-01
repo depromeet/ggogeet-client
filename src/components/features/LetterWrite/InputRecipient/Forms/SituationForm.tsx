@@ -1,6 +1,6 @@
 import { situationTemplatesData } from "@/src/data/LetterWrite";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import CustomSlider from "../../Common/CustomSlider";
 import { useBottomButton } from "../Hooks";
@@ -12,18 +12,23 @@ import Image from "next/image";
 const SituationForm = (): ReactElement => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
+  const { situationId } = letterWriteInputObjectState;
   const bottomButton = useBottomButton({
-    isDisabled: !letterWriteInputObjectState.situationId,
+    // Consider for zero
+    isDisabled: !!!situationId,
   });
+  const currentIndex = !!situationId ? situationId - 1 : 0;
   const [currentTemplate, setCurrentTemplate] = useState<
     typeof situationTemplatesData[number]
-  >(situationTemplatesData[0]);
+  >(situationTemplatesData[currentIndex]);
+
   const sliderSettings: Settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: currentIndex,
     centerMode: true,
     centerPadding: "26px",
     prevArrow: <></>,
