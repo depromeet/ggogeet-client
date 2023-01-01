@@ -170,7 +170,7 @@ const GuidelineMainBottomButtonWrapper = styled.div<{ isShow: boolean }>`
   }
 `;
 
-const GuidelineAddWrapper = styled.div`
+const GuidelineAddWrapper = styled.form`
   height: 235px;
   & > div:first-of-type {
     width: 100%;

@@ -12,7 +12,7 @@ import {
 } from "@/src/store/LetterWrite";
 import { SituationGuidelineSentenceType } from "@/src/types/Letter";
 import Image from "next/image";
-import { MouseEvent, TouchEvent, useState } from "react";
+import { FormEvent, MouseEvent, TouchEvent, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import SituationTag from "../../Common/SituationTag";
 import * as S from "../styled";
@@ -41,8 +41,8 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   };
   const [currentGuidelineData, setCurrentGuidelineData] =
     useState<SituationGuidelineSentenceType>(tempGuidelineData);
-  const onAddNewGuideline = () => {
-    // TODO: Enter key
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (newGuidelineText.length >= 1 && newGuidelineText.length <= 20) {
       setCurrentGuidelineData((prev) => ({
         ...prev,
@@ -81,7 +81,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   return (
     <>
       {isOpenAddGuideline ? (
-        <S.GuidelineAddWrapper>
+        <S.GuidelineAddWrapper onSubmit={onSubmit}>
           <div>
             <strong>나만의 문장 추가</strong>
             <Image
@@ -108,9 +108,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               minLength={1}
               maxLength={20}
               placeholder="편지 쓸 때 참고할 문장을 추가해 보세요."
-              tail={
-                <Button name="추가" size="lg" onClick={onAddNewGuideline} />
-              }
+              tail={<Button name="추가" size="lg" />}
             />
             <div>
               {currentTemplate && (
