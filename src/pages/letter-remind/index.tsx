@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 
 const Layout = styled.div`
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.navy};
   height: 100vh;
 `;
 
@@ -42,9 +42,9 @@ const LetterRemindPage = () => {
 
       <MainLayout>
         <ButtonsContainer>
-          <Button name="모든 꼬깃기억" fontStyle="bold" isDark={true} />
-          <Button name="미완료" fontStyle="bold" isDark={true} />
-          <Button name="완료" fontStyle="bold" isDark={true} />
+          <Button name="모든 꼬깃기억" size="sm" />
+          <Button name="미완료" size="sm" />
+          <Button name="완료" size="sm" />
         </ButtonsContainer>
 
         {RemindData.map((item) => {

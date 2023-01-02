@@ -1,4 +1,4 @@
-import { Body3, Caption2, Header3 } from "@/src/styles/commons";
+import { Body3, Caption2, Display3 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 export const LetterLayout = styled.div`
@@ -24,7 +24,7 @@ export const SenderContainer = styled.div`
 export const ContentContainer = styled.div`
   padding: 0 0 4px 0;
 
-  ${Header3}
+  ${Display3}
 `;
 
 export const DateContainer = styled.div`

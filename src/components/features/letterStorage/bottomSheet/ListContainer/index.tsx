@@ -16,7 +16,7 @@ export default function ListContainer({ imageURL, name }: Props) {
         <S.Name>{name}</S.Name>
       </S.NameContainer>
 
-      <Checkbox isChecked={false} />
+      <Checkbox checked={false} />
     </S.ListLayout>
   );
 }

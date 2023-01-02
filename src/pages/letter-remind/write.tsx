@@ -6,7 +6,7 @@ import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
 } from "@/src/data/LetterRemind";
-import { Body2, Body4, Header4, Header5 } from "@/src/styles/commons";
+import { Body2, Body4, Display1, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
@@ -35,12 +35,12 @@ const QuestionContainer = styled.div`
 
 const TopNavigationTitle = styled.p`
   color: ${({ theme }) => theme.colors.gray5};
-  ${Header4}
+  ${Display2}
 `;
 
 const OkButton = styled.button`
   color: ${({ theme }) => theme.colors.gray4};
-  ${Header5}
+  ${Display1}
   cursor: pointer;
 `;
 
