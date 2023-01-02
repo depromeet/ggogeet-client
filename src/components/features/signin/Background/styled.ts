@@ -10,6 +10,11 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  img {
+    margin-top: -${({ theme }) => theme.spacing[4]};
+    margin-bottom: -${({ theme }) => theme.spacing[4]};
+  }
 `;
 
 export const Logo1 = styled(Image)`
