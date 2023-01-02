@@ -1,5 +1,4 @@
 import { Body2, Body4 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 interface TodoLayoutProps {
@@ -11,7 +10,7 @@ export const TodoLayout = styled.div<TodoLayoutProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: ${theme.radius.md};
+  border-radius: ${({ theme }) => theme.radius.md};
   background-color: ${({ theme }) => theme.colors.white};
   opacity: ${({ isComplete }) => (isComplete ? "50%" : "100%")};
   cursor: pointer;

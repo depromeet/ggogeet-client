@@ -49,8 +49,8 @@ const Home = () => {
           />
         </Link>
       </div>
-      <footer>
-        <Link href="/help">
+      {/* <footer>
+        <Link href="#">
           <Image
             src="/icons/icon__home-help.svg"
             alt="도움말"
@@ -58,7 +58,7 @@ const Home = () => {
             height={28}
           />
         </Link>
-        <Link href="/setting">
+        <Link href="#">
           <Image
             src="/icons/icon__home-setting.svg"
             alt="설정"
@@ -66,7 +66,7 @@ const Home = () => {
             height={28}
           />
         </Link>
-      </footer>
+      </footer> */}
     </S.HomeWrapper>
   );
 };

@@ -12,10 +12,15 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "생일, 입학, 승진 등 축하할 일이 있을 때는 귀여운 고양이 친구를 건네보세요!",
     color: theme.colors.yellow,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template01.png",
+      width: 113,
+      height: 173,
+    },
+    completedImage: {
+      src: "/images/image__completed-template01.png",
+      width: 280,
+      height: 174,
     },
   },
   {
@@ -24,10 +29,15 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "고마움을 표현하고 싶을 때, 포근한 곰 친구로 따뜻한 마음을 전해 보세요!",
     color: theme.colors.purple,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template02.png",
+      width: 154,
+      height: 169,
+    },
+    completedImage: {
+      src: "/images/image__completed-template02.png",
+      width: 280,
+      height: 188,
     },
   },
   {
@@ -36,10 +46,15 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "애정을 표현하고 싶을 때는 사랑스러운 토끼 친구의 도움을 받아보세요.",
     color: theme.colors.red,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template03.png",
+      width: 119,
+      height: 187,
+    },
+    completedImage: {
+      src: "/images/image__completed-template03.png",
+      width: 280,
+      height: 174,
     },
   },
   {
@@ -48,10 +63,15 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "미안한 마음을 전해야 할 때, 두 손 모아 사과하는 다람쥐 친구를 건네보세요.",
     color: theme.colors.gray3,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template04.png",
+      width: 137,
+      height: 172,
+    },
+    completedImage: {
+      src: "/images/image__completed-template04.png",
+      width: 280,
+      height: 174,
     },
   },
   {
@@ -60,10 +80,15 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "근황이 궁금한 사람이 있나요? 비둘기 친구가 좋은 소식을 물어다 줄 거예요!",
     color: theme.colors.green,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template05.png",
+      width: 123,
+      height: 180,
+    },
+    completedImage: {
+      src: "/images/image__completed-template05.png",
+      width: 280,
+      height: 174,
     },
   },
   {
@@ -72,10 +97,15 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "힘이 되고 싶은 사람이 있다면, 물개 친구가 물개 박수로 응원해 줄 거예요!",
     color: theme.colors.beige,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template06.png",
+      width: 161,
+      height: 168,
+    },
+    completedImage: {
+      src: "/images/image__completed-template06.png",
+      width: 280,
+      height: 174,
     },
   },
   {
@@ -84,21 +114,31 @@ const situationTemplatesData: SituationTemplateDataType = [
     description:
       "누군가와 친해지고 싶을 때, 수줍게 악수를 건네는 펭귄 친구를 보내보아요!",
     color: theme.colors.blue,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template07.png",
+      width: 137,
+      height: 176,
+    },
+    completedImage: {
+      src: "/images/image__completed-template07.png",
+      width: 280,
+      height: 174,
     },
   },
   {
     situationId: 8,
     title: "꼬깃",
-    description: "어떤 꼬깃 친구로도 내 마음을 표현할 수 없다면...",
+    description: "어떤 꼬깃 친구로도 내 마음을 표현할 수 없다면...😎",
     color: theme.colors.gray1,
-    image: {
-      src: "",
-      width: 0,
-      height: 0,
+    situationImage: {
+      src: "/images/image__situation-template08.png",
+      width: 121,
+      height: 178,
+    },
+    completedImage: {
+      src: "/images/image__completed-template08.png",
+      width: 280,
+      height: 174,
     },
   },
 ];

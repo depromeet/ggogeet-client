@@ -1,5 +1,12 @@
-import { Body1, Body2, Body5, Caption1, Display6 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
+import {
+  Body1,
+  Body2,
+  Body4,
+  Body5,
+  Caption1,
+  Caption2,
+  Display6,
+} from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
@@ -8,7 +15,13 @@ const LetterWriteInputRecipientLayoutWrapper = styled.div`
   background-color: ${({ theme: { colors } }) => colors.navy};
 `;
 
-const BottomButtonContainer = styled.div<{ type?: string }>`
+const BottomButtonContainer = styled.div<{
+  type?: string;
+  bgColor?: string;
+  gap?: number;
+  fontWeight?: number;
+  fontColor?: string;
+}>`
   width: 100%;
   position: fixed;
   padding: 20px;
@@ -17,7 +30,13 @@ const BottomButtonContainer = styled.div<{ type?: string }>`
   right: 0;
 
   button {
+    display: flex;
+    align-items: center;
     height: 56px;
+    font-weight: ${({ fontWeight }) => fontWeight};
+    color: ${({ fontColor }) => fontColor};
+    background-color: ${({ bgColor }) => bgColor};
+    gap: ${({ gap }) => `${gap}px`};
   }
 `;
 
@@ -31,13 +50,13 @@ const LetterWriteInputContainer = styled.div`
   input {
     line-height: 150%;
     letter-spacing: -0.005em;
-    color: ${theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     ${Body5}
 
     &::placeholder {
       line-height: 22px;
       letter-spacing: -0.005em;
-      color: ${theme.colors.gray4};
+      color: ${({ theme }) => theme.colors.gray4};
       ${Body5};
     }
   }
@@ -48,7 +67,7 @@ const LetterWriteInputGuideMessage = styled.span<{ isShow: boolean }>`
   margin-top: 4px;
   line-height: 150%;
   letter-spacing: -0.005em;
-  color: ${theme.colors.red};
+  color: ${({ theme }) => theme.colors.red};
   ${Caption1};
 `;
 
@@ -61,7 +80,7 @@ const RelationShipReceiverContainer = styled.div`
 
 const LetterWriteH1 = styled.h1`
   line-height: 150%;
-  color: ${theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   ${Display6}
 `;
 
@@ -87,7 +106,7 @@ const LetterWriteProfileContainer = styled.ul`
       span {
         line-height: 150%;
         letter-spacing: -0.005em;
-        color: ${theme.colors.white};
+        color: ${({ theme }) => theme.colors.white};
         ${Body2};
       }
     }
@@ -107,7 +126,7 @@ const LetterWriteBody1 = styled.span`
 `;
 
 const LetterWriteSituationSliderWrapper = styled.div`
-  margin-top: 36px;
+  margin-top: 68px;
 `;
 
 const LetterWriteSituationSliderItem = styled.div`
@@ -117,18 +136,180 @@ const LetterWriteSituationSliderItem = styled.div`
   gap: 16px;
   padding: 0 6px;
   & > div:first-of-type {
-    /* 임시 */
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: rgba(217, 217, 217, 0.7);
+    height: 187px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   p {
     padding: 0 22px;
     line-height: 150%;
     text-align: center;
     letter-spacing: -0.005em;
-    color: ${theme.colors.gray2};
+    color: ${({ theme }) => theme.colors.gray2};
     ${Body1};
+  }
+`;
+
+const LetterWriteCompletedLastSentenceOuterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  & > span {
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.005em;
+    color: ${({ theme }) => theme.colors.gray2};
+    ${Body2};
+  }
+`;
+
+const LetterWriteCompletedLastSentence = styled.div<{
+  color: string;
+  calculatedInputTextWidth: number;
+  isFocused?: boolean;
+  inputValueLength?: number;
+}>`
+  margin-top: 20px;
+  width: 100%;
+  height: 332px;
+  background-color: ${({ color }) => color};
+  border-radius: ${({ theme }) => theme.radius.md};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 20px 20px 20px;
+  .completed-situation-image {
+    height: 188px;
+  }
+  .completed-bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    .last-sentence-input {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-bottom: 4px;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.navy10};
+      width: ${({ isFocused, inputValueLength }) =>
+        isFocused !== undefined &&
+        inputValueLength !== undefined &&
+        inputValueLength === 0 &&
+        (isFocused ? "30px" : "220px")};
+      width: ${({ calculatedInputTextWidth, inputValueLength }) =>
+        inputValueLength !== undefined &&
+        inputValueLength > 0 &&
+        `${30 + calculatedInputTextWidth}px`};
+
+      span {
+        display: inline-block;
+        width: 8px;
+        height: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: -0.01em;
+        color: ${({ theme }) => theme.colors.navy70};
+      }
+      & > div {
+        width: inherit;
+        height: 24px;
+        border: unset;
+        padding: unset;
+        input {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding: unset;
+          line-height: 150%;
+          text-align: center;
+          letter-spacing: -0.5px;
+          color: ${({ theme }) => theme.colors.navy};
+          caret-color: ${({ theme }) => theme.colors.navy};
+          ${Body4};
+
+          &::placeholder {
+            text-align: center;
+            line-height: 150%;
+            letter-spacing: -0.5px;
+            color: ${({ theme }) => theme.colors.navy30};
+            ${Body4};
+          }
+
+          &:focus {
+            &::-webkit-input-placeholder {
+              color: transparent;
+            }
+            &::-moz-placeholder {
+              color: transparent;
+            }
+            &::placeholder {
+              color: transparent;
+            }
+          }
+        }
+      }
+    }
+    .sender-name-date {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+      .sender-name {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        span,
+        strong {
+          line-height: 150%;
+        }
+        span {
+          color: ${({ theme }) => theme.colors.navy70};
+          ${Caption2};
+        }
+        strong {
+          letter-spacing: -0.005em;
+          color: ${({ theme }) => theme.colors.gray6};
+          ${Body2};
+        }
+      }
+      .sender-date {
+        line-height: 150%;
+        letter-spacing: -0.005em;
+        color: ${({ theme }) => theme.colors.navy30};
+        ${Caption1};
+      }
+    }
+  }
+`;
+
+const LetterCompletedProgress = styled.div`
+  z-index: 1004;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-top: 157px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.navy};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+
+  p {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150%;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -145,4 +326,7 @@ export {
   LetterWriteProfileContainer,
   LetterWriteSituationSliderWrapper,
   LetterWriteSituationSliderItem,
+  LetterWriteCompletedLastSentenceOuterContainer,
+  LetterWriteCompletedLastSentence,
+  LetterCompletedProgress,
 };

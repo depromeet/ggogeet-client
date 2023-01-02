@@ -1,5 +1,4 @@
 import { Body1, Body2, Body4 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 const LetterWriteAccordionWrapper = styled.ul`
@@ -12,8 +11,8 @@ const LetterWriteAccordionWrapper = styled.ul`
     width: 100%;
     padding: 12px 16px;
     gap: 8px;
-    background-color: ${theme.colors.navy30};
-    border-radius: ${theme.radius.md};
+    background-color: ${({ theme }) => theme.colors.navy30};
+    border-radius: ${({ theme }) => theme.radius.md};
   }
 `;
 
@@ -32,7 +31,7 @@ const AccordionHeader = styled.button<{ isClicked: boolean }>`
       white-space: nowrap;
       line-height: 150%;
       letter-spacing: -0.5px;
-      color: ${theme.colors.white};
+      color: ${({ theme }) => theme.colors.white};
       ${Body4}
     }
   }
@@ -43,7 +42,7 @@ const AccordionHeader = styled.button<{ isClicked: boolean }>`
     span {
       line-height: 14px;
       letter-spacing: -0.2px;
-      color: ${theme.colors.gray3};
+      color: ${({ theme }) => theme.colors.gray3};
       ${Body1}
     }
     img {
@@ -61,7 +60,7 @@ const AccordionHeader = styled.button<{ isClicked: boolean }>`
 const AccordionContents = styled.p`
   line-height: 150%;
   letter-spacing: -0.2px;
-  color: ${theme.colors.gray2};
+  color: ${({ theme }) => theme.colors.gray2};
   ${Body2};
 `;
 
@@ -75,10 +74,10 @@ const CustomSliderWrapper = styled.div`
       width: 8px !important;
       height: 8px !important;
       border-radius: 50%;
-      background-color: ${theme.colors.gray6};
+      background-color: ${({ theme }) => theme.colors.gray6};
       margin: 0 4px;
       &.slick-active {
-        background-color: ${theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.white};
       }
       button {
         width: inherit;

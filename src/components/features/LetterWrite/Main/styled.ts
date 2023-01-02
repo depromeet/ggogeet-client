@@ -5,9 +5,7 @@ import {
   Body5,
   Caption1,
   Display2,
-  IconImage,
 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 const LetterWriteMainLayoutWrapper = styled.div`
@@ -25,16 +23,16 @@ const LetterWriteMainNavRightWrapper = styled.div`
     ${Body4};
   }
   button:first-of-type {
-    color: ${theme.colors.gray4};
+    color: ${({ theme }) => theme.colors.gray4};
   }
   button:last-of-type {
-    color: ${theme.colors.gray5};
+    color: ${({ theme }) => theme.colors.gray5};
   }
 `;
 
 const LetterWriteMainNavTitle = styled.span`
   line-height: 150%;
-  color: ${theme.colors.navy};
+  color: ${({ theme }) => theme.colors.navy};
   ${Display2};
 `;
 
@@ -45,7 +43,7 @@ const ToolbarContainerWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid ${theme.colors.gray1};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray1};
 `;
 
 const ToolbarInnerContainerWrapper = styled.div`
@@ -55,7 +53,9 @@ const ToolbarInnerContainerWrapper = styled.div`
 `;
 
 const ToolbarWrapper = styled.button`
-  ${IconImage}
+  img {
+    vertical-align: middle;
+  }
 `;
 
 const ReactQuillWrapper = styled.div`
@@ -71,14 +71,14 @@ const ReactQuillWrapper = styled.div`
     width: 100%;
     max-height: calc(100vh - 104px);
     overflow-y: auto;
-    background: ${theme.colors.white};
+    background: ${({ theme }) => theme.colors.white};
   }
 
   .ql-editor {
     padding: 20px;
     line-height: 170%;
     letter-spacing: -0.005em;
-    color: ${theme.colors.navy};
+    color: ${({ theme }) => theme.colors.navy};
     ${Body2};
   }
 
@@ -88,7 +88,7 @@ const ReactQuillWrapper = styled.div`
     letter-spacing: -0.005em;
     left: unset;
     right: unset;
-    color: ${theme.colors.gray3};
+    color: ${({ theme }) => theme.colors.gray3};
     ${Body2};
   }
 `;
@@ -101,12 +101,13 @@ const CustomTextEditorToolbarWrapper = styled.div`
   align-items: center;
   overflow-x: auto;
   gap: 16px;
-  border-bottom: 1px solid ${theme.colors.gray1};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray1};
 `;
 
 const CustomTextEditorToolbarButton = styled.button`
-  cursor: pointer;
-  ${IconImage}
+  img {
+    vertical-align: middle;
+  }
 `;
 
 const BottomSheetHeader = styled.div`
@@ -118,13 +119,13 @@ const BottomSheetHeader = styled.div`
   strong {
     line-height: 150%;
     letter-spacing: -0.005em;
-    color: ${theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     ${Body5}
   }
   span {
     line-height: 150%;
     letter-spacing: -0.005em;
-    color: ${theme.colors.gray3};
+    color: ${({ theme }) => theme.colors.gray3};
     ${Body1}
   }
 `;
@@ -140,15 +141,15 @@ const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
     width: 100%;
     height: ${({ isListHeightChanged }) =>
       isListHeightChanged ? "328px" : "252px"};
-    background-color: ${theme.colors.gray5};
+    background-color: ${({ theme }) => theme.colors.gray5};
     overflow-y: auto;
     li {
       width: inherit;
       button {
         justify-content: space-between;
         width: inherit;
-        background-color: ${theme.colors.navy30};
-        border-radius: ${theme.radius.md};
+        background-color: ${({ theme }) => theme.colors.navy30};
+        border-radius: ${({ theme }) => theme.radius.md};
       }
     }
   }
@@ -169,7 +170,7 @@ const GuidelineMainBottomButtonWrapper = styled.div<{ isShow: boolean }>`
   }
 `;
 
-const GuidelineAddWrapper = styled.div`
+const GuidelineAddWrapper = styled.form`
   height: 235px;
   & > div:first-of-type {
     width: 100%;
@@ -179,7 +180,7 @@ const GuidelineAddWrapper = styled.div`
     strong {
       line-height: 150%;
       letter-spacing: -0.005em;
-      color: ${theme.colors.white};
+      color: ${({ theme }) => theme.colors.white};
       ${Body5}
     }
   }
@@ -191,7 +192,7 @@ const GuidelineAddWrapper = styled.div`
     li {
       line-height: 150%;
       letter-spacing: -0.005em;
-      color: ${theme.colors.gray3};
+      color: ${({ theme }) => theme.colors.gray3};
       ${Caption1}
     }
   }
@@ -207,20 +208,20 @@ const GuidelineAddInputWrapper = styled.div<{
     justify-content: space-between;
     padding: 8px 8px 8px 16px;
     height: 48px;
-    border-radius: ${theme.radius.md};
-    background-color: ${theme.colors.navy50};
+    border-radius: ${({ theme }) => theme.radius.md};
+    background-color: ${({ theme }) => theme.colors.navy50};
     input {
       width: 84%;
       height: 14px;
       line-height: 150%;
       letter-spacing: -0.005em;
       background-color: transparent;
-      color: ${theme.colors.white};
+      color: ${({ theme }) => theme.colors.white};
       ${Body2}
       &::placeholder {
         line-height: 150%;
         letter-spacing: -0.005em;
-        color: ${theme.colors.gray4};
+        color: ${({ theme }) => theme.colors.gray4};
         ${Body2};
       }
     }
@@ -253,17 +254,17 @@ const GuidelineAddInputWrapper = styled.div<{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    & > div {
+    /* & > div:last-of-type {
       display: flex;
       gap: 4px;
       align-items: center;
       & > label {
         line-height: 150%;
         letter-spacing: -0.005em;
-        color: ${theme.colors.gray2};
+        color: ${({ theme }) => theme.colors.gray2};
         ${Body2}
       }
-    }
+    } */
   }
 `;
 

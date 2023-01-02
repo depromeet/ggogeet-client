@@ -1,7 +1,10 @@
 import Button from "@/src/components/common/Buttons/Button";
-import Checkbox from "@/src/components/common/Buttons/Checkbox";
+// import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import InputDefault from "@/src/components/common/Input";
-import { tempGuidelineData } from "@/src/data/LetterWrite";
+import {
+  situationTemplatesData,
+  tempGuidelineData,
+} from "@/src/data/LetterWrite";
 
 import {
   letterWriteGuidelineState,
@@ -9,8 +12,15 @@ import {
 } from "@/src/store/LetterWrite";
 import { SituationGuidelineSentenceType } from "@/src/types/Letter";
 import Image from "next/image";
-import { MouseEvent, TouchEvent, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  TouchEvent,
+  useState,
+} from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import SituationTag from "../../Common/SituationTag";
 import * as S from "../styled";
 
 interface GuidelineProps {
@@ -19,23 +29,28 @@ interface GuidelineProps {
 
 // TODO: 앞에서 선택한 situation에 따른 가이드 문장 list API 호출
 const Guideline = ({ onClose }: GuidelineProps) => {
-  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
   const setLetterWriteGuidelineState = useSetRecoilState(
     letterWriteGuidelineState
   );
   const [isOpenAddGuideline, setIsOpenAddGuideline] = useState<boolean>(false);
   const [newGuidelineText, setNewGuidelineText] = useState<string>("");
-  const [isNewGuidelinePublicChecked, setIsNewGuidelinePublicChecked] =
-    useState<boolean>(true);
+  // const [isNewGuidelinePublicChecked, setIsNewGuidelinePublicChecked] =
+  //   useState<boolean>(true);
+  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
+  const { situationId } = letterWriteInputObjectState;
+  const currentTemplate = situationTemplatesData.find(
+    (template) => template.situationId === situationId
+  );
   const onClickGuideline = (text: string) => {
     setLetterWriteGuidelineState(text);
     onClose("Guideline");
   };
   const [currentGuidelineData, setCurrentGuidelineData] =
     useState<SituationGuidelineSentenceType>(tempGuidelineData);
-  const onAddNewGuideline = () => {
-    // TODO: Enter key
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (newGuidelineText.length >= 1 && newGuidelineText.length <= 20) {
+      // TODO: situationId에 따른 기본 가이드 문장/커스텀 문장 가져오기, 커스텀 문장 추가/삭제
       setCurrentGuidelineData((prev) => ({
         ...prev,
         userSentence: {
@@ -73,7 +88,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
   return (
     <>
       {isOpenAddGuideline ? (
-        <S.GuidelineAddWrapper>
+        <S.GuidelineAddWrapper onSubmit={onSubmit}>
           <div>
             <strong>나만의 문장 추가</strong>
             <Image
@@ -93,41 +108,39 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               styleOption="fill"
               autoFocus
               value={newGuidelineText}
-              onChange={(event) => {
+              onInput={(event: ChangeEvent<HTMLInputElement>) => {
                 const { value } = event.currentTarget;
                 setNewGuidelineText(value);
               }}
               minLength={1}
               maxLength={20}
               placeholder="편지 쓸 때 참고할 문장을 추가해 보세요."
-              tail={
-                <Button name="추가" size="lg" onClick={onAddNewGuideline} />
-              }
+              tail={<Button name="추가" size="lg" />}
             />
             <div>
-              <Image
-                src="/icons/icon__guideline-tag.svg"
-                alt="가이드라인 태그 - 감동받은 곰"
-                width={83}
-                height={22}
-              />
-              <div>
+              {currentTemplate && (
+                <SituationTag
+                  templateType={currentTemplate.title}
+                  height={22}
+                />
+              )}
+              {/* <div>
                 <Checkbox
                   id="new-guideline-public-check"
-                  isChecked={isNewGuidelinePublicChecked}
+                  checked={isNewGuidelinePublicChecked}
                   onChange={() => {
                     setIsNewGuidelinePublicChecked((prev) => !prev);
                   }}
                 />
                 <label htmlFor="new-guideline-public-check">전체 공개</label>
-              </div>
+              </div> */}
             </div>
           </S.GuidelineAddInputWrapper>
           <ul>
-            <li>※ 공백 포함 20자 이내</li>
-            <li>
+            <li>※ 공백 포함 20자 이내로 작성해 주세요.</li>
+            {/* <li>
               ※ 전체 공개 시 작성한 문장이 다른 꼬깃 유저들에게 공개됩니다.
-            </li>
+            </li> */}
           </ul>
         </S.GuidelineAddWrapper>
       ) : (

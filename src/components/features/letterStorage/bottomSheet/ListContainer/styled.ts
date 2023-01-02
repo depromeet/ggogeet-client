@@ -1,5 +1,4 @@
 import { Body2 } from "@/src/styles/commons";
-import theme from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
 export const ListLayout = styled.div`

@@ -7,10 +7,11 @@ import * as S from "../styled";
 interface UseBottomButtonProps {
   text?: string;
   isDisabled?: boolean;
+  customClickHandler?: () => void;
 }
 
 const useBottomButton = (
-  { text, isDisabled }: UseBottomButtonProps = {
+  { text, isDisabled, customClickHandler }: UseBottomButtonProps = {
     text: "다음",
     isDisabled: false,
   }
@@ -27,7 +28,7 @@ const useBottomButton = (
         name={text ?? "다음"}
         size="xl"
         disabled={isDisabled}
-        onClick={onClickNext}
+        onClick={customClickHandler ?? onClickNext}
       />
     </S.BottomButtonContainer>
   );

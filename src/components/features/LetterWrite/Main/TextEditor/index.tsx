@@ -4,8 +4,11 @@ import "react-quill/dist/quill.snow.css";
 import CustomTextEditorToolbar from "./CustomTextEditorToolbar";
 import * as S from "../styled";
 import { RefAny } from "@/src/types";
-import { useRecoilValue } from "recoil";
-import { letterWriteGuidelineState } from "@/src/store/LetterWrite";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+  letterWriteGuidelineState,
+  letterWriteInputState,
+} from "@/src/store/LetterWrite";
 
 const ReactQuill = dynamic(
   async () => {
@@ -67,13 +70,23 @@ const formats = [
 // TODO: maxLength 350자 설정, AutoFocus 추가
 // TODO: 앞에서 적용한 스타일을 가이드라인 문장에 그대로 적용?
 const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
-  const [content, setContent] = useState<string>("");
+  const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
+    useRecoilState(letterWriteInputState);
   const letterWriteGuidelineText = useRecoilValue(letterWriteGuidelineState);
+  const [contents, setContents] = useState<string>(
+    letterWriteInputObjectState.contents
+  );
   useEffect(() => {
     if (letterWriteGuidelineText) {
-      setContent((prev) => prev + letterWriteGuidelineText);
+      setContents((prev) => prev + letterWriteGuidelineText);
     }
   }, [letterWriteGuidelineText]);
+  useEffect(() => {
+    setLetterWriteInputObjectState((prev) => ({ ...prev, contents }));
+  }, [contents]);
+  setTimeout(() => {
+    quillRef.current?.focus();
+  }, 0);
   return (
     <S.ReactQuillWrapper>
       <ReactQuill
@@ -83,8 +96,8 @@ const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
         theme="snow"
         modules={modules}
         formats={formats}
-        value={content}
-        onChange={setContent}
+        value={contents}
+        onChange={setContents}
       />
     </S.ReactQuillWrapper>
   );
