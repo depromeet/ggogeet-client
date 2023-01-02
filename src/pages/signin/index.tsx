@@ -6,7 +6,7 @@ export default function Signin() {
   return (
     <Layout>
       {/* background svgs */}
-      <Background />
+      {/* <Background /> */}
 
       {/* content */}
       <Content />
