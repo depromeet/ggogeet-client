@@ -1,4 +1,4 @@
-import { Body1, Body2, Body4 } from "@/src/styles/commons";
+import { Body1, Body2, Body4, Caption1 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 const LetterWriteAccordionWrapper = styled.ul`
@@ -9,7 +9,7 @@ const LetterWriteAccordionWrapper = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 12px 16px;
+    padding: 14px 16px;
     gap: 8px;
     background-color: ${({ theme }) => theme.colors.navy30};
     border-radius: ${({ theme }) => theme.radius.md};
@@ -40,10 +40,10 @@ const AccordionHeader = styled.button<{ isClicked: boolean }>`
     align-items: center;
     gap: 8px;
     span {
-      line-height: 14px;
-      letter-spacing: -0.2px;
+      line-height: 150%;
+      letter-spacing: -0.005em;
       color: ${({ theme }) => theme.colors.gray3};
-      ${Body1}
+      ${Caption1}
     }
     img {
       transition: transform 0.2s ease;
@@ -57,11 +57,24 @@ const AccordionHeader = styled.button<{ isClicked: boolean }>`
   }
 `;
 
-const AccordionContents = styled.p`
-  line-height: 150%;
-  letter-spacing: -0.2px;
-  color: ${({ theme }) => theme.colors.gray2};
-  ${Body2};
+const AccordionContents = styled.div`
+  padding-top: 14px;
+  border-top: 1px solid rgba(164, 169, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  span,
+  p {
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    ${Body2};
+  }
+  span {
+    color: ${({ theme }) => theme.colors.yellow};
+  }
+  p {
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 const CustomSliderWrapper = styled.div`

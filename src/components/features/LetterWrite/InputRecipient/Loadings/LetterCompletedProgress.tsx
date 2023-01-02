@@ -6,10 +6,10 @@ const LetterCompletedProgress = (): ReactElement => {
   return (
     <S.LetterCompletedProgress>
       <Image
-        src="/images/image__completed-progress.svg"
+        src="/gifs/gif__completed-progress.gif"
         alt="꼬깃 접는중"
-        width={232}
-        height={202}
+        width={120}
+        height={120}
       />
       <p>
         꼬깃 접는 중이에요!

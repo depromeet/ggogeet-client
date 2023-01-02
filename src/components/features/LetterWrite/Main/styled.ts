@@ -22,11 +22,8 @@ const LetterWriteMainNavRightWrapper = styled.div`
     letter-spacing: -0.5px;
     ${Body4};
   }
-  button:first-of-type {
+  button {
     color: ${({ theme }) => theme.colors.gray4};
-  }
-  button:last-of-type {
-    color: ${({ theme }) => theme.colors.gray5};
   }
 `;
 

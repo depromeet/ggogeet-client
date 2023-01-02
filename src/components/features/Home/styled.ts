@@ -20,8 +20,21 @@ const HomeWrapper = styled.div`
   }
   .home-storage,
   .home-memo,
-  .home-send {
+  .home-send,
+  .home-love,
+  .home-get,
+  .home-thank {
     position: absolute;
+  }
+  .home-storage,
+  .home-memo,
+  .home-send {
+    z-index: 10;
+  }
+  .home-love,
+  .home-get,
+  .home-thank {
+    z-index: 1;
   }
   .home-storage {
     top: 29vh;
@@ -37,6 +50,18 @@ const HomeWrapper = styled.div`
     right: 0;
     margin: 0 auto;
     text-align: center;
+  }
+  .home-love {
+    top: 25.7vh;
+    right: 0;
+  }
+  .home-get {
+    bottom: 27vh;
+    left: -3vw;
+  }
+  .home-thank {
+    bottom: 1.3vh;
+    right: -2.2vw;
   }
   footer {
     position: absolute;

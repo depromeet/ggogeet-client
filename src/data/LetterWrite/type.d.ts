@@ -29,8 +29,9 @@ type SituationTemplateDataType = Array<{
 type RemindDataType = Array<{
   id: number;
   title: string;
+  situationName: string;
   description: string;
-  created_at: string;
+  created_at: number;
   isAlarm: boolean;
 }>;
 

@@ -293,7 +293,7 @@ const LetterCompletedProgress = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding-top: 157px;
+  padding-top: 268px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -302,14 +302,14 @@ const LetterCompletedProgress = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  gap: 4px;
 
   p {
-    font-weight: 600;
-    font-size: 22px;
     line-height: 150%;
     text-align: center;
-    color: ${({ theme }) => theme.colors.white};
+    letter-spacing: -0.005em;
+    color: ${({ theme }) => theme.colors.gray2};
+    ${Body5};
   }
 `;
 

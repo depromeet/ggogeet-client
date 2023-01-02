@@ -26,19 +26,15 @@ const CompletedForm = () => {
 
   const bottomButton = useBottomButton({
     text: "꼬깃 작성 완료!",
+    isDisabled: inputValue.length < 1 || inputValue.length > 20,
     customClickHandler: () => {},
   });
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("test");
-    if (inputValue.length < 1 || inputValue.length > 20) {
-      alert("최소 1자 최대 20자 입력해주세요!");
-    } else {
-      setIsCompletedProgressShow(true);
-      setTimeout(() => {
-        router.push("/letter-write?type=completed-02");
-      }, 2000);
-    }
+    setIsCompletedProgressShow(true);
+    setTimeout(() => {
+      router.push("/letter-write?type=completed-02");
+    }, 3000);
   };
 
   useEffect(() => {

@@ -70,7 +70,7 @@ const CompletedForm02 = () => {
         <Button
           leftImg={
             <Image
-              src="/icons/icon__kakao-talk.png"
+              src="/icons/icon__kakao-talk.svg"
               alt="카카오톡"
               width={20}
               height={16}

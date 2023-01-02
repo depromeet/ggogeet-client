@@ -49,6 +49,30 @@ const Home = () => {
           />
         </Link>
       </div>
+      <div className="home-love">
+        <Image
+          src="/images/image__home-love.svg"
+          alt="손글씨 - love ya"
+          width={170}
+          height={114}
+        />
+      </div>
+      <div className="home-get">
+        <Image
+          src="/images/image__home-get.svg"
+          alt="손글씨 - get to know"
+          width={157}
+          height={108}
+        />
+      </div>
+      <div className="home-thank">
+        <Image
+          src="/images/image__home-thank.svg"
+          alt="손글씨 - thank you"
+          width={174}
+          height={91}
+        />
+      </div>
       {/* <footer>
         <Link href="#">
           <Image

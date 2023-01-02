@@ -1,4 +1,5 @@
 import { RemindDataType } from "@/src/data/LetterWrite/type";
+import { getDateTimeFormat } from "@/src/utils/date";
 import Image from "next/image";
 import { useState } from "react";
 import * as S from "../styled";
@@ -36,7 +37,15 @@ const Accordion = ({ data }: AccordionProps) => {
               <span>{memo.title}</span>
             </div>
             <div>
-              <span>{memo.created_at}</span>
+              <span>
+                {/* 임시 */}
+                {getDateTimeFormat(memo.created_at)
+                  .replace(/\s/g, "")
+                  .slice(2)
+                  .split(".")
+                  .map((num) => num.toString().padStart(2, "0"))
+                  .join(".")}
+              </span>
               <Image
                 src="/icons/icon__accordion-chevron-down.svg"
                 alt="아코디언 화살표"
@@ -46,7 +55,10 @@ const Accordion = ({ data }: AccordionProps) => {
             </div>
           </S.AccordionHeader>
           {clickedMemoId === memo.id && (
-            <S.AccordionContents>{memo.description}</S.AccordionContents>
+            <S.AccordionContents>
+              <span>{memo.situationName}</span>
+              <p>{memo.description}</p>
+            </S.AccordionContents>
           )}
         </li>
       ))}
