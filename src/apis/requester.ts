@@ -4,7 +4,8 @@ import { getCookie } from "@/src/utils/cookies";
 
 const createAxiosInstance = () => {
   const base = axios.create({
-    baseURL: "",
+    baseURL: "https://api.ggo-geet.com/",
+    // baseURL: "http://localhost:3005/",
   });
 
   base.interceptors.response.use(
