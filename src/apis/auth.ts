@@ -34,7 +34,6 @@ export const usePostKakaoLoginMutate = () => {
   return useMutation({
     mutationFn: tryKakaoLogin,
     onSuccess: (data) => {
-      console.log("success", data);
       setCookie(COOKIE_ACCESS_TOKEN_KEY, data.jwtAccessToken);
       setCookie(COOKIE_REFRESH_TOKEN_KEY, data.jwtRefreshToken);
       return setToast({
