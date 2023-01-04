@@ -3,17 +3,23 @@ import { COOKIE_ACCESS_TOKEN_KEY } from "@/src/constants/keys";
 import { getCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import * as S from "./styled";
 
 // TODO: image responsive
 const Home = () => {
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const getNavigateLink = (link: string) => {
-    if (!IS_SERVER && !getCookie(COOKIE_ACCESS_TOKEN_KEY)) {
+    if (!isLogin) {
       return "/signin";
-    } else {
-      return link;
     }
+    return link;
   };
+  useEffect(() => {
+    if (!IS_SERVER && getCookie(COOKIE_ACCESS_TOKEN_KEY)) {
+      setIsLogin(true);
+    }
+  }, []);
   return (
     <S.HomeWrapper>
       <header>
