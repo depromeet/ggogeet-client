@@ -1,7 +1,11 @@
 import Image from "next/image";
 import * as S from "./styled";
+import { useOauth } from "@/src/hooks/useOauth";
 
 export default function Background() {
+  const { getKakaoUri } = useOauth();
+  const redirectToKakao = () => window.location.replace(getKakaoUri());
+
   return (
     <S.Background>
       <S.TopContent>
@@ -14,7 +18,7 @@ export default function Background() {
         <div>꼬깃 접어 전하는 이야기</div>
       </S.TopContent>
 
-      <S.SigninButton>
+      <S.SigninButton onClick={redirectToKakao}>
         <Image
           src="/icons/icon__kakao-btn.svg"
           alt="카카오 로그인"
