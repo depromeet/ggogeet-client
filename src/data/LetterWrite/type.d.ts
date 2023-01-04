@@ -8,7 +8,7 @@ export type TemplateType =
   | "친해지고 싶은 펭귄"
   | "꼬깃";
 
-type SituationTemplateDataType = Array<{
+export type SituationTemplateDataType = Array<{
   situationId: number;
   title: TemplateType;
   description: string;
@@ -24,15 +24,3 @@ type SituationTemplateDataType = Array<{
     height: number;
   };
 }>;
-
-// TODO: 임시
-type RemindDataType = Array<{
-  id: number;
-  title: string;
-  situationName: string;
-  description: string;
-  created_at: number;
-  isAlarm: boolean;
-}>;
-
-export { SituationTemplateDataType, RemindDataType };

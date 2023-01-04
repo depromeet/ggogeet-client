@@ -1,11 +1,14 @@
-import { RemindDataType } from "@/src/data/LetterWrite/type";
+import { situationTemplatesData } from "@/src/data/LetterWrite";
+import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { ReminderDataType } from "@/src/types/reminder";
 import { getDateTimeFormat } from "@/src/utils/date";
 import Image from "next/image";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import * as S from "../styled";
 
 interface AccordionProps {
-  data: RemindDataType;
+  data: ReminderDataType[];
 }
 
 const Accordion = ({ data }: AccordionProps) => {
@@ -17,6 +20,11 @@ const Accordion = ({ data }: AccordionProps) => {
       setClickedMemoId(id);
     }
   };
+  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
+  const { situationId } = letterWriteInputObjectState;
+  const currentTemplate = situationTemplatesData.find(
+    (template) => template.situationId === situationId
+  );
   return (
     <S.LetterWriteAccordionWrapper>
       {data.map((memo) => (
@@ -26,7 +34,7 @@ const Accordion = ({ data }: AccordionProps) => {
             isClicked={clickedMemoId === memo.id}
           >
             <div>
-              {memo.isAlarm && (
+              {memo.alertOn && (
                 <Image
                   src="/icons/icon__accordion-bell.svg"
                   alt="아코디언 알림"
@@ -38,8 +46,7 @@ const Accordion = ({ data }: AccordionProps) => {
             </div>
             <div>
               <span>
-                {/* 임시 */}
-                {getDateTimeFormat(memo.created_at)
+                {getDateTimeFormat(new Date(memo.eventAt).getTime())
                   .replace(/\s/g, "")
                   .slice(2)
                   .split(".")
@@ -56,8 +63,8 @@ const Accordion = ({ data }: AccordionProps) => {
           </S.AccordionHeader>
           {clickedMemoId === memo.id && (
             <S.AccordionContents>
-              <span>{memo.situationName}</span>
-              <p>{memo.description}</p>
+              <span>{currentTemplate?.title}</span>
+              <p>{memo.content}</p>
             </S.AccordionContents>
           )}
         </li>

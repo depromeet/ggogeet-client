@@ -1,9 +1,19 @@
+import { IS_SERVER } from "@/src/constants";
+import { COOKIE_ACCESS_TOKEN_KEY } from "@/src/constants/keys";
+import { getCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
 import * as S from "./styled";
 
 // TODO: image responsive
 const Home = () => {
+  const getNavigateLink = (link: string) => {
+    if (!IS_SERVER && !getCookie(COOKIE_ACCESS_TOKEN_KEY)) {
+      return "/signin";
+    } else {
+      return link;
+    }
+  };
   return (
     <S.HomeWrapper>
       <header>
@@ -20,7 +30,7 @@ const Home = () => {
         </h1>
       </header>
       <div className="home-storage">
-        <Link href="/letter-storage">
+        <Link href={getNavigateLink("/letter-storage")}>
           <Image
             src="/images/image__home-storage.svg"
             alt="꼬깃 보관함"
@@ -30,7 +40,7 @@ const Home = () => {
         </Link>
       </div>
       <div className="home-memo">
-        <Link href="/letter-remind">
+        <Link href={getNavigateLink("/letter-remind")}>
           <Image
             src="/images/image__home-memo.svg"
             alt="꼬깃 메모"
@@ -40,7 +50,7 @@ const Home = () => {
         </Link>
       </div>
       <div className="home-send">
-        <Link href="/letter-write">
+        <Link href={getNavigateLink("/letter-write")}>
           <Image
             src="/images/image__home-send.svg"
             alt="꼬깃 보내기"

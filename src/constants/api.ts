@@ -16,8 +16,3 @@ export const RESPONSE_ERROR = {
   UNAUTHORIZED: 401,
   INTERNAL_SERVER: 500,
 } as const;
-
-export const TOKEN_KEY = {
-  ACCESS: "access_token",
-  REFRESH: "refresh_token",
-} as const;

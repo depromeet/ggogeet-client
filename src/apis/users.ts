@@ -1,5 +1,6 @@
 import { requester } from "./requester";
 import { HTTP_METHOD } from "@/src/constants/api";
+import { KakaoFriendDataType } from "../types/users";
 
 export const userCreate = async (payload: any) => {
   const { data } = await requester({
@@ -38,18 +39,27 @@ export const userDelete = async (id: string) => {
 };
 
 export const userKakaoFriendList = async () => {
-  const { data } = await requester({
+  const { data } = await requester<Array<KakaoFriendDataType>>({
     method: HTTP_METHOD.GET,
-    url: `/users/friends`,
+    url: `/friends`,
   });
 
   return data;
 };
 
 export const userKakaoFriend = async (id: string) => {
+  const { data } = await requester<KakaoFriendDataType>({
+    method: HTTP_METHOD.GET,
+    url: `/friends/${id}`,
+  });
+
+  return data;
+};
+
+export const userInfo = async () => {
   const { data } = await requester({
     method: HTTP_METHOD.GET,
-    url: `/users/friends/${id}`,
+    url: `/users/me/`,
   });
 
   return data;

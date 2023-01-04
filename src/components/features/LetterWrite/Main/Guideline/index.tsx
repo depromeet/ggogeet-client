@@ -1,16 +1,19 @@
+import {
+  deleteUserGuideSentence,
+  getGuideSentenceBySituationId,
+  postUserGuideSentence,
+} from "@/src/apis/sentence";
 import Button from "@/src/components/common/Buttons/Button";
 // import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import InputDefault from "@/src/components/common/Input";
-import {
-  situationTemplatesData,
-  tempGuidelineData,
-} from "@/src/data/LetterWrite";
-
+import { situationTemplatesData } from "@/src/data/LetterWrite";
+import { queryKeys } from "@/src/react-query/constants";
 import {
   letterWriteGuidelineState,
   letterWriteInputState,
 } from "@/src/store/LetterWrite";
-import { SituationGuidelineSentenceType } from "@/src/types/Letter";
+import { SituationIdType } from "@/src/types/sentence";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import {
   ChangeEvent,
@@ -45,29 +48,16 @@ const Guideline = ({ onClose }: GuidelineProps) => {
     setLetterWriteGuidelineState(text);
     onClose("Guideline");
   };
-  const [currentGuidelineData, setCurrentGuidelineData] =
-    useState<SituationGuidelineSentenceType>(tempGuidelineData);
+
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (newGuidelineText.length >= 1 && newGuidelineText.length <= 20) {
-      // TODO: situationId에 따른 기본 가이드 문장/커스텀 문장 가져오기, 커스텀 문장 추가/삭제
-      setCurrentGuidelineData((prev) => ({
-        ...prev,
-        userSentence: {
-          situation_id: 2,
-          sentence: [
-            {
-              id:
-                Math.max(
-                  ...prev.userSentence.sentence.map((sen) => sen.id),
-                  0
-                ) + 1,
-              content: newGuidelineText,
-            },
-            ...prev.userSentence.sentence,
-          ],
-        },
-      }));
+      const payload = {
+        content: newGuidelineText,
+        isShared: false,
+        situationId: situationId as SituationIdType,
+      };
+      postUserGuideSentenceMutation.mutate(payload);
       setIsOpenAddGuideline(false);
       setNewGuidelineText("");
     }
@@ -77,14 +67,39 @@ const Guideline = ({ onClose }: GuidelineProps) => {
     id: number
   ) => {
     event.stopPropagation();
-    setCurrentGuidelineData((prev) => ({
-      ...prev,
-      userSentence: {
-        situation_id: 2,
-        sentence: prev.userSentence.sentence.filter((data) => data.id !== id),
-      },
-    }));
+    deleteUserGuideSentenceMutation.mutate(id);
   };
+
+  const queryClient = useQueryClient();
+
+  const { data, isLoading, isError, error } = useQuery(
+    [queryKeys.guideSentence],
+    () => getGuideSentenceBySituationId(situationId as SituationIdType),
+    {
+      enabled: !!situationId,
+    }
+  );
+
+  const postUserGuideSentenceMutation = useMutation({
+    mutationKey: [queryKeys.postUserGuideSentence],
+    mutationFn: postUserGuideSentence,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["guideSentence"]);
+    },
+  });
+
+  const deleteUserGuideSentenceMutation = useMutation({
+    mutationKey: [queryKeys.deleteUserGuideSentence],
+    mutationFn: deleteUserGuideSentence,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["guideSentence"]);
+    },
+  });
+
+  if (isLoading) return <>Loading...</>;
+
+  if (isError) return <span>Error: {JSON.stringify(error)}</span>;
+
   return (
     <>
       {isOpenAddGuideline ? (
@@ -145,16 +160,14 @@ const Guideline = ({ onClose }: GuidelineProps) => {
         </S.GuidelineAddWrapper>
       ) : (
         <S.GuidelineMainWrapper
-          isListHeightChanged={
-            currentGuidelineData.userSentence.sentence.length >= 5
-          }
+          isListHeightChanged={data.userSentence.length >= 5}
         >
           <S.BottomSheetHeader>
             <strong>꼬깃 가이드</strong>
             <span>편지에 쓰고 싶은 가이드 문장을 선택해 보세요.</span>
           </S.BottomSheetHeader>
           <ul>
-            {currentGuidelineData.userSentence.sentence.map((data) => (
+            {data.userSentence.map((data) => (
               <li key={data.id}>
                 <Button
                   name={data.content}
@@ -174,7 +187,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
                 />
               </li>
             ))}
-            {currentGuidelineData.guideSentence.sentence.map((data) => (
+            {data.guideSentence.map((data) => (
               <li key={data.id}>
                 <Button
                   name={data.content}
@@ -185,7 +198,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
             ))}
           </ul>
           <S.GuidelineMainBottomButtonWrapper
-            isShow={currentGuidelineData.userSentence.sentence.length < 5}
+            isShow={data.userSentence.length < 5}
           >
             <Button
               name="나만의 문장 추가하기"
@@ -200,7 +213,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               }
               outline={true}
               onClick={() => {
-                if (currentGuidelineData.userSentence.sentence.length < 5) {
+                if (data.userSentence.length < 5) {
                   setIsOpenAddGuideline(true);
                 }
               }}

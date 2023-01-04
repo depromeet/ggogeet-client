@@ -1,4 +1,6 @@
 import { atom } from "recoil";
+import { localStorageEffect, sessionStorageEffect } from ".";
+import { IS_SERVER } from "../constants";
 
 export type RecipientInputObjectType = {
   receiverName: string;
@@ -15,6 +17,10 @@ export const letterWriteInputState = atom<RecipientInputObjectType>({
     contents: "",
     lastSentence: "",
   },
+  effects: [
+    localStorageEffect("LetterWriteInputState"),
+    sessionStorageEffect("LetterWriteInputState"),
+  ],
 });
 
 export const letterWriteGuidelineState = atom<string>({

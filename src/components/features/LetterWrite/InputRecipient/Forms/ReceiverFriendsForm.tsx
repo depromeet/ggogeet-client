@@ -22,7 +22,7 @@ const ReceiverFriendsForm = (): ReactElement => {
     <>
       <S.LetterWriteH1>누구에게 보낼 건가요?</S.LetterWriteH1>
       <S.LetterWriteProfileContainer>
-        {tempKakaoFriendsList.data.friends.map((friend) => (
+        {/* {tempKakaoFriendsList.data.friends.map((friend) => (
           <li key={friend.id}>
             <button onClick={() => onClickFriend(friend.kakao_friend_name)}>
               {friend.profile_img ? (
@@ -38,7 +38,7 @@ const ReceiverFriendsForm = (): ReactElement => {
               <span>{friend.kakao_friend_name}</span>
             </button>
           </li>
-        ))}
+        ))} */}
       </S.LetterWriteProfileContainer>
       {bottomButton}
     </>

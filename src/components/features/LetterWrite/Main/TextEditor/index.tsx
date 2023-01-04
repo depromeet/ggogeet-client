@@ -72,13 +72,15 @@ const formats = [
 const TextEditor = ({ quillRef }: { quillRef: RefAny }): ReactElement => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const letterWriteGuidelineText = useRecoilValue(letterWriteGuidelineState);
+  const [letterWriteGuidelineText, setLetterWriteGuidelineText] =
+    useRecoilState(letterWriteGuidelineState);
   const [contents, setContents] = useState<string>(
     letterWriteInputObjectState.contents
   );
   useEffect(() => {
     if (letterWriteGuidelineText) {
       setContents((prev) => prev + letterWriteGuidelineText);
+      setLetterWriteGuidelineText("");
     }
   }, [letterWriteGuidelineText]);
   useEffect(() => {
