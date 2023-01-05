@@ -1,58 +1,55 @@
-import InputDefault from "@/src/components/common/Input";
+import InputDefault, { InputClear } from "@/src/components/common/Input";
 import TagsContainer from "@/src/components/common/TagsContainer";
 import Textarea from "@/src/components/common/Textarea";
 import TopNavigation from "@/src/components/common/TopNavigation";
+import { NavBack } from "@/src/components/common/TopNavigation/atoms";
 import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
 } from "@/src/data/LetterRemind";
-import { Body2, Body4, Display1, Display2 } from "@/src/styles/commons";
+import { Body2, Body4, Body5, Display4 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import { useState } from "react";
 
 const Layout = styled.div`
+  background-color: ${({ theme }) => theme.colors.navy};
+  height: 100vh;
+`;
+
+const TopNavigationTitle = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  ${Display4}
+`;
+
+const OkButton = styled.button`
+  color: ${({ theme }) => theme.colors.gray3};
+  ${Body4}
+  cursor: pointer;
+`;
+
+const MainLayout = styled.div`
   padding: 16px;
 `;
 
 const UpperLayout = styled.div`
-  border-bottom: 1px solid #a4a9b8;
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.gray6}`};
   padding: 0 0 24px 0;
 `;
 
-const LowerLayout = styled.div`
-  padding: 24px 0 0 0;
-`;
-
 const InputContainer = styled.div`
-  margin: 0 0 16px 0;
-`;
-
-const QuestionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin: 0 0 20px 0;
 `;
 
-const TopNavigationTitle = styled.p`
-  color: ${({ theme }) => theme.colors.gray5};
-  ${Display2}
-`;
-
-const OkButton = styled.button`
-  color: ${({ theme }) => theme.colors.gray4};
-  ${Display1}
-  cursor: pointer;
-`;
-
 const InputName = styled.p`
-  color: ${({ theme }) => theme.colors.gray4};
-  padding: 0 0 8px 0;
-  ${Body4};
+  color: ${({ theme }) => theme.colors.gray3};
+  margin: 0 0 8px 0;
+  ${Body2};
 `;
 
-const Question = styled.p`
-  color: ${({ theme }) => theme.colors.gray5};
-  ${Body2}
+const TitleInput = styled(InputClear)`
+  color: ${({ theme }) => theme.colors.white};
+  ${Body5};
 `;
 
 const RemindWriteInput = styled(InputDefault)`
@@ -68,32 +65,39 @@ const ContentTextArea = styled(Textarea)`
   ${Body2}
 `;
 
+const LowerLayout = styled.div`
+  padding: 24px 0 0 0;
+`;
+
+const QuestionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+`;
+
+const Question = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  ${Body5}
+`;
+
 const LetterRemindWritePage = () => {
+  const onClear = () => {}; // 임시 함수
+
+  const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
+
   return (
-    <>
+    <Layout>
       <TopNavigation
-        title={<TopNavigationTitle>꼬깃기억 추가</TopNavigationTitle>}
-        leftElem={
-          <Image
-            alt="뒤로가기화살표"
-            src="/icons/backArrow.svg"
-            width={19}
-            height={17}
-          />
-        } // NOTE: 뒤로가기화살표 임시
+        title={<TopNavigationTitle>메모 추가</TopNavigationTitle>}
+        leftElem={<NavBack color="white" />}
         rightElem={<OkButton type="button">확인</OkButton>}
       />
 
-      <Layout>
+      <MainLayout>
         <UpperLayout>
           <InputContainer>
-            <InputName>날짜</InputName>
-            <RemindWriteInput styleOption="fill" />
-          </InputContainer>
-
-          <InputContainer>
             <InputName>제목</InputName>
-            <RemindWriteInput styleOption="fill" />
+            <TitleInput onClear={onClear} />
           </InputContainer>
 
           <InputContainer>
@@ -101,6 +105,12 @@ const LetterRemindWritePage = () => {
             <ContentTextArea maxLength={100} />
           </InputContainer>
 
+          <InputContainer>
+            <InputName>날짜</InputName>
+            <RemindWriteInput styleOption="fill" />
+          </InputContainer>
+
+          <InputName>상황 태그</InputName>
           <TagsContainer tagArray={RemindWriteEmotionData} />
         </UpperLayout>
 
@@ -110,10 +120,10 @@ const LetterRemindWritePage = () => {
             <p>스위치</p>
           </QuestionContainer>
 
-          <TagsContainer tagArray={RemindWriteAlarmData} />
+          {isSwitchOn && <TagsContainer tagArray={RemindWriteAlarmData} />}
         </LowerLayout>
-      </Layout>
-    </>
+      </MainLayout>
+    </Layout>
   );
 };
 
