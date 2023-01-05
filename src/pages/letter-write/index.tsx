@@ -17,7 +17,7 @@ type LetterWriteTypeKey = keyof typeof letterWriteTypeMap;
 const letterWriteTypeMap = {
   "recipient-01": <ReceiverNameForm />,
   "recipient-02": <SituationForm />,
-  "completed-01": <CompletedForm01 />,
+  "completed-01": <CompletedForm01 type="Write" />,
   "completed-02": <CompletedForm02 />,
 };
 

@@ -15,7 +15,11 @@ import { useBottomButton, useTextLengthPixel } from "../Hooks";
 import { LetterCompletedProgress } from "../Loadings";
 import * as S from "../styled";
 
-const CompletedForm = () => {
+interface CompletedFormProps {
+  type: "Write" | "Store";
+}
+
+const CompletedForm = ({ type }: CompletedFormProps) => {
   const router = useRouter();
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
@@ -32,25 +36,29 @@ const CompletedForm = () => {
   const currentTextLengthPixel = useTextLengthPixel(inputValue);
 
   const bottomButton = useBottomButton({
-    text: "꼬깃 작성 완료!",
+    text: type === "Write" ? "꼬깃 작성 완료!" : "저장하기",
     isDisabled: inputValue.length < 1 || inputValue.length > 20,
     customClickHandler: () => {},
   });
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const payload = {
-      // TODO: 받는 사람 아이디, 닉네임
-      receiverId: 123,
-      receiverNickname: "",
-      situationId: situationId as SituationIdType,
-      title: inputValue,
-      content: contents,
-    };
-    postCreateLetterMutation.mutate(payload);
-    setIsCompletedProgressShow(true);
-    setTimeout(() => {
-      router.push("/letter-write?type=completed-02");
-    }, 3000);
+    if (type === "Write") {
+      const payload = {
+        // TODO: 받는 사람 아이디, 닉네임
+        receiverId: 123,
+        receiverNickname: "",
+        situationId: situationId as SituationIdType,
+        title: inputValue,
+        content: contents,
+      };
+      postCreateLetterMutation.mutate(payload);
+      setIsCompletedProgressShow(true);
+      setTimeout(() => {
+        router.push("/letter-write?type=completed-02");
+      }, 3000);
+    } else {
+      // TODO: 가은님) 외부 편지 저장하기 API + 꼬깃 보관함 이동하면서 토스트 메시지 추가
+    }
   };
 
   useEffect(() => {
