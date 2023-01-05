@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 
 import { userState } from "@/src/store/users";
 import { requester } from "./requester";
-import { userMyInfomation } from "./users";
+import { userMyInformation } from "./users";
 import { HTTP_METHOD } from "@/src/constants/api";
 import { useToast } from "@/src/hooks/useToast";
 import {
@@ -37,7 +37,7 @@ export const usePostKakaoLoginMutate = () => {
     return data;
   };
   const updateUserState = async () => {
-    const userData = await userMyInfomation();
+    const userData = await userMyInformation();
     setUserState(userData);
   };
 

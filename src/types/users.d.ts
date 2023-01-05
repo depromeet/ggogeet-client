@@ -8,7 +8,7 @@ export type KakaoFriendDataType = {
   updatedAt: string;
 };
 
-export type MyInfomation = {
+export type MyInformation = {
   id: number;
   name: string;
   profileImg: string;

@@ -3,4 +3,5 @@ export const queryKeys = {
   postUserGuideSentence: "postUserGuideSentence",
   deleteUserGuideSentence: "deleteUserGuideSentence",
   remind: "remind",
+  postCreateLetter: "postCreateLetter",
 } as const;

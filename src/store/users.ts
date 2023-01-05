@@ -1,10 +1,17 @@
 import { atom } from "recoil";
 import { localStorageEffect } from ".";
+import { MyInformation } from "../types/users";
 
-import type { MyInfomation } from "@/src/types/users";
-
-export const userState = atom<MyInfomation | null>({
+export const userState = atom<MyInformation>({
   key: "userState",
-  default: null,
+  default: {
+    id: -1,
+    name: "",
+    profileImg: "",
+    remindOn: false,
+    alertOn: false,
+    welcomePopupView: false,
+    allowFriendsList: false,
+  },
   effects: [localStorageEffect("userState")],
 });

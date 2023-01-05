@@ -1,6 +1,5 @@
 import { atom } from "recoil";
 import { localStorageEffect, sessionStorageEffect } from ".";
-import { IS_SERVER } from "../constants";
 
 export type RecipientInputObjectType = {
   receiverName: string;

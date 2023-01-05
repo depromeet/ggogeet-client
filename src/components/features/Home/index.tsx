@@ -1,20 +1,28 @@
 import { IS_SERVER } from "@/src/constants";
 import { COOKIE_ACCESS_TOKEN_KEY } from "@/src/constants/keys";
+import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { getCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useResetRecoilState } from "recoil";
 import * as S from "./styled";
 
 // TODO: image responsive
 const Home = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
-  const getNavigateLink = (link: string) => {
+  const resetRecoilLocalStorage = useResetRecoilState(letterWriteInputState);
+  const getNavigateLink = (
+    link: "/letter-storage" | "/letter-remind" | "/letter-write"
+  ) => {
     if (!isLogin) {
       return "/signin";
     }
     return link;
   };
+  useEffect(() => {
+    resetRecoilLocalStorage();
+  }, []);
   useEffect(() => {
     if (!IS_SERVER && getCookie(COOKIE_ACCESS_TOKEN_KEY)) {
       setIsLogin(true);

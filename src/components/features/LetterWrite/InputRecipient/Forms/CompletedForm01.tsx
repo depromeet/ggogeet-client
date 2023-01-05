@@ -1,11 +1,16 @@
+import { postNewLetterCreate } from "@/src/apis/letter";
 import InputDefault from "@/src/components/common/Input";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
+import { queryKeys } from "@/src/react-query/constants";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { userState } from "@/src/store/users";
+import { SituationIdType } from "@/src/types/sentence";
 import { getDateTimeFormat } from "@/src/utils/date";
+import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useBottomButton, useTextLengthPixel } from "../Hooks";
 import { LetterCompletedProgress } from "../Loadings";
 import * as S from "../styled";
@@ -14,10 +19,12 @@ const CompletedForm = () => {
   const router = useRouter();
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const { situationId, lastSentence } = letterWriteInputObjectState;
+  const userObjectState = useRecoilValue(userState);
+  const { situationId, lastSentence, contents } = letterWriteInputObjectState;
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId
   );
+  const { name: senderName } = userObjectState;
   const [inputValue, setInputValue] = useState<string>(lastSentence);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isCompletedProgressShow, setIsCompletedProgressShow] =
@@ -31,6 +38,15 @@ const CompletedForm = () => {
   });
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const payload = {
+      // TODO: 받는 사람 아이디, 닉네임
+      receiverId: 123,
+      receiverNickname: "",
+      situationId: situationId as SituationIdType,
+      title: inputValue,
+      content: contents,
+    };
+    postCreateLetterMutation.mutate(payload);
     setIsCompletedProgressShow(true);
     setTimeout(() => {
       router.push("/letter-write?type=completed-02");
@@ -45,6 +61,11 @@ const CompletedForm = () => {
       }));
     }
   }, [inputValue]);
+
+  const postCreateLetterMutation = useMutation({
+    mutationKey: [queryKeys.postCreateLetter],
+    onMutate: postNewLetterCreate,
+  });
 
   return (
     <>
@@ -93,7 +114,7 @@ const CompletedForm = () => {
                 <div className="sender-name-date">
                   <div className="sender-name">
                     <span>FROM</span>
-                    <strong>유저 이름</strong>
+                    <strong>{senderName}</strong>
                   </div>
                   <time className="sender-date">
                     {getDateTimeFormat(new Date().getTime())}
