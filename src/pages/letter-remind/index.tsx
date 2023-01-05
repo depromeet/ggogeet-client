@@ -1,9 +1,10 @@
-import Button from "@/src/components/common/Buttons/Button";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import TodoContainer from "@/src/components/features/letterRemind/TodoContainer";
-import { RemindData } from "@/src/data/LetterRemind";
+import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import RemindNavigationBar from "@/src/components/features/letter-remind/Main/RemindNavigationBar";
+import TodoContainerList from "@/src/components/features/letter-remind/Main/TodoContainerList";
+import { Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
-import Image from "next/image";
+import { useState } from "react";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -14,46 +15,34 @@ const MainLayout = styled.div`
   padding: 12px 16px 0 16px;
 `;
 
-const ButtonsContainer = styled.div`
-  display: flex;
-  width: 270px;
-  padding: 0 0 28px 0;
-  justify-content: space-between;
+const TodoLayout = styled.div`
+  margin: 24px 0 0 0;
 `;
 
-const TodoContainerWrapper = styled.div`
-  padding: 0 0 12px 0;
+const TopNavigationTitle = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  ${Display2}
 `;
 
 const LetterRemindPage = () => {
+  const [selectedPage, setSelectedPage] = useState<string>("모든 메모");
+
   return (
     <Layout>
       <TopNavigation
-        title="꼬깃기억"
-        rightElem={
-          <Image
-            src="/icons/hamburger.svg"
-            alt="햄버거아이콘"
-            width={18}
-            height={16}
-          />
-        }
+        title={<TopNavigationTitle>꼬깃 메모</TopNavigationTitle>}
+        leftElem={<NavBack color="white" />}
       />
 
       <MainLayout>
-        <ButtonsContainer>
-          <Button name="모든 꼬깃기억" size="sm" />
-          <Button name="미완료" size="sm" />
-          <Button name="완료" size="sm" />
-        </ButtonsContainer>
+        <RemindNavigationBar
+          selectedItem={selectedPage}
+          setSelectedItem={setSelectedPage}
+        />
 
-        {RemindData.map((item) => {
-          return (
-            <TodoContainerWrapper key={item.id}>
-              <TodoContainer todo={item} />
-            </TodoContainerWrapper>
-          );
-        })}
+        <TodoLayout>
+          <TodoContainerList />
+        </TodoLayout>
       </MainLayout>
     </Layout>
   );
