@@ -1,6 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { setCookie } from "cookies-next";
+import { useSetRecoilState } from "recoil";
+
+import { userState } from "@/src/store/users";
 import { requester } from "./requester";
+import { userMyInfomation } from "./users";
 import { HTTP_METHOD } from "@/src/constants/api";
 import { useToast } from "@/src/hooks/useToast";
 import {
@@ -21,6 +25,7 @@ interface Payload {
 
 export const usePostKakaoLoginMutate = () => {
   const { setToast } = useToast();
+  const setUserState = useSetRecoilState(userState);
 
   const tryKakaoLogin = async (payload: Payload) => {
     const { data } = await requester<PostKakaoLoginQuery>({
@@ -31,12 +36,17 @@ export const usePostKakaoLoginMutate = () => {
 
     return data;
   };
+  const updateUserState = async () => {
+    const userData = await userMyInfomation();
+    setUserState(userData);
+  };
 
   return useMutation({
     mutationFn: tryKakaoLogin,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       setCookie(COOKIE_ACCESS_TOKEN_KEY, data.jwtAccessToken);
       setCookie(COOKIE_REFRESH_TOKEN_KEY, data.jwtRefreshToken);
+      await updateUserState();
       return setToast({
         status: "success",
         content: "로그인 성공",
