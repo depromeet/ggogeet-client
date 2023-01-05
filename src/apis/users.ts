@@ -1,6 +1,6 @@
 import { requester } from "./requester";
 import { HTTP_METHOD } from "@/src/constants/api";
-import { KakaoFriendDataType } from "../types/users";
+import { KakaoFriendDataType, MyInfomation } from "../types/users";
 
 export const userCreate = async (payload: any) => {
   const { data } = await requester({
@@ -56,8 +56,8 @@ export const userKakaoFriend = async (id: string) => {
   return data;
 };
 
-export const userInfo = async () => {
-  const { data } = await requester({
+export const userMyInfomation = async () => {
+  const { data } = await requester<MyInfomation>({
     method: HTTP_METHOD.GET,
     url: `/users/me/`,
   });
