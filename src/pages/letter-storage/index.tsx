@@ -1,95 +1,109 @@
 import BottomSheet from "@/src/components/common/BottomSheet";
+import Select from "@/src/components/common/Select";
 import TopNavigation from "@/src/components/common/TopNavigation";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
-=======
+import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import FilterButton from "@/src/components/features/letter-storage/FilterButton";
+import PlusButton from "@/src/components/features/letter-storage/PlusButton";
 import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letter-storage/LetterStorageTopNavigation";
-import SenderListBottomSheet from "@/src/components/features/letter-storage/SenderListBottomSheet";
->>>>>>> d081fda (💄 초기화버튼 생성)
-=======
-import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
-import LetterStorageTopNavigation from "@/src/components/features/letterStorage/main/LetterStorageTopNavigation";
-<<<<<<< HEAD
-import SenderListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/SenderListBottomSheet";
->>>>>>> 9529d38 (🚚  파일 이름 변경 및 이동)
-=======
->>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
+import { Caption1, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
+import SortButton from "@/src/components/features/letter-storage/SortButton";
 
 const Layout = styled.div`
-  padding: 0 16px;
+  background-color: ${({ theme }) => theme.colors.navy};
+  height: 100vh;
+`;
+
+const MainLayout = styled.div`
+  padding: 16px 20px;
+`;
+
+const TopNavigationTitle = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  ${Display2}
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 0 0 8px 0;
   align-items: center;
-  height: 50px;
+`;
+
+const HeaderRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const LetterKindSelect = styled(Select)`
+  background-color: ${({ theme }) => theme.colors.navy};
+  color: ${({ theme }) => theme.colors.white};
+  border: none;
+  padding: 7px 28px 7px 12px;
+  ${Caption1}
 `;
 
 const LetterContainerWrapper = styled.div`
-  padding: 0 0 8px 0;
+  padding: 0 0 12px 0;
+`;
+
+const Space = styled.div`
+  width: 10px;
 `;
 
 const dummyData = [
   {
     sender: "김가은",
     content: "생일축하혀..",
-    date: "2022.12.04",
-    image: "https://via.placeholder.com/87",
-    senderImage: "https://via.placeholder.com/20",
+    date: "2022년 12월 04일",
+    status: "응원하는 개",
+    color: "yellow",
     id: "1",
   },
   {
     sender: "김가은",
     content: "생일축하혀..",
-    date: "2022.12.04",
-    image: "https://via.placeholder.com/87",
-    senderImage: "https://via.placeholder.com/20",
+    date: "2022년 12월 04일",
+    status: "응원하는 개",
+    color: "yellow",
     id: "2",
   },
   {
     sender: "김가은",
     content: "생일축하혀..",
-    date: "2022.12.04",
-    image: "https://via.placeholder.com/87",
-    senderImage: "https://via.placeholder.com/20",
+    date: "2022년 12월 04일",
+    status: "응원하는 개",
+    color: "yellow",
     id: "3",
   },
   {
     sender: "김가은",
     content: "생일축하혀..",
-    date: "2022.12.04",
-    image: "https://via.placeholder.com/87",
-    senderImage: "https://via.placeholder.com/20",
+    date: "2022년 12월 04일",
+    status: "응원하는 개",
+    color: "yellow",
     id: "4",
   },
   {
     sender: "김가은",
     content: "생일축하혀..",
-    date: "2022.12.04",
-    image: "https://via.placeholder.com/87",
-    senderImage: "https://via.placeholder.com/20",
+    date: "2022년 12월 04일",
+    status: "응원하는 개",
+    color: "yellow",
     id: "5",
   },
   {
     sender: "김가은",
     content: "생일축하혀..",
-    date: "2022.12.04",
-    image: "https://via.placeholder.com/87",
-    senderImage: "https://via.placeholder.com/20",
+    date: "2022년 12월 04일",
+    status: "응원하는 개",
+    color: "yellow",
     id: "6",
   },
 ];
-
-const TopNavigationRightElem = () => {
-  return <>헤더오른쪽</>;
-};
 
 const LetterStoragePage = () => {
   const TopNavigations = ["받은 꼬깃", "보낸 꼬깃"];
@@ -99,15 +113,29 @@ const LetterStoragePage = () => {
   };
 
   return (
-    <>
-      <TopNavigation title="보관함" rightElem={<TopNavigationRightElem />} />
+    <Layout>
+      <TopNavigation
+        title={<TopNavigationTitle>꼬깃 보관함</TopNavigationTitle>}
+        leftElem={<NavBack color="white" />}
+        rightElem={<PlusButton />}
+      />
 
-      <Layout>
-        <LetterStorageTopNavigation navigations={TopNavigations} />
-
+      <MainLayout>
         <Header>
-          <div>최근 받은 순</div>
-          <div>상세 필터</div>
+          <LetterKindSelect
+            options={{
+              "전체 꼬깃": "전체 꼬깃",
+              "보낸 꼬깃만": "보낸 꼬깃만",
+              "받은 꼬깃만": "받은 꼬깃만",
+            }}
+            placeholder="전체 꼬깃"
+          />
+
+          <HeaderRight>
+            <SortButton sortKind="최근 받은 순" />
+            <Space />
+            <FilterButton />
+          </HeaderRight>
         </Header>
 
         {dummyData.map((letter) => {
@@ -117,33 +145,16 @@ const LetterStoragePage = () => {
             </LetterContainerWrapper>
           );
         })}
-      </Layout>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-        <ListBottomSheet listArray={SenderData} />
-      </BottomSheet>
-=======
-      <LetterStorageBottomSheet onClose={onClose} isOpened={true}>
-        <SenderListBottomSheet />
-=======
-      <LetterStorageBottomSheet
-        onClose={onClose}
-        isOpened={true}
-        className="BottomSheet"
-      >
-        <ListBottomSheet listArray={SenderData} />
->>>>>>> fa5ebff (💄 LetterBox 페이지 bottomSheet 대략적 레이아웃 구성)
-      </LetterStorageBottomSheet>
->>>>>>> d081fda (💄 초기화버튼 생성)
-=======
-      <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-        <ListBottomSheet listArray={SenderData} />
-      </BottomSheet>
->>>>>>> a649632 (💄 BottomSheet 컴포넌트 변경에 따른 스타일 변경)
-    </>
+        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
+          <ListBottomSheet listArray={SenderData} />
+        </BottomSheet>
+
+        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
+          <ListBottomSheet listArray={SenderData} />
+        </BottomSheet>
+      </MainLayout>
+    </Layout>
   );
 };
 
