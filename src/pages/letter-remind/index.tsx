@@ -1,7 +1,7 @@
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
-import RemindNavigationBar from "@/src/components/features/letter-remind/Main/RemindNavigationBar";
-import TodoContainerList from "@/src/components/features/letter-remind/Main/TodoContainerList";
+import RemindNavigationBar from "@/src/components/features/letterRemind/Main/RemindNavigationBar";
+import TodoContainerList from "@/src/components/features/letterRemind/Main/TodoContainerList";
 import { Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import { useState } from "react";
