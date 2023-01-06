@@ -10,6 +10,10 @@ import LetterContainer from "@/src/components/features/letterStorage/main/Letter
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import PlusButton from "@/src/components/features/letterStorage/main/PlusButton";
 import SortButton from "@/src/components/features/letterStorage/main/SortButton";
+import BottomSheetHeader from "@/src/components/features/letterStorage/bottomSheet/BottomSheetHeader";
+import BottomSheetFooter from "@/src/components/features/letterStorage/bottomSheet/BottomSheetFooter";
+import { useState } from "react";
+import CalendarBottomSheet from "@/src/components/features/letterStorage/bottomSheet/CalendarBottomSheet";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -106,11 +110,11 @@ const dummyData = [
 ];
 
 const LetterStoragePage = () => {
-  const TopNavigations = ["받은 꼬깃", "보낸 꼬깃"];
-
   const onClose = () => {
     return;
   };
+
+  const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
 
   return (
     <Layout>
@@ -147,7 +151,20 @@ const LetterStoragePage = () => {
         })}
 
         <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-          <ListBottomSheet listArray={SenderData} />
+          <>
+            <BottomSheetHeader
+              selected={selectedMenu}
+              setSelected={setSelectedMenu}
+            />
+
+            {selectedMenu === "날짜" ? (
+              <CalendarBottomSheet />
+            ) : (
+              <ListBottomSheet listArray={SenderData} />
+            )}
+
+            <BottomSheetFooter />
+          </>
         </BottomSheet>
       </MainLayout>
     </Layout>
