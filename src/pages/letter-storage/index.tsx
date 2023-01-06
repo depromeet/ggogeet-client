@@ -151,7 +151,7 @@ const LetterStoragePage = () => {
         })}
 
         <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-          <>
+          <div>
             <BottomSheetHeader
               selected={selectedMenu}
               setSelected={setSelectedMenu}
@@ -164,7 +164,7 @@ const LetterStoragePage = () => {
             )}
 
             <BottomSheetFooter />
-          </>
+          </div>
         </BottomSheet>
       </MainLayout>
     </Layout>

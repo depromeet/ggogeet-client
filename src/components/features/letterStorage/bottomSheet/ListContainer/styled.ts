@@ -20,7 +20,6 @@ export const NameContainer = styled.div`
 
 export const Name = styled.p`
   color: ${({ theme }) => theme.colors.white};
-  padding: 12px 0;
   border-radius: 8px;
 
   ${Body2};
