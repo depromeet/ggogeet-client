@@ -10,6 +10,7 @@ import { global } from "@/src/styles/global";
 import { queryClient } from "../react-query/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ErrorBoundary } from "react-error-boundary";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -19,8 +20,10 @@ function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <Head />
-          <Global styles={global} />
-          <Component {...pageProps} />
+          <Global styles={global} />\
+          <ErrorBoundary fallback={<div>error...</div>}>
+            <Component {...pageProps} />
+          </ErrorBoundary>
           <Toast />
         </ThemeProvider>
       </RecoilRoot>

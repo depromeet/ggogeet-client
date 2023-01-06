@@ -58,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["query-string", "npm:8.1.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"],\
+            ["react-error-boundary", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:3.1.4"],\
             ["react-hook-form", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.41.5"],\
             ["react-quill", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:2.0.0"],\
             ["react-slick", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:0.29.0"],\
@@ -104,6 +105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["query-string", "npm:8.1.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"],\
+            ["react-error-boundary", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:3.1.4"],\
             ["react-hook-form", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.41.5"],\
             ["react-quill", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:2.0.0"],\
             ["react-slick", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:0.29.0"],\
@@ -18313,6 +18315,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/react-dom",\
             "@types/react",\
             "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-error-boundary", [\
+        ["npm:3.1.4", {\
+          "packageLocation": "./.yarn/cache/react-error-boundary-npm-3.1.4-2310dba89e-f36270a5d7.zip/node_modules/react-error-boundary/",\
+          "packageDependencies": [\
+            ["react-error-boundary", "npm:3.1.4"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:3.1.4", {\
+          "packageLocation": "./.yarn/__virtual__/react-error-boundary-virtual-33c15766d3/0/cache/react-error-boundary-npm-3.1.4-2310dba89e-f36270a5d7.zip/node_modules/react-error-boundary/",\
+          "packageDependencies": [\
+            ["react-error-boundary", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:3.1.4"],\
+            ["@babel/runtime", "npm:7.20.7"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
             "react"\
           ],\
           "linkType": "HARD"\
