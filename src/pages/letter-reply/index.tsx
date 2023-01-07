@@ -6,18 +6,26 @@ import styled from "@emotion/styled";
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
   height: 100vh;
+  position: relative;
 `;
 
 const MainLayout = styled.div`
-  padding: 0 20px;
+  padding: 65px 20px 0 20px;
 `;
 
-const LetterLayout = styled.div``;
+const AnimalImageWrapper = styled.div`
+  position: absolute;
+  background-color: black; // 임시
+  width: 206px;
+  height: 99px;
+  left: 36px;
+  top: 47px;
+`;
 
 const LetterMainLayout = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 8px 8px 0 0;
-  padding: 28px 20px;
+  padding: 36px 20px 28px 20px;
 `;
 
 const Content = styled.p`
@@ -72,20 +80,19 @@ const LetterReplyPage = () => {
       <TopNavigation leftElem={<NavBack color="white" />} />
 
       <MainLayout>
-        <LetterLayout>
-          <LetterMainLayout>
-            <Content>{content}</Content>
-          </LetterMainLayout>
+        <AnimalImageWrapper></AnimalImageWrapper>
 
-          <LetterBottomLayout color={letterColor}>
-            <Date>{date}</Date>
+        <LetterMainLayout>
+          <Content>{content}</Content>
+        </LetterMainLayout>
 
-            <SenderContainer>
-              <From>FROM</From>
-              <Sender>{sender}</Sender>
-            </SenderContainer>
-          </LetterBottomLayout>
-        </LetterLayout>
+        <LetterBottomLayout color={letterColor}>
+          <Date>{date}</Date>
+          <SenderContainer>
+            <From>FROM</From>
+            <Sender>{sender}</Sender>
+          </SenderContainer>
+        </LetterBottomLayout>
       </MainLayout>
     </Layout>
   );
