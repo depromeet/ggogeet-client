@@ -10,3 +10,17 @@ export type ReminderType = {
   alarmAt: string;
   isDone: boolean;
 };
+
+export type ReminderPayload = {
+  title: string;
+  content: string;
+  situationId: number;
+  eventAt: string;
+  alertOn: boolean;
+  alarmAt: string;
+};
+
+export type ReminderIsDone = {
+  id: number;
+  isDone: boolean;
+};
