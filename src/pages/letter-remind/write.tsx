@@ -2,7 +2,7 @@ import InputDefault, { InputClear } from "@/src/components/common/Input";
 import TagsContainer from "@/src/components/common/TagsContainer";
 import Textarea from "@/src/components/common/Textarea";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,

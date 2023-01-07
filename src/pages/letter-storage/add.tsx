@@ -1,6 +1,6 @@
 import BottomButton from "@/src/components/common/Buttons/BottomButton";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import AddImage from "@/src/components/features/letterStorage/add/AddImage";
 import AddNavigationBar from "@/src/components/features/letterStorage/add/AddNavigationBar";
 import AddText from "@/src/components/features/letterStorage/add/AddText";

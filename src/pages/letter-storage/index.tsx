@@ -1,7 +1,7 @@
 import BottomSheet from "@/src/components/common/BottomSheet";
 import Select from "@/src/components/common/Select";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import FilterButton from "@/src/components/features/letter-storage/FilterButton";
 import PlusButton from "@/src/components/features/letter-storage/PlusButton";
 import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";

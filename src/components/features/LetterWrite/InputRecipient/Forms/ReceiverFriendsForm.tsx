@@ -1,4 +1,3 @@
-import { tempKakaoFriendsList } from "@/src/data/LetterWrite";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import Image from "next/image";
 import { useRouter } from "next/router";
