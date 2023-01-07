@@ -1,5 +1,5 @@
 import * as S from "./styled";
-import type { SelectHTMLAttributes } from "react";
+import { SelectHTMLAttributes, useEffect, useState } from "react";
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   options: { [key: string]: string };
@@ -7,16 +7,24 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 export default function Select({ options, placeholder = "", ...props }: Props) {
-  const optionKeys = Object.keys(options);
+  const [selectOptions, setSelectOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    setSelectOptions(() => {
+      const key = Object.keys(options);
+      return key;
+    });
+  }, []);
+
   return (
-    <S.Select {...props}>
-      <S.Item selected disabled value={undefined}>
+    <S.Select defaultValue={undefined} {...props}>
+      <option disabled value={undefined}>
         {placeholder}
-      </S.Item>
-      {optionKeys.map((key) => (
-        <S.Item key={key} value={key}>
+      </option>
+      {selectOptions.map((key) => (
+        <option key={key} value={key}>
           {options[key]}
-        </S.Item>
+        </option>
       ))}
     </S.Select>
   );
