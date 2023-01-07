@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-=======
-import Button from "@/src/components/common/Buttons/Button";
-import TagButton from "@/src/components/common/Buttons/TagButton";
->>>>>>> 2c1585a (💄 LetteraContainer 컴포넌트 UI 변경)
 import TopNavigation from "@/src/components/common/TopNavigation";
-import { NavBack } from "@/src/components/common/TopNavigation/atoms";
+import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import RemindNavigationBar from "@/src/components/features/letter-remind/Main/RemindNavigationBar";
 import TodoContainerList from "@/src/components/features/letter-remind/Main/TodoContainerList";
 import { Display2 } from "@/src/styles/commons";
