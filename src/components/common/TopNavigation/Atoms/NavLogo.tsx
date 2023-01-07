@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
-import * as S from "./styled";
+import * as S from "../Atoms/styled";
 
 const NavLogo = (): ReactElement => {
   return (
