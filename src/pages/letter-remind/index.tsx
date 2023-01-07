@@ -5,6 +5,8 @@ import TodoContainerList from "@/src/components/features/letterRemind/Main/TodoC
 import { Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getReminderList } from "@/src/apis/reminder";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -27,6 +29,11 @@ const TopNavigationTitle = styled.p`
 const LetterRemindPage = () => {
   const [selectedPage, setSelectedPage] = useState<string>("모든 메모");
 
+  const { isSuccess, data } = useQuery({
+    queryKey: ["getReminderList", selectedPage],
+    queryFn: getReminderList,
+  });
+
   return (
     <Layout>
       <TopNavigation
@@ -41,7 +48,7 @@ const LetterRemindPage = () => {
         />
 
         <TodoLayout>
-          <TodoContainerList />
+          <TodoContainerList data={data ?? []} />
         </TodoLayout>
       </MainLayout>
     </Layout>
