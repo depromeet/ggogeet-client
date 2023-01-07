@@ -129,12 +129,8 @@ export const RemindWriteEmotionData = [
 ];
 
 export const RemindWriteAlarmData = [
-  "하루 뒤",
-  "3일 뒤",
-  "5일 뒤",
-  "일주일 뒤",
-  "2주일 뒤",
-  "3주일 뒤",
-  "1달 뒤",
-  "2달 뒤",
+  "하루 전",
+  "3일 전",
+  "5일 전",
+  "일주일 전",
 ];
