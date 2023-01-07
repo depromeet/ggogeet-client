@@ -41,6 +41,7 @@ interface LetterBottomLayoutProps {
 const LetterBottomLayout = styled.div<LetterBottomLayoutProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: ${({ color }) => color};
   border-radius: 0 0 8px 8px;
   padding: 12px 20px;
