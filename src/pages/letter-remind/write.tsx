@@ -1,8 +1,10 @@
 import InputDefault, { InputClear } from "@/src/components/common/Input";
-import TagsContainer from "@/src/components/common/TagsContainer";
 import Textarea from "@/src/components/common/Textarea";
+import Toggle from "@/src/components/common/Toggle";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
+import TagsContainer from "@/src/components/features/letterRemind/Write/TagsContainer";
+import SituationTag from "@/src/components/features/LetterWrite/Common/SituationTag";
 import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
@@ -84,7 +86,10 @@ const LetterRemindWritePage = () => {
   const onClear = () => {}; // 임시 함수
 
   const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
+  const [clickedSituationTag, setClickedSiuationTag] = useState<number>(0);
+  const [clickedAlarmTag, setClickedAlarmTag] = useState<number>(0);
 
+  const onClickSwitch = () => setIsSwitchOn((prev) => !prev);
   return (
     <Layout>
       <TopNavigation
@@ -111,16 +116,27 @@ const LetterRemindWritePage = () => {
           </InputContainer>
 
           <InputName>상황 태그</InputName>
-          <TagsContainer tagArray={RemindWriteEmotionData} />
+          <TagsContainer
+            tagArray={RemindWriteEmotionData}
+            clickedTag={clickedSituationTag}
+            setClickedTag={(value) => setClickedSiuationTag(value)}
+            isShaped
+          />
         </UpperLayout>
 
         <LowerLayout>
           <QuestionContainer>
             <Question>잊지 않게 한번 더 알려줄까요?</Question>
-            <p>스위치</p>
+            <Toggle isOn={isSwitchOn} onClick={onClickSwitch} />
           </QuestionContainer>
 
-          {isSwitchOn && <TagsContainer tagArray={RemindWriteAlarmData} />}
+          {isSwitchOn && (
+            <TagsContainer
+              tagArray={RemindWriteAlarmData}
+              clickedTag={clickedAlarmTag}
+              setClickedTag={setClickedAlarmTag}
+            />
+          )}
         </LowerLayout>
       </MainLayout>
     </Layout>
