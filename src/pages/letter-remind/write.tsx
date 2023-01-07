@@ -4,15 +4,13 @@ import Toggle from "@/src/components/common/Toggle";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import TagsContainer from "@/src/components/features/letterRemind/Write/TagsContainer";
-import SituationTag from "@/src/components/features/LetterWrite/Common/SituationTag";
 import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
 } from "@/src/data/LetterRemind";
 import { Body2, Body4, Body5, Display4 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
-import Image from "next/image";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -54,17 +52,19 @@ const TitleInput = styled(InputClear)`
   ${Body5};
 `;
 
-const RemindWriteInput = styled(InputDefault)`
-  // NOTE: 날짜부분 input 따로 만들게 되면 변수명 변경하기
-  height: 24px;
-  color: ${({ theme }) => theme.colors.gray5};
-  ${Body2}
-`;
-
 const ContentTextArea = styled(Textarea)`
   height: 70px;
   color: ${({ theme }) => theme.colors.gray5};
   ${Body2}
+`;
+
+const DateInput = styled(InputDefault)`
+  padding: 14px 16px;
+  background-color: ${({ theme }) => theme.colors.gray6};
+  color: ${({ theme }) => theme.colors.gray3};
+  margin: 0px;
+
+  ${Body4}
 `;
 
 const LowerLayout = styled.div`
@@ -88,8 +88,14 @@ const LetterRemindWritePage = () => {
   const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
   const [clickedSituationTag, setClickedSiuationTag] = useState<number>(0);
   const [clickedAlarmTag, setClickedAlarmTag] = useState<number>(0);
+  const [dateValue, setDateValue] = useState<string>(new Date() + "");
 
   const onClickSwitch = () => setIsSwitchOn((prev) => !prev);
+
+  const onChangeDateInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setDateValue(e.target.value);
+  };
+
   return (
     <Layout>
       <TopNavigation
@@ -112,7 +118,12 @@ const LetterRemindWritePage = () => {
 
           <InputContainer>
             <InputName>날짜</InputName>
-            <RemindWriteInput styleOption="fill" />
+            <DateInput
+              value={"" + dateValue}
+              onChange={onChangeDateInput}
+              type="date"
+              styleOption="fill"
+            />
           </InputContainer>
 
           <InputName>상황 태그</InputName>

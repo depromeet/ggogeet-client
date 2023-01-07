@@ -1,11 +1,12 @@
 import * as S from "./styled";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-interface Props {}
+interface Props {
+  calendarValue: Date;
+  setCalendarValue: Dispatch<SetStateAction<Date>>;
+}
 
-export default function CalendarBottomSheet({}: Props) {
-  const [calendarValue, setCalendarValue] = useState(new Date());
-
+export default function Calendar({ calendarValue, setCalendarValue }: Props) {
   return (
     <>
       <S.CustomCalendar
