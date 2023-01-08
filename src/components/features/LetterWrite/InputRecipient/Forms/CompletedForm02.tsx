@@ -1,4 +1,5 @@
 import {
+  getLetterTempCompleteResult,
   postSendLetterComplete,
   postSendLetterTempComplete,
 } from "@/src/apis/letter";
@@ -33,8 +34,10 @@ const CompletedForm02 = () => {
   );
   const onClickKakaoTalk = () => {
     if (receiverUserId) {
+      // 회원 편지 발송 (카카오 메시지)
       postSendLetterMutation.mutate(letterId as number);
     } else {
+      // 비회원 편지 발송 (카카오 공유)
       postSendLetterTempCompleteMutation.mutate(letterId as number);
     }
   };
@@ -53,6 +56,9 @@ const CompletedForm02 = () => {
         tempLetterId,
         expiredDate,
       },
+      serverCallbackArgs: {
+        TEMP_LETTER_ID: tempLetterId,
+      },
     });
   };
 
@@ -64,16 +70,7 @@ const CompletedForm02 = () => {
     });
   };
 
-  const queryClientMutationMap = useMemo(
-    () => ({
-      [queryKeys.postSendLetter]: postSendLetterComplete,
-      [queryKeys.postSendLetterTempComplete]: postSendLetterTempComplete,
-      [queryKeys.postSendLetterUnregisteredUser]:
-        postSendLetterToUnregisteredUser,
-    }),
-    []
-  );
-
+  // 회원 편지 발송 (카카오 메시지)
   const postSendLetterMutation = useMutation({
     mutationKey: [queryKeys.postSendLetter],
     onMutate: postSendLetterComplete,
@@ -82,6 +79,7 @@ const CompletedForm02 = () => {
     },
   });
 
+  // 비회원 편지 발송위한 임시 편지 정보(id, 편지 열람 기한) 가져오기
   const postSendLetterTempCompleteMutation = useMutation({
     mutationKey: [queryKeys.postSendLetterTempComplete],
     onMutate: postSendLetterTempComplete,
@@ -93,13 +91,36 @@ const CompletedForm02 = () => {
     },
   });
 
+  // 비회원 편지 발송 (카카오 공유)
   const postSendLetterUnregisteredUserMutation = useMutation({
     mutationKey: [queryKeys.postSendLetterUnregisteredUser],
     onMutate: postSendLetterToUnregisteredUser,
     onSuccess: () => {
-      onSuccessMutation();
+      getLetterTempCompleteResultMutation.mutate();
     },
   });
+
+  // 비회원 편지 발송 콜백 (성공 여부)
+  const getLetterTempCompleteResultMutation = useMutation({
+    mutationKey: [queryKeys.getLetterTempCompleteResult],
+    onMutate: getLetterTempCompleteResult,
+    onSuccess: ({ sent }) => {
+      console.log(sent);
+      // onSuccessMutation();
+    },
+  });
+
+  // To persist mutation Fn
+  const queryClientMutationMap = useMemo(
+    () => ({
+      [queryKeys.postSendLetter]: postSendLetterComplete,
+      [queryKeys.postSendLetterTempComplete]: postSendLetterTempComplete,
+      [queryKeys.postSendLetterUnregisteredUser]:
+        postSendLetterToUnregisteredUser,
+      [queryKeys.getLetterTempCompleteResult]: getLetterTempCompleteResult,
+    }),
+    []
+  );
 
   useEffect(() => {
     Object.entries(queryClientMutationMap).forEach(([key, value]) => {

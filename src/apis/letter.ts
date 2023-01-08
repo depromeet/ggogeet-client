@@ -1,6 +1,7 @@
 import { HTTP_METHOD } from "../constants/api";
 import {
   CreatedLetterType,
+  GetLetterTempCompleteResultType,
   PostNewLetterCreateType,
   PostSendLetterCompleteType,
   PostSendLetterTempCompleteType,
@@ -29,6 +30,15 @@ export const postSendLetterTempComplete = async (letterId: number) => {
   const { data } = await requester<PostSendLetterTempCompleteType>({
     method: HTTP_METHOD.POST,
     url: `/letters/${letterId}/temp-complete`,
+  });
+
+  return data;
+};
+
+export const getLetterTempCompleteResult = async () => {
+  const { data } = await requester<GetLetterTempCompleteResultType>({
+    method: HTTP_METHOD.POST,
+    url: ` /letters/temp-complete/kakao/callback`,
   });
 
   return data;

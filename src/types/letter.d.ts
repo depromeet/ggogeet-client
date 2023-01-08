@@ -54,3 +54,7 @@ export type PostSendLetterTempCompleteType = {
   tempLetterId: number;
   expiredDate: string;
 };
+
+export type GetLetterTempCompleteResultType = {
+  sent: boolean;
+};

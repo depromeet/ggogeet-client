@@ -8,5 +8,6 @@ export const queryKeys = {
   postSendLetter: "postSendLetter",
   postSendLetterUnregisteredUser: "postSendLetterUnregisteredUser",
   postSendLetterTempComplete: "postSendLetterTempComplete",
+  getLetterTempCompleteResult: "getLetterTempCompleteResult",
   myInformation: "myInformation",
 } as const;
