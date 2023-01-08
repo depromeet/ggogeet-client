@@ -8,6 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getReminderList } from "@/src/apis/reminder";
 import { useRecoilValue } from "recoil";
 import { remindNavigationState } from "@/src/store/LetterRemind";
+import LetterAddButton from "@/src/components/features/letterRemind/Main/LetterAddButton";
+import { useRouter } from "next/router";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -29,6 +31,8 @@ const TopNavigationTitle = styled.p`
 `;
 
 const LetterRemindPage = () => {
+  const router = useRouter();
+
   const selectedNavigation = useRecoilValue(remindNavigationState);
 
   const { data: remindListData = [] } = useQuery({
@@ -38,6 +42,10 @@ const LetterRemindPage = () => {
 
   const unDoneData = remindListData.filter((item) => !item.isDone);
   const doneData = remindListData.filter((item) => item.isDone);
+
+  const onClickLetterAddButton = () => {
+    router.push("/letter-remind/write");
+  };
 
   return (
     <Layout>
@@ -56,6 +64,8 @@ const LetterRemindPage = () => {
           <TodoContainerList data={remindListData} />
         </TodoLayout>
       </MainLayout>
+
+      <LetterAddButton onClick={onClickLetterAddButton} />
     </Layout>
   );
 };
