@@ -1,4 +1,7 @@
-import { postSendLetterComplete } from "@/src/apis/letter";
+import {
+  postSendLetterComplete,
+  postSendLetterTempComplete,
+} from "@/src/apis/letter";
 import Button from "@/src/components/common/Buttons/Button";
 import InputDefault from "@/src/components/common/Input";
 import { KAKAO_QUERY } from "@/src/constants/api";
@@ -7,10 +10,12 @@ import { useToast } from "@/src/hooks/useToast";
 import { queryKeys } from "@/src/react-query/constants";
 import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { PostSendLetterTempCompleteType } from "@/src/types/letter";
 import { getDateTimeFormat } from "@/src/utils/date";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { useTextLengthPixel } from "../Hooks";
 import * as S from "../styled";
@@ -30,17 +35,24 @@ const CompletedForm02 = () => {
     if (receiverUserId) {
       postSendLetterMutation.mutate(letterId as number);
     } else {
-      postSendLetterUnregisteredUserMutation.mutate();
+      postSendLetterTempCompleteMutation.mutate(letterId as number);
     }
   };
 
-  const postSendLetterToUnregisteredUser = async () => {
+  const postSendLetterToUnregisteredUser = async ({
+    tempLetterId,
+    expiredDate,
+  }: PostSendLetterTempCompleteType) => {
     const { Kakao } = window;
     if (!Kakao.isInitialized()) {
       Kakao.init(KAKAO_QUERY.CLIENT_ID);
     }
-    Kakao.Share.sendCustom({
-      templateId: 87993,
+    await Kakao.Share.sendCustom({
+      templateId: KAKAO_QUERY.KAKAO_SHARE_TEMPLATE_ID,
+      templateArgs: {
+        tempLetterId,
+        expiredDate,
+      },
     });
   };
 
@@ -52,13 +64,15 @@ const CompletedForm02 = () => {
     });
   };
 
-  queryClient.setMutationDefaults([queryKeys.postSendLetter], {
-    mutationFn: postSendLetterComplete,
-  });
-
-  queryClient.setMutationDefaults([queryKeys.postSendLetterUnregisteredUser], {
-    mutationFn: postSendLetterToUnregisteredUser,
-  });
+  const queryClientMutationMap = useMemo(
+    () => ({
+      [queryKeys.postSendLetter]: postSendLetterComplete,
+      [queryKeys.postSendLetterTempComplete]: postSendLetterTempComplete,
+      [queryKeys.postSendLetterUnregisteredUser]:
+        postSendLetterToUnregisteredUser,
+    }),
+    []
+  );
 
   const postSendLetterMutation = useMutation({
     mutationKey: [queryKeys.postSendLetter],
@@ -68,13 +82,32 @@ const CompletedForm02 = () => {
     },
   });
 
+  const postSendLetterTempCompleteMutation = useMutation({
+    mutationKey: [queryKeys.postSendLetterTempComplete],
+    onMutate: postSendLetterTempComplete,
+    onSuccess: async ({ tempLetterId, expiredDate }) => {
+      await postSendLetterUnregisteredUserMutation.mutate({
+        tempLetterId,
+        expiredDate,
+      });
+    },
+  });
+
   const postSendLetterUnregisteredUserMutation = useMutation({
     mutationKey: [queryKeys.postSendLetterUnregisteredUser],
     onMutate: postSendLetterToUnregisteredUser,
     onSuccess: () => {
-      onSuccessMutation;
+      onSuccessMutation();
     },
   });
+
+  useEffect(() => {
+    Object.entries(queryClientMutationMap).forEach(([key, value]) => {
+      queryClient.setMutationDefaults([key], {
+        mutationFn: value,
+      });
+    });
+  }, [queryClientMutationMap]);
 
   return (
     <>

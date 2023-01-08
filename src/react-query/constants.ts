@@ -7,5 +7,6 @@ export const queryKeys = {
   postCreateLetter: "postCreateLetter",
   postSendLetter: "postSendLetter",
   postSendLetterUnregisteredUser: "postSendLetterUnregisteredUser",
+  postSendLetterTempComplete: "postSendLetterTempComplete",
   myInformation: "myInformation",
 } as const;
