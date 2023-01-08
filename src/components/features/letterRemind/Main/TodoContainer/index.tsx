@@ -20,13 +20,13 @@ interface Props {
 }
 
 export default function TodoContainer({ itemId, isDone }: Props) {
-  const { data: reminderItemData, isSuccess } = useQuery({
+  const { data: reminderItemData } = useQuery({
     queryKey: ["getReminderItem", itemId],
     queryFn: () => getReminderItem(itemId),
   });
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [checked, setChecked] = useState<boolean>(false);
+  const [checked, setChecked] = useState<boolean>(isDone);
 
   const { title, content, alarmAt, eventAt, alertOn, situationId } =
     reminderItemData || {};
