@@ -3,7 +3,7 @@ export type AuthPayloadType = {
   redirectURI: string;
 };
 
-export type KakaoLoginDataType = {
+export type KakaoLoginType = {
   jwtAccessToken: string;
   jwtRefreshToken: string;
   allowFriendsList: boolean;

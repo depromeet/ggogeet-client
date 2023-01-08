@@ -11,8 +11,8 @@ import {
   COOKIE_ACCESS_TOKEN_KEY,
   COOKIE_REFRESH_TOKEN_KEY,
 } from "@/src/constants/keys";
-import { KakaoFriendDataType } from "../types/users";
-import { AuthPayloadType, KakaoLoginDataType } from "../types/auth";
+import { KakaoFriendType } from "../types/users";
+import { AuthPayloadType, KakaoLoginType } from "../types/auth";
 import { useKakaoFriends } from "../hooks/useKakaoFriends";
 
 export const usePostKakaoLoginMutate = () => {
@@ -21,7 +21,7 @@ export const usePostKakaoLoginMutate = () => {
   const { getKakaoFriendsUri } = useKakaoFriends();
 
   const tryKakaoLogin = async (payload: AuthPayloadType) => {
-    const { data } = await requester<KakaoLoginDataType>({
+    const { data } = await requester<KakaoLoginType>({
       method: HTTP_METHOD.POST,
       url: `/auth/login`,
       data: payload,
@@ -62,7 +62,7 @@ export const usePostKakaoFriendsMutate = () => {
   const setUserState = useSetRecoilState(userState);
 
   const tryKakaoFriends = async (payload: AuthPayloadType) => {
-    await requester<KakaoFriendDataType[]>({
+    await requester<KakaoFriendType[]>({
       method: HTTP_METHOD.POST,
       url: `/auth/kakao/friends`,
       data: payload,
@@ -86,7 +86,7 @@ export const usePostKakaoFriendsMutate = () => {
 };
 
 export const getKakaoFriends = async () => {
-  const { data } = await requester<KakaoFriendDataType[]>({
+  const { data } = await requester<KakaoFriendType[]>({
     method: HTTP_METHOD.GET,
     url: `/friends`,
   });

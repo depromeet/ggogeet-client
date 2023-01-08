@@ -76,6 +76,7 @@ const ReactQuillWrapper = styled.div`
     line-height: 170%;
     letter-spacing: -0.005em;
     color: ${({ theme }) => theme.colors.navy};
+    height: calc(100vh - 104px);
     ${Body2};
   }
 
@@ -266,12 +267,30 @@ const GuidelineAddInputWrapper = styled.div<{
 `;
 
 const RemindMainWrapper = styled.div`
-  height: 376px;
+  height: 412px;
 `;
 
 const RemindMemoContainer = styled.div`
-  height: 272px;
+  height: 292px;
   overflow-y: auto;
+`;
+
+const EmptyRemindContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 292px;
+  background-color: ${({ theme }) => theme.colors.navy50};
+  border-radius: ${({ theme }) => theme.radius.md};
+
+  span {
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    color: ${({ theme }) => theme.colors.gray4};
+    ${Body4};
+  }
 `;
 
 export {
@@ -291,4 +310,5 @@ export {
   GuidelineAddInputWrapper,
   RemindMainWrapper,
   RemindMemoContainer,
+  EmptyRemindContainer,
 };

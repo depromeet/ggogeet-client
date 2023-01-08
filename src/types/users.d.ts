@@ -1,4 +1,4 @@
-export type KakaoFriendDataType = {
+export type KakaoFriendType = {
   id: number;
   friendUserId: number;
   kakaoUuid: string;

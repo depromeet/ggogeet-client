@@ -25,4 +25,5 @@ export const KAKAO_QUERY = {
   KAKAO_FRIENDS_SCOPE: "friends,talk_message",
   KAKAO_LOGIN_REDIRECT_URI: "/signin/redirect/kakao",
   KAKAO_FRIENDS_REDIRECT_URI: "/signin/redirect/kakao-friends",
+  KAKAO_SHARE_TEMPLATE_ID: 87993,
 } as const;
