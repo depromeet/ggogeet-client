@@ -113,7 +113,7 @@ const LetterRemindWritePage = () => {
   const payload = {
     title,
     content,
-    situationId,
+    situationId: situationId + 1,
     eventAt: formatFunc(eventAt),
     alertOn: isAlarmOn,
     alarmAt,

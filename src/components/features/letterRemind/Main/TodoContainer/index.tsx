@@ -12,6 +12,7 @@ import {
   patchReminderDone,
   patchRemindUndone,
 } from "@/src/apis/reminder";
+import { situationTemplatesData } from "@/src/data/LetterWrite";
 
 interface Props {
   itemId: number;
@@ -19,15 +20,16 @@ interface Props {
 }
 
 export default function TodoContainer({ itemId, isDone }: Props) {
-  const { data: reminderItemData } = useQuery({
+  const { data: reminderItemData, isSuccess } = useQuery({
     queryKey: ["getReminderItem", itemId],
     queryFn: () => getReminderItem(itemId),
   });
 
-  const { title, content, alarmAt, eventAt, alertOn } = reminderItemData || {};
-
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [checked, setChecked] = useState<boolean>(isDone ?? false);
+  const [checked, setChecked] = useState<boolean>(false);
+
+  const { title, content, alarmAt, eventAt, alertOn, situationId } =
+    reminderItemData || {};
 
   const patchReminderDoneMutation = useMutation({
     mutationKey: ["patchReminderDone", checked],
@@ -43,6 +45,10 @@ export default function TodoContainer({ itemId, isDone }: Props) {
 
   const formatedEventAt = dayjs(eventAt).format("YY.MM.DD");
   const alarmAnnouncement = dayjs(eventAt).diff(dayjs(alarmAt), "d");
+
+  const situation = situationTemplatesData.find(
+    (item) => item.situationId === situationId
+  )!;
 
   const onChangeCheckBox = () => {
     if (checked) {
@@ -93,7 +99,7 @@ export default function TodoContainer({ itemId, isDone }: Props) {
           <S.TodoContentContainer isClicked={isClicked}>
             <S.ContentUpperContainer>
               {/* TODO: 상황이름 데이터 값이 없음 */}
-              <S.Sender color="red">상황이름</S.Sender>
+              <S.Sender color={situation.color}>상황이름</S.Sender>
               <S.Content>{content}</S.Content>
             </S.ContentUpperContainer>
 
