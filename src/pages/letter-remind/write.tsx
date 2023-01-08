@@ -216,6 +216,7 @@ const LetterRemindWritePage = () => {
               onClear={onClear}
               onChange={onChangeTitle}
               value={title}
+              maxLength={12}
             />
           </InputContainer>
 
