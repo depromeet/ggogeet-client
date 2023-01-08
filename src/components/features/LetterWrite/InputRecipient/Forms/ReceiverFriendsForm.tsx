@@ -74,7 +74,7 @@ const ReceiverFriendsForm = (): ReactElement => {
         ) : (
           <S.EmptyKakaoFriends>
             <Image
-              src="/images/image__kakao-friends--empty.svg"
+              src="/images/image__empty.svg"
               alt="카카오 친구목록 비어있음"
               width={94.5}
               height={95.5}
