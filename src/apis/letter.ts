@@ -35,10 +35,10 @@ export const postSendLetterTempComplete = async (letterId: number) => {
   return data;
 };
 
-export const getLetterTempCompleteResult = async () => {
+export const getLetterTempCompleteResult = async (tempLetterId: number) => {
   const { data } = await requester<GetLetterTempCompleteResultType>({
     method: HTTP_METHOD.GET,
-    url: ` /letters/temp-complete/kakao/callback`,
+    url: `/letters/${tempLetterId}/temp-complete/kakao/callback/confirm`,
   });
 
   return data;

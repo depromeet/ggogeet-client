@@ -60,6 +60,7 @@ const CompletedForm02 = () => {
         TEMP_LETTER_ID: tempLetterId,
       },
     });
+    return tempLetterId;
   };
 
   const onSuccessMutation = (text: string) => {
@@ -108,8 +109,8 @@ const CompletedForm02 = () => {
   const postSendLetterUnregisteredUserMutation = useMutation({
     mutationKey: [queryKeys.postSendLetterUnregisteredUser],
     onMutate: postSendLetterToUnregisteredUser,
-    onSuccess: () => {
-      getLetterTempCompleteResultMutation.mutate();
+    onSuccess: (tempLetterId: number) => {
+      getLetterTempCompleteResultMutation.mutate(tempLetterId);
     },
     onError: () => {
       onErrorMutation("문제가 발생하였습니다..");
