@@ -115,6 +115,7 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
                 <div className="last-sentence-input">
                   <span>&ldquo;</span>
                   <InputDefault
+                    autoFocus
                     value={inputValue}
                     onInput={(event: ChangeEvent<HTMLInputElement>) => {
                       setInputValue(event.target.value);
