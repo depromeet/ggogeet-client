@@ -62,11 +62,18 @@ const CompletedForm02 = () => {
     });
   };
 
-  const onSuccessMutation = () => {
+  const onSuccessMutation = (text: string) => {
     router.push("/");
     return setToast({
       status: "success",
-      content: "꼬깃 보내기 성공!",
+      content: text,
+    });
+  };
+
+  const onErrorMutation = (text: string) => {
+    return setToast({
+      status: "error",
+      content: text,
     });
   };
 
@@ -75,7 +82,10 @@ const CompletedForm02 = () => {
     mutationKey: [queryKeys.postSendLetter],
     onMutate: postSendLetterComplete,
     onSuccess: () => {
-      onSuccessMutation();
+      onSuccessMutation("꼬깃 보내기 성공!");
+    },
+    onError: () => {
+      onErrorMutation("문제가 발생하였습니다..");
     },
   });
 
@@ -89,6 +99,9 @@ const CompletedForm02 = () => {
         expiredDate,
       });
     },
+    onError: () => {
+      onErrorMutation("문제가 발생하였습니다..");
+    },
   });
 
   // 비회원 편지 발송 (카카오 공유)
@@ -98,15 +111,22 @@ const CompletedForm02 = () => {
     onSuccess: () => {
       getLetterTempCompleteResultMutation.mutate();
     },
+    onError: () => {
+      onErrorMutation("문제가 발생하였습니다..");
+    },
   });
 
-  // 비회원 편지 발송 콜백 (성공 여부)
+  // 비회원 편지 발송 콜백 (성공 여부 체크 이후 리다이렉트)
   const getLetterTempCompleteResultMutation = useMutation({
     mutationKey: [queryKeys.getLetterTempCompleteResult],
     onMutate: getLetterTempCompleteResult,
     onSuccess: ({ sent }) => {
-      console.log(sent);
-      // onSuccessMutation();
+      if (sent) {
+        onSuccessMutation("꼬깃 보내기 성공!");
+      }
+    },
+    onError: () => {
+      onErrorMutation("문제가 발생하였습니다..");
     },
   });
 
