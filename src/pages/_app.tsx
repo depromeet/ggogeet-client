@@ -14,6 +14,12 @@ import { ErrorBoundary } from "react-error-boundary";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>

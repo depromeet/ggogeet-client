@@ -11,24 +11,17 @@ import {
   COOKIE_ACCESS_TOKEN_KEY,
   COOKIE_REFRESH_TOKEN_KEY,
 } from "@/src/constants/keys";
-import { KakaoFriendAuthPayloadType } from "../types/auth";
 import { KakaoFriendDataType } from "../types/users";
-
-interface PostKakaoLoginQuery {
-  jwtAccessToken: string;
-  jwtRefreshToken: string;
-}
-interface Payload {
-  code: string;
-  redirectURI: string;
-}
+import { AuthPayloadType, KakaoLoginDataType } from "../types/auth";
+import { useKakaoFriends } from "../hooks/useKakaoFriends";
 
 export const usePostKakaoLoginMutate = () => {
   const { setToast } = useToast();
   const setUserState = useSetRecoilState(userState);
+  const { getKakaoFriendsUri } = useKakaoFriends();
 
-  const tryKakaoLogin = async (payload: Payload) => {
-    const { data } = await requester<PostKakaoLoginQuery>({
+  const tryKakaoLogin = async (payload: AuthPayloadType) => {
+    const { data } = await requester<KakaoLoginDataType>({
       method: HTTP_METHOD.POST,
       url: `/auth/login`,
       data: payload,
@@ -47,10 +40,14 @@ export const usePostKakaoLoginMutate = () => {
       setCookie(COOKIE_ACCESS_TOKEN_KEY, data.jwtAccessToken);
       setCookie(COOKIE_REFRESH_TOKEN_KEY, data.jwtRefreshToken);
       await updateUserState();
-      return setToast({
-        status: "success",
-        content: "로그인 성공",
-      });
+      if (data.allowFriendsList) {
+        return setToast({
+          status: "success",
+          content: "로그인 성공",
+        });
+      } else {
+        window.location.replace(getKakaoFriendsUri());
+      }
     },
     onError: () =>
       setToast({
@@ -60,29 +57,48 @@ export const usePostKakaoLoginMutate = () => {
   });
 };
 
-export const getKakaoFriendListByAuth = async (
-  payload: KakaoFriendAuthPayloadType
-) => {
-  const { data } = await requester<Array<KakaoFriendDataType>>({
-    method: HTTP_METHOD.GET,
-    url: `/auth/friends`,
-    data: payload,
+export const usePostKakaoFriendsMutate = () => {
+  const { setToast } = useToast();
+  const setUserState = useSetRecoilState(userState);
+
+  const tryKakaoFriends = async (payload: AuthPayloadType) => {
+    await requester<KakaoFriendDataType[]>({
+      method: HTTP_METHOD.POST,
+      url: `/auth/kakao/friends`,
+      data: payload,
+    });
+  };
+  const updateUserState = () => {
+    setUserState((prev) => ({ ...prev, allowFriendsList: true }));
+  };
+
+  return useMutation({
+    mutationFn: tryKakaoFriends,
+    onSuccess: async () => {
+      await updateUserState();
+    },
+    onError: () =>
+      setToast({
+        status: "error",
+        content: "카카오 친구목록 동의에 문제가 발생하였습니다.",
+      }),
   });
+};
+
+export const getKakaoFriends = async () => {
+  const { data } = await requester<KakaoFriendDataType[]>({
+    method: HTTP_METHOD.GET,
+    url: `/friends`,
+  });
+
   return data;
 };
 
-export const getKakaoFriendAuthTestCode = async () => {
-  const { data } = await requester<KakaoFriendAuthPayloadType["code"]>({
-    method: HTTP_METHOD.GET,
-    url: `/auth/code/friends`,
+export const patchKakaoFriends = async () => {
+  const { status } = await requester({
+    method: HTTP_METHOD.PATCH,
+    url: `/friends/kakao/update`,
   });
-  return data;
-};
 
-export const getKakaoFriendAuthRedirect = async (code: string) => {
-  await requester({
-    method: HTTP_METHOD.GET,
-    url: `/auth/kakao/friends`,
-    data: code,
-  });
+  return status;
 };

@@ -2,11 +2,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "@/src/hooks/useAuth";
 import { usePostKakaoLoginMutate } from "@/src/apis/auth";
-import { useOauth } from "@/src/hooks/useOauth";
+import { KAKAO_QUERY } from "@/src/constants/api";
 
 export default function SigninRedirectKakao() {
   const router = useRouter();
-  const { getKakaoRedirectUri } = useOauth();
   const { getRefreshToken } = useAuth();
   const { mutate: tryKakaoLogin, isSuccess: kakaoLoginSuccess } =
     usePostKakaoLoginMutate();
@@ -16,7 +15,8 @@ export default function SigninRedirectKakao() {
     if (!code) return;
     tryKakaoLogin({
       code: code as string,
-      redirectURI: getKakaoRedirectUri(),
+      redirectURI:
+        window.location.origin + KAKAO_QUERY.KAKAO_LOGIN_REDIRECT_URI,
     });
   };
 

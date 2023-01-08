@@ -5,6 +5,9 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+  images: {
+    domains: ["k.kakaocdn.net"],
+  },
 };
 
 module.exports = nextConfig;

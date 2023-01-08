@@ -2,6 +2,7 @@ import { postNewLetterCreate } from "@/src/apis/letter";
 import InputDefault from "@/src/components/common/Input";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
 import { queryKeys } from "@/src/react-query/constants";
+import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { userState } from "@/src/store/users";
 import { SituationIdType } from "@/src/types/sentence";
@@ -24,7 +25,8 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
   const userObjectState = useRecoilValue(userState);
-  const { situationId, lastSentence, contents } = letterWriteInputObjectState;
+  const { situationId, lastSentence, contents, receiverUserId, receiverName } =
+    letterWriteInputObjectState;
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId
   );
@@ -44,9 +46,8 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
     event.preventDefault();
     if (type === "Write") {
       const payload = {
-        // TODO: 받는 사람 아이디, 닉네임
-        receiverId: 123,
-        receiverNickname: "",
+        receiverId: receiverUserId as number,
+        receiverNickname: receiverName,
         situationId: situationId as SituationIdType,
         title: inputValue,
         content: contents,
@@ -70,9 +71,20 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
     }
   }, [inputValue]);
 
+  const updateLetterWriteInputObjectState = (id: number) => {
+    setLetterWriteInputObjectState((prev) => ({ ...prev, letterId: id }));
+  };
+
+  queryClient.setMutationDefaults([queryKeys.postCreateLetter], {
+    mutationFn: postNewLetterCreate,
+  });
+
   const postCreateLetterMutation = useMutation({
     mutationKey: [queryKeys.postCreateLetter],
     onMutate: postNewLetterCreate,
+    onSuccess: ({ id }) => {
+      updateLetterWriteInputObjectState(id);
+    },
   });
 
   return (
