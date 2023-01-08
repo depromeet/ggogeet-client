@@ -76,6 +76,7 @@ const ReactQuillWrapper = styled.div`
     line-height: 170%;
     letter-spacing: -0.005em;
     color: ${({ theme }) => theme.colors.navy};
+    height: calc(100vh - 104px);
     ${Body2};
   }
 
