@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
-import * as S from "../Atoms/styled";
+import * as S from "./styled";
 
 const NavBack = ({ color }: { color: "white" | "black" }): ReactElement => {
   const router = useRouter();

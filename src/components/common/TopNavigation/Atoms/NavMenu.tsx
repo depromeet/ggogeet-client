@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { ReactElement } from "react";
-import * as S from "../Atoms/styled";
+import * as S from "./styled";
 
 const NavMenu = (): ReactElement => {
   const onClickMenu = () => {};
