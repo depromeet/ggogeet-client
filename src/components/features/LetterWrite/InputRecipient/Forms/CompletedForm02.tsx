@@ -7,6 +7,7 @@ import Button from "@/src/components/common/Buttons/Button";
 import InputDefault from "@/src/components/common/Input";
 import { KAKAO_QUERY } from "@/src/constants/api";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
+import useInterval from "@/src/hooks/useInterval";
 import { useToast } from "@/src/hooks/useToast";
 import { queryKeys } from "@/src/react-query/constants";
 import { queryClient } from "@/src/react-query/queryClient";
@@ -16,7 +17,7 @@ import { getDateTimeFormat } from "@/src/utils/date";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useTextLengthPixel } from "../Hooks";
 import * as S from "../styled";
@@ -32,6 +33,8 @@ const CompletedForm02 = () => {
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId
   );
+  const [tempLetterId, setTempLetterId] = useState<number | null>(null);
+
   const onClickKakaoTalk = () => {
     if (receiverUserId) {
       // 회원 편지 발송 (카카오 메시지)
@@ -86,22 +89,22 @@ const CompletedForm02 = () => {
       onSuccessMutation("꼬깃 보내기 성공!");
     },
     onError: () => {
-      onErrorMutation("문제가 발생하였습니다..");
+      onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
     },
   });
 
-  // 비회원 편지 발송위한 임시 편지 정보(id, 편지 열람 기한) 가져오기
+  // 비회원 편지 발송 위한 임시 편지 정보(id, 편지 열람 기한) 가져오기
   const postSendLetterTempCompleteMutation = useMutation({
     mutationKey: [queryKeys.postSendLetterTempComplete],
     onMutate: postSendLetterTempComplete,
-    onSuccess: async ({ tempLetterId, expiredDate }) => {
-      await postSendLetterUnregisteredUserMutation.mutate({
+    onSuccess: ({ tempLetterId, expiredDate }) => {
+      postSendLetterUnregisteredUserMutation.mutate({
         tempLetterId,
         expiredDate,
       });
     },
     onError: () => {
-      onErrorMutation("문제가 발생하였습니다..");
+      onErrorMutation("비회원 꼬깃 발송에 문제가 발생하였습니다..");
     },
   });
 
@@ -110,10 +113,10 @@ const CompletedForm02 = () => {
     mutationKey: [queryKeys.postSendLetterUnregisteredUser],
     onMutate: postSendLetterToUnregisteredUser,
     onSuccess: (tempLetterId: number) => {
-      getLetterTempCompleteResultMutation.mutate(tempLetterId);
+      setTempLetterId(tempLetterId);
     },
     onError: () => {
-      onErrorMutation("문제가 발생하였습니다..");
+      onErrorMutation("비회원 꼬깃 카카오 공유에 문제가 발생하였습니다..");
     },
   });
 
@@ -125,9 +128,6 @@ const CompletedForm02 = () => {
       if (sent) {
         onSuccessMutation("꼬깃 보내기 성공!");
       }
-    },
-    onError: () => {
-      onErrorMutation("문제가 발생하였습니다..");
     },
   });
 
@@ -150,6 +150,12 @@ const CompletedForm02 = () => {
       });
     });
   }, [queryClientMutationMap]);
+
+  useInterval(() => {
+    if (tempLetterId) {
+      getLetterTempCompleteResultMutation.mutate(tempLetterId);
+    }
+  }, 3000);
 
   return (
     <>
