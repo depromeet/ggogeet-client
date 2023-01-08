@@ -4,13 +4,15 @@ import RemindNavigationBar from "@/src/components/features/letterRemind/Main/Rem
 import TodoContainerList from "@/src/components/features/letterRemind/Main/TodoContainerList";
 import { Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getReminderList } from "@/src/apis/reminder";
+import { useRecoilValue } from "recoil";
+import { remindNavigationState } from "@/src/store/LetterRemind";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
   height: 100vh;
+  overflow: scroll;
 `;
 
 const MainLayout = styled.div`
@@ -27,10 +29,10 @@ const TopNavigationTitle = styled.p`
 `;
 
 const LetterRemindPage = () => {
-  const [selectedPage, setSelectedPage] = useState<string>("모든 메모");
+  const selectedNavigation = useRecoilValue(remindNavigationState);
 
-  const { isSuccess, data } = useQuery({
-    queryKey: ["getReminderList", selectedPage],
+  const { data: remindListData } = useQuery({
+    queryKey: ["getReminderList", selectedNavigation],
     queryFn: getReminderList,
   });
 
@@ -42,13 +44,10 @@ const LetterRemindPage = () => {
       />
 
       <MainLayout>
-        <RemindNavigationBar
-          selectedItem={selectedPage}
-          setSelectedItem={setSelectedPage}
-        />
+        <RemindNavigationBar />
 
         <TodoLayout>
-          <TodoContainerList data={data ?? []} />
+          <TodoContainerList data={remindListData ?? []} />
         </TodoLayout>
       </MainLayout>
     </Layout>

@@ -1,23 +1,22 @@
+import { remindNavigationState } from "@/src/store/LetterRemind";
 import { Dispatch, SetStateAction } from "react";
+import { useRecoilState } from "recoil";
 import * as S from "./styled";
 
-interface Props {
-  selectedItem: string;
-  setSelectedItem: Dispatch<SetStateAction<string>>;
-}
-
-export default function RemindNavigationBar({
-  selectedItem,
-  setSelectedItem,
-}: Props) {
+export default function RemindNavigationBar() {
   let num = 7; // NOTE: 임시 숫자
 
-  const onClickNavigation = (pageName: string) => setSelectedItem(pageName);
+  const [selectedNavigation, setSelectedNavigation] = useRecoilState(
+    remindNavigationState
+  );
+
+  const onClickNavigation = (pageName: string) =>
+    setSelectedNavigation(pageName);
 
   return (
     <S.NavigationBarLayout>
       <S.NavigationWrapper
-        isSelected={selectedItem === "모든 메모"}
+        isSelected={selectedNavigation === "모든 메모"}
         onClick={() => onClickNavigation("모든 메모")}
       >
         <S.Navigation>모든 메모</S.Navigation>
@@ -25,7 +24,7 @@ export default function RemindNavigationBar({
       </S.NavigationWrapper>
 
       <S.NavigationWrapper
-        isSelected={selectedItem === "미완료"}
+        isSelected={selectedNavigation === "미완료"}
         onClick={() => onClickNavigation("미완료")}
       >
         <S.Navigation>미완료</S.Navigation>
@@ -33,7 +32,7 @@ export default function RemindNavigationBar({
       </S.NavigationWrapper>
 
       <S.NavigationWrapper
-        isSelected={selectedItem === "완료"}
+        isSelected={selectedNavigation === "완료"}
         onClick={() => onClickNavigation("완료")}
       >
         <S.Navigation>완료</S.Navigation>
