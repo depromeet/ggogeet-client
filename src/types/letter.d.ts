@@ -46,7 +46,9 @@ export type PostNewLetterCreateType = {
   receiver: SenderAndReceiverType;
 };
 
-export type PostSendLetterCompleteType = {};
+export type PostSendLetterCompleteType = {
+  successful_receiver_uuids: Array<string>;
+};
 
 export type PostSendLetterTempCompleteType = {
   tempLetterId: number;
