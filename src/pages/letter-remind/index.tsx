@@ -31,10 +31,13 @@ const TopNavigationTitle = styled.p`
 const LetterRemindPage = () => {
   const selectedNavigation = useRecoilValue(remindNavigationState);
 
-  const { data: remindListData } = useQuery({
+  const { data: remindListData = [] } = useQuery({
     queryKey: ["getReminderList", selectedNavigation],
     queryFn: getReminderList,
   });
+
+  const unDoneData = remindListData.filter((item) => !item.isDone);
+  const doneData = remindListData.filter((item) => item.isDone);
 
   return (
     <Layout>
@@ -44,10 +47,13 @@ const LetterRemindPage = () => {
       />
 
       <MainLayout>
-        <RemindNavigationBar />
+        <RemindNavigationBar
+          doneNum={doneData.length}
+          unDoneNum={unDoneData.length}
+        />
 
         <TodoLayout>
-          <TodoContainerList data={remindListData ?? []} />
+          <TodoContainerList data={remindListData} />
         </TodoLayout>
       </MainLayout>
     </Layout>

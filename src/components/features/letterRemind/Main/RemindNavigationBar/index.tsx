@@ -1,11 +1,13 @@
 import { remindNavigationState } from "@/src/store/LetterRemind";
-import { Dispatch, SetStateAction } from "react";
 import { useRecoilState } from "recoil";
 import * as S from "./styled";
 
-export default function RemindNavigationBar() {
-  let num = 7; // NOTE: 임시 숫자
+interface Props {
+  unDoneNum: number;
+  doneNum: number;
+}
 
+export default function RemindNavigationBar({ unDoneNum, doneNum }: Props) {
   const [selectedNavigation, setSelectedNavigation] = useRecoilState(
     remindNavigationState
   );
@@ -20,7 +22,7 @@ export default function RemindNavigationBar() {
         onClick={() => onClickNavigation("모든 메모")}
       >
         <S.Navigation>모든 메모</S.Navigation>
-        <S.NavigationNumber>{num}</S.NavigationNumber>
+        <S.NavigationNumber>{unDoneNum + doneNum}</S.NavigationNumber>
       </S.NavigationWrapper>
 
       <S.NavigationWrapper
@@ -28,7 +30,7 @@ export default function RemindNavigationBar() {
         onClick={() => onClickNavigation("미완료")}
       >
         <S.Navigation>미완료</S.Navigation>
-        <S.NavigationNumber>{num}</S.NavigationNumber>
+        <S.NavigationNumber>{unDoneNum}</S.NavigationNumber>
       </S.NavigationWrapper>
 
       <S.NavigationWrapper
@@ -36,7 +38,7 @@ export default function RemindNavigationBar() {
         onClick={() => onClickNavigation("완료")}
       >
         <S.Navigation>완료</S.Navigation>
-        <S.NavigationNumber>{num}</S.NavigationNumber>
+        <S.NavigationNumber>{doneNum}</S.NavigationNumber>
       </S.NavigationWrapper>
     </S.NavigationBarLayout>
   );
