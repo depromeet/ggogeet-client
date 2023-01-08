@@ -1,6 +1,6 @@
 import { situationTemplatesData } from "@/src/data/LetterWrite";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
-import { ReminderDataType } from "@/src/types/reminder";
+import { ReminderType } from "@/src/types/reminder";
 import { getDateTimeFormat } from "@/src/utils/date";
 import Image from "next/image";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import { useRecoilValue } from "recoil";
 import * as S from "../styled";
 
 interface AccordionProps {
-  data: ReminderDataType[];
+  data: ReminderType[];
 }
 
 const Accordion = ({ data }: AccordionProps) => {

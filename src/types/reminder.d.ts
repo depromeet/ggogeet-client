@@ -1,6 +1,6 @@
 import { SituationIdType } from "./sentence";
 
-export type ReminderDataType = {
+export type ReminderType = {
   id: number;
   title: string;
   content: string;

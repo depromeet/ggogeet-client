@@ -1,9 +1,9 @@
 import { HTTP_METHOD } from "../constants/api";
-import { ReminderDataType } from "../types/reminder";
+import { ReminderType } from "../types/reminder";
 import { requester } from "./requester";
 
 export const getReminderList = async () => {
-  const { data } = await requester<Array<ReminderDataType>>({
+  const { data } = await requester<Array<ReminderType>>({
     method: HTTP_METHOD.GET,
     url: `/reminders`,
   });
