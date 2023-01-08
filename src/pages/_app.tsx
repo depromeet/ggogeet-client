@@ -20,7 +20,7 @@ function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <Head />
-          <Global styles={global} />\
+          <Global styles={global} />
           <ErrorBoundary fallback={<div>error...</div>}>
             <Component {...pageProps} />
           </ErrorBoundary>
