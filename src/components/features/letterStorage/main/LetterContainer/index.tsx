@@ -8,6 +8,7 @@ interface Props {
     status: string;
     date: string;
     color: string;
+    id: string;
   };
 }
 export default function LetterContainer({ letter }: Props) {

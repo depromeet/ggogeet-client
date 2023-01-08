@@ -1,15 +1,19 @@
 import BottomSheet from "@/src/components/common/BottomSheet";
 import Select from "@/src/components/common/Select";
 import TopNavigation from "@/src/components/common/TopNavigation";
-import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
-import FilterButton from "@/src/components/features/letter-storage/FilterButton";
-import PlusButton from "@/src/components/features/letter-storage/PlusButton";
+import FilterButton from "@/src/components/features/letterStorage/main/FilterButton";
 import { Caption1, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
-import SortButton from "@/src/components/features/letter-storage/SortButton";
 import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
+import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
+import PlusButton from "@/src/components/features/letterStorage/main/PlusButton";
+import SortButton from "@/src/components/features/letterStorage/main/SortButton";
+import BottomSheetHeader from "@/src/components/features/letterStorage/bottomSheet/BottomSheetHeader";
+import BottomSheetFooter from "@/src/components/features/letterStorage/bottomSheet/BottomSheetFooter";
+import { useState } from "react";
+import CalendarBottomSheet from "@/src/components/features/letterStorage/bottomSheet/CalendarBottomSheet";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -106,11 +110,11 @@ const dummyData = [
 ];
 
 const LetterStoragePage = () => {
-  const TopNavigations = ["받은 꼬깃", "보낸 꼬깃"];
-
   const onClose = () => {
     return;
   };
+
+  const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
 
   return (
     <Layout>
@@ -147,11 +151,20 @@ const LetterStoragePage = () => {
         })}
 
         <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-          <ListBottomSheet listArray={SenderData} />
-        </BottomSheet>
+          <div>
+            <BottomSheetHeader
+              selected={selectedMenu}
+              setSelected={setSelectedMenu}
+            />
 
-        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-          <ListBottomSheet listArray={SenderData} />
+            {selectedMenu === "날짜" ? (
+              <CalendarBottomSheet />
+            ) : (
+              <ListBottomSheet listArray={SenderData} />
+            )}
+
+            <BottomSheetFooter />
+          </div>
         </BottomSheet>
       </MainLayout>
     </Layout>
