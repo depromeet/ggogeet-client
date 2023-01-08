@@ -4,12 +4,12 @@ import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import FilterButton from "@/src/components/features/letter-storage/FilterButton";
 import PlusButton from "@/src/components/features/letter-storage/PlusButton";
-import LetterContainer from "@/src/components/features/letter-storage/LetterContainer";
 import { Caption1, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
 import { SenderData } from "@/src/data/LetterStorage";
 import SortButton from "@/src/components/features/letter-storage/SortButton";
+import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};

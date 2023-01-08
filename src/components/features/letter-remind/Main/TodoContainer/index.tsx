@@ -37,7 +37,7 @@ export default function TodoContainer({ todo }: Props) {
         <S.TodoTitleContainer>
           <S.TodoInnerContainer>
             <S.CheckBoxWrapper>
-              <Checkbox isChecked={false} isRound />
+              <Checkbox checked={false} isRound />
             </S.CheckBoxWrapper>
 
             {isAlarm && (
