@@ -79,7 +79,7 @@ const ReceiverFriendsForm = (): ReactElement => {
               width={94.5}
               height={95.5}
             />
-            <span>아직 꼬깃 친구가가 없어요ㅠㅠ</span>
+            <span>아직 꼬깃 친구가 없어요!</span>
           </S.EmptyKakaoFriends>
         )}
       </S.LetterWriteProfileContainer>
