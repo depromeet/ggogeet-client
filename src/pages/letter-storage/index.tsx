@@ -20,7 +20,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.navy};
-  height: 100vh;
+  height: 100%;
   overflow: scroll;
 `;
 
@@ -28,7 +28,6 @@ const MainLayout = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px 20px;
-  height: 100%;
 `;
 
 const TopNavigationTitle = styled.p`
@@ -58,7 +57,7 @@ const LetterKindSelect = styled(Select)`
 `;
 
 const LetterContainerLayout = styled.div`
-  flex: 1;
+  /* flex: 1; */
 `;
 
 const LetterContainerWrapper = styled.div`
@@ -75,7 +74,7 @@ const EmptyContainer = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.navy50};
   border-radius: 8px;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 const dummyData = [
@@ -145,7 +144,7 @@ const LetterStoragePage = () => {
   const [sortKind, setSortKind] = useState<string>("최근 받은 순");
   const [isFilterOn, setIsFilterOn] = useState<boolean>(false);
 
-  const dataLength = 0; // 데이터 길이 임시변수
+  const dataLength = 1; // 데이터 길이 임시변수
 
   const onClickSortButton = () => {
     setSortKind((prev) =>
