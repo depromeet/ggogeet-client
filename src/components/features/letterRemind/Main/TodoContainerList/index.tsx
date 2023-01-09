@@ -1,11 +1,11 @@
-import { ReminderDataType } from "@/src/types/reminder";
+import { ReminderType } from "@/src/types/reminder";
 import TodoContainer from "../TodoContainer";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { remindNavigationState } from "@/src/store/LetterRemind";
 import * as S from "./styled";
 
 interface Props {
-  data: ReminderDataType[];
+  data: ReminderType[];
 }
 
 export default function TodoContainerList({ data }: Props) {
