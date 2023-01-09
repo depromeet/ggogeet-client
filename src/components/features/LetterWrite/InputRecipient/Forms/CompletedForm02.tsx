@@ -56,7 +56,7 @@ const CompletedForm02 = () => {
       const { successful_receiver_uuids } = await postSendLetterComplete(
         letterId as number
       );
-      if (successful_receiver_uuids) {
+      if (successful_receiver_uuids && successful_receiver_uuids.length > 0) {
         onSuccessMutation("꼬깃 보내기 성공!");
       } else {
         onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
