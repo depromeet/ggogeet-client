@@ -14,14 +14,19 @@ import BottomSheetHeader from "@/src/components/features/letterStorage/bottomShe
 import BottomSheetFooter from "@/src/components/features/letterStorage/bottomSheet/BottomSheetFooter";
 import { useState } from "react";
 import CalendarBottomSheet from "@/src/components/features/letterStorage/bottomSheet/CalendarBottomSheet";
+import Image from "next/image";
 
 const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.colors.navy};
   height: 100vh;
   overflow: scroll;
 `;
 
 const MainLayout = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 16px 20px;
   height: 100%;
 `;
@@ -52,12 +57,25 @@ const LetterKindSelect = styled(Select)`
   ${Caption1}
 `;
 
+const LetterContainerLayout = styled.div`
+  flex: 1;
+`;
+
 const LetterContainerWrapper = styled.div`
   padding: 0 0 12px 0;
 `;
 
 const Space = styled.div`
   width: 10px;
+`;
+
+const EmptyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.navy50};
+  border-radius: 8px;
+  height: 100%;
 `;
 
 const dummyData = [
@@ -127,6 +145,8 @@ const LetterStoragePage = () => {
   const [sortKind, setSortKind] = useState<string>("최근 받은 순");
   const [isFilterOn, setIsFilterOn] = useState<boolean>(false);
 
+  const dataLength = 0; // 데이터 길이 임시변수
+
   const onClickSortButton = () => {
     setSortKind((prev) =>
       prev === "최근 받은 순" ? "오래된 순" : "최근 받은 순"
@@ -163,13 +183,28 @@ const LetterStoragePage = () => {
           </HeaderRight>
         </Header>
 
-        {dummyData.map((letter) => {
-          return (
-            <LetterContainerWrapper key={letter.id}>
-              <LetterContainer letter={letter} />
-            </LetterContainerWrapper>
-          );
-        })}
+        <LetterContainerLayout>
+          {dataLength ? (
+            <>
+              {dummyData.map((letter) => {
+                return (
+                  <LetterContainerWrapper key={letter.id}>
+                    <LetterContainer letter={letter} />
+                  </LetterContainerWrapper>
+                );
+              })}
+            </>
+          ) : (
+            <EmptyContainer>
+              <Image
+                src="images/image__empty.svg"
+                alt="빈화면이미지"
+                width={95}
+                height={95}
+              />
+            </EmptyContainer>
+          )}
+        </LetterContainerLayout>
 
         {isFilterOn && (
           <BottomSheet
