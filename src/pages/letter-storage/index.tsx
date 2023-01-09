@@ -116,6 +116,18 @@ const LetterStoragePage = () => {
 
   const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
   const [calendarValue, setCalendarValue] = useState<Date>(new Date());
+  const [sortKind, setSortKind] = useState<string>("최근 받은 순");
+  const [isFilterOn, setIsFilterOn] = useState<boolean>(false);
+
+  const onClickSortButton = () => {
+    setSortKind((prev) =>
+      prev === "최근 받은 순" ? "오래된 순" : "최근 받은 순"
+    );
+  };
+
+  const onClickFilterButton = () => {
+    setIsFilterOn((prev) => !prev);
+  };
 
   return (
     <Layout>
@@ -137,9 +149,9 @@ const LetterStoragePage = () => {
           />
 
           <HeaderRight>
-            <SortButton sortKind="최근 받은 순" />
+            <SortButton sortKind={sortKind} onClick={onClickSortButton} />
             <Space />
-            <FilterButton />
+            <FilterButton onClick={onClickFilterButton} />
           </HeaderRight>
         </Header>
 
@@ -151,25 +163,31 @@ const LetterStoragePage = () => {
           );
         })}
 
-        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-          <div>
-            <BottomSheetHeader
-              selected={selectedMenu}
-              setSelected={setSelectedMenu}
-            />
-
-            {selectedMenu === "날짜" ? (
-              <Calendar
-                calendarValue={calendarValue}
-                setCalendarValue={setCalendarValue}
+        {isFilterOn && (
+          <BottomSheet
+            onClose={onClose}
+            isOpened={true}
+            className="BottomSheet"
+          >
+            <div>
+              <BottomSheetHeader
+                selected={selectedMenu}
+                setSelected={setSelectedMenu}
               />
-            ) : (
-              <ListBottomSheet listArray={SenderData} />
-            )}
 
-            <BottomSheetFooter />
-          </div>
-        </BottomSheet>
+              {selectedMenu === "날짜" ? (
+                <Calendar
+                  calendarValue={calendarValue}
+                  setCalendarValue={setCalendarValue}
+                />
+              ) : (
+                <ListBottomSheet listArray={SenderData} />
+              )}
+
+              <BottomSheetFooter />
+            </div>
+          </BottomSheet>
+        )}
       </MainLayout>
     </Layout>
   );
