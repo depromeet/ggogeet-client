@@ -10,4 +10,5 @@ export const queryKeys = {
   postSendLetterTempComplete: "postSendLetterTempComplete",
   getLetterTempCompleteResult: "getLetterTempCompleteResult",
   myInformation: "myInformation",
+  getLettersReceivedTemp: "getLettersReceivedTemp",
 } as const;
