@@ -104,7 +104,9 @@ const LetterRemindWritePage = () => {
   const [alarmAt, setAlarmAt] = useState<string>("");
   const [canUpload, setCanUpload] = useState<boolean>(false);
 
-  const onClear = () => {}; // 임시 함수
+  const onClear = () => {
+    setTitle("");
+  };
 
   const formatFunc = (date: string) => {
     return "" + dayjs(date).format("YYYY-MM-DD HH:mm:ss");
@@ -137,6 +139,8 @@ const LetterRemindWritePage = () => {
       router.push("/letter-remind");
     },
   });
+
+  console.log(situationId);
 
   const onChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
