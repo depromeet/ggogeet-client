@@ -17,25 +17,27 @@ interface Props {
 export default function LetterContainer({ letter }: Props) {
   const { sender, content, date, color, situationId } = letter;
 
+  const situationColor = situationTemplatesData[situationId - 1].color;
+
   return (
     <S.LetterLayout>
       <S.StatusAndSenderContainer>
         <Tag
           label={situationTemplatesData[situationId - 1].title}
-          color={situationTemplatesData[situationId - 1].color}
+          color={situationColor}
         />
 
         <S.SenderContainer>
-          <S.From color={color}>FROM</S.From>
+          <S.From color={situationColor}>FROM</S.From>
           <S.Sender>{sender}</S.Sender>
         </S.SenderContainer>
       </S.StatusAndSenderContainer>
 
       <S.ContentContainer>
         {/* 임시 따옴표  */}
-        <S.Quotation color={color}>"</S.Quotation>
+        <S.Quotation color={situationColor}>"</S.Quotation>
         <S.Content>{content}</S.Content>
-        <S.Quotation color={color}>"</S.Quotation>
+        <S.Quotation color={situationColor}>"</S.Quotation>
       </S.ContentContainer>
 
       <S.Date>{date}</S.Date>
