@@ -58,3 +58,11 @@ export type PostSendLetterTempCompleteType = {
 export type GetLetterTempCompleteResultType = {
   sent: boolean;
 };
+
+export type GetReceivedLetterTempType = {
+  id: number;
+  content: string;
+  senderNickname: string;
+  receivedAt: string;
+  situationId: SituationIdType;
+};

@@ -23,4 +23,9 @@ export type SituationTemplateDataType = Array<{
     width: number;
     height: number;
   };
+  characterImage: {
+    src: string;
+    width: number;
+    height: number;
+  };
 }>;
