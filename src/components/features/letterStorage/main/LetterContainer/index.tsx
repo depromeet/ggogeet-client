@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+import Tag from "@/src/components/common/Tag";
+import { situationTemplatesData } from "@/src/data/LetterWrite";
 import * as S from "./styled";
 
 interface Props {
@@ -8,16 +10,20 @@ interface Props {
     status: string;
     date: string;
     color: string;
-    id: string;
+    situationId: number;
   };
+  // 임시
 }
 export default function LetterContainer({ letter }: Props) {
-  const { sender, content, date, color, status } = letter;
+  const { sender, content, date, color, situationId } = letter;
 
   return (
     <S.LetterLayout>
       <S.StatusAndSenderContainer>
-        {status}
+        <Tag
+          label={situationTemplatesData[situationId - 1].title}
+          color={situationTemplatesData[situationId - 1].color}
+        />
 
         <S.SenderContainer>
           <S.From color={color}>FROM</S.From>

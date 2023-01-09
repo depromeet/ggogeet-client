@@ -18,10 +18,12 @@ import Calendar from "@/src/components/common/Calendar";
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
   height: 100vh;
+  overflow: scroll;
 `;
 
 const MainLayout = styled.div`
   padding: 16px 20px;
+  height: 100%;
 `;
 
 const TopNavigationTitle = styled.p`
@@ -66,6 +68,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "1",
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -74,6 +77,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "2",
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -82,6 +86,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "3",
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -90,6 +95,8 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "4",
+
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -98,6 +105,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "5",
+    situationId: 3,
   },
   {
     sender: "김가은",
@@ -106,6 +114,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "6",
+    situationId: 2,
   },
 ];
 
