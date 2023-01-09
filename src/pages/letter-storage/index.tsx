@@ -20,7 +20,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.navy};
-  height: 100%;
+  height: 100vh;
   overflow: scroll;
 `;
 
@@ -28,6 +28,7 @@ const MainLayout = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px 20px;
+  height: 100%;
 `;
 
 const TopNavigationTitle = styled.p`
