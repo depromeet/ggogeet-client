@@ -18,6 +18,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       width: 280,
       height: 174,
     },
+    characterImage: {
+      src: "/images/character01.svg",
+      width: 206,
+      height: 99,
+    },
   },
   {
     situationId: 2,
@@ -34,6 +39,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       src: "/images/image__completed-template02.svg",
       width: 280,
       height: 174,
+    },
+    characterImage: {
+      src: "/images/character02.svg",
+      width: 206,
+      height: 99,
     },
   },
   {
@@ -52,6 +62,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       width: 280,
       height: 174,
     },
+    characterImage: {
+      src: "/images/character03.svg",
+      width: 206,
+      height: 99,
+    },
   },
   {
     situationId: 4,
@@ -68,6 +83,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       src: "/images/image__completed-template04.svg",
       width: 280,
       height: 174,
+    },
+    characterImage: {
+      src: "/images/character04.svg",
+      width: 206,
+      height: 99,
     },
   },
   {
@@ -86,6 +106,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       width: 280,
       height: 174,
     },
+    characterImage: {
+      src: "/images/character05.svg",
+      width: 206,
+      height: 99,
+    },
   },
   {
     situationId: 6,
@@ -102,6 +127,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       src: "/images/image__completed-template06.svg",
       width: 280,
       height: 174,
+    },
+    characterImage: {
+      src: "/images/character06.svg",
+      width: 206,
+      height: 99,
     },
   },
   {
@@ -120,6 +150,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       width: 280,
       height: 174,
     },
+    characterImage: {
+      src: "/images/character07.svg",
+      width: 206,
+      height: 99,
+    },
   },
   {
     situationId: 8,
@@ -135,6 +170,11 @@ export const situationTemplatesData: SituationTemplateDataType = [
       src: "/images/image__completed-template08.svg",
       width: 280,
       height: 174,
+    },
+    characterImage: {
+      src: "/images/character08.svg",
+      width: 206,
+      height: 99,
     },
   },
 ];

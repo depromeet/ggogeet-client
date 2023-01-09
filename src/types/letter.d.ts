@@ -61,9 +61,8 @@ export type GetLetterTempCompleteResultType = {
 
 export type GetReceivedLetterTempType = {
   id: number;
-  title: string;
   content: string;
-  sender: string;
-  receiver: string;
-  createdAt: string;
+  senderNickname: string;
+  receivedAt: string;
+  situationId: SituationIdType;
 };
