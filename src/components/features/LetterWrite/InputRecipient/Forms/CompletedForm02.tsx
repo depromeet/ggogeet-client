@@ -35,16 +35,39 @@ const CompletedForm02 = () => {
   );
   const [tempLetterId, setTempLetterId] = useState<number | null>(null);
 
-  const onClickKakaoTalk = () => {
+  const onSuccessMutation = (text: string) => {
+    router.push("/");
+    return setToast({
+      status: "success",
+      content: text,
+    });
+  };
+
+  const onErrorMutation = (text: string) => {
+    return setToast({
+      status: "error",
+      content: text,
+    });
+  };
+
+  const onClickKakaoTalk = async () => {
     if (receiverUserId) {
       // 회원 편지 발송 (카카오 메시지)
-      postSendLetterMutation.mutate(letterId as number);
+      const { successful_receiver_uuids } = await postSendLetterComplete(
+        letterId as number
+      );
+      if (successful_receiver_uuids) {
+        onSuccessMutation("꼬깃 보내기 성공!");
+      } else {
+        onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
+      }
     } else {
       // 비회원 편지 발송 (카카오 공유)
       postSendLetterTempCompleteMutation.mutate(letterId as number);
     }
   };
 
+  // 비회원 편지 발송 위한 카카오 공유
   const postSendLetterToUnregisteredUser = async ({
     tempLetterId,
     expiredDate,
@@ -65,33 +88,6 @@ const CompletedForm02 = () => {
     });
     return tempLetterId;
   };
-
-  const onSuccessMutation = (text: string) => {
-    router.push("/");
-    return setToast({
-      status: "success",
-      content: text,
-    });
-  };
-
-  const onErrorMutation = (text: string) => {
-    return setToast({
-      status: "error",
-      content: text,
-    });
-  };
-
-  // 회원 편지 발송 (카카오 메시지)
-  const postSendLetterMutation = useMutation({
-    mutationKey: [queryKeys.postSendLetter],
-    onMutate: postSendLetterComplete,
-    onSuccess: () => {
-      onSuccessMutation("꼬깃 보내기 성공!");
-    },
-    onError: () => {
-      onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
-    },
-  });
 
   // 비회원 편지 발송 위한 임시 편지 정보(id, 편지 열람 기한) 가져오기
   const postSendLetterTempCompleteMutation = useMutation({
@@ -134,7 +130,6 @@ const CompletedForm02 = () => {
   // To persist mutation Fn
   const queryClientMutationMap = useMemo(
     () => ({
-      [queryKeys.postSendLetter]: postSendLetterComplete,
       [queryKeys.postSendLetterTempComplete]: postSendLetterTempComplete,
       [queryKeys.postSendLetterUnregisteredUser]:
         postSendLetterToUnregisteredUser,
