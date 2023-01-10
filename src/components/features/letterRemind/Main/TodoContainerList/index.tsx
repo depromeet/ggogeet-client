@@ -6,9 +6,10 @@ import * as S from "./styled";
 
 interface Props {
   data: ReminderType[];
+  refetch: () => void;
 }
 
-export default function TodoContainerList({ data }: Props) {
+export default function TodoContainerList({ data, refetch }: Props) {
   const selectedNavigation = useRecoilValue(remindNavigationState);
 
   let listData = [];
@@ -32,7 +33,11 @@ export default function TodoContainerList({ data }: Props) {
       {listData.map((item) => {
         return (
           <S.TodoWrapper key={item.id}>
-            <TodoContainer itemId={item.id} isDone={item.isDone} />
+            <TodoContainer
+              itemId={item.id}
+              isDone={item.isDone}
+              refetchList={refetch}
+            />
           </S.TodoWrapper>
         );
       })}

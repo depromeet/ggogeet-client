@@ -56,7 +56,7 @@ const LetterRemindPage = () => {
 
   const selectedNavigation = useRecoilValue(remindNavigationState);
 
-  const { data: remindListData = [] } = useQuery({
+  const { data: remindListData = [], refetch: remindListFetch } = useQuery({
     queryKey: ["getReminderList", selectedNavigation],
     queryFn: getReminderList,
   });
@@ -84,7 +84,10 @@ const LetterRemindPage = () => {
         <TodoLayout>
           {remindListData.length ? (
             <TodosContainer>
-              <TodoContainerList data={remindListData} />
+              <TodoContainerList
+                data={remindListData}
+                refetch={() => remindListFetch()}
+              />
             </TodosContainer>
           ) : (
             <EmptyContainer>

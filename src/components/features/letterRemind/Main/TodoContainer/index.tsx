@@ -6,6 +6,8 @@ import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import EditButton from "../EditButton";
 import DeleteButton from "../DeleteButton";
 import dayjs from "dayjs";
+import { deleteReminder } from "@/src/apis/reminder";
+import { useToast } from "@/src/hooks/useToast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   getReminderItem,
@@ -17,9 +19,11 @@ import { situationTemplatesData } from "@/src/data/LetterWrite";
 interface Props {
   itemId: number;
   isDone: boolean;
+  refetchList: () => void;
 }
 
-export default function TodoContainer({ itemId, isDone }: Props) {
+export default function TodoContainer({ itemId, isDone, refetchList }: Props) {
+  const { setToast } = useToast();
   const { data: reminderItemData } = useQuery({
     queryKey: ["getReminderItem", itemId],
     queryFn: () => getReminderItem(itemId),
@@ -30,6 +34,17 @@ export default function TodoContainer({ itemId, isDone }: Props) {
 
   const { title, content, alarmAt, eventAt, alertOn, situationId } =
     reminderItemData || {};
+
+  const onClickDeleteMemo = async () => {
+    const data = await deleteReminder(itemId);
+    if (data) {
+      setToast({
+        status: "success",
+        content: "메모가 삭제되었어요.",
+      });
+      refetchList();
+    }
+  };
 
   const patchReminderDoneMutation = useMutation({
     mutationKey: ["patchReminderDone", checked],
@@ -63,13 +78,9 @@ export default function TodoContainer({ itemId, isDone }: Props) {
   const onClickContainer = () => setIsClicked((prev) => !prev);
 
   return (
-    <S.TodoLayout
-      isComplete={isDone ?? false}
-      isAlarm={alertOn ?? false}
-      onClick={onClickContainer}
-    >
+    <S.TodoLayout isComplete={isDone ?? false} isAlarm={alertOn ?? false}>
       <S.TodoContentLayout>
-        <S.TodoTitleContainer>
+        <S.TodoTitleContainer onClick={onClickContainer}>
           <S.TodoInnerContainer>
             <S.CheckBoxWrapper>
               <Checkbox checked={checked} onChange={onChangeCheckBox} isRound />
@@ -104,9 +115,10 @@ export default function TodoContainer({ itemId, isDone }: Props) {
             </S.ContentUpperContainer>
 
             <S.ContentLowerContainer>
-              <EditButton />
+              {/* TODO: 편집하기 인터렉션 정의 후 처리 */}
+              {/* <EditButton /> */}
               <S.Space />
-              <DeleteButton />
+              <DeleteButton isDeleted={() => onClickDeleteMemo()} />
             </S.ContentLowerContainer>
           </S.TodoContentContainer>
         )}
