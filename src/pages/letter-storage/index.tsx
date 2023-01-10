@@ -15,6 +15,10 @@ import BottomSheetFooter from "@/src/components/features/letterStorage/bottomShe
 import { useState } from "react";
 import Calendar from "@/src/components/common/Calendar";
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import { getReceivedLetterList } from "@/src/apis/letter";
+import { KakaoFriendType } from "@/src/types/users";
+import { getKakaoFriends } from "@/src/apis/auth";
 
 const Layout = styled.div`
   display: flex;
@@ -135,6 +139,14 @@ const dummyData = [
   },
 ];
 
+interface FilterConditionTypes {
+  senders: string[];
+  tags: string[];
+  startDate?: string;
+  endDate?: string;
+  order?: string;
+}
+
 const LetterStoragePage = () => {
   const onClose = () => {
     return;
@@ -145,7 +157,22 @@ const LetterStoragePage = () => {
   const [sortKind, setSortKind] = useState<string>("최근 받은 순");
   const [isFilterOn, setIsFilterOn] = useState<boolean>(false);
 
+  const [filterCondition, setFilterCondition] = useState<FilterConditionTypes>({
+    senders: [],
+    tags: [],
+  });
+
+  const { senders, tags, startDate, endDate, order } = filterCondition;
+
   const dataLength = 1; // 데이터 길이 임시변수
+
+  const { data: receivedLetterList } = useQuery({
+    queryKey: ["receivedLetterList", filterCondition],
+    queryFn: () =>
+      getReceivedLetterList(senders, tags, startDate, endDate, order),
+  });
+
+  console.log(receivedLetterList);
 
   const onClickSortButton = () => {
     setSortKind((prev) =>
@@ -224,7 +251,11 @@ const LetterStoragePage = () => {
                   setCalendarValue={setCalendarValue}
                 />
               ) : (
-                <ListBottomSheet listArray={SenderData} />
+                <ListBottomSheet
+                  selectedMenu={
+                    selectedMenu === "보낸 사람" ? "보낸 사람" : "태그"
+                  }
+                />
               )}
 
               <BottomSheetFooter />

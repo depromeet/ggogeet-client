@@ -15,7 +15,7 @@ interface Props {
   // 임시
 }
 export default function LetterContainer({ letter }: Props) {
-  const { sender, content, date, color, situationId } = letter;
+  const { sender, content, date, situationId } = letter;
 
   const situationColor = situationTemplatesData[situationId - 1].color;
 

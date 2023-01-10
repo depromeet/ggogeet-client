@@ -53,3 +53,25 @@ export const getReceivedLetterTemp = async (tempLetterId: number) => {
 
   return data;
 };
+
+export const getReceivedLetterList = async (
+  senders: string[],
+  tags: string[],
+  startDate?: string,
+  endDate?: string,
+  order?: string
+) => {
+  const { data } = await requester({
+    method: HTTP_METHOD.GET,
+    url: `/letters/received`,
+    params: {
+      senders,
+      tags,
+      startDate,
+      endDate,
+      order,
+    },
+  });
+
+  return data;
+};
