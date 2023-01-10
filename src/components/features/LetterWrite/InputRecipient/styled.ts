@@ -97,19 +97,35 @@ const LetterWriteProfileContainer = styled.ul`
       gap: 12px;
       align-items: center;
       width: fit-content;
+      img,
       .profile-image-default {
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background-color: #c1c2ca;
       }
-      span {
+      & > span {
         line-height: 150%;
         letter-spacing: -0.005em;
         color: ${({ theme }) => theme.colors.white};
         ${Body2};
       }
     }
+  }
+`;
+
+const EmptyKakaoFriends = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  & > span {
+    line-height: 150%;
+    letter-spacing: -0.005em;
+    ${Body4}
+    color: ${({ theme }) => theme.colors.gray3};
   }
 `;
 
@@ -324,6 +340,7 @@ export {
   LetterWriteCaption1,
   LetterWriteBody1,
   LetterWriteProfileContainer,
+  EmptyKakaoFriends,
   LetterWriteSituationSliderWrapper,
   LetterWriteSituationSliderItem,
   LetterWriteCompletedLastSentenceOuterContainer,

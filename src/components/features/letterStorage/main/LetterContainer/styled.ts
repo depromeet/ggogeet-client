@@ -1,32 +1,74 @@
-import { Body3, Caption2, Display3 } from "@/src/styles/commons";
+import {
+  Body2,
+  Body4,
+  Caption1,
+  Caption2,
+  Display3,
+} from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 export const LetterLayout = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  height: 120px;
-  background-color: #e4e7ef;
-  border-radius: 4px;
+  padding: 16px 12px 20px 12px;
+  background-color: ${({ theme }) => theme.colors.gray6};
+  border-radius: 8px;
 `;
 
-export const LetterLeftContainer = styled.div`
+export const StatusAndSenderContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const SenderContainer = styled.div`
-  padding: 0 0 25px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 
-  ${Body3}
+interface FromProps {
+  color: string;
+}
+
+export const From = styled.p<FromProps>`
+  color: ${({ color }) => color};
+  ${Caption2};
+`;
+
+export const Sender = styled.p`
+  color: ${({ theme }) => theme.colors.gray3};
+  margin: 0 0 0 4px;
+  ${Body2};
 `;
 
 export const ContentContainer = styled.div`
   padding: 0 0 4px 0;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0 10px 0;
 
   ${Display3}
 `;
 
-export const DateContainer = styled.div`
-  ${Caption2}
+export const Content = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  padding: 0 2px;
+  ${Body4};
+`;
+
+interface quotationProps {
+  color: string;
+}
+
+export const Quotation = styled.p<quotationProps>`
+  color: ${({ color }) => color};
+`;
+
+export const Date = styled.p`
+  color: ${({ theme }) => theme.colors.gray4};
+  ${Caption1}
 `;

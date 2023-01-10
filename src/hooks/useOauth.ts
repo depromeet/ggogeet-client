@@ -1,23 +1,21 @@
 import qs from "query-string";
+import { KAKAO_QUERY } from "../constants/api";
 
 export const useOauth = () => {
-  const getKakaoRedirectUri = () =>
-    window.location.origin + "/signin/redirect/kakao";
-
   const getKakaoUri = () => {
-    const baseURL = "https://kauth.kakao.com/oauth/authorize";
+    const baseURL = KAKAO_QUERY.BASE_URL;
     const query = qs.stringify({
-      response_type: "code",
-      client_id: "6cc7f25d8ff933a60bc5f7427928aa92",
-      redirect_uri: getKakaoRedirectUri(),
-      state: "ggogeet-client",
+      response_type: KAKAO_QUERY.RESPONSE_TYPE,
+      client_id: KAKAO_QUERY.CLIENT_ID,
+      redirect_uri:
+        window.location.origin + KAKAO_QUERY.KAKAO_LOGIN_REDIRECT_URI,
+      state: KAKAO_QUERY.KAKAO_LOGIN_STATE,
     });
 
     return `${baseURL}?${query}`;
   };
 
   return {
-    getKakaoRedirectUri,
     getKakaoUri,
   };
 };

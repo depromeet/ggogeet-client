@@ -14,13 +14,19 @@ import { ErrorBoundary } from "react-error-boundary";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <Head />
-          <Global styles={global} />\
+          <Global styles={global} />
           <ErrorBoundary fallback={<div>error...</div>}>
             <Component {...pageProps} />
           </ErrorBoundary>

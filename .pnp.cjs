@@ -45,7 +45,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanstack/react-query-devtools", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.20.9"],\
             ["@types/node", "npm:18.8.4"],\
             ["@types/react", "npm:18.0.26"],\
+            ["@types/react-calendar", "npm:3.9.0"],\
             ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react-router", "npm:5.1.20"],\
             ["@types/react-slick", "npm:0.23.10"],\
             ["axios", "npm:1.2.2"],\
             ["babel-loader", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:8.3.0"],\
@@ -57,6 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:13.1.1"],\
             ["query-string", "npm:8.1.0"],\
             ["react", "npm:18.2.0"],\
+            ["react-calendar", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.0.0"],\
             ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"],\
             ["react-error-boundary", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:3.1.4"],\
             ["react-hook-form", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.41.5"],\
@@ -92,7 +95,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanstack/react-query-devtools", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.20.9"],\
             ["@types/node", "npm:18.8.4"],\
             ["@types/react", "npm:18.0.26"],\
+            ["@types/react-calendar", "npm:3.9.0"],\
             ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react-router", "npm:5.1.20"],\
             ["@types/react-slick", "npm:0.23.10"],\
             ["axios", "npm:1.2.2"],\
             ["babel-loader", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:8.3.0"],\
@@ -104,6 +109,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:13.1.1"],\
             ["query-string", "npm:8.1.0"],\
             ["react", "npm:18.2.0"],\
+            ["react-calendar", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.0.0"],\
             ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"],\
             ["react-error-boundary", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:3.1.4"],\
             ["react-hook-form", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:7.41.5"],\
@@ -7700,6 +7706,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/history", [\
+        ["npm:4.7.11", {\
+          "packageLocation": "./.yarn/cache/@types-history-npm-4.7.11-fe05d7b2e1-c92e2ba407.zip/node_modules/@types/history/",\
+          "packageDependencies": [\
+            ["@types/history", "npm:4.7.11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/html-minifier-terser", [\
         ["npm:5.1.2", {\
           "packageLocation": "./.yarn/cache/@types-html-minifier-terser-npm-5.1.2-6321512467-4bca779c44.zip/node_modules/@types/html-minifier-terser/",\
@@ -7919,11 +7934,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/react-calendar", [\
+        ["npm:3.9.0", {\
+          "packageLocation": "./.yarn/cache/@types-react-calendar-npm-3.9.0-d2fc83b98e-cddb6951c2.zip/node_modules/@types/react-calendar/",\
+          "packageDependencies": [\
+            ["@types/react-calendar", "npm:3.9.0"],\
+            ["@types/react", "npm:18.0.26"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/react-dom", [\
         ["npm:18.0.10", {\
           "packageLocation": "./.yarn/cache/@types-react-dom-npm-18.0.10-97fe360927-ff8282d500.zip/node_modules/@types/react-dom/",\
           "packageDependencies": [\
             ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react", "npm:18.0.26"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/react-router", [\
+        ["npm:5.1.20", {\
+          "packageLocation": "./.yarn/cache/@types-react-router-npm-5.1.20-620ccce99a-1287641434.zip/node_modules/@types/react-router/",\
+          "packageDependencies": [\
+            ["@types/react-router", "npm:5.1.20"],\
+            ["@types/history", "npm:4.7.11"],\
             ["@types/react", "npm:18.0.26"]\
           ],\
           "linkType": "HARD"\
@@ -8550,6 +8586,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@webassemblyjs/ast", "npm:1.9.0"],\
             ["@webassemblyjs/wast-parser", "npm:1.9.0"],\
             ["@xtuc/long", "npm:4.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@wojtekmaj/date-utils", [\
+        ["npm:1.0.3", {\
+          "packageLocation": "./.yarn/cache/@wojtekmaj-date-utils-npm-1.0.3-66943d4ae0-70b7152160.zip/node_modules/@wojtekmaj/date-utils/",\
+          "packageDependencies": [\
+            ["@wojtekmaj/date-utils", "npm:1.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13536,6 +13581,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["get-user-locale", [\
+        ["npm:1.5.1", {\
+          "packageLocation": "./.yarn/cache/get-user-locale-npm-1.5.1-4cba510c56-4ab9ae8326.zip/node_modules/get-user-locale/",\
+          "packageDependencies": [\
+            ["get-user-locale", "npm:1.5.1"],\
+            ["lodash.memoize", "npm:4.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["get-value", [\
         ["npm:2.0.6", {\
           "packageLocation": "./.yarn/cache/get-value-npm-2.0.6-03cd422e0a-5c3b99cb53.zip/node_modules/get-value/",\
@@ -15674,6 +15729,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.debounce-npm-4.0.8-f1d6e09799-a3f527d22c.zip/node_modules/lodash.debounce/",\
           "packageDependencies": [\
             ["lodash.debounce", "npm:4.0.8"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.memoize", [\
+        ["npm:4.1.2", {\
+          "packageLocation": "./.yarn/cache/lodash.memoize-npm-4.1.2-0e6250041f-9ff3942fee.zip/node_modules/lodash.memoize/",\
+          "packageDependencies": [\
+            ["lodash.memoize", "npm:4.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -18222,6 +18286,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["react", "npm:18.2.0"],\
             ["loose-envify", "npm:1.4.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-calendar", [\
+        ["npm:4.0.0", {\
+          "packageLocation": "./.yarn/cache/react-calendar-npm-4.0.0-8f03cd673a-a470ea1eab.zip/node_modules/react-calendar/",\
+          "packageDependencies": [\
+            ["react-calendar", "npm:4.0.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.0.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-calendar-virtual-ff20227b69/0/cache/react-calendar-npm-4.0.0-8f03cd673a-a470ea1eab.zip/node_modules/react-calendar/",\
+          "packageDependencies": [\
+            ["react-calendar", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:4.0.0"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["@types/react-dom", "npm:18.0.10"],\
+            ["@wojtekmaj/date-utils", "npm:1.0.3"],\
+            ["clsx", "npm:1.2.1"],\
+            ["get-user-locale", "npm:1.5.1"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:3b7cfc9b5060d2b1ceab4e29d0a155fcef218ba60eb181afaf48c76fde7c083792a9b29f0a1da9632f55c750a313375cfb4898a9da239f702f2535015aeb7059#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\

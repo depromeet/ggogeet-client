@@ -1,23 +1,36 @@
+import { postNewLetterCreate } from "@/src/apis/letter";
 import InputDefault from "@/src/components/common/Input";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
+import { queryKeys } from "@/src/react-query/constants";
+import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { userState } from "@/src/store/users";
+import { SituationIdType } from "@/src/types/sentence";
 import { getDateTimeFormat } from "@/src/utils/date";
+import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useBottomButton, useTextLengthPixel } from "../Hooks";
 import { LetterCompletedProgress } from "../Loadings";
 import * as S from "../styled";
 
-const CompletedForm = () => {
+interface CompletedFormProps {
+  type: "Write" | "Store";
+}
+
+const CompletedForm = ({ type }: CompletedFormProps) => {
   const router = useRouter();
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
-  const { situationId, lastSentence } = letterWriteInputObjectState;
+  const userObjectState = useRecoilValue(userState);
+  const { situationId, lastSentence, contents, receiverUserId, receiverName } =
+    letterWriteInputObjectState;
   const currentTemplate = situationTemplatesData.find(
     (template) => template.situationId === situationId
   );
+  const { name: senderName } = userObjectState;
   const [inputValue, setInputValue] = useState<string>(lastSentence);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isCompletedProgressShow, setIsCompletedProgressShow] =
@@ -25,16 +38,28 @@ const CompletedForm = () => {
   const currentTextLengthPixel = useTextLengthPixel(inputValue);
 
   const bottomButton = useBottomButton({
-    text: "꼬깃 작성 완료!",
+    text: type === "Write" ? "꼬깃 작성 완료!" : "저장하기",
     isDisabled: inputValue.length < 1 || inputValue.length > 20,
     customClickHandler: () => {},
   });
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsCompletedProgressShow(true);
-    setTimeout(() => {
-      router.push("/letter-write?type=completed-02");
-    }, 3000);
+    if (type === "Write") {
+      const payload = {
+        receiverId: receiverUserId as number,
+        receiverNickname: receiverName,
+        situationId: situationId as SituationIdType,
+        title: inputValue,
+        content: contents,
+      };
+      postCreateLetterMutation.mutate(payload);
+      setIsCompletedProgressShow(true);
+      setTimeout(() => {
+        router.push("/letter-write?type=completed-02");
+      }, 3000);
+    } else {
+      // TODO: 가은님) 외부 편지 저장하기 API + 꼬깃 보관함 이동하면서 토스트 메시지 추가
+    }
   };
 
   useEffect(() => {
@@ -45,6 +70,22 @@ const CompletedForm = () => {
       }));
     }
   }, [inputValue]);
+
+  const updateLetterWriteInputObjectState = (id: number) => {
+    setLetterWriteInputObjectState((prev) => ({ ...prev, letterId: id }));
+  };
+
+  queryClient.setMutationDefaults([queryKeys.postCreateLetter], {
+    mutationFn: postNewLetterCreate,
+  });
+
+  const postCreateLetterMutation = useMutation({
+    mutationKey: [queryKeys.postCreateLetter],
+    onMutate: postNewLetterCreate,
+    onSuccess: ({ id }) => {
+      updateLetterWriteInputObjectState(id);
+    },
+  });
 
   return (
     <>
@@ -74,6 +115,7 @@ const CompletedForm = () => {
                 <div className="last-sentence-input">
                   <span>&ldquo;</span>
                   <InputDefault
+                    autoFocus
                     value={inputValue}
                     onInput={(event: ChangeEvent<HTMLInputElement>) => {
                       setInputValue(event.target.value);
@@ -93,7 +135,7 @@ const CompletedForm = () => {
                 <div className="sender-name-date">
                   <div className="sender-name">
                     <span>FROM</span>
-                    <strong>유저 이름</strong>
+                    <strong>{senderName}</strong>
                   </div>
                   <time className="sender-date">
                     {getDateTimeFormat(new Date().getTime())}

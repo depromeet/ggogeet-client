@@ -5,6 +5,7 @@ import {
   ChangeEventHandler,
   FormEvent,
   ReactElement,
+  useEffect,
 } from "react";
 import { useRecoilState } from "recoil";
 import { useBottomButton } from "../Hooks";
@@ -38,6 +39,13 @@ const ReceiverNameForm = (): ReactElement => {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+
+  useEffect(() => {
+    setLetterWriteInputObjectState((prev) => ({
+      ...prev,
+      receiverUserId: null,
+    }));
+  }, []);
 
   return (
     <form onSubmit={onSubmit}>

@@ -1,8 +1,9 @@
 import { atom } from "recoil";
 import { localStorageEffect, sessionStorageEffect } from ".";
-import { IS_SERVER } from "../constants";
 
 export type RecipientInputObjectType = {
+  letterId: number | null;
+  receiverUserId: number | null;
   receiverName: string;
   situationId: number | null;
   contents: string;
@@ -12,6 +13,8 @@ export type RecipientInputObjectType = {
 export const letterWriteInputState = atom<RecipientInputObjectType>({
   key: "LetterWriteInputState",
   default: {
+    letterId: null,
+    receiverUserId: null,
     receiverName: "",
     situationId: null,
     contents: "",

@@ -1,12 +1,17 @@
 import { HTTP_METHOD } from "../constants/api";
 import {
-  CreatedLetterDataType,
-  SendCompleteLetterPayloadDataType,
+  CreatedLetterType,
+  GetLetterTempCompleteResultType,
+  GetReceivedLetterTempType,
+  PostNewLetterCreateType,
+  PostSendLetterCompleteType,
+  PostSendLetterTempCompleteType,
 } from "../types/letter";
+
 import { requester } from "./requester";
 
-export const postNewLetterCreate = async (payload: CreatedLetterDataType) => {
-  const { data } = await requester<number>({
+export const postNewLetterCreate = async (payload: CreatedLetterType) => {
+  const { data } = await requester<PostNewLetterCreateType>({
     method: HTTP_METHOD.POST,
     url: `/letters/draft`,
     data: payload,
@@ -14,17 +19,37 @@ export const postNewLetterCreate = async (payload: CreatedLetterDataType) => {
   return data;
 };
 
-export const postSendLetterComplete = async ({
-  letterId,
-  payload,
-}: {
-  letterId: number;
-  payload: SendCompleteLetterPayloadDataType;
-}) => {
-  const { data } = await requester<number>({
+export const postSendLetterComplete = async (letterId: number) => {
+  const { data } = await requester<PostSendLetterCompleteType>({
     method: HTTP_METHOD.POST,
     url: `/letters/${letterId}/complete`,
-    data: payload,
   });
+  return data;
+};
+
+export const postSendLetterTempComplete = async (letterId: number) => {
+  const { data } = await requester<PostSendLetterTempCompleteType>({
+    method: HTTP_METHOD.POST,
+    url: `/letters/${letterId}/temp-complete`,
+  });
+
+  return data;
+};
+
+export const getLetterTempCompleteResult = async (tempLetterId: number) => {
+  const { data } = await requester<GetLetterTempCompleteResultType>({
+    method: HTTP_METHOD.GET,
+    url: `/letters/${tempLetterId}/temp-complete/kakao/callback/confirm`,
+  });
+
+  return data;
+};
+
+export const getReceivedLetterTemp = async (tempLetterId: number) => {
+  const { data } = await requester<GetReceivedLetterTempType>({
+    method: HTTP_METHOD.GET,
+    url: `/letters/received/temp/${tempLetterId}`,
+  });
+
   return data;
 };
