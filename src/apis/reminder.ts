@@ -61,7 +61,7 @@ export const patchRemindUndone = async (reminderId: number) => {
 };
 
 export const deleteReminder = async (reminderId: number) => {
-  const { data } = await requester({
+  const data = await requester({
     method: HTTP_METHOD.DELETE,
     url: `/reminders/${reminderId}`,
   });

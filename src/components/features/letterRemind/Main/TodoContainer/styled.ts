@@ -11,7 +11,6 @@ export const TodoLayout = styled.div<TodoLayoutProps>`
   border-radius: ${theme.radius.md};
   background-color: ${({ theme }) => theme.colors.gray6};
   opacity: ${({ isComplete }) => (isComplete ? "20%" : "100%")};
-  cursor: pointer;
 `;
 
 export const TodoContentLayout = styled.div`
@@ -35,6 +34,7 @@ export const TodoContentContainer = styled.div<TodoContentContainerProps>`
   border-top: ${({ isClicked, theme }) =>
     isClicked ? `1px solid ${theme.colors.gray5}` : "none"};
   background-color: ${({ theme }) => theme.colors.gray6};
+  touch-action: none;
 `;
 
 export const TodoInnerContainer = styled.div`
