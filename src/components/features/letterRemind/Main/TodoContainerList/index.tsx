@@ -1,11 +1,18 @@
 import { RemindData } from "@/src/data/LetterRemind";
+import { ReminderDataType } from "@/src/types/reminder";
 import TodoContainer from "../TodoContainer";
 import * as S from "./styled";
 
-export default function TodoContainerList() {
+interface Props {
+  data: ReminderDataType[];
+}
+
+export default function TodoContainerList({ data }: Props) {
+  const listData = RemindData;
+
   return (
     <S.ListLayout>
-      {RemindData.map((item) => {
+      {listData.map((item) => {
         return (
           <S.TodoWrapper key={item.id}>
             <TodoContainer todo={item} />

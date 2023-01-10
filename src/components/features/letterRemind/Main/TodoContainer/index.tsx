@@ -5,23 +5,23 @@ import ToggleArrowButton from "@/src/components/common/Buttons/ToggleArrowButton
 import Checkbox from "@/src/components/common/Buttons/Checkbox";
 import EditButton from "../EditButton";
 import DeleteButton from "../DeleteButton";
+import { ReminderDataType } from "@/src/types/reminder";
+import dayjs from "dayjs";
 
 interface Props {
-  todo: {
-    title: string;
-    date: string;
-    alarm: string;
-    content: string;
-    sender: string;
-    isAlarm: boolean;
-    isComplete: boolean;
-    color: string;
-  };
+  todo: ReminderDataType;
 }
 
 export default function TodoContainer({ todo }: Props) {
-  const { title, date, alarm, content, isAlarm, sender, isComplete, color } =
+  const { title, content, eventAt, alertOn, alarmAt, isDone, situationId } =
     todo;
+
+  const calculateAlarmDate = (alarmDate: string) => {
+    const today = dayjs();
+    const alarm = dayjs(alarmDate);
+
+    return today.diff(alarm, "d");
+  };
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
@@ -29,8 +29,8 @@ export default function TodoContainer({ todo }: Props) {
 
   return (
     <S.TodoLayout
-      isComplete={isComplete}
-      isAlarm={isAlarm}
+      isComplete={isDone}
+      isAlarm={alertOn}
       onClick={onClickContainer}
     >
       <S.TodoContentLayout>
@@ -40,7 +40,7 @@ export default function TodoContainer({ todo }: Props) {
               <Checkbox checked={false} isRound />
             </S.CheckBoxWrapper>
 
-            {isAlarm && (
+            {alertOn && (
               <S.BellIconWrapper>
                 <Image
                   src="/icons/yellowBell.svg"
@@ -55,7 +55,7 @@ export default function TodoContainer({ todo }: Props) {
           </S.TodoInnerContainer>
 
           <S.TodoInnerContainer>
-            <S.Date>{date}</S.Date>
+            <S.Date>{eventAt}</S.Date>
             <ToggleArrowButton isClicked={isClicked} />
           </S.TodoInnerContainer>
         </S.TodoTitleContainer>
@@ -63,7 +63,8 @@ export default function TodoContainer({ todo }: Props) {
         {isClicked && (
           <S.TodoContentContainer isClicked={isClicked}>
             <S.ContentUpperContainer>
-              <S.Sender color={color}>{sender}</S.Sender>
+              {/* TODO: 상황이름 데이터 값이 없음 */}
+              <S.Sender color="red">상황이름</S.Sender>
               <S.Content>{content}</S.Content>
             </S.ContentUpperContainer>
 
@@ -76,9 +77,9 @@ export default function TodoContainer({ todo }: Props) {
         )}
       </S.TodoContentLayout>
 
-      {isAlarm && isClicked && (
+      {alertOn && isClicked && (
         <S.TodoAlarmLayout>
-          <S.AlarmDate>{alarm}</S.AlarmDate>
+          <S.AlarmDate>{calculateAlarmDate(alarmAt)}</S.AlarmDate>
           <S.AlarmTalk>일 전에 알려드릴게요!</S.AlarmTalk>
         </S.TodoAlarmLayout>
       )}

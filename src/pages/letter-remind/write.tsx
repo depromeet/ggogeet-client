@@ -1,16 +1,20 @@
+import { postReminder } from "@/src/apis/reminder";
 import InputDefault, { InputClear } from "@/src/components/common/Input";
-import TagsContainer from "@/src/components/common/TagsContainer";
 import Textarea from "@/src/components/common/Textarea";
+import Toggle from "@/src/components/common/Toggle";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
+import TagsContainer from "@/src/components/features/letterRemind/Write/TagsContainer";
 import {
   RemindWriteAlarmData,
   RemindWriteEmotionData,
 } from "@/src/data/LetterRemind";
 import { Body2, Body4, Body5, Display4 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
-import Image from "next/image";
-import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { ChangeEvent, useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -22,10 +26,16 @@ const TopNavigationTitle = styled.p`
   ${Display4}
 `;
 
-const OkButton = styled.button`
-  color: ${({ theme }) => theme.colors.gray3};
-  ${Body4}
-  cursor: pointer;
+interface OkButtonProps {
+  canClicked: boolean;
+}
+
+const OkButton = styled.button<OkButtonProps>`
+  color: ${({ theme, canClicked }) =>
+    canClicked ? theme.colors.gray3 : theme.colors.gray5};
+  cursor: ${({ canClicked }) => (canClicked ? "pointer" : "default")};
+
+  ${Body4};
 `;
 
 const MainLayout = styled.div`
@@ -52,17 +62,19 @@ const TitleInput = styled(InputClear)`
   ${Body5};
 `;
 
-const RemindWriteInput = styled(InputDefault)`
-  // NOTE: 날짜부분 input 따로 만들게 되면 변수명 변경하기
-  height: 24px;
-  color: ${({ theme }) => theme.colors.gray5};
+const ContentTextArea = styled(Textarea)`
+  height: 70px;
+  color: ${({ theme }) => theme.colors.white};
   ${Body2}
 `;
 
-const ContentTextArea = styled(Textarea)`
-  height: 70px;
-  color: ${({ theme }) => theme.colors.gray5};
-  ${Body2}
+const DateInput = styled(InputDefault)`
+  padding: 14px 16px;
+  background-color: ${({ theme }) => theme.colors.gray6};
+  color: ${({ theme }) => theme.colors.gray3};
+  margin: 0px;
+
+  ${Body4}
 `;
 
 const LowerLayout = styled.div`
@@ -81,46 +93,173 @@ const Question = styled.p`
 `;
 
 const LetterRemindWritePage = () => {
+  const router = useRouter();
+
+  const [isAlarmOn, setIsAlarmOn] = useState<boolean>(false);
+  const [situationId, setSituationId] = useState<number>(0);
+  const [eventAt, setEventAt] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [alarmAtId, setAlarmAtId] = useState<number>(-1);
+  const [alarmAt, setAlarmAt] = useState<string>("");
+  const [canUpload, setCanUpload] = useState<boolean>(false);
+
   const onClear = () => {}; // 임시 함수
 
-  const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
+  const formatFunc = (date: string) => {
+    return "" + dayjs(date).format("YYYY-MM-DD HH:mm:ss");
+  };
+
+  const payload = {
+    title,
+    content,
+    situationId,
+    eventAt: formatFunc(eventAt),
+    alertOn: isAlarmOn,
+    alarmAt,
+  };
+
+  const postRemindermutation = useMutation({
+    mutationKey: ["postReminder"],
+    mutationFn: postReminder,
+    onSuccess: () => {
+      console.log(payload);
+
+      setIsAlarmOn(false);
+      setSituationId(0);
+      setEventAt("");
+      setTitle("");
+      setContent("");
+      setAlarmAtId(-1);
+      setAlarmAt("");
+      setCanUpload(false);
+
+      router.push("/letter-remind");
+    },
+  });
+
+  const onChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
+
+  const onChangeEventAt = (e: ChangeEvent<HTMLInputElement>) => {
+    setEventAt(e.target.value);
+    setAlarmAt(e.target.value);
+  };
+
+  const onClickSwitch = () => setIsAlarmOn((prev) => !prev);
+
+  const onClickUploadButton = () => {
+    if (title === "" || content === "" || eventAt === "") return;
+    postRemindermutation.mutate(payload);
+  };
+
+  useEffect(() => {
+    if (title !== "" && content !== "" && eventAt !== "") setCanUpload(true);
+    else setCanUpload(false);
+  }, [title, content, eventAt, canUpload]);
+
+  useEffect(() => {
+    let dateDifference = 0;
+
+    switch (alarmAtId) {
+      case 0:
+        dateDifference = 1;
+        break;
+      case 1:
+        dateDifference = 3;
+        break;
+      case 2:
+        dateDifference = 5;
+        break;
+      case 3:
+        dateDifference = 7;
+        break;
+      default:
+        dateDifference = 0;
+    }
+
+    console.log(
+      dayjs(eventAt).subtract(dateDifference, "d").format("YYYY-MM-DD HH:mm:ss")
+    );
+
+    setAlarmAt(
+      dayjs(eventAt).subtract(dateDifference, "d").format("YYYY-MM-DD HH:mm:ss")
+    );
+  }, [alarmAtId]);
 
   return (
     <Layout>
       <TopNavigation
         title={<TopNavigationTitle>메모 추가</TopNavigationTitle>}
         leftElem={<NavBack color="white" />}
-        rightElem={<OkButton type="button">확인</OkButton>}
+        rightElem={
+          <OkButton
+            type="button"
+            onClick={onClickUploadButton}
+            canClicked={canUpload}
+          >
+            확인
+          </OkButton>
+        }
       />
 
       <MainLayout>
         <UpperLayout>
           <InputContainer>
             <InputName>제목</InputName>
-            <TitleInput onClear={onClear} />
+            <TitleInput
+              onClear={onClear}
+              onChange={onChangeTitle}
+              value={title}
+            />
           </InputContainer>
 
           <InputContainer>
             <InputName>내용</InputName>
-            <ContentTextArea maxLength={100} />
+            <ContentTextArea
+              maxLength={100}
+              onChange={onChangeContent}
+              value={content}
+            />
           </InputContainer>
 
           <InputContainer>
             <InputName>날짜</InputName>
-            <RemindWriteInput styleOption="fill" />
+            <DateInput
+              value={"" + eventAt}
+              onChange={onChangeEventAt}
+              type="date"
+              styleOption="fill"
+            />
           </InputContainer>
 
           <InputName>상황 태그</InputName>
-          <TagsContainer tagArray={RemindWriteEmotionData} />
+          <TagsContainer
+            tagArray={RemindWriteEmotionData}
+            clickedTag={situationId}
+            setClickedTag={(value) => setSituationId(value)}
+            isShaped
+          />
         </UpperLayout>
 
         <LowerLayout>
           <QuestionContainer>
             <Question>잊지 않게 한번 더 알려줄까요?</Question>
-            <p>스위치</p>
+            <Toggle isOn={isAlarmOn} onClick={onClickSwitch} />
           </QuestionContainer>
 
-          {isSwitchOn && <TagsContainer tagArray={RemindWriteAlarmData} />}
+          {isAlarmOn && (
+            <TagsContainer
+              tagArray={RemindWriteAlarmData}
+              clickedTag={alarmAtId}
+              setClickedTag={setAlarmAtId}
+            />
+          )}
         </LowerLayout>
       </MainLayout>
     </Layout>

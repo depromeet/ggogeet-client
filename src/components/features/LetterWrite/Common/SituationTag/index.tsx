@@ -1,5 +1,6 @@
 import { TemplateType } from "@/src/data/LetterWrite/type";
 import theme from "@/src/styles/theme";
+import { calcLength } from "framer-motion";
 import { ReactElement } from "react";
 import * as S from "../styled";
 
