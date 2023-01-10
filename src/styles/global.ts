@@ -18,6 +18,12 @@ export const global = (theme: Theme) => css`
       Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
       "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", sans-serif;
+    & > div > div {
+      min-height: 100vh;
+      @supports (-webkit-touch-callout: none) {
+        min-height: -webkit-fill-available;
+      }
+    }
   }
 
   ul {

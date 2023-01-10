@@ -15,6 +15,7 @@ const Remind = () => {
   const dataLength = data.length;
   if (isLoading) return <>Loading...</>;
   if (isError) return <span>Error: {JSON.stringify(error)}</span>;
+
   return (
     <S.RemindMainWrapper>
       <S.BottomSheetHeader>

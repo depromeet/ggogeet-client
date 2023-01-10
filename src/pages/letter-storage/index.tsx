@@ -13,7 +13,7 @@ import SortButton from "@/src/components/features/letterStorage/main/SortButton"
 import BottomSheetHeader from "@/src/components/features/letterStorage/bottomSheet/BottomSheetHeader";
 import BottomSheetFooter from "@/src/components/features/letterStorage/bottomSheet/BottomSheetFooter";
 import { useState } from "react";
-import CalendarBottomSheet from "@/src/components/features/letterStorage/bottomSheet/CalendarBottomSheet";
+import Calendar from "@/src/components/common/Calendar";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -115,6 +115,7 @@ const LetterStoragePage = () => {
   };
 
   const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
+  const [calendarValue, setCalendarValue] = useState<Date>(new Date());
 
   return (
     <Layout>
@@ -158,7 +159,10 @@ const LetterStoragePage = () => {
             />
 
             {selectedMenu === "날짜" ? (
-              <CalendarBottomSheet />
+              <Calendar
+                calendarValue={calendarValue}
+                setCalendarValue={setCalendarValue}
+              />
             ) : (
               <ListBottomSheet listArray={SenderData} />
             )}
