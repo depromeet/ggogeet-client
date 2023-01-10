@@ -10,7 +10,6 @@ import * as S from "./styled";
 import { getStorageItem, setStorageItem } from "@/src/utils/local-storage";
 import WelcomeModal from "./WelcomeModal";
 
-// TODO: image responsive
 const Home = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const resetRecoilLocalStorage = useResetRecoilState(letterWriteInputState);
@@ -47,7 +46,7 @@ const Home = () => {
       <S.HomeWrapper>
         <header>
           <Image
-            src="/images/image__home-logo.svg"
+            src="/images/home-logo.png"
             alt="꼬깃 홈 로고"
             width={224}
             height={48}
@@ -61,9 +60,9 @@ const Home = () => {
         <div className="home-storage">
           <Link href={getNavigateLink("/letter-storage")}>
             <Image
-              src="/images/image__home-storage.svg"
+              src="/images/home-storage.png"
               alt="꼬깃 보관함"
-              width={275}
+              width={220}
               height={149}
             />
           </Link>
@@ -71,9 +70,9 @@ const Home = () => {
         <div className="home-memo">
           <Link href={getNavigateLink("/letter-remind")}>
             <Image
-              src="/images/image__home-memo.svg"
+              src="/images/home-memo.png"
               alt="꼬깃 메모"
-              width={148}
+              width={123}
               height={214}
             />
           </Link>
@@ -81,7 +80,7 @@ const Home = () => {
         <div className="home-send">
           <Link href={getNavigateLink("/letter-write")}>
             <Image
-              src="/images/image__home-send.svg"
+              src="/images/home-send.png"
               alt="꼬깃 보내기"
               width={249}
               height={195}
@@ -90,25 +89,25 @@ const Home = () => {
         </div>
         <div className="home-love">
           <Image
-            src="/images/image__home-love.svg"
+            src="/images/home-love.png"
             alt="손글씨 - love ya"
-            width={170}
+            width={167}
             height={114}
           />
         </div>
         <div className="home-get">
           <Image
-            src="/images/image__home-get.svg"
+            src="/images/home-get.png"
             alt="손글씨 - get to know"
-            width={157}
+            width={141}
             height={108}
           />
         </div>
         <div className="home-thank">
           <Image
-            src="/images/image__home-thank.svg"
+            src="/images/home-thank.png"
             alt="손글씨 - thank you"
-            width={174}
+            width={166}
             height={91}
           />
         </div>
