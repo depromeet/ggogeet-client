@@ -1,4 +1,5 @@
 import TagButton from "@/src/components/common/Buttons/TagButton";
+import Tag from "@/src/components/common/Tag";
 import { Body1 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import SituationTag from "../../../LetterWrite/Common/SituationTag";
@@ -14,13 +15,7 @@ export const TagWrapper = styled.div`
   cursor: pointer;
 `;
 
-interface ShapedTagProps {
-  isClicked: boolean;
-}
-
-export const ShapedTag = styled(SituationTag)<ShapedTagProps>`
-  // background-color: ${({ isClicked, theme }) => isClicked || "green"};
-`;
+export const ShapedTag = styled(Tag)``;
 
 interface RoundedTagProps {
   isSelected: boolean;
