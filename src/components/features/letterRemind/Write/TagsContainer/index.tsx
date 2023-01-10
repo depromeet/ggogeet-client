@@ -1,3 +1,5 @@
+import { situationTemplatesData } from "@/src/data/LetterWrite";
+import theme from "@/src/styles/theme";
 import { Dispatch, SetStateAction } from "react";
 import * as S from "./styled";
 
@@ -25,9 +27,12 @@ export default function TagsContainer({
           <S.TagWrapper key={index} onClick={() => onClickTag(index)}>
             {isShaped ? (
               <S.ShapedTag
-                templateType={"축하하는 고양이"}
-                height={30}
-                isClicked={clickedTag === index}
+                label={situationTemplatesData[index].title}
+                color={
+                  clickedTag === index
+                    ? situationTemplatesData[index].color
+                    : theme.colors.gray6
+                }
               />
             ) : (
               <S.RoundedTag

@@ -45,8 +45,7 @@ export const patchReminder = async (payload: ReminderPayload) => {
 export const patchReminderDone = async (reminderId: number) => {
   const { data } = await requester<ReminderIsDone>({
     method: HTTP_METHOD.PATCH,
-    url: `/reminders/done/${reminderId},
-    `,
+    url: `/reminders/done/${reminderId}`,
   });
 
   return data;
@@ -62,7 +61,7 @@ export const patchRemindUndone = async (reminderId: number) => {
 };
 
 export const deleteReminder = async (reminderId: number) => {
-  const { data } = await requester({
+  const data = await requester({
     method: HTTP_METHOD.DELETE,
     url: `/reminders/${reminderId}`,
   });

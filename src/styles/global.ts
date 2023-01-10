@@ -20,6 +20,12 @@ export const global = (theme: Theme) => css`
       "Segoe UI Symbol", sans-serif;
     min-width: 360px;
     max-width: 430px;
+    & > div > div {
+      min-height: 100vh;
+      @supports (-webkit-touch-callout: none) {
+        min-height: -webkit-fill-available;
+      }
+    }
   }
 
   ul {

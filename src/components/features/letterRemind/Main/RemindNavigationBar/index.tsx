@@ -1,43 +1,44 @@
-import { Dispatch, SetStateAction } from "react";
+import { remindNavigationState } from "@/src/store/LetterRemind";
+import { useRecoilState } from "recoil";
 import * as S from "./styled";
 
 interface Props {
-  selectedItem: string;
-  setSelectedItem: Dispatch<SetStateAction<string>>;
+  unDoneNum: number;
+  doneNum: number;
 }
 
-export default function RemindNavigationBar({
-  selectedItem,
-  setSelectedItem,
-}: Props) {
-  let num = 7; // NOTE: 임시 숫자
+export default function RemindNavigationBar({ unDoneNum, doneNum }: Props) {
+  const [selectedNavigation, setSelectedNavigation] = useRecoilState(
+    remindNavigationState
+  );
 
-  const onClickNavigation = (pageName: string) => setSelectedItem(pageName);
+  const onClickNavigation = (pageName: string) =>
+    setSelectedNavigation(pageName);
 
   return (
     <S.NavigationBarLayout>
       <S.NavigationWrapper
-        isSelected={selectedItem === "모든 메모"}
+        isSelected={selectedNavigation === "모든 메모"}
         onClick={() => onClickNavigation("모든 메모")}
       >
         <S.Navigation>모든 메모</S.Navigation>
-        <S.NavigationNumber>{num}</S.NavigationNumber>
+        <S.NavigationNumber>{unDoneNum + doneNum}</S.NavigationNumber>
       </S.NavigationWrapper>
 
       <S.NavigationWrapper
-        isSelected={selectedItem === "미완료"}
+        isSelected={selectedNavigation === "미완료"}
         onClick={() => onClickNavigation("미완료")}
       >
         <S.Navigation>미완료</S.Navigation>
-        <S.NavigationNumber>{num}</S.NavigationNumber>
+        <S.NavigationNumber>{unDoneNum}</S.NavigationNumber>
       </S.NavigationWrapper>
 
       <S.NavigationWrapper
-        isSelected={selectedItem === "완료"}
+        isSelected={selectedNavigation === "완료"}
         onClick={() => onClickNavigation("완료")}
       >
         <S.Navigation>완료</S.Navigation>
-        <S.NavigationNumber>{num}</S.NavigationNumber>
+        <S.NavigationNumber>{doneNum}</S.NavigationNumber>
       </S.NavigationWrapper>
     </S.NavigationBarLayout>
   );
