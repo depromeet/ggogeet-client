@@ -109,8 +109,7 @@ export default function TodoContainer({ itemId, isDone, refetchList }: Props) {
         {isClicked && (
           <S.TodoContentContainer isClicked={isClicked}>
             <S.ContentUpperContainer>
-              {/* TODO: 상황이름 데이터 값이 없음 */}
-              <S.Sender color={situation.color}>상황이름</S.Sender>
+              <S.Sender color={situation.color}>{situation.title}</S.Sender>
               <S.Content>{content}</S.Content>
             </S.ContentUpperContainer>
 

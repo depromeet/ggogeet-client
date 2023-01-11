@@ -12,19 +12,21 @@ import { useToast } from "@/src/hooks/useToast";
 import { queryKeys } from "@/src/react-query/constants";
 import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { userState } from "@/src/store/users";
 import { PostSendLetterTempCompleteType } from "@/src/types/letter";
 import { getDateTimeFormat } from "@/src/utils/date";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useTextLengthPixel } from "../Hooks";
 import * as S from "../styled";
 
 const CompletedForm02 = () => {
   const router = useRouter();
   const { setToast } = useToast();
+  const { name: sendUserName } = useRecoilValue(userState);
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
   const { situationId, lastSentence, letterId, receiverUserId } =
@@ -183,7 +185,7 @@ const CompletedForm02 = () => {
               <div className="sender-name-date">
                 <div className="sender-name">
                   <span>FROM</span>
-                  <strong>유저 이름</strong>
+                  <strong>{sendUserName}</strong>
                 </div>
                 <time className="sender-date">
                   {getDateTimeFormat(new Date().getTime())}
