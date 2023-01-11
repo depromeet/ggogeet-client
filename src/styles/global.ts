@@ -23,7 +23,9 @@ export const global = (theme: Theme) => css`
     & > div > div:first-of-type {
       min-height: 100vh;
       @supports (-webkit-touch-callout: none) {
+        min-height: fill-available;
         min-height: -webkit-fill-available;
+        min-height: -moz-available;
       }
     }
   }
