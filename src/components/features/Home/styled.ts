@@ -4,6 +4,12 @@ import styled from "@emotion/styled";
 const HomeWrapper = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.navy};
+  min-height: 100vh;
+  @supports (-webkit-touch-callout: none) {
+    min-height: fill-available;
+    min-height: -webkit-fill-available;
+    min-height: -moz-available;
+  }
   header {
     padding-top: 52px;
     display: flex;
@@ -62,14 +68,14 @@ const HomeWrapper = styled.div`
     bottom: 10px;
     right: 0;
   }
-  footer {
+  /* footer {
     position: absolute;
     bottom: 20px;
     right: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-  }
+  } */
 `;
 
 export { HomeWrapper };
