@@ -11,7 +11,7 @@ import PlusButton from "@/src/components/features/letterStorage/main/PlusButton"
 import SortButton from "@/src/components/features/letterStorage/main/SortButton";
 import BottomSheetHeader from "@/src/components/features/letterStorage/bottomSheet/BottomSheetHeader";
 import BottomSheetFooter from "@/src/components/features/letterStorage/bottomSheet/BottomSheetFooter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "@/src/components/common/Calendar";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
@@ -102,6 +102,7 @@ const LetterStoragePage = () => {
   const [filterCondition, setFilterCondition] = useState<FilterConditionTypes>({
     senders: [],
     tags: [],
+    startDate: "1990-01-01 00:00:00",
     order: "ASC",
   });
 
@@ -111,13 +112,15 @@ const LetterStoragePage = () => {
     "YYYY-MM-DD HH:mm:ss"
   );
 
+  let initialStartDate = "1990-01-01 00:00:00";
+
   const { data: receivedLetterList, refetch } = useQuery({
     queryKey: ["receivedLetterList"],
     queryFn: () =>
       getReceivedLetterList(
         senders,
         tags,
-        formatCalendarValue,
+        initialStartDate,
         formatCalendarValue,
         order
       ),
@@ -145,6 +148,10 @@ const LetterStoragePage = () => {
   const onClickFilterButton = () => {
     setIsFilterOn((prev) => !prev);
   };
+
+  useEffect(() => {
+    initialStartDate = formatCalendarValue;
+  }, [onClickFilterApply]);
 
   return (
     <Layout>
