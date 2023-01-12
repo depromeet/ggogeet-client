@@ -148,6 +148,7 @@ const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
         width: inherit;
         background-color: ${({ theme }) => theme.colors.navy30};
         border-radius: ${({ theme }) => theme.radius.md};
+        text-align: left;
       }
     }
   }
