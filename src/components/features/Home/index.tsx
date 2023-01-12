@@ -50,6 +50,7 @@ const Home = () => {
             alt="꼬깃 홈 로고"
             width={224}
             height={48}
+            priority
           />
           <h1>
             혹시 전하고 싶었던 마음이 있나요?
@@ -64,6 +65,7 @@ const Home = () => {
               alt="꼬깃 보관함"
               width={220}
               height={149}
+              priority
             />
           </Link>
         </div>
@@ -74,6 +76,7 @@ const Home = () => {
               alt="꼬깃 메모"
               width={123}
               height={214}
+              priority
             />
           </Link>
         </div>
@@ -84,6 +87,7 @@ const Home = () => {
               alt="꼬깃 보내기"
               width={249}
               height={195}
+              priority
             />
           </Link>
         </div>
@@ -93,6 +97,7 @@ const Home = () => {
             alt="손글씨 - love ya"
             width={167}
             height={114}
+            priority
           />
         </div>
         <div className="home-get">
@@ -101,6 +106,7 @@ const Home = () => {
             alt="손글씨 - get to know"
             width={141}
             height={108}
+            priority
           />
         </div>
         <div className="home-thank">
@@ -109,6 +115,7 @@ const Home = () => {
             alt="손글씨 - thank you"
             width={166}
             height={91}
+            priority
           />
         </div>
         {/* <footer>
