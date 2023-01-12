@@ -2,6 +2,7 @@ import { HTTP_METHOD } from "../constants/api";
 import {
   CreatedLetterType,
   GetLetterTempCompleteResultType,
+  GetReceivedLetterDetailType,
   GetReceivedLetterTempType,
   PostNewLetterCreateType,
   PostSendLetterCompleteType,
@@ -49,6 +50,15 @@ export const getReceivedLetterTemp = async (tempLetterId: number) => {
   const { data } = await requester<GetReceivedLetterTempType>({
     method: HTTP_METHOD.GET,
     url: `/letters/received/temp/${tempLetterId}`,
+  });
+
+  return data;
+};
+
+export const getReceivedLetterDetail = async (letterId: number) => {
+  const { data } = await requester<GetReceivedLetterDetailType>({
+    method: HTTP_METHOD.GET,
+    url: `/letters/received/${letterId}`,
   });
 
   return data;

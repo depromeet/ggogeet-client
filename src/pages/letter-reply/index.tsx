@@ -1,7 +1,11 @@
+import { getReceivedLetterDetail } from "@/src/apis/letter";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
+import { situationTemplatesData } from "@/src/data/LetterWrite";
+import { queryKeys } from "@/src/react-query/constants";
 import { Body4, Caption1, Display1 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
+import { useQuery } from "@tanstack/react-query";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -70,11 +74,12 @@ const Sender = styled.p`
 `;
 
 const LetterReplyPage = () => {
-  const letterColor = "beige"; // 임시 컬러
-  const date = "2022.12.15"; // 임시 날짜
-  const sender = "김가은"; // 임시 작성자
-  const content =
-    "지원언니! 언니의 스물 여섯 번째 생일을 진심으로 축하해🥳 오늘 하루 맛있는 것도 많이 먹고 좋은 사람들과 즐거운 시간 보내! 언니랑 디프만에서 만나게 되어 너무 좋아.<3 그래도 오늘 생일이니까 작업은 조금만 하고 행복 시간들만 보내자! 아, 그리고 저번에 언니가 알려준 마라탕 집이랑 빵이 맛있었던 그 카페.. 너무 좋았었어🥹💦 나랑 나영언니랑 다음에 또 가자 또 !! 여튼 언니 생일날 모든 순간들에 행복이 가득하길 바랄게🍀 luv ya-!"; // 임시 편지 내용
+  const { data } = useQuery([queryKeys.getReceivedLetterDetail], () =>
+    getReceivedLetterDetail(1)
+  );
+
+  const situationColor =
+    situationTemplatesData[data?.situationId ? data.situationId - 1 : 0].color;
 
   return (
     <Layout>
@@ -84,14 +89,14 @@ const LetterReplyPage = () => {
         <AnimalImageWrapper></AnimalImageWrapper>
 
         <LetterMainLayout>
-          <Content>{content}</Content>
+          <Content>{data?.content}</Content>
         </LetterMainLayout>
 
-        <LetterBottomLayout color={letterColor}>
-          <Date>{date}</Date>
+        <LetterBottomLayout color={situationColor}>
+          <Date>{data?.receivedAt.split(" ")[0].replace(/-/g, ".")}</Date>
           <SenderContainer>
             <From>FROM</From>
-            <Sender>{sender}</Sender>
+            <Sender>{data?.senderNickname}</Sender>
           </SenderContainer>
         </LetterBottomLayout>
       </MainLayout>
