@@ -139,4 +139,8 @@ export const global = (theme: Theme) => css`
     font-weight: 700;
     font-style: normal;
   }
+
+  .montserrat {
+    font-family: "Montserrat";
+  }
 `;
