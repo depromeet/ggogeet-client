@@ -6,7 +6,9 @@ const nextConfig = {
     emotion: true,
   },
   images: {
-    domains: ["k.kakaocdn.net"],
+    domains: ["k.kakaocdn.net", "ggogeetbucket.s3.amazonaws.com"],
+    // dangerouslyAllowSVG: true,
+    // contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
