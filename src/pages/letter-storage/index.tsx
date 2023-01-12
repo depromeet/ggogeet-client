@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { getReceivedLetterList } from "@/src/apis/letter";
 import dayjs from "dayjs";
+import Router from "next/router";
 
 const Layout = styled.div`
   display: flex;
@@ -141,6 +142,13 @@ const LetterStoragePage = () => {
     setFilterCondition((prev) => ({ ...prev, order: "DSC" }));
   };
 
+  const onClickLetterContainer = (id: number) => {
+    Router.push({
+      pathname: "/letter-storage/reply",
+      query: { letterId: id },
+    });
+  };
+
   // const onClickInitializeButton = () => {
   //   setFilterCondition({ senders: [], tags: [] });
   // };
@@ -185,7 +193,10 @@ const LetterStoragePage = () => {
               {receivedLetterList &&
                 receivedLetterList.map((letter) => {
                   return (
-                    <LetterContainerWrapper key={letter.id}>
+                    <LetterContainerWrapper
+                      key={letter.id}
+                      onClick={() => onClickLetterContainer(letter.id)}
+                    >
                       <LetterContainer letter={letter} />
                     </LetterContainerWrapper>
                   );
