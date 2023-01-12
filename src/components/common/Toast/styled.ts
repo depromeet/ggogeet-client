@@ -8,8 +8,10 @@ export const Wrap = styled.div`
   z-index: 999;
   left: 0;
   right: 0;
-  bottom: 60px;
+  bottom: 20px;
   width: 100%;
+  max-width: 430px;
+  margin: auto;
 
   display: flex;
   justify-content: center;
@@ -17,7 +19,8 @@ export const Wrap = styled.div`
 
 export const Container = styled(motion.button)`
   pointer-events: all;
-  width: 320px;
+  width: 100%;
+  margin: 20px;
 
   ${Body3}
   color: ${({ theme }) => theme.colors.white};

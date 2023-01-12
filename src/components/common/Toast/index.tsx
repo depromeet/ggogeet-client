@@ -15,7 +15,7 @@ export default function Toast() {
 
   useEffect(() => {
     if (currentToast) {
-      setTimeout(() => setToast(null), 3000);
+      // setTimeout(() => setToast(null), 3000);
     }
   }, [currentToast]);
 
