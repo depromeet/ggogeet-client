@@ -42,7 +42,7 @@ const HomeWrapper = styled.div`
     z-index: 1;
   }
   .home-storage {
-    top: 226px;
+    top: 260px;
     left: 0;
   }
   .home-memo {
@@ -57,11 +57,11 @@ const HomeWrapper = styled.div`
     text-align: center;
   }
   .home-love {
-    top: 200px;
+    top: 240px;
     right: 0;
   }
   .home-get {
-    top: 368px;
+    top: 408px;
     left: 0;
   }
   .home-thank {
