@@ -5,7 +5,6 @@ import FilterButton from "@/src/components/features/letterStorage/main/FilterBut
 import { Caption1, Display2 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 import ListBottomSheet from "@/src/components/features/letterStorage/bottomSheet/ListBottomSheet";
-import { SenderData } from "@/src/data/LetterStorage";
 import LetterContainer from "@/src/components/features/letterStorage/main/LetterContainer";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import PlusButton from "@/src/components/features/letterStorage/main/PlusButton";
@@ -17,19 +16,19 @@ import Calendar from "@/src/components/common/Calendar";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { getReceivedLetterList } from "@/src/apis/letter";
-import { KakaoFriendType } from "@/src/types/users";
-import { getKakaoFriends } from "@/src/apis/auth";
+import dayjs from "dayjs";
 
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.navy};
-  height: 100%;
+  height: 100vh;
   overflow: scroll;
 `;
 
 const MainLayout = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding: 16px 20px;
 `;
@@ -61,7 +60,7 @@ const LetterKindSelect = styled(Select)`
 `;
 
 const LetterContainerLayout = styled.div`
-  /* flex: 1; */
+  flex: 1;
 `;
 
 const LetterContainerWrapper = styled.div`
@@ -74,70 +73,13 @@ const Space = styled.div`
 
 const EmptyContainer = styled.div`
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.navy50};
   border-radius: 8px;
-  /* height: 100%; */
+  height: 100%;
 `;
-
-const dummyData = [
-  {
-    sender: "김가은",
-    content: "생일축하혀..",
-    date: "2022년 12월 04일",
-    status: "응원하는 개",
-    color: "yellow",
-    id: "1",
-    situationId: 1,
-  },
-  {
-    sender: "김가은",
-    content: "생일축하혀..",
-    date: "2022년 12월 04일",
-    status: "응원하는 개",
-    color: "yellow",
-    id: "2",
-    situationId: 1,
-  },
-  {
-    sender: "김가은",
-    content: "생일축하혀..",
-    date: "2022년 12월 04일",
-    status: "응원하는 개",
-    color: "yellow",
-    id: "3",
-    situationId: 1,
-  },
-  {
-    sender: "김가은",
-    content: "생일축하혀..",
-    date: "2022년 12월 04일",
-    status: "응원하는 개",
-    color: "yellow",
-    id: "4",
-
-    situationId: 1,
-  },
-  {
-    sender: "김가은",
-    content: "생일축하혀..",
-    date: "2022년 12월 04일",
-    status: "응원하는 개",
-    color: "yellow",
-    id: "5",
-    situationId: 3,
-  },
-  {
-    sender: "김가은",
-    content: "생일축하혀..",
-    date: "2022년 12월 04일",
-    status: "응원하는 개",
-    color: "yellow",
-    id: "6",
-    situationId: 2,
-  },
-];
 
 interface FilterConditionTypes {
   senders: string[];
@@ -160,25 +102,45 @@ const LetterStoragePage = () => {
   const [filterCondition, setFilterCondition] = useState<FilterConditionTypes>({
     senders: [],
     tags: [],
+    order: "ASC",
   });
 
-  const { senders, tags, startDate, endDate, order } = filterCondition;
+  const { senders, tags, order } = filterCondition;
 
-  const dataLength = 1; // 데이터 길이 임시변수
+  const formatCalendarValue = dayjs(calendarValue).format(
+    "YYYY-MM-DD HH:mm:ss"
+  );
 
-  const { data: receivedLetterList } = useQuery({
-    queryKey: ["receivedLetterList", filterCondition],
+  const { data: receivedLetterList, refetch } = useQuery({
+    queryKey: ["receivedLetterList"],
     queryFn: () =>
-      getReceivedLetterList(senders, tags, startDate, endDate, order),
+      getReceivedLetterList(
+        senders,
+        tags,
+        formatCalendarValue,
+        formatCalendarValue,
+        order
+      ),
   });
 
-  console.log(receivedLetterList);
+  const dataLength = receivedLetterList?.length;
+
+  const onClickFilterApply = () => {
+    refetch();
+    console.log("data", receivedLetterList);
+    setFilterCondition({ senders: [], tags: [] });
+  };
 
   const onClickSortButton = () => {
     setSortKind((prev) =>
       prev === "최근 받은 순" ? "오래된 순" : "최근 받은 순"
     );
+    setFilterCondition((prev) => ({ ...prev, order: "DSC" }));
   };
+
+  // const onClickInitializeButton = () => {
+  //   setFilterCondition({ senders: [], tags: [] });
+  // };
 
   const onClickFilterButton = () => {
     setIsFilterOn((prev) => !prev);
@@ -213,13 +175,14 @@ const LetterStoragePage = () => {
         <LetterContainerLayout>
           {dataLength ? (
             <>
-              {dummyData.map((letter) => {
-                return (
-                  <LetterContainerWrapper key={letter.id}>
-                    <LetterContainer letter={letter} />
-                  </LetterContainerWrapper>
-                );
-              })}
+              {receivedLetterList &&
+                receivedLetterList.map((letter) => {
+                  return (
+                    <LetterContainerWrapper key={letter.id}>
+                      <LetterContainer letter={letter} />
+                    </LetterContainerWrapper>
+                  );
+                })}
             </>
           ) : (
             <EmptyContainer>
@@ -255,10 +218,11 @@ const LetterStoragePage = () => {
                   selectedMenu={
                     selectedMenu === "보낸 사람" ? "보낸 사람" : "태그"
                   }
+                  setFilterCondition={setFilterCondition}
                 />
               )}
 
-              <BottomSheetFooter />
+              <BottomSheetFooter onClick={onClickFilterApply} />
             </div>
           </BottomSheet>
         )}
