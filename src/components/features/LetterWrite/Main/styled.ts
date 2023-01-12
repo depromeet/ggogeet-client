@@ -283,7 +283,6 @@ const EmptyRemindContainer = styled.div`
   align-items: center;
   gap: 8px;
   height: 292px;
-  background-color: ${({ theme }) => theme.colors.navy50};
   border-radius: ${({ theme }) => theme.radius.md};
 
   span {
