@@ -8,7 +8,7 @@ export const Wrap = styled.div`
   z-index: 999;
   left: 0;
   right: 0;
-  bottom: 10%;
+  bottom: 60px;
   width: 100%;
 
   display: flex;

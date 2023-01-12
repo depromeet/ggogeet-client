@@ -43,7 +43,7 @@ export const usePostKakaoLoginMutate = () => {
       if (data.allowFriendsList) {
         return setToast({
           status: "success",
-          content: "로그인 성공",
+          content: "로그인에 성공했어요!",
         });
       } else {
         window.location.replace(getKakaoFriendsUri());
@@ -52,7 +52,7 @@ export const usePostKakaoLoginMutate = () => {
     onError: () =>
       setToast({
         status: "error",
-        content: "로그인에 문제가 발생하였습니다.",
+        content: "로그인에 실패했어요",
       }),
   });
 };
