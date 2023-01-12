@@ -26,15 +26,13 @@ const welcomeModalContents: {
   {
     description:
       "전하려는 마음을 메모해뒀다가\n잊지 않고 꼬깃을 보낼 수 있어요.",
-    image:
-      "https://ggogeetbucket.s3.amazonaws.com/gif/KakaoTalk_Photo_2023-01-12-22-12-05%20004.gif",
+    image: "/gifs/ggogeet_welcome3.gif",
     width: 240,
     height: 155,
   },
   {
     description: "여기저기 흩어져 있던\n마음들을 차곡차곡 보관할 수 있어요.",
-    image:
-      "https://ggogeetbucket.s3.amazonaws.com/gif/KakaoTalk_Photo_2023-01-12-22-12-05%20005.gif",
+    image: "/gifs/ggogeet_welcome4.gif",
     width: 240,
     height: 151,
   },
@@ -57,7 +55,7 @@ export default function WelcomeModal({ onClose }: Props) {
         <Slider arrows={false} autoplay autoplaySpeed={8000} dots>
           {welcomeModalContents.map(({ description, image, ...args }, idx) => (
             <S.WelcomeModalContents key={idx}>
-              <Image src={image} alt="" {...args} />
+              <Image src={image} alt="" {...args} unoptimized />
               <p>{description}</p>
             </S.WelcomeModalContents>
           ))}
