@@ -152,7 +152,9 @@ const LetterWriteSituationSliderItem = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  padding: 0 6px;
+  word-break: keep-all;
+  padding: 0 16px;
+
   & > div:first-of-type {
     height: 187px;
     display: flex;

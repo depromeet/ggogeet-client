@@ -57,7 +57,11 @@ const SituationForm = (): ReactElement => {
           {situationTemplatesData.map((template) => (
             <S.LetterWriteSituationSliderItem key={template.situationId}>
               <div>
-                <Image alt={template.title} {...template.situationImage} />
+                <Image
+                  alt={template.title}
+                  {...template.situationImage}
+                  priority
+                />
               </div>
               <SituationTag templateType={template.title} height={22} />
               <p>{template.description}</p>

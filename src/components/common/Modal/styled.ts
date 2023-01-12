@@ -1,10 +1,20 @@
 import styled from "@emotion/styled";
 import { Body2, Body4, Caption1 } from "@/src/styles/commons";
 
-export const ModalWrapper = styled.dialog`
+export const ModalWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: ${({ theme }) => theme.colors.navy70};
+  z-index: 40;
+`;
+
+export const ModalContainer = styled.dialog`
   display: block;
   margin: 0;
-  padding: 40px 20px 16px 20px;
+  padding: 40px 20px 28px 20px;
   border: none;
   width: 280px;
   position: fixed;
@@ -12,7 +22,7 @@ export const ModalWrapper = styled.dialog`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10000;
-  border-radius: 8px;
+  border-radius: 24px;
   background-color: ${({ theme: { colors } }) => colors.gray5};
 `;
 

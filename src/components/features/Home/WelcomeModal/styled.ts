@@ -34,6 +34,7 @@ export const SliderWrapper = styled.div`
     display: flex !important;
     justify-content: center;
     margin-top: 22px;
+
     li {
       width: 4px !important;
       height: 4px !important;

@@ -25,7 +25,7 @@ export default function Tag({ color, label }: Props) {
       <div
         style={{
           backgroundColor: color,
-          padding: "4px 24px",
+          padding: "4px 8px",
           fontSize: "12px",
         }}
       >
@@ -52,5 +52,6 @@ export default function Tag({ color, label }: Props) {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  gap: 2px;
   margin: "20px";
 `;

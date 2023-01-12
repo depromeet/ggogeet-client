@@ -121,7 +121,7 @@ const SituationTagWrapper = styled.div<{
       font-weight: 500;
       line-height: 150%;
       text-align: center;
-      letter-spacing: -0.005em;
+      /* letter-spacing: -0.005em; */
       font-size: ${({ stylesOptions }) =>
         stylesOptions?.fontSize ? `${stylesOptions.fontSize}px` : "12px"};
       color: ${({ color }) => color};
