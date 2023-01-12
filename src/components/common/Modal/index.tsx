@@ -22,29 +22,31 @@ export default function Modal({
 }: Props) {
   return (
     <S.ModalWrapper>
-      {children ? (
-        children
-      ) : (
-        <S.ModalContent>
-          {title && <p>{title}</p>}
-          {description && <p>{description}</p>}
-          {buttons?.map(({ name, onClick }) => (
-            <S.ModalButton key={name} type="button" onClick={onClick}>
-              {name}
-            </S.ModalButton>
-          ))}
-        </S.ModalContent>
-      )}
-      {onClose && (
-        <S.ModalCloseButton type="button" onClick={onClose}>
-          <Image
-            src="/icons/icon__guideline-close--white.svg"
-            alt="웰컴 가이드 모달 닫기"
-            width={16}
-            height={16}
-          />
-        </S.ModalCloseButton>
-      )}
+      <S.ModalContainer>
+        {children ? (
+          children
+        ) : (
+          <S.ModalContent>
+            {title && <p>{title}</p>}
+            {description && <p>{description}</p>}
+            {buttons?.map(({ name, onClick }) => (
+              <S.ModalButton key={name} type="button" onClick={onClick}>
+                {name}
+              </S.ModalButton>
+            ))}
+          </S.ModalContent>
+        )}
+        {onClose && (
+          <S.ModalCloseButton type="button" onClick={onClose}>
+            <Image
+              src="/icons/icon__guideline-close--white.svg"
+              alt="웰컴 가이드 모달 닫기"
+              width={16}
+              height={16}
+            />
+          </S.ModalCloseButton>
+        )}
+      </S.ModalContainer>
     </S.ModalWrapper>
   );
 }
