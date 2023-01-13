@@ -18,6 +18,17 @@ export const global = (theme: Theme) => css`
       Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
       "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", sans-serif;
+    min-width: 360px;
+    max-width: 430px;
+
+    & > div {
+      min-height: 100vh;
+      @supports (-webkit-touch-callout: none) {
+        min-height: fill-available;
+        min-height: -webkit-fill-available;
+        min-height: -moz-available;
+      }
+    }
   }
 
   ul {
@@ -127,5 +138,9 @@ export const global = (theme: Theme) => css`
     font-display: swap;
     font-weight: 700;
     font-style: normal;
+  }
+
+  .montserrat {
+    font-family: "Montserrat";
   }
 `;

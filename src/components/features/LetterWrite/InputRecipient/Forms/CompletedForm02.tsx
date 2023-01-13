@@ -12,19 +12,21 @@ import { useToast } from "@/src/hooks/useToast";
 import { queryKeys } from "@/src/react-query/constants";
 import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
+import { userState } from "@/src/store/users";
 import { PostSendLetterTempCompleteType } from "@/src/types/letter";
 import { getDateTimeFormat } from "@/src/utils/date";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useTextLengthPixel } from "../Hooks";
 import * as S from "../styled";
 
 const CompletedForm02 = () => {
   const router = useRouter();
   const { setToast } = useToast();
+  const { name: sendUserName } = useRecoilValue(userState);
   const [letterWriteInputObjectState, setLetterWriteInputObjectState] =
     useRecoilState(letterWriteInputState);
   const { situationId, lastSentence, letterId, receiverUserId } =
@@ -56,7 +58,7 @@ const CompletedForm02 = () => {
       const { successful_receiver_uuids } = await postSendLetterComplete(
         letterId as number
       );
-      if (successful_receiver_uuids) {
+      if (successful_receiver_uuids && successful_receiver_uuids.length > 0) {
         onSuccessMutation("꼬깃 보내기 성공!");
       } else {
         onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
@@ -183,7 +185,7 @@ const CompletedForm02 = () => {
               <div className="sender-name-date">
                 <div className="sender-name">
                   <span>FROM</span>
-                  <strong>유저 이름</strong>
+                  <strong>{sendUserName}</strong>
                 </div>
                 <time className="sender-date">
                   {getDateTimeFormat(new Date().getTime())}

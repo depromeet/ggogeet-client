@@ -7,8 +7,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useResetRecoilState } from "recoil";
 import * as S from "./styled";
+import { getStorageItem, setStorageItem } from "@/src/utils/local-storage";
+import WelcomeModal from "./WelcomeModal";
 
-// TODO: image responsive
 const Home = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const resetRecoilLocalStorage = useResetRecoilState(letterWriteInputState);
@@ -28,76 +29,96 @@ const Home = () => {
       setIsLogin(true);
     }
   }, []);
+
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  useEffect(() => {
+    setShowWelcomeModal(!getStorageItem("visited"));
+  }, []);
+
+  const handelClickCloseModalButton = () => {
+    setStorageItem("visited", "true");
+    setShowWelcomeModal(false);
+  };
+
   return (
-    <S.HomeWrapper>
-      <header>
-        <Image
-          src="/images/image__home-logo.svg"
-          alt="꼬깃 홈 로고"
-          width={224}
-          height={48}
-        />
-        <h1>
-          혹시 전하고 싶었던 마음이 있나요?
-          <br />
-          꼬깃 접어 보내보세요.
-        </h1>
-      </header>
-      <div className="home-storage">
-        <Link href={getNavigateLink("/letter-storage")}>
+    <>
+      <S.HomeWrapper>
+        <header>
           <Image
-            src="/images/image__home-storage.svg"
-            alt="꼬깃 보관함"
-            width={275}
-            height={149}
+            src="/images/home-logo.png"
+            alt="꼬깃 홈 로고"
+            width={224}
+            height={48}
+            priority
           />
-        </Link>
-      </div>
-      <div className="home-memo">
-        <Link href={getNavigateLink("/letter-remind")}>
+          <h1>
+            혹시 전하고 싶었던 마음이 있나요?
+            <br />
+            꼬깃 접어 보내보세요.
+          </h1>
+        </header>
+        <div className="home-storage">
+          <Link href={getNavigateLink("/letter-storage")}>
+            <Image
+              src="/images/home-storage.png"
+              alt="꼬깃 보관함"
+              width={220}
+              height={149}
+              priority
+            />
+          </Link>
+        </div>
+        <div className="home-memo">
+          <Link href={getNavigateLink("/letter-remind")}>
+            <Image
+              src="/images/home-memo.png"
+              alt="꼬깃 메모"
+              width={123}
+              height={214}
+              priority
+            />
+          </Link>
+        </div>
+        <div className="home-send">
+          <Link href={getNavigateLink("/letter-write")}>
+            <Image
+              src="/images/home-send.png"
+              alt="꼬깃 보내기"
+              width={249}
+              height={195}
+              priority
+            />
+          </Link>
+        </div>
+        <div className="home-love">
           <Image
-            src="/images/image__home-memo.svg"
-            alt="꼬깃 메모"
-            width={148}
-            height={214}
+            src="/images/home-love.png"
+            alt="손글씨 - love ya"
+            width={167}
+            height={114}
+            priority
           />
-        </Link>
-      </div>
-      <div className="home-send">
-        <Link href={getNavigateLink("/letter-write")}>
+        </div>
+        <div className="home-get">
           <Image
-            src="/images/image__home-send.svg"
-            alt="꼬깃 보내기"
-            width={249}
-            height={195}
+            src="/images/home-get.png"
+            alt="손글씨 - get to know"
+            width={141}
+            height={108}
+            priority
           />
-        </Link>
-      </div>
-      <div className="home-love">
-        <Image
-          src="/images/image__home-love.svg"
-          alt="손글씨 - love ya"
-          width={170}
-          height={114}
-        />
-      </div>
-      <div className="home-get">
-        <Image
-          src="/images/image__home-get.svg"
-          alt="손글씨 - get to know"
-          width={157}
-          height={108}
-        />
-      </div>
-      <div className="home-thank">
-        <Image
-          src="/images/image__home-thank.svg"
-          alt="손글씨 - thank you"
-          width={174}
-          height={91}
-        />
-      </div>
-      {/* <footer>
+        </div>
+        <div className="home-thank">
+          <Image
+            src="/images/home-thank.png"
+            alt="손글씨 - thank you"
+            width={166}
+            height={91}
+            priority
+          />
+        </div>
+        {/* <footer>
         <Link href="#">
           <Image
             src="/icons/icon__home-help.svg"
@@ -115,7 +136,11 @@ const Home = () => {
           />
         </Link>
       </footer> */}
-    </S.HomeWrapper>
+      </S.HomeWrapper>
+      {showWelcomeModal && (
+        <WelcomeModal onClose={handelClickCloseModalButton} />
+      )}
+    </>
   );
 };
 

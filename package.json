@@ -18,6 +18,7 @@
     "@types/react-router": "^5.1.20",
     "axios": "^1.2.2",
     "cookies-next": "^2.1.1",
+    "dayjs": "^1.11.7",
     "framer-motion": "^7.6.4",
     "next": "^13.0.2",
     "query-string": "^8.1.0",

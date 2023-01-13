@@ -148,6 +148,7 @@ const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
         width: inherit;
         background-color: ${({ theme }) => theme.colors.navy30};
         border-radius: ${({ theme }) => theme.radius.md};
+        text-align: left;
       }
     }
   }
@@ -282,7 +283,6 @@ const EmptyRemindContainer = styled.div`
   align-items: center;
   gap: 8px;
   height: 292px;
-  background-color: ${({ theme }) => theme.colors.navy50};
   border-radius: ${({ theme }) => theme.radius.md};
 
   span {

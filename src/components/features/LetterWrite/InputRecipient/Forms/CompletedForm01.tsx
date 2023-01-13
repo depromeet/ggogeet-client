@@ -56,7 +56,7 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
       setIsCompletedProgressShow(true);
       setTimeout(() => {
         router.push("/letter-write?type=completed-02");
-      }, 3000);
+      }, 1500);
     } else {
       // TODO: 가은님) 외부 편지 저장하기 API + 꼬깃 보관함 이동하면서 토스트 메시지 추가
     }
@@ -137,7 +137,7 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
                     <span>FROM</span>
                     <strong>{senderName}</strong>
                   </div>
-                  <time className="sender-date">
+                  <time className="sender-date montserrat">
                     {getDateTimeFormat(new Date().getTime())}
                   </time>
                 </div>

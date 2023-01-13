@@ -1,4 +1,4 @@
-import { Caption1 } from "@/src/styles/commons";
+import { Caption1, Body4 } from "@/src/styles/commons";
 import styled from "@emotion/styled";
 
 export const ButtonLayout = styled.button`
@@ -13,3 +13,17 @@ export const Delete = styled.p`
   margin: 0 0 0 4px;
   ${Caption1}
 `;
+
+export const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const ModalTitle = styled.div`
+  text-align: center;
+  color: ${({ theme }) => theme.colors.white};
+  padding-bottom: 24px;
+  ${Body4}
+`;
+
+export const YesButton = styled.button``;
+export const NoButton = styled.button``;

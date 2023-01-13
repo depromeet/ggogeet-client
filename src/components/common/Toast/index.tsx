@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import * as S from "./styled";
@@ -11,6 +12,12 @@ export default function Toast() {
     if (icon === "success") return "/icons/icon__toast-success.svg";
     else return "/icons/icon__toast-error.svg";
   };
+
+  useEffect(() => {
+    if (currentToast) {
+      setTimeout(() => setToast(null), 3000);
+    }
+  }, [currentToast]);
 
   return (
     <S.Wrap>

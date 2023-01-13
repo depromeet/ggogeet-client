@@ -10,6 +10,7 @@ import {
 import styled from "@emotion/styled";
 
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.navy};
@@ -22,12 +23,13 @@ const BottomButtonContainer = styled.div<{
   fontWeight?: number;
   fontColor?: string;
 }>`
-  width: 100%;
-  position: fixed;
-  padding: 20px;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
 
   button {
     display: flex;
@@ -150,7 +152,9 @@ const LetterWriteSituationSliderItem = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  padding: 0 6px;
+  word-break: keep-all;
+  padding: 0 16px;
+
   & > div:first-of-type {
     height: 187px;
     display: flex;
