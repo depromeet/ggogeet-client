@@ -132,7 +132,12 @@ const LetterStoragePage = () => {
   const onClickFilterApply = () => {
     refetch();
     console.log("data", receivedLetterList);
-    setFilterCondition({ senders: [], tags: [] });
+    setFilterCondition({
+      senders: [],
+      tags: [],
+      startDate: "1990-01-01 00:00:00",
+      order: "ASC",
+    });
   };
 
   const onClickSortButton = async () => {
