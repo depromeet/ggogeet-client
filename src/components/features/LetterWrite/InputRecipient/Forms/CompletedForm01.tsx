@@ -1,13 +1,10 @@
 import { postNewLetterCreate } from "@/src/apis/letter";
 import InputDefault from "@/src/components/common/Input";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
-import { queryKeys } from "@/src/react-query/constants";
-import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { userState } from "@/src/store/users";
 import { SituationIdType } from "@/src/types/sentence";
 import { getDateTimeFormat } from "@/src/utils/date";
-import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
@@ -42,7 +39,7 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
     isDisabled: inputValue.length < 1 || inputValue.length > 20,
     customClickHandler: () => {},
   });
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (type === "Write") {
       const payload = {
@@ -52,7 +49,11 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
         title: inputValue,
         content: contents,
       };
-      postCreateLetterMutation.mutate(payload);
+      const { id: tempLetterId } = await postNewLetterCreate(payload);
+      setLetterWriteInputObjectState((prev) => ({
+        ...prev,
+        letterId: tempLetterId,
+      }));
       setIsCompletedProgressShow(true);
       setTimeout(() => {
         router.push("/letter-write?type=completed-02");
@@ -70,22 +71,6 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
       }));
     }
   }, [inputValue]);
-
-  const updateLetterWriteInputObjectState = (id: number) => {
-    setLetterWriteInputObjectState((prev) => ({ ...prev, letterId: id }));
-  };
-
-  queryClient.setMutationDefaults([queryKeys.postCreateLetter], {
-    mutationFn: postNewLetterCreate,
-  });
-
-  const postCreateLetterMutation = useMutation({
-    mutationKey: [queryKeys.postCreateLetter],
-    onMutate: postNewLetterCreate,
-    onSuccess: ({ id }) => {
-      updateLetterWriteInputObjectState(id);
-    },
-  });
 
   return (
     <>

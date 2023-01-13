@@ -9,16 +9,13 @@ import { KAKAO_QUERY } from "@/src/constants/api";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
 import useInterval from "@/src/hooks/useInterval";
 import { useToast } from "@/src/hooks/useToast";
-import { queryKeys } from "@/src/react-query/constants";
-import { queryClient } from "@/src/react-query/queryClient";
 import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { userState } from "@/src/store/users";
 import { PostSendLetterTempCompleteType } from "@/src/types/letter";
 import { getDateTimeFormat } from "@/src/utils/date";
-import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useTextLengthPixel } from "../Hooks";
 import * as S from "../styled";
@@ -52,23 +49,6 @@ const CompletedForm02 = () => {
     });
   };
 
-  const onClickKakaoTalk = async () => {
-    if (receiverUserId) {
-      // 회원 편지 발송 (카카오 메시지)
-      const { successful_receiver_uuids } = await postSendLetterComplete(
-        letterId as number
-      );
-      if (successful_receiver_uuids && successful_receiver_uuids.length > 0) {
-        onSuccessMutation("꼬깃 보내기 성공!");
-      } else {
-        onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
-      }
-    } else {
-      // 비회원 편지 발송 (카카오 공유)
-      postSendLetterTempCompleteMutation.mutate(letterId as number);
-    }
-  };
-
   // 비회원 편지 발송 위한 카카오 공유
   const postSendLetterToUnregisteredUser = async ({
     tempLetterId,
@@ -91,66 +71,33 @@ const CompletedForm02 = () => {
     return tempLetterId;
   };
 
-  // 비회원 편지 발송 위한 임시 편지 정보(id, 편지 열람 기한) 가져오기
-  const postSendLetterTempCompleteMutation = useMutation({
-    mutationKey: [queryKeys.postSendLetterTempComplete],
-    onMutate: postSendLetterTempComplete,
-    onSuccess: ({ tempLetterId, expiredDate }) => {
-      postSendLetterUnregisteredUserMutation.mutate({
-        tempLetterId,
-        expiredDate,
-      });
-    },
-    onError: () => {
-      onErrorMutation("비회원 꼬깃 발송에 문제가 발생하였습니다..");
-    },
-  });
-
-  // 비회원 편지 발송 (카카오 공유)
-  const postSendLetterUnregisteredUserMutation = useMutation({
-    mutationKey: [queryKeys.postSendLetterUnregisteredUser],
-    onMutate: postSendLetterToUnregisteredUser,
-    onSuccess: (tempLetterId: number) => {
+  const onClickKakaoTalk = async () => {
+    if (receiverUserId) {
+      // 회원 편지 발송 (카카오 메시지)
+      const { successful_receiver_uuids } = await postSendLetterComplete(
+        letterId as number
+      );
+      if (successful_receiver_uuids && successful_receiver_uuids.length > 0) {
+        onSuccessMutation("꼬깃 보내기 성공!");
+      } else {
+        onErrorMutation("회원 꼬깃 발송에 문제가 발생하였습니다..");
+      }
+    } else {
+      // 비회원 편지 발송 (카카오 공유)
+      const { tempLetterId, expiredDate } = await postSendLetterTempComplete(
+        letterId as number
+      );
       setTempLetterId(tempLetterId);
-    },
-    onError: () => {
-      onErrorMutation("비회원 꼬깃 카카오 공유에 문제가 발생하였습니다..");
-    },
-  });
+      await postSendLetterToUnregisteredUser({ tempLetterId, expiredDate });
+    }
+  };
 
-  // 비회원 편지 발송 콜백 (성공 여부 체크 이후 리다이렉트)
-  const getLetterTempCompleteResultMutation = useMutation({
-    mutationKey: [queryKeys.getLetterTempCompleteResult],
-    onMutate: getLetterTempCompleteResult,
-    onSuccess: ({ sent }) => {
+  useInterval(async () => {
+    if (tempLetterId) {
+      const { sent } = await getLetterTempCompleteResult(tempLetterId);
       if (sent) {
         onSuccessMutation("꼬깃 보내기 성공!");
       }
-    },
-  });
-
-  // To persist mutation Fn
-  const queryClientMutationMap = useMemo(
-    () => ({
-      [queryKeys.postSendLetterTempComplete]: postSendLetterTempComplete,
-      [queryKeys.postSendLetterUnregisteredUser]:
-        postSendLetterToUnregisteredUser,
-      [queryKeys.getLetterTempCompleteResult]: getLetterTempCompleteResult,
-    }),
-    []
-  );
-
-  useEffect(() => {
-    Object.entries(queryClientMutationMap).forEach(([key, value]) => {
-      queryClient.setMutationDefaults([key], {
-        mutationFn: value,
-      });
-    });
-  }, [queryClientMutationMap]);
-
-  useInterval(() => {
-    if (tempLetterId) {
-      getLetterTempCompleteResultMutation.mutate(tempLetterId);
     }
   }, 3000);
 

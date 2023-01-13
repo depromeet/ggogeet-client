@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import ToggleArrowButton from "@/src/components/common/Buttons/ToggleArrowButton";
 import Checkbox from "@/src/components/common/Buttons/Checkbox";
-import EditButton from "../EditButton";
 import DeleteButton from "../DeleteButton";
 import dayjs from "dayjs";
 import { deleteReminder } from "@/src/apis/reminder";
