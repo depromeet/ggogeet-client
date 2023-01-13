@@ -6,9 +6,11 @@ import * as S from "./styled";
 const NavBack = ({
   color,
   isHome,
+  isStorage,
 }: {
   color: "white" | "black";
   isHome?: boolean;
+  isStorage?: boolean;
 }): ReactElement => {
   const router = useRouter();
   return (
@@ -16,7 +18,9 @@ const NavBack = ({
       width={24}
       height={24}
       onClick={() => {
-        isHome ? router.push("/") : router.back();
+        if (isStorage) return router.push("/letter-storage");
+        if (isHome) return router.push("/");
+        router.back();
       }}
     >
       <Image
