@@ -43,6 +43,7 @@ export default function Modal({
               alt="웰컴 가이드 모달 닫기"
               width={16}
               height={16}
+              priority
             />
           </S.ModalCloseButton>
         )}

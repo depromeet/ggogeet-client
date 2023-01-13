@@ -13,6 +13,7 @@ export default function FilterButton({ ...props }: Props) {
         alt="필터링아이콘"
         height={18}
         width={18}
+        priority
       />
     </S.ButtonLayout>
   );

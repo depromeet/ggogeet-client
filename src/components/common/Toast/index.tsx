@@ -36,6 +36,7 @@ export default function Toast() {
                 width={20}
                 height={20}
                 alt="toast-icon"
+                priority
               />
             )}
             <div>{currentToast.content}</div>

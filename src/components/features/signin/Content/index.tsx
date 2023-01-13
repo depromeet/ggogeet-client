@@ -14,6 +14,7 @@ export default function Background() {
           alt="꼬깃 홈 로고"
           width={224}
           height={48}
+          priority
         />
         <div>꼬깃 접어 전하는 이야기</div>
       </S.TopContent>
@@ -24,6 +25,7 @@ export default function Background() {
           alt="카카오 로그인"
           width={320}
           height={56}
+          priority
         />
       </S.SigninButton>
     </S.Background>

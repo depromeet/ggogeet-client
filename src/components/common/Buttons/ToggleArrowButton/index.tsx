@@ -13,6 +13,7 @@ export default function ToggleArrowButton({ isClicked }: Props) {
         alt="토글아래화살표"
         width={11}
         height={5}
+        priority
       />
     </S.ToggleArrowButtonContainer>
   );

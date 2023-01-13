@@ -24,6 +24,7 @@ const NavBack = ({
         alt="뒤로 가기"
         width={24}
         height={24}
+        priority
       />
     </S.NavItemContainer>
   );

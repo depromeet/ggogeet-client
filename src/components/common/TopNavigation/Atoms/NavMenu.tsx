@@ -11,6 +11,7 @@ const NavMenu = (): ReactElement => {
         alt="햄버거 메뉴 버튼"
         width={24}
         height={24}
+        priority
       />
     </S.NavItemContainer>
   );

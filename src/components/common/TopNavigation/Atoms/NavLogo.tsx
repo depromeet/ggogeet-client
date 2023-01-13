@@ -12,6 +12,7 @@ const NavLogo = (): ReactElement => {
           alt="로고"
           width={58}
           height={32}
+          priority
         />
       </S.NavItemContainer>
     </Link>

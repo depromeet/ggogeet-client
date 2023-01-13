@@ -112,6 +112,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
               onClick={() => {
                 setIsOpenAddGuideline(false);
               }}
+              priority
             />
           </div>
           <S.GuidelineAddInputWrapper
@@ -179,6 +180,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
                       onClick={(event) =>
                         onDeleteCustomGuideline(event, data.id)
                       }
+                      priority
                     />
                   }
                   onClick={() => onClickGuideline(data.content)}
@@ -207,6 +209,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
                   alt="가이드라인 나만의 문장 추가하기"
                   width={16}
                   height={16}
+                  priority
                 />
               }
               outline={true}

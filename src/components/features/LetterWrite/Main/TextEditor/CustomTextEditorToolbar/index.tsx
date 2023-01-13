@@ -274,6 +274,7 @@ const CustomTextEditorToolbar = ({
                     ] || 24
                   }
                   height={24}
+                  priority
                 />
               </S.CustomTextEditorToolbarButton>
             )

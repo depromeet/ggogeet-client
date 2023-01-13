@@ -36,7 +36,7 @@ const LettersReceivedTempPage: NextPage = () => {
 
       <MainLayout>
         <AnimalImageWrapper>
-          <Image alt={title} {...characterImage} />
+          <Image alt={title} {...characterImage} priority />
         </AnimalImageWrapper>
 
         <LetterMainLayout>

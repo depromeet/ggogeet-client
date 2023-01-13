@@ -105,6 +105,7 @@ const LetterStorageReplyPage = () => {
             alt="색종이이미지"
             width={206}
             height={99}
+            priority
           />
         </AnimalImageWrapper>
 

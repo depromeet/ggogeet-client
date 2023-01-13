@@ -8,7 +8,13 @@ interface Props {
 export default function InitializationButton({ ...props }: Props) {
   return (
     <S.ButtonLayout {...props}>
-      <Image src="/icons/reload.svg" alt="초기화화살표" width={8} height={8} />
+      <Image
+        src="/icons/reload.svg"
+        alt="초기화화살표"
+        width={8}
+        height={8}
+        priority
+      />
       <S.Initialization>초기화</S.Initialization>
     </S.ButtonLayout>
   );
