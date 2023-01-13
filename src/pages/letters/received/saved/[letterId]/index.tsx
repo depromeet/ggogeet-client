@@ -78,13 +78,12 @@ const Sender = styled.p`
   ${Display1}
 `;
 
-const LetterStorageReplyPage = () => {
+const LetterStorageReplyPage = ({ letterId }: any) => {
   const router = useRouter();
-  const { temp_letter_id: letterId }: any = router.query;
   const filter = router.query.filter || "receive";
 
-  const { data, isLoading } = useQuery(
-    [queryKeys.getReceivedLetterDetail],
+  const { data } = useQuery(
+    [queryKeys.getReceivedLetterDetail, letterId],
     () => {
       if (filter === "sent") return getSentLetterDetail(+letterId);
       else return getReceivedLetterDetail(+letterId);
@@ -133,3 +132,12 @@ const LetterStorageReplyPage = () => {
 };
 
 export default LetterStorageReplyPage;
+
+export async function getServerSideProps(ctx: any) {
+  const { letterId } = ctx.params;
+  return {
+    props: {
+      letterId,
+    },
+  };
+}
