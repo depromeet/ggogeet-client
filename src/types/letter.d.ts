@@ -70,6 +70,7 @@ export type GetReceivedLetterTempType = {
 export type GetReceivedLetterDetailType = {
   id: number;
   senderNickname: string;
+  receiverNickname: string;
   receivedAt: string;
   type: string;
   imageContent: string;
@@ -80,7 +81,9 @@ export type GetReceivedLetterDetailType = {
 export type getLetterListType = {
   id: number;
   senderNickname: string;
+  receiverNickname: string;
   receivedAt: string;
   title: string;
   situationId: number;
+  filter?: "sent" | "receive";
 };

@@ -32,7 +32,7 @@ const LettersReceivedTempPage: NextPage = () => {
 
   return (
     <Layout>
-      <TopNavigation leftElem={<NavBack color="white" />} />
+      <TopNavigation leftElem={<NavBack color="white" isHome />} />
 
       <MainLayout>
         <AnimalImageWrapper>
