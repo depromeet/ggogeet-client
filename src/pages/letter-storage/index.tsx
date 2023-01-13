@@ -130,7 +130,6 @@ const LetterStoragePage = () => {
   const dataLength = receivedLetterList?.length;
 
   const onClickFilterApply = () => {
-    initialStartDate = formatCalendarValue;
     refetch();
     console.log("data", receivedLetterList);
     setFilterCondition({ senders: [], tags: [] });
@@ -162,6 +161,10 @@ const LetterStoragePage = () => {
   const onClickFilterButton = () => {
     setIsFilterOn((prev) => !prev);
   };
+
+  useEffect(() => {
+    initialStartDate = formatCalendarValue;
+  }, [calendarValue]);
 
   return (
     <Layout>
