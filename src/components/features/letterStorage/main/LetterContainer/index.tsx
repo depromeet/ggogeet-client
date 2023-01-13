@@ -2,6 +2,7 @@
 import Tag from "@/src/components/common/Tag";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
 import { getLetterListType } from "@/src/types/letter";
+import dayjs from "dayjs";
 import * as S from "./styled";
 import dayjs from "dayjs";
 
