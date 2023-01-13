@@ -14,13 +14,19 @@ import BottomSheetHeader from "@/src/components/features/letterStorage/bottomShe
 import BottomSheetFooter from "@/src/components/features/letterStorage/bottomSheet/BottomSheetFooter";
 import { useState } from "react";
 import Calendar from "@/src/components/common/Calendar";
+import Image from "next/image";
 
 const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.colors.navy};
-  height: 100vh;
+  height: 100%;
+  overflow: scroll;
 `;
 
 const MainLayout = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 16px 20px;
 `;
 
@@ -50,12 +56,25 @@ const LetterKindSelect = styled(Select)`
   ${Caption1}
 `;
 
+const LetterContainerLayout = styled.div`
+  /* flex: 1; */
+`;
+
 const LetterContainerWrapper = styled.div`
   padding: 0 0 12px 0;
 `;
 
 const Space = styled.div`
   width: 10px;
+`;
+
+const EmptyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.navy50};
+  border-radius: 8px;
+  /* height: 100%; */
 `;
 
 const dummyData = [
@@ -66,6 +85,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "1",
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -74,6 +94,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "2",
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -82,6 +103,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "3",
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -90,6 +112,8 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "4",
+
+    situationId: 1,
   },
   {
     sender: "김가은",
@@ -98,6 +122,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "5",
+    situationId: 3,
   },
   {
     sender: "김가은",
@@ -106,6 +131,7 @@ const dummyData = [
     status: "응원하는 개",
     color: "yellow",
     id: "6",
+    situationId: 2,
   },
 ];
 
@@ -116,6 +142,20 @@ const LetterStoragePage = () => {
 
   const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
   const [calendarValue, setCalendarValue] = useState<Date>(new Date());
+  const [sortKind, setSortKind] = useState<string>("최근 받은 순");
+  const [isFilterOn, setIsFilterOn] = useState<boolean>(false);
+
+  const dataLength = 1; // 데이터 길이 임시변수
+
+  const onClickSortButton = () => {
+    setSortKind((prev) =>
+      prev === "최근 받은 순" ? "오래된 순" : "최근 받은 순"
+    );
+  };
+
+  const onClickFilterButton = () => {
+    setIsFilterOn((prev) => !prev);
+  };
 
   return (
     <Layout>
@@ -137,39 +177,60 @@ const LetterStoragePage = () => {
           />
 
           <HeaderRight>
-            <SortButton sortKind="최근 받은 순" />
+            <SortButton sortKind={sortKind} onClick={onClickSortButton} />
             <Space />
-            <FilterButton />
+            <FilterButton onClick={onClickFilterButton} />
           </HeaderRight>
         </Header>
 
-        {dummyData.map((letter) => {
-          return (
-            <LetterContainerWrapper key={letter.id}>
-              <LetterContainer letter={letter} />
-            </LetterContainerWrapper>
-          );
-        })}
-
-        <BottomSheet onClose={onClose} isOpened={true} className="BottomSheet">
-          <div>
-            <BottomSheetHeader
-              selected={selectedMenu}
-              setSelected={setSelectedMenu}
-            />
-
-            {selectedMenu === "날짜" ? (
-              <Calendar
-                calendarValue={calendarValue}
-                setCalendarValue={setCalendarValue}
+        <LetterContainerLayout>
+          {dataLength ? (
+            <>
+              {dummyData.map((letter) => {
+                return (
+                  <LetterContainerWrapper key={letter.id}>
+                    <LetterContainer letter={letter} />
+                  </LetterContainerWrapper>
+                );
+              })}
+            </>
+          ) : (
+            <EmptyContainer>
+              <Image
+                src="images/image__empty.svg"
+                alt="빈화면이미지"
+                width={95}
+                height={95}
               />
-            ) : (
-              <ListBottomSheet listArray={SenderData} />
-            )}
+            </EmptyContainer>
+          )}
+        </LetterContainerLayout>
 
-            <BottomSheetFooter />
-          </div>
-        </BottomSheet>
+        {isFilterOn && (
+          <BottomSheet
+            onClose={onClose}
+            isOpened={true}
+            className="BottomSheet"
+          >
+            <div>
+              <BottomSheetHeader
+                selected={selectedMenu}
+                setSelected={setSelectedMenu}
+              />
+
+              {selectedMenu === "날짜" ? (
+                <Calendar
+                  calendarValue={calendarValue}
+                  setCalendarValue={setCalendarValue}
+                />
+              ) : (
+                <ListBottomSheet listArray={SenderData} />
+              )}
+
+              <BottomSheetFooter />
+            </div>
+          </BottomSheet>
+        )}
       </MainLayout>
     </Layout>
   );
