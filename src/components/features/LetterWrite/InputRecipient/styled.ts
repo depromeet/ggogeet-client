@@ -94,7 +94,13 @@ const LetterWriteH1 = styled.h1`
 const LetterWriteProfileContainer = styled.ul`
   margin-top: 20px;
   height: calc(100vh - 220px);
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
   li {
     padding: 12px 0px;
     width: 100%;

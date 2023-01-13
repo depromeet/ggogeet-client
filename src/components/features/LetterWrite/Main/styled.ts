@@ -67,7 +67,13 @@ const ReactQuillWrapper = styled.div`
   .ql-container {
     width: 100%;
     max-height: calc(100vh - 104px);
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
     background: ${({ theme }) => theme.colors.white};
   }
 
@@ -140,8 +146,13 @@ const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
     height: ${({ isListHeightChanged }) =>
       isListHeightChanged ? "328px" : "252px"};
     background-color: ${({ theme }) => theme.colors.gray5};
-    overflow-y: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
     li {
       width: inherit;
       button {
@@ -274,7 +285,13 @@ const RemindMainWrapper = styled.div`
 
 const RemindMemoContainer = styled.div`
   height: 292px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
 
 const EmptyRemindContainer = styled.div`
