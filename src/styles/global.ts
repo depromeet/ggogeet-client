@@ -90,7 +90,12 @@ export const global = (theme: Theme) => css`
 
   /* react-spring-bottom-sheet */
 
+  [data-rsbs-backdrop] {
+    z-index: 10004;
+  }
+
   [data-rsbs-overlay] {
+    z-index: 20004;
     border-radius: 28px 28px 0px 0px;
     background-color: ${theme.colors.gray5};
   }
