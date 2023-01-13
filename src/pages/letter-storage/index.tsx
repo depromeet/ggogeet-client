@@ -15,11 +15,12 @@ import { useEffect, useState } from "react";
 import Calendar from "@/src/components/common/Calendar";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
-import { getReceivedLetterList } from "@/src/apis/letter";
+import { getReceivedLetterList, getSentLetterList } from "@/src/apis/letter";
 import dayjs from "dayjs";
 import Router from "next/router";
 
 const Layout = styled.div`
+  padding-top: 12px;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.navy};
@@ -91,6 +92,7 @@ interface FilterConditionTypes {
 }
 
 const LetterStoragePage = () => {
+  const [listFilter, setListFilter] = useState<"sent" | "receive">("sent");
   const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
   const [calendarValue, setCalendarValue] = useState<Date>(new Date());
   const [sortKind, setSortKind] = useState<string>("최근 받은 순");
@@ -100,7 +102,7 @@ const LetterStoragePage = () => {
     senders: [],
     tags: [],
     startDate: "1990-01-01 00:00:00",
-    order: "ASC",
+    order: "DESC",
   });
 
   const onClose = () => {
@@ -115,47 +117,49 @@ const LetterStoragePage = () => {
 
   let initialStartDate = "1990-01-01 00:00:00";
 
-  const { data: receivedLetterList, refetch } = useQuery({
-    queryKey: ["receivedLetterList"],
-    queryFn: () =>
-      getReceivedLetterList(
-        senders,
-        tags,
-        initialStartDate,
-        formatCalendarValue,
-        order
-      ),
+  const { data: receivedLetterList } = useQuery({
+    queryKey: ["receivedLetterList", listFilter, senders, tags, order],
+    queryFn: () => {
+      if (listFilter === "receive")
+        return getReceivedLetterList(
+          senders,
+          tags,
+          initialStartDate,
+          formatCalendarValue,
+          order
+        );
+
+      if (listFilter === "sent")
+        return getSentLetterList(
+          senders,
+          tags,
+          initialStartDate,
+          formatCalendarValue,
+          order
+        );
+    },
   });
 
   const dataLength = receivedLetterList?.length;
 
   const onClickFilterApply = () => {
-    refetch();
-    console.log("data", receivedLetterList);
-    setFilterCondition({
-      senders: [],
-      tags: [],
-      startDate: "1990-01-01 00:00:00",
-      order: "ASC",
-    });
+    setIsFilterOn(false);
   };
 
-  const onClickSortButton = async () => {
-    if (sortKind === "최근 받은 순") {
-      setSortKind("오래된 순");
-      await setFilterCondition((prev) => ({ ...prev, order: "DSC" }));
-    } else {
-      setSortKind("최근 받은 순");
-      await setFilterCondition((prev) => ({ ...prev, order: "ASC" }));
-    }
-
-    refetch();
+  const onClickSortButton = () => {
+    setSortKind((prev) =>
+      prev === "최근 받은 순" ? "오래된 순" : "최근 받은 순"
+    );
+    setFilterCondition((prev) => ({
+      ...prev,
+      order: sortKind === "최근 받은 순" ? "ASC" : "DESC",
+    }));
   };
 
   const onClickLetterContainer = (id: number) => {
     Router.push({
       pathname: "/letter-storage/reply",
-      query: { letterId: id },
+      query: { letterId: id, filter: listFilter },
     });
   };
 
@@ -175,17 +179,18 @@ const LetterStoragePage = () => {
     <Layout>
       <TopNavigation
         title={<TopNavigationTitle>꼬깃 보관함</TopNavigationTitle>}
-        leftElem={<NavBack color="white" />}
-        rightElem={<PlusButton />}
+        leftElem={<NavBack color="white" isHome />}
+        // rightElem={<PlusButton />}
       />
 
       <MainLayout>
         <Header>
           <LetterKindSelect
+            value={listFilter}
+            onChange={(e) => setListFilter(e.target.value as any)}
             options={{
-              "전체 꼬깃": "전체 꼬깃",
-              "보낸 꼬깃만": "보낸 꼬깃만",
-              "받은 꼬깃만": "받은 꼬깃만",
+              sent: "보낸 꼬깃만",
+              receive: "받은 꼬깃만",
             }}
             placeholder="전체 꼬깃"
           />
@@ -207,7 +212,9 @@ const LetterStoragePage = () => {
                       key={letter.id}
                       onClick={() => onClickLetterContainer(letter.id)}
                     >
-                      <LetterContainer letter={letter} />
+                      <LetterContainer
+                        letter={{ ...letter, filter: listFilter }}
+                      />
                     </LetterContainerWrapper>
                   );
                 })}

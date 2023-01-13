@@ -1,4 +1,7 @@
-import { getReceivedLetterDetail } from "@/src/apis/letter";
+import {
+  getReceivedLetterDetail,
+  getSentLetterDetail,
+} from "@/src/apis/letter";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
@@ -78,10 +81,12 @@ const Sender = styled.p`
 const LetterStorageReplyPage = () => {
   const router = useRouter();
   const letterId = router.query.letterId || 0;
+  const filter = router.query.filter || "sent";
 
-  const { data } = useQuery([queryKeys.getReceivedLetterDetail], () =>
-    getReceivedLetterDetail(+letterId)
-  );
+  const { data } = useQuery([queryKeys.getReceivedLetterDetail], () => {
+    if (filter === "sent") return getSentLetterDetail(+letterId);
+    else return getReceivedLetterDetail(+letterId);
+  });
 
   const situationColor =
     situationTemplatesData[data?.situationId ? data.situationId - 1 : 0].color;
@@ -110,8 +115,8 @@ const LetterStorageReplyPage = () => {
         <LetterBottomLayout color={situationColor}>
           <Date>{dayjs(data?.receivedAt).format("YYYY.MM.DD")}</Date>
           <SenderContainer>
-            <From>FROM</From>
-            <Sender>{data?.senderNickname}</Sender>
+            <From>{filter === "sent" ? "TO" : "FROM"}</From>
+            <Sender>{data?.senderNickname ?? data?.receiverNickname}</Sender>
           </SenderContainer>
         </LetterBottomLayout>
       </MainLayout>

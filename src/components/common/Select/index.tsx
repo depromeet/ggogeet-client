@@ -17,10 +17,7 @@ export default function Select({ options, placeholder = "", ...props }: Props) {
   }, []);
 
   return (
-    <S.Select defaultValue={undefined} {...props}>
-      <option disabled value={undefined}>
-        {placeholder}
-      </option>
+    <S.Select {...props}>
       {selectOptions.map((key) => (
         <option key={key} value={key}>
           {options[key]}

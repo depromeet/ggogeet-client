@@ -72,7 +72,7 @@ const LetterRemindPage = () => {
     <Layout>
       <TopNavigation
         title={<TopNavigationTitle>꼬깃 메모</TopNavigationTitle>}
-        leftElem={<NavBack color="white" />}
+        leftElem={<NavBack color="white" isHome />}
       />
 
       <MainLayout>

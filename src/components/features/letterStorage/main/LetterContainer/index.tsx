@@ -10,7 +10,15 @@ interface Props {
   // 임시
 }
 export default function LetterContainer({ letter }: Props) {
-  const { senderNickname, id, receivedAt, title, situationId } = letter;
+  const {
+    senderNickname,
+    receiverNickname,
+    id,
+    receivedAt,
+    title,
+    situationId,
+    filter,
+  } = letter;
 
   const situationColor = situationTemplatesData[situationId - 1].color;
 
@@ -23,8 +31,10 @@ export default function LetterContainer({ letter }: Props) {
         />
 
         <S.SenderContainer>
-          <S.From color={situationColor}>FROM</S.From>
-          <S.Sender>{senderNickname}</S.Sender>
+          <S.From color={situationColor}>
+            {filter === "sent" ? "TO" : "FROM"}
+          </S.From>
+          <S.Sender>{senderNickname ?? receiverNickname}</S.Sender>
         </S.SenderContainer>
       </S.StatusAndSenderContainer>
 

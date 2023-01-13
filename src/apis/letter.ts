@@ -64,6 +64,14 @@ export const getReceivedLetterDetail = async (letterId: number) => {
 
   return data;
 };
+export const getSentLetterDetail = async (letterId: number) => {
+  const { data } = await requester<GetReceivedLetterDetailType>({
+    method: HTTP_METHOD.GET,
+    url: `/letters/sent/${letterId}`,
+  });
+
+  return data;
+};
 
 export const getReceivedLetterList = async (
   senders: string[],
@@ -82,6 +90,27 @@ export const getReceivedLetterList = async (
   const res = await requester<getLetterListType[]>({
     method: HTTP_METHOD.GET,
     url: `/letters/received?` + qsParams,
+  });
+
+  return res.data;
+};
+export const getSentLetterList = async (
+  receivers: string[],
+  situations: string[],
+  startDate?: string,
+  endDate?: string,
+  order?: string
+) => {
+  const qsParams = queryString.stringify({
+    receivers,
+    situations,
+    startDate,
+    endDate,
+    order,
+  });
+  const res = await requester<getLetterListType[]>({
+    method: HTTP_METHOD.GET,
+    url: `/letters/sent?` + qsParams,
   });
 
   return res.data;
