@@ -91,10 +91,6 @@ interface FilterConditionTypes {
 }
 
 const LetterStoragePage = () => {
-  const onClose = () => {
-    return;
-  };
-
   const [selectedMenu, setSelectedMenu] = useState<string>("보낸 사람");
   const [calendarValue, setCalendarValue] = useState<Date>(new Date());
   const [sortKind, setSortKind] = useState<string>("최근 받은 순");
@@ -106,6 +102,10 @@ const LetterStoragePage = () => {
     startDate: "1990-01-01 00:00:00",
     order: "ASC",
   });
+
+  const onClose = () => {
+    setIsFilterOn(false);
+  };
 
   const { senders, tags, order } = filterCondition;
 
@@ -217,7 +217,7 @@ const LetterStoragePage = () => {
         {isFilterOn && (
           <BottomSheet
             onClose={onClose}
-            isOpened={true}
+            isOpened={isFilterOn}
             className="BottomSheet"
           >
             <div>
