@@ -67,6 +67,15 @@ export type GetReceivedLetterTempType = {
   situationId: SituationIdType;
 };
 
+export type GetReceivedLetterDetailType = {
+  id: number;
+  senderNickname: string;
+  receivedAt: string;
+  type: string;
+  imageContent: string;
+  content: string;
+};
+
 export type getLetterListType = {
   id: number;
   senderNickname: string;
