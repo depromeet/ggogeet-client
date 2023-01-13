@@ -16,7 +16,12 @@ export default function BottomSheet({
   className,
 }: Props) {
   return (
-    <ReactBottomSheet open={isOpened} onDismiss={onClose} className={className}>
+    <ReactBottomSheet
+      open={isOpened}
+      onDismiss={onClose}
+      className={className}
+      scrollLocking={false}
+    >
       {children}
     </ReactBottomSheet>
   );
