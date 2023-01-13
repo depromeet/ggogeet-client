@@ -11,9 +11,8 @@ import { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const LettersReceivedTempPage: NextPage = () => {
+const LettersReceivedTempPage: NextPage = ({ tempLetterId }: any) => {
   const router = useRouter();
-  const { temp_letter_id: tempLetterId } = router.query;
   const { data, isSuccess } = useQuery(
     [queryKeys.getLettersReceivedTemp],
     () => getReceivedLetterTemp(Number(tempLetterId)),
@@ -55,6 +54,15 @@ const LettersReceivedTempPage: NextPage = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps(ctx: any) {
+  const { temp_letter_id: tempLetterId } = ctx.params;
+  return {
+    props: {
+      tempLetterId,
+    },
+  };
+}
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
