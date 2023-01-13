@@ -66,3 +66,11 @@ export type GetReceivedLetterTempType = {
   receivedAt: string;
   situationId: SituationIdType;
 };
+
+export type getLetterListType = {
+  id: number;
+  senderNickname: string;
+  receivedAt: string;
+  title: string;
+  situationId: number;
+};

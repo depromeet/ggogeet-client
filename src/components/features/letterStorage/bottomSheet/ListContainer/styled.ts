@@ -24,3 +24,11 @@ export const Name = styled.p`
 
   ${Body2};
 `;
+
+export const ImageWrapper = styled.div`
+  border-radius: 50%;
+  overflow: auto;
+  width: 24px;
+  height: 24px;
+  margin: 0 8px 0 0;
+`;

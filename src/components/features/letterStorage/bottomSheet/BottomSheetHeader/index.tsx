@@ -5,9 +5,14 @@ import * as S from "./styled";
 interface Props {
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
+  // onClick: () => void;
 }
 
-export default function BottomSheetHeader({ selected, setSelected }: Props) {
+export default function BottomSheetHeader({
+  selected,
+  setSelected,
+}: // onClick,
+Props) {
   const onClickItem = (name: string) => {
     setSelected(name);
   };
@@ -35,7 +40,7 @@ export default function BottomSheetHeader({ selected, setSelected }: Props) {
         </S.Navigation>
       </S.NavigationsContainer>
 
-      <InitializationButton />
+      {/* <InitializationButton onClick={onClick} /> */}
     </S.HeaderLayout>
   );
 }

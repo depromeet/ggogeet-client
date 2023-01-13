@@ -1,14 +1,15 @@
 import { HTTP_METHOD } from "../constants/api";
 import {
   CreatedLetterType,
+  getLetterListType,
   GetLetterTempCompleteResultType,
   GetReceivedLetterTempType,
   PostNewLetterCreateType,
   PostSendLetterCompleteType,
   PostSendLetterTempCompleteType,
 } from "../types/letter";
-
 import { requester } from "./requester";
+import queryString from "query-string";
 
 export const postNewLetterCreate = async (payload: CreatedLetterType) => {
   const { data } = await requester<PostNewLetterCreateType>({
@@ -52,4 +53,26 @@ export const getReceivedLetterTemp = async (tempLetterId: number) => {
   });
 
   return data;
+};
+
+export const getReceivedLetterList = async (
+  senders: string[],
+  situations: string[],
+  startDate?: string,
+  endDate?: string,
+  order?: string
+) => {
+  const qsParams = queryString.stringify({
+    senders,
+    situations,
+    startDate,
+    endDate,
+    order,
+  });
+  const res = await requester<getLetterListType[]>({
+    method: HTTP_METHOD.GET,
+    url: `/letters/received?` + qsParams,
+  });
+
+  return res.data;
 };
