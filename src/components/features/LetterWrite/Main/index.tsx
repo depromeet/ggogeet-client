@@ -41,6 +41,14 @@ const LetterWriteMain = (): ReactElement => {
       status: false,
     }));
   };
+  useEffect(() => {
+    if (currentClickedToolbarStatus?.status) {
+      document.body.style.overflowY = "hidden";
+    }
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, [currentClickedToolbarStatus]);
   return (
     <>
       <S.ToolbarContainerWrapper>
