@@ -27,10 +27,10 @@ export default function DeleteButton({ isDeleted }: Props) {
             <Button
               onClick={onClickDeleteMemo}
               name="네, 삭제할래요"
-              size="xl"
+              size="lg"
               outline
             />
-            <Button onClick={() => setOpenMadal(false)} name="취소" size="xl" />
+            <Button onClick={() => setOpenMadal(false)} name="취소" size="lg" />
           </S.ModalWrap>
         </Modal>
       )}

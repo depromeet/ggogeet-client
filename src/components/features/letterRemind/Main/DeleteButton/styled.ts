@@ -17,11 +17,14 @@ export const Delete = styled.p`
 export const ModalWrap = styled.div`
   display: flex;
   flex-direction: column;
+  button {
+    padding: 10px !important;
+  }
 `;
 export const ModalTitle = styled.div`
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
-  padding-bottom: 24px;
+  padding-bottom: 32px;
   ${Body4}
 `;
 
