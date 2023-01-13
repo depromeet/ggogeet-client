@@ -55,7 +55,7 @@ export default function WelcomeModal({ onClose }: Props) {
         <Slider arrows={false} autoplay autoplaySpeed={8000} dots>
           {welcomeModalContents.map(({ description, image, ...args }, idx) => (
             <S.WelcomeModalContents key={idx}>
-              <Image src={image} alt="" {...args} unoptimized />
+              <Image src={image} alt="" {...args} unoptimized priority />
               <p>{description}</p>
             </S.WelcomeModalContents>
           ))}

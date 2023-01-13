@@ -121,6 +121,7 @@ const CompletedForm02 = () => {
               <Image
                 alt={currentTemplate.title}
                 {...currentTemplate.completedImage}
+                priority
               />
             </div>
             <div className="completed-bottom-container">
@@ -156,6 +157,7 @@ const CompletedForm02 = () => {
               alt="카카오톡"
               width={20}
               height={16}
+              priority
             />
           }
           name="카카오톡으로 보내기"

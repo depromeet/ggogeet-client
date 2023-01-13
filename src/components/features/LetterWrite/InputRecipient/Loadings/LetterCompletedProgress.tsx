@@ -10,6 +10,7 @@ const LetterCompletedProgress = (): ReactElement => {
         alt="꼬깃 접는중"
         width={120}
         height={120}
+        priority
       />
       <p>
         꼬깃 접는 중이에요!

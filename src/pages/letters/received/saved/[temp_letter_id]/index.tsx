@@ -27,7 +27,7 @@ const AnimalImageWrapper = styled.div`
   position: absolute;
   width: 206px;
   height: 99px;
-  left: 36px;
+  left: -20px;
   top: 47px;
 `;
 
@@ -80,47 +80,54 @@ const Sender = styled.p`
 
 const LetterStorageReplyPage = () => {
   const router = useRouter();
-  const letterId = router.query.letterId || 0;
-  const filter = router.query.filter || "sent";
+  const { temp_letter_id: letterId }: any = router.query;
+  const filter = router.query.filter || "receive";
 
-  const { data } = useQuery([queryKeys.getReceivedLetterDetail], () => {
-    if (filter === "sent") return getSentLetterDetail(+letterId);
-    else return getReceivedLetterDetail(+letterId);
-  });
+  const { data, isLoading } = useQuery(
+    [queryKeys.getReceivedLetterDetail],
+    () => {
+      if (filter === "sent") return getSentLetterDetail(+letterId);
+      else return getReceivedLetterDetail(+letterId);
+    }
+  );
 
   const situationColor =
-    situationTemplatesData[data?.situationId ? data.situationId - 1 : 0].color;
+    situationTemplatesData[data?.situationId ? data?.situationId - 1 : 0].color;
 
   return (
     <Layout>
       <TopNavigation leftElem={<NavBack color="white" />} />
 
-      <MainLayout>
-        <AnimalImageWrapper>
-          <Image
-            src={
-              situationTemplatesData[data ? data?.situationId : 0]
-                .completedImage.src
-            }
-            alt="색종이이미지"
-            width={206}
-            height={99}
-            priority
-          />
-        </AnimalImageWrapper>
+      {data && (
+        <MainLayout>
+          <AnimalImageWrapper>
+            <Image
+              src={
+                situationTemplatesData[data ? data?.situationId : 0]
+                  .completedImage.src
+              }
+              alt="색종이이미지"
+              width={206}
+              height={99}
+              priority
+            />
+          </AnimalImageWrapper>
 
-        <LetterMainLayout>
-          <Content dangerouslySetInnerHTML={{ __html: data?.content ?? "" }} />
-        </LetterMainLayout>
+          <LetterMainLayout>
+            <Content
+              dangerouslySetInnerHTML={{ __html: data?.content ?? "" }}
+            />
+          </LetterMainLayout>
 
-        <LetterBottomLayout color={situationColor}>
-          <Date>{dayjs(data?.receivedAt).format("YYYY.MM.DD")}</Date>
-          <SenderContainer>
-            <From>{filter === "sent" ? "TO" : "FROM"}</From>
-            <Sender>{data?.senderNickname ?? data?.receiverNickname}</Sender>
-          </SenderContainer>
-        </LetterBottomLayout>
-      </MainLayout>
+          <LetterBottomLayout color={situationColor}>
+            <Date>{dayjs(data?.receivedAt).format("YYYY.MM.DD")}</Date>
+            <SenderContainer>
+              <From>{filter === "sent" ? "TO" : "FROM"}</From>
+              <Sender>{data?.senderNickname ?? data?.receiverNickname}</Sender>
+            </SenderContainer>
+          </LetterBottomLayout>
+        </MainLayout>
+      )}
     </Layout>
   );
 };

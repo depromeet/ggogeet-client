@@ -67,6 +67,7 @@ export default function ListContainer({
               alt="프로필이미지"
               width={24}
               height={24}
+              priority
             />
           </S.ImageWrapper>
         )}

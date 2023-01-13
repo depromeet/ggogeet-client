@@ -9,6 +9,7 @@ export default function PlusButton() {
         alt="더하기아이콘"
         height={24}
         width={24}
+        priority
       />
     </S.ButtonLayout>
   );

@@ -38,6 +38,7 @@ const Accordion = ({ data }: AccordionProps) => {
                   alt="아코디언 알림"
                   width={16}
                   height={16}
+                  priority
                 />
               )}
               <span>{memo.title}</span>
@@ -56,6 +57,7 @@ const Accordion = ({ data }: AccordionProps) => {
                 alt="아코디언 화살표"
                 width={12}
                 height={12}
+                priority
               />
             </div>
           </S.AccordionHeader>

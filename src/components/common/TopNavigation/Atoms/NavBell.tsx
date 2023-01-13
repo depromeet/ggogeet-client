@@ -12,6 +12,7 @@ const NavBell = (): ReactElement => {
           alt="알림"
           width={19}
           height={23.5}
+          priority
         />
         <S.NavBellActive />
       </S.NavItemContainer>

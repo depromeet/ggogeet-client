@@ -53,6 +53,7 @@ const ReceiverFriendsForm = (): ReactElement => {
                     alt="카카오 프로필 이미지"
                     width={36}
                     height={36}
+                    priority
                   />
                 ) : (
                   <div className="profile-image-default">
@@ -61,6 +62,7 @@ const ReceiverFriendsForm = (): ReactElement => {
                       alt="카카오 기본 프로필 이미지"
                       width={36}
                       height={36}
+                      priority
                     />
                   </div>
                 )}
@@ -74,6 +76,7 @@ const ReceiverFriendsForm = (): ReactElement => {
               src="/images/image__empty.svg"
               alt="카카오 친구목록 비어있음"
               width={94.5}
+              priority
               height={95.5}
             />
             <span>아직 꼬깃 친구가 없어요!</span>

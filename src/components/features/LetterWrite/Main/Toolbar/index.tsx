@@ -41,6 +41,7 @@ const Toolbar = ({ type, isClicked = false, onClick }: Props): ReactElement => {
         alt={type}
         width={24}
         height={24}
+        priority
       />
     </S.ToolbarWrapper>
   );

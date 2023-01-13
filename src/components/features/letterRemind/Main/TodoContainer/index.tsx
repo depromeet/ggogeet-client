@@ -92,6 +92,7 @@ export default function TodoContainer({ itemId, isDone, refetchList }: Props) {
                   alt="알람아이콘"
                   width={16}
                   height={16}
+                  priority
                 />
               </S.BellIconWrapper>
             )}

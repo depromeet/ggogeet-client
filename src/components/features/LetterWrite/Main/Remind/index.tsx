@@ -35,6 +35,7 @@ const Remind = () => {
             alt="메모 없음"
             width={94.5}
             height={95.5}
+            priority
           />
           <span>아직 작성한 메모가 없어요!</span>
         </S.EmptyRemindContainer>
