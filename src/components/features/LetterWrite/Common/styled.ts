@@ -57,7 +57,7 @@ const AccordionHeader = styled.button<{ isClicked: boolean }>`
   }
 `;
 
-const AccordionContents = styled.div`
+const AccordionContents = styled.div<{ color?: string }>`
   padding-top: 14px;
   border-top: 1px solid rgba(164, 169, 184, 0.2);
   display: flex;
@@ -70,7 +70,7 @@ const AccordionContents = styled.div`
     ${Body2};
   }
   span {
-    color: ${({ theme }) => theme.colors.yellow};
+    color: ${({ color }) => color};
   }
   p {
     color: ${({ theme }) => theme.colors.white};

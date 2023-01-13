@@ -1,10 +1,8 @@
 import { situationTemplatesData } from "@/src/data/LetterWrite";
-import { letterWriteInputState } from "@/src/store/LetterWrite";
 import { ReminderType } from "@/src/types/reminder";
 import { getDateTimeFormat } from "@/src/utils/date";
 import Image from "next/image";
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
 import * as S from "../styled";
 
 interface AccordionProps {
@@ -20,11 +18,11 @@ const Accordion = ({ data }: AccordionProps) => {
       setClickedMemoId(id);
     }
   };
-  const letterWriteInputObjectState = useRecoilValue(letterWriteInputState);
-  const { situationId } = letterWriteInputObjectState;
+
   const currentTemplate = situationTemplatesData.find(
-    (template) => template.situationId === situationId
+    (st) => st.situationId === data[0].situationId
   );
+
   return (
     <S.LetterWriteAccordionWrapper>
       {data.map((memo) => (
@@ -62,7 +60,7 @@ const Accordion = ({ data }: AccordionProps) => {
             </div>
           </S.AccordionHeader>
           {clickedMemoId === memo.id && (
-            <S.AccordionContents>
+            <S.AccordionContents color={currentTemplate?.color}>
               <span>{currentTemplate?.title}</span>
               <p>{memo.content}</p>
             </S.AccordionContents>
