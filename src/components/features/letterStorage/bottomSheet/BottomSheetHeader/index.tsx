@@ -5,12 +5,14 @@ import * as S from "./styled";
 interface Props {
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
+  filter: "sent" | "receive";
   // onClick: () => void;
 }
 
 export default function BottomSheetHeader({
   selected,
   setSelected,
+  filter,
 }: // onClick,
 Props) {
   const onClickItem = (name: string) => {
@@ -24,7 +26,7 @@ Props) {
           isSelected={selected === "보낸 사람"}
           onClick={() => onClickItem("보낸 사람")}
         >
-          보낸 사람
+          {filter === "sent" ? "보낸 사람" : "받는 사람"}
         </S.Navigation>
         <S.Navigation
           isSelected={selected === "태그"}

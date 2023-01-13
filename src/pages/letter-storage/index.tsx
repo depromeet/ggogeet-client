@@ -242,6 +242,7 @@ const LetterStoragePage = () => {
               <BottomSheetHeader
                 selected={selectedMenu}
                 setSelected={setSelectedMenu}
+                filter={listFilter}
               />
 
               {selectedMenu === "날짜" ? (
