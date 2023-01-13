@@ -130,16 +130,22 @@ const LetterStoragePage = () => {
   const dataLength = receivedLetterList?.length;
 
   const onClickFilterApply = () => {
+    initialStartDate = formatCalendarValue;
     refetch();
     console.log("data", receivedLetterList);
     setFilterCondition({ senders: [], tags: [] });
   };
 
-  const onClickSortButton = () => {
-    setSortKind((prev) =>
-      prev === "최근 받은 순" ? "오래된 순" : "최근 받은 순"
-    );
-    setFilterCondition((prev) => ({ ...prev, order: "DSC" }));
+  const onClickSortButton = async () => {
+    if (sortKind === "최근 받은 순") {
+      setSortKind("오래된 순");
+      await setFilterCondition((prev) => ({ ...prev, order: "DSC" }));
+    } else {
+      setSortKind("최근 받은 순");
+      await setFilterCondition((prev) => ({ ...prev, order: "ASC" }));
+    }
+
+    refetch();
   };
 
   const onClickLetterContainer = (id: number) => {
@@ -156,10 +162,6 @@ const LetterStoragePage = () => {
   const onClickFilterButton = () => {
     setIsFilterOn((prev) => !prev);
   };
-
-  useEffect(() => {
-    initialStartDate = formatCalendarValue;
-  }, [onClickFilterApply]);
 
   return (
     <Layout>
