@@ -12,7 +12,12 @@ import styled from "@emotion/styled";
 const LetterWriteInputRecipientLayoutWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  @supports (-webkit-touch-callout: none) {
+    min-height: fill-available;
+    min-height: -webkit-fill-available;
+    min-height: -moz-available;
+  }
   background-color: ${({ theme: { colors } }) => colors.navy};
 `;
 
