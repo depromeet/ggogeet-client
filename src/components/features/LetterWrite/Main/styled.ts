@@ -9,8 +9,22 @@ import {
 import styled from "@emotion/styled";
 
 const LetterWriteMainLayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  @supports (-webkit-touch-callout: none) {
+    min-height: fill-available;
+    min-height: -webkit-fill-available;
+    min-height: -moz-available;
+  }
+
+  & > header {
+    position: sticky;
+    top: 0;
+    z-index: 1004;
+    background-color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 const LetterWriteMainNavRightWrapper = styled.div`
@@ -41,6 +55,11 @@ const ToolbarContainerWrapper = styled.div`
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray1};
+
+  position: sticky;
+  top: 48px;
+  z-index: 1004;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const ToolbarInnerContainerWrapper = styled.div`
@@ -56,6 +75,14 @@ const ToolbarWrapper = styled.button`
 `;
 
 const ReactQuillWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+
+  & > div {
+    flex-grow: 1;
+  }
+
   .ql-toolbar {
     display: none;
   }
@@ -66,14 +93,6 @@ const ReactQuillWrapper = styled.div`
 
   .ql-container {
     width: 100%;
-    max-height: calc(100vh - 104px);
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    &::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera*/
-    }
     background: ${({ theme }) => theme.colors.white};
   }
 
@@ -82,7 +101,7 @@ const ReactQuillWrapper = styled.div`
     line-height: 170%;
     letter-spacing: -0.005em;
     color: ${({ theme }) => theme.colors.navy};
-    height: calc(100vh - 104px);
+    flex-grow: 1;
     ${Body2};
   }
 
