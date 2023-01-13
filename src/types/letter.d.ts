@@ -74,6 +74,7 @@ export type GetReceivedLetterDetailType = {
   type: string;
   imageContent: string;
   content: string;
+  situationId: number;
 };
 
 export type getLetterListType = {
