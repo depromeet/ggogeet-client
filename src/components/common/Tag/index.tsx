@@ -52,6 +52,5 @@ export default function Tag({ color, label }: Props) {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 2px;
   margin: "20px";
 `;

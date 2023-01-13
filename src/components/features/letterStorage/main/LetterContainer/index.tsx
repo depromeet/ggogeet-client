@@ -3,6 +3,7 @@ import Tag from "@/src/components/common/Tag";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
 import { getLetterListType } from "@/src/types/letter";
 import * as S from "./styled";
+import dayjs from "dayjs";
 
 interface Props {
   letter: getLetterListType;
@@ -34,7 +35,7 @@ export default function LetterContainer({ letter }: Props) {
         <S.Quotation color={situationColor}>"</S.Quotation>
       </S.ContentContainer>
 
-      <S.Date>{receivedAt}</S.Date>
+      <S.Date>{dayjs(receivedAt).format("YYYY년 MM월 DD일")}</S.Date>
     </S.LetterLayout>
   );
 }

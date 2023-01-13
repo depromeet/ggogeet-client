@@ -8,6 +8,7 @@ import styled from "@emotion/styled";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import dayjs from "dayjs";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -103,11 +104,11 @@ const LetterStorageReplyPage = () => {
         </AnimalImageWrapper>
 
         <LetterMainLayout>
-          <Content>{data?.content}</Content>
+          <Content dangerouslySetInnerHTML={{ __html: data?.content ?? "" }} />
         </LetterMainLayout>
 
         <LetterBottomLayout color={situationColor}>
-          <Date>{data?.receivedAt.split("T")[0].replace(/-/g, ".")}</Date>
+          <Date>{dayjs(data?.receivedAt).format("YYYY.MM.DD")}</Date>
           <SenderContainer>
             <From>FROM</From>
             <Sender>{data?.senderNickname}</Sender>
