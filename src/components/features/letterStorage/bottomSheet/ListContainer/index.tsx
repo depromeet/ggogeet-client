@@ -60,9 +60,14 @@ export default function ListContainer({
   return (
     <S.ListLayout>
       <S.NameContainer>
-        {image && (
+        {isSender && (
           <S.ImageWrapper>
-            <Image src={image} alt="프로필이미지" width={24} height={24} />
+            <Image
+              src={image || "/icons/icon__kakao-profile-image--default.svg"}
+              alt="프로필이미지"
+              width={24}
+              height={24}
+            />
           </S.ImageWrapper>
         )}
         <S.Name>{name}</S.Name>
