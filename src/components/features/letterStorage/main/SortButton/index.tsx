@@ -9,7 +9,13 @@ interface Props {
 export default function SortButton({ sortKind, ...props }: Props) {
   return (
     <S.ButtonLayout {...props}>
-      <Image src={"/icons/sort.svg"} alt="정렬아이콘" width={18} height={18} />
+      <Image
+        src={"/icons/sort.svg"}
+        alt="정렬아이콘"
+        width={18}
+        height={18}
+        priority
+      />
       <S.SortKind>{sortKind}</S.SortKind>
     </S.ButtonLayout>
   );
