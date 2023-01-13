@@ -2,7 +2,6 @@ import type { AppProps } from "next/app";
 import { Global, ThemeProvider } from "@emotion/react";
 import { RecoilRoot, RecoilEnv } from "recoil";
 
-import Head from "@/src/components/common/Head";
 import Toast from "@/src/components/common/Toast";
 
 import theme from "@/src/styles/theme";
@@ -11,6 +10,7 @@ import { queryClient } from "../react-query/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "react-error-boundary";
+import Head from "../components/common/Head/Head";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
