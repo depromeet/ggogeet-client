@@ -22,12 +22,10 @@ const ReceiverFriendsForm = (): ReactElement => {
     }));
     router.push("/letter-write?type=recipient-02");
   };
-  const {
-    data: kakaoFriendsList = [],
-    isLoading,
-    isError,
-    error,
-  } = useQuery([queryKeys.kakaoFriends], getKakaoFriends);
+  const { data: kakaoFriendsList = [], isSuccess } = useQuery(
+    [queryKeys.kakaoFriends],
+    getKakaoFriends
+  );
 
   const kakaoFriendsListLength = kakaoFriendsList.length;
 
@@ -35,8 +33,7 @@ const ReceiverFriendsForm = (): ReactElement => {
     text: kakaoFriendsListLength > 0 ? "친구목록에 없어요" : "직접 입력할래요",
   });
 
-  if (isLoading) return <>Loading...</>;
-  if (isError) return <>Error {JSON.stringify(error)}</>;
+  if (!isSuccess) return <></>;
 
   return (
     <>

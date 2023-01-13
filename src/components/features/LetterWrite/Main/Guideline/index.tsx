@@ -72,7 +72,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
 
   const queryClient = useQueryClient();
 
-  const { data, isLoading, isError, error } = useQuery(
+  const { data, isSuccess } = useQuery(
     [queryKeys.guideSentence],
     () => getGuideSentenceBySituationId(situationId as SituationIdType),
     {
@@ -96,9 +96,7 @@ const Guideline = ({ onClose }: GuidelineProps) => {
     },
   });
 
-  if (isLoading) return <>Loading...</>;
-
-  if (isError) return <span>Error: {JSON.stringify(error)}</span>;
+  if (!isSuccess) return <></>;
 
   return (
     <>
