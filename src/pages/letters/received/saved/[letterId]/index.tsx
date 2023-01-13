@@ -95,7 +95,7 @@ const LetterStorageReplyPage = ({ letterId }: any) => {
 
   return (
     <Layout>
-      <TopNavigation leftElem={<NavBack color="white" />} />
+      <TopNavigation leftElem={<NavBack color="white" isStorage />} />
 
       {data && (
         <MainLayout>
