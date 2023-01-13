@@ -158,8 +158,8 @@ const LetterStoragePage = () => {
 
   const onClickLetterContainer = (id: number) => {
     Router.push({
-      pathname: "/letter-storage/reply",
-      query: { letterId: id, filter: listFilter },
+      pathname: `/letters/received/saved/${id}`,
+      query: { filter: listFilter },
     });
   };
 
