@@ -141,6 +141,7 @@ const GuidelineMainWrapper = styled.div<{ isListHeightChanged: boolean }>`
       isListHeightChanged ? "328px" : "252px"};
     background-color: ${({ theme }) => theme.colors.gray5};
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     li {
       width: inherit;
       button {
