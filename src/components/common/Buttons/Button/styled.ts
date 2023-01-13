@@ -53,6 +53,7 @@ export const ButtonWrapper = styled.button<{
 export const ButtonName = styled.span<{
   size: ButtonSize;
 }>`
+  font-family: "Pretendard" !important;
   ${({ size }) =>
     size === "sm" || size === "md"
       ? css`

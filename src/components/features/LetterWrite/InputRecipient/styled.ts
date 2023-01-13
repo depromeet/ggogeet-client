@@ -296,6 +296,7 @@ const LetterWriteCompletedLastSentence = styled.div<{
         }
       }
       .sender-date {
+        font-family: "Monserrat";
         line-height: 150%;
         letter-spacing: -0.005em;
         color: ${({ theme }) => theme.colors.navy30};

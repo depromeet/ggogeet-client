@@ -137,7 +137,7 @@ const CompletedForm = ({ type }: CompletedFormProps) => {
                     <span>FROM</span>
                     <strong>{senderName}</strong>
                   </div>
-                  <time className="sender-date montserrat">
+                  <time className="sender-date">
                     {getDateTimeFormat(new Date().getTime())}
                   </time>
                 </div>
