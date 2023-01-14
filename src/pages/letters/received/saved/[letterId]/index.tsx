@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import { getCookie } from "cookies-next";
 import { COOKIE_ACCESS_TOKEN_KEY } from "@/src/constants/keys";
 import { useToast } from "@/src/hooks/useToast";
+import { useEffect } from "react";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -87,13 +88,15 @@ const LetterStorageReplyPage = ({ letterId }: any) => {
   const { setToast } = useToast();
   const filter = router.query.filter || "receive";
 
-  if (!token) {
-    setToast({
-      status: "error",
-      content: "로그인 후 꼬깃보관함을 확인해 주세요!",
-    });
-    router.push("/");
-  }
+  useEffect(() => {
+    if (!token) {
+      setToast({
+        status: "error",
+        content: "로그인 후 꼬깃보관함을 확인해 주세요!",
+      });
+      router.push("/");
+    }
+  }, []);
 
   const { data } = useQuery(
     [queryKeys.getReceivedLetterDetail, letterId],
