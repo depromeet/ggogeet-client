@@ -11,6 +11,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "react-error-boundary";
 import Head from "../components/common/Head/Head";
+import InterceptorProvider from "@/src/utils/interceptorProvider";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -28,7 +29,9 @@ function App({ Component, pageProps }: AppProps) {
           <Head />
           <Global styles={global} />
           <ErrorBoundary fallback={<div>error...</div>}>
-            <Component {...pageProps} />
+            <InterceptorProvider>
+              <Component {...pageProps} />
+            </InterceptorProvider>
           </ErrorBoundary>
           <Toast />
         </ThemeProvider>
