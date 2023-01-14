@@ -98,16 +98,32 @@ const LetterStorageReplyPage = ({ letterId }: any) => {
     }
   }, []);
 
-  const { data } = useQuery(
-    [queryKeys.getReceivedLetterDetail, letterId],
-    () => {
-      if (filter === "sent") return getSentLetterDetail(+letterId);
-      else return getReceivedLetterDetail(+letterId);
-    }
-  );
+  const {
+    data,
+    error: detailError,
+    isError,
+  } = useQuery([queryKeys.getReceivedLetterDetail, letterId], () => {
+    if (filter === "sent") return getSentLetterDetail(+letterId);
+    else return getReceivedLetterDetail(+letterId);
+  });
 
   const situationColor =
     situationTemplatesData[data?.situationId ? data?.situationId - 1 : 0].color;
+
+  useEffect(() => {
+    const error = detailError as any;
+
+    if (error) {
+      const status = error.response.status;
+      if (status === 404) {
+        setToast({
+          status: "error",
+          content: "받은 꼬깃이 없어요!",
+        });
+        router.push("/");
+      }
+    }
+  }, [isError]);
 
   return (
     <Layout>
