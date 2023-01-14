@@ -2,6 +2,7 @@ import { getReceivedLetterTemp } from "@/src/apis/letter";
 import TopNavigation from "@/src/components/common/TopNavigation";
 import { NavBack } from "@/src/components/common/TopNavigation/Atoms";
 import { situationTemplatesData } from "@/src/data/LetterWrite";
+import { useToast } from "@/src/hooks/useToast";
 import { queryKeys } from "@/src/react-query/constants";
 import { Body4, Caption1, Display1 } from "@/src/styles/commons";
 import { getDateTimeFormat } from "@/src/utils/date";
@@ -10,10 +11,17 @@ import { useQuery } from "@tanstack/react-query";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const LettersReceivedTempPage: NextPage = ({ tempLetterId }: any) => {
   const router = useRouter();
-  const { data, isSuccess } = useQuery(
+  const { setToast } = useToast();
+  const {
+    data,
+    isSuccess,
+    error: detailError,
+    isError,
+  } = useQuery(
     [queryKeys.getLettersReceivedTemp],
     () => getReceivedLetterTemp(Number(tempLetterId)),
     {
@@ -28,6 +36,21 @@ const LettersReceivedTempPage: NextPage = ({ tempLetterId }: any) => {
   const { color, title, characterImage } = situationTemplatesData.find(
     (template) => template.situationId === situationId
   )!;
+
+  useEffect(() => {
+    const error = detailError as any;
+
+    if (error) {
+      const status = error.response.status;
+      if (status === 404) {
+        setToast({
+          status: "error",
+          content: "받은 꼬깃이 없어요!",
+        });
+        router.push("/");
+      }
+    }
+  }, [isError]);
 
   return (
     <Layout>
