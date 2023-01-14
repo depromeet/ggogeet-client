@@ -120,7 +120,7 @@ const LetterStorageReplyPage = ({ letterId }: any) => {
           status: "error",
           content: "받은 꼬깃이 없어요!",
         });
-        router.push("/");
+        router.replace("/");
       }
     }
   }, [isError]);
