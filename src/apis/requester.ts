@@ -8,24 +8,10 @@ const createAxiosInstance = () => {
     baseURL: "https://api.ggo-geet.com/",
   });
 
-  base.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const {
-        response: { status },
-      } = error;
-
-      if (status === RESPONSE_ERROR.UNAUTHORIZED) {
-      }
-
-      return Promise.reject(error);
-    }
-  );
-
   return base;
 };
 
-const axiosInstance = createAxiosInstance();
+export const axiosInstance = createAxiosInstance();
 
 type Response<T> = {
   statusCode: number;
