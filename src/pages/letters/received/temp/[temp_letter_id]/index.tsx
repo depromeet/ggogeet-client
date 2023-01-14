@@ -28,15 +28,6 @@ const LettersReceivedTempPage: NextPage = ({ tempLetterId }: any) => {
       enabled: !!tempLetterId,
     }
   );
-
-  if (!isSuccess) return <></>;
-
-  const { content, senderNickname, receivedAt, situationId } = data;
-
-  const { color, title, characterImage } = situationTemplatesData.find(
-    (template) => template.situationId === situationId
-  )!;
-
   useEffect(() => {
     const error = detailError as any;
 
@@ -51,6 +42,14 @@ const LettersReceivedTempPage: NextPage = ({ tempLetterId }: any) => {
       }
     }
   }, [isError]);
+
+  if (!isSuccess) return <></>;
+
+  const { content, senderNickname, receivedAt, situationId } = data;
+
+  const { color, title, characterImage } = situationTemplatesData.find(
+    (template) => template.situationId === situationId
+  )!;
 
   return (
     <Layout>
