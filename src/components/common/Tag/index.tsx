@@ -14,6 +14,7 @@ export default function Tag({ color, label }: Props) {
         height="22"
         fill="none"
         viewBox="0 0 6 22"
+        style={{ marginRight: "-1px" }}
       >
         <path
           fill={color}
@@ -25,7 +26,7 @@ export default function Tag({ color, label }: Props) {
       <div
         style={{
           backgroundColor: color,
-          padding: "4px 8px",
+          padding: "3.8px 8px",
           fontSize: "12px",
         }}
       >
@@ -37,6 +38,7 @@ export default function Tag({ color, label }: Props) {
         height="22"
         fill="none"
         viewBox="0 0 6 22"
+        style={{ marginLeft: "-1px" }}
       >
         <path
           fill={color}

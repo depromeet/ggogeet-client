@@ -12,6 +12,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import dayjs from "dayjs";
+import { getCookie } from "cookies-next";
+import { COOKIE_ACCESS_TOKEN_KEY } from "@/src/constants/keys";
+import { useToast } from "@/src/hooks/useToast";
 
 const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.navy};
@@ -79,8 +82,18 @@ const Sender = styled.p`
 `;
 
 const LetterStorageReplyPage = ({ letterId }: any) => {
+  const token = getCookie(COOKIE_ACCESS_TOKEN_KEY);
   const router = useRouter();
+  const { setToast } = useToast();
   const filter = router.query.filter || "receive";
+
+  if (!token) {
+    setToast({
+      status: "error",
+      content: "로그인 후 꼬깃보관함을 확인해 주세요!",
+    });
+    router.push("/");
+  }
 
   const { data } = useQuery(
     [queryKeys.getReceivedLetterDetail, letterId],
