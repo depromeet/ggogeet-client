@@ -9,19 +9,15 @@ export default function GA() {
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-5PGHCZKNDN"
       />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-5PGHCZKNDN');
-      `,
-        }}
-      />
+        `}
+      </Script>
     </>
   );
 }
