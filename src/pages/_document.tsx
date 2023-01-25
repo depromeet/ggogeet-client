@@ -1,10 +1,12 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import GA from "@/src/components/common/GA";
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="ko">
         <Head>
+          <GA />
           <link
             rel="stylesheet"
             as="style"
