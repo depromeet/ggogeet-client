@@ -1,7 +1,6 @@
 import type { AppProps } from "next/app";
 import { Global, ThemeProvider } from "@emotion/react";
 import { RecoilRoot, RecoilEnv } from "recoil";
-import GA from "@/src/components/common/GA";
 
 import Toast from "@/src/components/common/Toast";
 
@@ -28,7 +27,7 @@ function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <Head />
-          <GA />
+
           <Global styles={global} />
           <ErrorBoundary fallback={<div>error...</div>}>
             <InterceptorProvider>
