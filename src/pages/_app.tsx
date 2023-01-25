@@ -3,6 +3,7 @@ import { Global, ThemeProvider } from "@emotion/react";
 import { RecoilRoot, RecoilEnv } from "recoil";
 
 import Toast from "@/src/components/common/Toast";
+import GA from "@/src/components/common/GA";
 
 import theme from "@/src/styles/theme";
 import { global } from "@/src/styles/global";
@@ -27,6 +28,7 @@ function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <Head />
+          <GA />
 
           <Global styles={global} />
           <ErrorBoundary fallback={<div>error...</div>}>
