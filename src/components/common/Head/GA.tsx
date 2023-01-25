@@ -2,8 +2,6 @@ import Script from "next/script";
 import { IS_PRODUCTION } from "@/src/constants";
 
 export default function GA() {
-  if (!IS_PRODUCTION) return <></>;
-
   return (
     <>
       <Script
