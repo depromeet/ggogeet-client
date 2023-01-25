@@ -1,5 +1,6 @@
 import { DEFAULT_META_TAG_INFO_MAP } from "@/src/data/App";
 import NextHead from "next/head";
+import GA from "./GA";
 
 export default function Head() {
   const {
@@ -37,6 +38,8 @@ export default function Head() {
 
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={appleIconTouch} />
+
+      <GA />
     </NextHead>
   );
 }
